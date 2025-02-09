@@ -5,7 +5,7 @@ public class Entscheidungen {
             System.out.println("volljährig");
         }
         else {
-          System.out.println("minserjähig");
+          System.out.println("minderjähig");
         }
     }
 }
