@@ -1,2 +1,2 @@
-# java-kurs
-java lernen
+# Java-Kurs
+java lernen für Anfänger
