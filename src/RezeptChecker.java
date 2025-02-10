@@ -1,13 +1,13 @@
 public class RezeptChecker {
     public static void main(String[] args) {
         //Menge an Zutaten:
-        int menge_zucker = 110;
+        int menge_zucker = 50;
         boolean rapsoel_vorhanden = false;
         boolean sonnenblumenoel_vorhanden = true;
         int menge_mehl = 400;
 
         //Prüfung des Rezepts:
-        if (menge_zucker >= 50 && menge_zucker <= 100) {
+        if (menge_zucker >= 50 || menge_zucker <= 100) {
             System.out.println("Richtige Menge an Zucker vorhanden");
         } else {
             System.out.println("Zu viel oder zu wenig Mehl"); //Wie kann man hier die einzelnen Fälle prüfen?
