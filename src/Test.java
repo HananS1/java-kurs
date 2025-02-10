@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SexualOrientationTest {
+public class Test {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int score = 0;
