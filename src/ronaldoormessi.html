@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bist du ein Messi- oder Ronaldo-Fan?</h1>
+    <form id="quizForm">
+        <div class="question">
+            <label>1. Was bevorzugst du?</label><br>
+            <input type="radio" name="q1" value="Messi"> Strandurlaub<br>
+            <input type="radio" name="q1" value="Ronaldo"> Bergwanderung<br>
+        </div>
+        <div class="question">
+            <label>2. Welche Eigenschaft schätzt du mehr?</label><br>
+            <input type="radio" name="q2" value="Messi"> Kreativität<br>
+            <input type="radio" name="q2" value="Ronaldo"> Disziplin<br>
+        </div>
+        <div class="question">
+            <label>3. Was ist dir wichtiger?</label><br>
+            <input type="radio" name="q3" value="Messi"> Familie<br>
+            <input type="radio" name="q3" value="Ronaldo"> Karriere<br>
+        </div>
+        <div class="question">
+            <label>4. Wie verbringst du deine Freizeit am liebsten?</label><br>
+            <input type="radio" name="q4" value="Messi"> Lesen<br>
+            <input type="radio" name="q4" value="Ronaldo"> Sport treiben<br>
+        </div>
+        <div class="question">
+            <label>5. Was ist dir wichtiger?</label><br>
+            <input type="radio" name="q5" value="Messi"> Ruhe und Entspannung<br>
+            <input type="radio" name="q5" value="Ronaldo"> Abenteuer und Action<br>
+        </div>
+        <div class="question">
+            <label>6. Was würdest du mit 1 Million Euro machen?</label><br>
+            <input type="radio" name="q6" value="Messi"> In wohltätige Zwecke investieren<br>
+            <input type="radio" name="q6" value="Ronaldo"> In ein Geschäft investieren<br>
+        </div>
+        <div class="question">
+            <label>7. Wie gehst du mit Rückschlägen um?</label><br>
+            <input type="radio" name="q7" value="Messi"> Nachdenklich und ruhig<br>
+            <input type="radio" name="q7" value="Ronaldo"> Mit Entschlossenheit und Energie<br>
+        </div>
+        <div class="question">
+            <label>8. Was ist dein größtes Ziel im Leben?</label><br>
+            <input type="radio" name="q8" value="Messi"> Ein glückliches Familienleben<br>
+            <input type="radio" name="q8" value="Ronaldo"> Beruflicher Erfolg<br>
+        </div>
+        <div class="question">
+            <label>9. Was ist dein Lieblingsessen?</label><br>
+            <input type="radio" name="q9" value="Messi"> Pizza<br>
+            <input type="radio" name="q9" value="Ronaldo"> Sushi<br>
+        </div>
+        <div class="question">
+            <label>10. Was würdest du lieber tun?</label><br>
+            <input type="radio" name="q10" value="Messi"> Einen Tag im Bett verbringen<br>
+            <input type="radio" name="q10" value="Ronaldo"> Einen Tag im Fitnessstudio verbringen<br>
+        </div>
+        <button type="button" onclick="calculateResult()">Ergebnis anzeigen</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateResult() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let scoreMessi = 0;
+            let scoreRonaldo = 0;
+
+            for (let [key, value] of formData.entries()) {
+                if (value === 'Messi') {
+                    scoreMessi++;
+                } else if (value === 'Ronaldo') {
+                    scoreRonaldo++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            if (scoreMessi > scoreRonaldo) {
+                resultDiv.textContent = 'Du bist ein Messi-Fan!';
+            } else {
+                resultDiv.textContent = 'Du bist ein Ronaldo-Fan!';
+            }
+        }
+    </script>
+</body>
+</html>
