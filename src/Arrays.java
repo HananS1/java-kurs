@@ -1,7 +1,7 @@
 public class Arrays {
     public static void main(String[] args) {
 
-        int[] numbers =  new int[100];//Array mit 1000 Elementen
+        int[] numbers =  new int[10000];//Array mit 1000 Elementen
 
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = i + 1;
