@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wort Test</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px 12px 60px;
+            background: #f4f4f7;
+            color: #222;
+        }
+        .app {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            margin: 6px 0 4px;
+        }
+        .subline {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        .nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .nav button {
+            flex: 1;
+            padding: 10px 6px;
+            border: none;
+            border-radius: 8px;
+            background: #2d6cdf;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .nav button.secondary {
+            background: #6a5acd;
+        }
+        .nav button:active {
+            opacity: 0.85;
+        }
+        .question {
+            background: #fff;
+            border-radius: 12px;
+            padding: 14px 14px 10px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .question h2 {
+            font-size: 17px;
+            margin: 0 0 10px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-align: left;
+            padding: 10px 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .option .bullet {
+            margin-right: 8px;
+        }
+        .option .text {
+            flex: 1;
+        }
+        .option .mark {
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .option.correct {
+            background: #e3f7e8;
+            border-color: #34a853;
+            color: #1e6b31;
+        }
+        .option.wrong {
+            background: #fdeceb;
+            border-color: #d93025;
+            color: #a3241a;
+        }
+        .option.disabled {
+            cursor: default;
+            pointer-events: none;
+        }
+        .reveal-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .empty {
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h1 id="title">Wort Test</h1>
+        <div class="subline" id="subline"></div>
+        <div class="nav">
+            <button onclick="startNewTest()">Neuer Test</button>
+            <button class="secondary" onclick="startWiederholung()">Wiederholungstest</button>
+        </div>
+        <div id="quiz"></div>
+        <button class="reveal-btn" id="revealBtn" onclick="revealAll()" style="display:none;">Alle Antworten anzeigen</button>
+    </div>
+
+    <script>
+        const wordBank = [
+            { word: "morbid", correct: "krankhaft", wrong: ["streng", "müde"] },
+            { word: "lakonisch", correct: "knapp", wrong: ["freundlich", "traurig"] },
+            { word: "polemisch", correct: "streitlustig", wrong: ["neugierig", "ruhig"] },
+            { word: "insidiös", correct: "heimtückisch", wrong: ["schüchtern", "schwerfällig"] },
+            { word: "stoisch", correct: "gleichmütig", wrong: ["tapfer", "gierig"] },
+            { word: "diffamieren", correct: "verleumden", wrong: ["vergessen", "verweigern"] },
+            { word: "kaduziös", correct: "hinfällig", wrong: ["aufmerksam", "lebhaft"] },
+            { word: "akribisch", correct: "sehr sorgfältig", wrong: ["schnell", "gleichgültig"] },
+            { word: "apathisch", correct: "teilnahmslos", wrong: ["aggressiv", "neugierig"] },
+            { word: "autark", correct: "unabhängig, selbstversorgend", wrong: ["arrogant", "ängstlich"] },
+            { word: "banal", correct: "nichtssagend, alltäglich", wrong: ["bösartig", "geheimnisvoll"] },
+            { word: "chimär", correct: "trügerisch, unwirklich", wrong: ["wertvoll", "riesig"] },
+            { word: "divergent", correct: "auseinanderstrebend", wrong: ["übereinstimmend", "gefährlich"] },
+            { word: "eloquent", correct: "redegewandt", wrong: ["schüchtern", "laut"] },
+            { word: "euphorisch", correct: "überschwänglich glücklich", wrong: ["traurig", "wütend"] },
+            { word: "fatalistisch", correct: "schicksalsergeben", wrong: ["kämpferisch", "ängstlich"] },
+            { word: "genuin", correct: "echt, ursprünglich", wrong: ["gefälscht", "selten"] },
+            { word: "hedonistisch", correct: "genusssüchtig", wrong: ["bescheiden", "sparsam"] },
+            { word: "indolent", correct: "träge, gleichgültig", wrong: ["aufgeregt", "mutig"] },
+            { word: "jovial", correct: "heiter, wohlwollend", wrong: ["streng", "neidisch"] },
+            { word: "kongruent", correct: "übereinstimmend, deckungsgleich", wrong: ["widersprüchlich", "zufällig"] },
+            { word: "labil", correct: "instabil, anfällig", wrong: ["stark", "zuverlässig"] },
+            { word: "manifest", correct: "offenkundig, deutlich sichtbar", wrong: ["verborgen", "unwichtig"] },
+            { word: "nonchalant", correct: "lässig, unbekümmert", wrong: ["nervös", "pedantisch"] },
+            { word: "obsolet", correct: "veraltet, überflüssig", wrong: ["modern", "wichtig"] },
+            { word: "profan", correct: "weltlich, alltäglich", wrong: ["heilig", "geheimnisvoll"] },
+            { word: "renitent", correct: "widerspenstig, aufsässig", wrong: ["folgsam", "ängstlich"] },
+            { word: "skeptisch", correct: "zweifelnd", wrong: ["überzeugt", "begeistert"] },
+            { word: "transzendent", correct: "die Erfahrung übersteigend", wrong: ["irdisch", "banal"] },
+            { word: "ubiquitär", correct: "überall vorhanden", wrong: ["selten", "verboten"] },
+            { word: "vehement", correct: "heftig, nachdrücklich", wrong: ["zurückhaltend", "gleichgültig"] },
+            { word: "willkürlich", correct: "nach Belieben, ohne Regel", wrong: ["gerecht", "geplant"] },
+            { word: "zynisch", correct: "bissig-spöttisch", wrong: ["freundlich", "naiv"] },
+            { word: "äquivalent", correct: "gleichwertig", wrong: ["unterschiedlich", "wertlos"] },
+            { word: "dogmatisch", correct: "starr an Lehrsätzen festhaltend", wrong: ["flexibel", "unsicher"] },
+            { word: "exorbitant", correct: "maßlos übertrieben", wrong: ["gering", "angemessen"] },
+            { word: "fragil", correct: "zerbrechlich, empfindlich", wrong: ["robust", "riesig"] },
+            { word: "inhärent", correct: "innewohnend, wesenseigen", wrong: ["äußerlich", "zufällig"] },
+            { word: "kryptisch", correct: "rätselhaft, schwer verständlich", wrong: ["klar", "laut"] },
+            { word: "maliziös", correct: "boshaft, hämisch", wrong: ["freundlich", "traurig"] },
+            { word: "pathetisch", correct: "übertrieben gefühlvoll", wrong: ["nüchtern", "ruhig"] },
+            { word: "rigoros", correct: "streng, unnachgiebig", wrong: ["nachsichtig", "gleichgültig"] },
+            { word: "subtil", correct: "fein, schwer fassbar", wrong: ["grob", "laut"] },
+            { word: "trivial", correct: "belanglos, einfach", wrong: ["kompliziert", "wertvoll"] },
+            { word: "verifizieren", correct: "die Richtigkeit nachprüfen", wrong: ["widerlegen", "erfinden"] },
+            { word: "suggerieren", correct: "jemandem etwas einreden", wrong: ["verbieten", "beweisen"] },
+            { word: "plausibel", correct: "einleuchtend, nachvollziehbar", wrong: ["fragwürdig", "kompliziert"] },
+            { word: "prekär", correct: "heikel, bedenklich", wrong: ["harmlos", "günstig"] },
+            { word: "resilient", correct: "widerstandsfähig", wrong: ["zerbrechlich", "gleichgültig"] },
+            { word: "volatil", correct: "schwankend, unbeständig", wrong: ["stabil", "langsam"] },
+            { word: "konform", correct: "übereinstimmend, den Regeln entsprechend", wrong: ["abweichend", "chaotisch"] },
+            { word: "antizipieren", correct: "etwas vorwegnehmen", wrong: ["verschieben", "vergessen"] },
+            { word: "exzentrisch", correct: "überspannt, von der Norm abweichend", wrong: ["bescheiden", "langweilig"] },
+            { word: "inkonsequent", correct: "nicht folgerichtig", wrong: ["konsequent", "mutig"] },
+            { word: "opulent", correct: "üppig, prunkvoll", wrong: ["karg", "bescheiden"] }
+        ];
+
+        const STORAGE_KEY = "wortquiz_gefragt";
+        let currentQuestions = [];
+        let currentTitle = "Wort Test";
+
+        function loadAsked() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveAsked(list) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            } catch (e) {
+                // localStorage nicht verfügbar - Fortschritt wird nicht gespeichert
+            }
+        }
+
+        function shuffle(arr) {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function generatePositions(n) {
+            const base = Math.floor(n / 3);
+            const counts = [base, base, base];
+            const remainder = n - base * 3;
+            const order = shuffle([0, 1, 2]);
+            for (let i = 0; i < remainder; i++) counts[order[i]]++;
+            let positions = [];
+            counts.forEach((c, idx) => {
+                for (let k = 0; k < c; k++) positions.push(idx);
+            });
+            positions = shuffle(positions);
+            for (let i = 1; i < positions.length; i++) {
+                if (positions[i] === positions[i - 1]) {
+                    for (let j = i + 1; j < positions.length; j++) {
+                        if (positions[j] !== positions[i]) {
+                            [positions[i], positions[j]] = [positions[j], positions[i]];
+                            break;
+                        }
+                    }
+                }
+            }
+            return positions;
+        }
+
+        function buildQuestion(entry, position) {
+            const wrongs = shuffle(entry.wrong);
+            const options = [null, null, null];
+            options[position] = { text: entry.correct, correct: true };
+            let wi = 0;
+            for (let i = 0; i < 3; i++) {
+                if (i === position) continue;
+                options[i] = { text: wrongs[wi], correct: false };
+                wi++;
+            }
+            return { word: entry.word, options };
+        }
+
+        function buildRound(words) {
+            const positions = generatePositions(words.length);
+            return words.map((w, i) => buildQuestion(w, positions[i]));
+        }
+
+        function startNewTest() {
+            const asked = loadAsked();
+            const pool = wordBank.filter(w => !asked.includes(w.word));
+            if (pool.length === 0) {
+                alert("Du hast schon alle Wörter gehabt! Starte den Wiederholungstest.");
+                return;
+            }
+            const n = Math.min(7, pool.length);
+            const words = shuffle(pool).slice(0, n);
+            currentQuestions = buildRound(words);
+            currentTitle = "Wort Test";
+            words.forEach(w => {
+                if (!asked.includes(w.word)) asked.push(w.word);
+            });
+            saveAsked(asked);
+            render();
+        }
+
+        function startWiederholung() {
+            const asked = loadAsked();
+            if (asked.length === 0) {
+                alert("Du hast noch keine Wörter gefragt. Starte zuerst einen Wort Test!");
+                return;
+            }
+            const pool = wordBank.filter(w => asked.includes(w.word));
+            const n = Math.min(7, pool.length);
+            const words = shuffle(pool).slice(0, n);
+            currentQuestions = buildRound(words);
+            currentTitle = "Wiederholungstest";
+            render();
+        }
+
+        function render() {
+            document.getElementById("title").textContent = currentTitle;
+            const asked = loadAsked();
+            document.getElementById("subline").textContent =
+                asked.length + " / " + wordBank.length + " Wörter schon gefragt";
+
+            const quiz = document.getElementById("quiz");
+            quiz.innerHTML = "";
+            currentQuestions.forEach((q, qi) => {
+                const div = document.createElement("div");
+                div.className = "question";
+                div.dataset.index = qi;
+
+                const h2 = document.createElement("h2");
+                h2.textContent = (qi + 1) + ") Was bedeutet „" + q.word + "“?";
+                div.appendChild(h2);
+
+                q.options.forEach((opt, oi) => {
+                    const btn = document.createElement("button");
+                    btn.className = "option";
+                    btn.dataset.correct = opt.correct;
+                    btn.innerHTML =
+                        '<span class="bullet">○</span><span class="text">' +
+                        opt.text +
+                        '</span><span class="mark"></span>';
+                    btn.addEventListener("click", () => answer(div, btn, opt.correct));
+                    div.appendChild(btn);
+                });
+
+                quiz.appendChild(div);
+            });
+
+            document.getElementById("revealBtn").style.display =
+                currentQuestions.length ? "block" : "none";
+
+            if (!currentQuestions.length) {
+                quiz.innerHTML = '<div class="empty">Wähle oben „Neuer Test“ oder „Wiederholungstest“, um zu starten.</div>';
+            }
+        }
+
+        function answer(questionDiv, chosenBtn, isCorrect) {
+            const options = questionDiv.querySelectorAll(".option");
+            if (questionDiv.classList.contains("answered")) return;
+            questionDiv.classList.add("answered");
+
+            options.forEach(btn => {
+                btn.classList.add("disabled");
+                if (btn.dataset.correct === "true") {
+                    btn.classList.add("correct");
+                    btn.querySelector(".mark").textContent = "✓";
+                } else if (btn === chosenBtn) {
+                    btn.classList.add("wrong");
+                    btn.querySelector(".mark").textContent = "✗";
+                }
+            });
+        }
+
+        function revealAll() {
+            document.querySelectorAll(".question").forEach(div => {
+                div.classList.add("answered");
+                div.querySelectorAll(".option").forEach(btn => {
+                    btn.classList.add("disabled");
+                    if (btn.dataset.correct === "true") {
+                        btn.classList.add("correct");
+                        btn.querySelector(".mark").textContent = "✓";
+                    }
+                });
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>
