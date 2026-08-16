@@ -443,6 +443,56 @@ public class TikTokNischenAnalyse {
                                     "TTS drüber, Auto-Untertitel, 20 Sekunden, dunkler Filter"
                             )
                     )
+            ),
+            new Nische(
+                    "Bedeutungen & Erklärungen (\"Was bedeutet ...?\")",
+                    List.of("was bedeutet", "bedeutung", "erklärt", "erklärung", "slang",
+                            "emoji", "traumdeutung", "wort"),
+                    "Die Frage im Titel öffnet eine Wissenslücke, die der Zuschauer sofort schließen will. " +
+                            "Er bleibt nicht, weil das Video unterhält, sondern weil die Antwort noch fehlt - " +
+                            "das ist einer der zuverlässigsten Aufmerksamkeits-Auslöser überhaupt.",
+                    "Dieser Content wird gesucht, nicht nur ausgespielt: Leute tippen solche Fragen direkt in " +
+                            "die TikTok-Suche. Solche Videos sammeln deshalb über Monate weiter Aufrufe, lange " +
+                            "nachdem sie gepostet wurden. Zusätzlich fragen Zuschauer in den Kommentaren nach dem " +
+                            "nächsten Wort - das erzeugt Kommentare und liefert gleichzeitig neue Themen.",
+                    "'Wenn dir jemand [X] schreibt, meint er in Wirklichkeit das.'",
+                    15,
+                    List.of(
+                            "Häng nach der Antwort noch ein Beispiel oder eine Ausnahme dran - sonst ist das Video "
+                                    + "nach zwei Sekunden inhaltlich vorbei und die Watchtime bricht genau dort ein",
+                            "Schreib den Begriff groß ins Bild, nicht nur in die Tonspur - ein großer Teil schaut ohne Ton",
+                            "Nimm Begriffe, die wirklich gesucht werden: Tipp den Anfang in die TikTok-Suchleiste und "
+                                    + "nutze die Vorschläge, die dir angezeigt werden",
+                            "Beantworte Wörter aus deinen eigenen Kommentaren und sag das im Video - das bringt "
+                                    + "Zuschauer dazu, weitere Wörter zu fragen, und macht aus Zuschauern Stammpublikum"
+                    ),
+                    List.of(
+                            "Nur ein Themenfeld statt alles gemischt (nur Jugendslang, nur Emojis, nur Träume, nur Namen)",
+                            "Umgekehrte Variante: Begriffe, die fast alle falsch verwenden",
+                            "Feste Nummerierung ('Wort #47'), damit Zuschauer auf dem Profil die alten Teile suchen"
+                    ),
+                    List.of(
+                            "Ein Themenfeld festlegen und dabei bleiben",
+                            "20 Begriffe sammeln, die laut TikTok-Suchvorschlägen wirklich gesucht werden",
+                            "Skript in vier Teilen: Frage - Antwort nach 2 Sekunden - Beispielsatz - Ausnahme oder Zusatz",
+                            "Kostenlose TTS-Stimme (CapCut) oder eigene Stimme aufnehmen",
+                            "Begriff groß als Text-Overlay auf ruhigem Hintergrund zeigen",
+                            "CapCut Auto-Untertitel aktivieren, Video auf 10-20 Sekunden halten",
+                            "Am Ende fragen, welches Wort als Nächstes erklärt werden soll"
+                    ),
+                    new Alternative(
+                            "Emoji-Bedeutungen",
+                            "Emojis benutzt jeder täglich und die Suchnachfrage ist noch höher als bei Wörtern. " +
+                                    "Das Video wird außerdem ohne Ton verstanden, was die Completion-Rate anhebt.",
+                            "Du brauchst kein Bildmaterial: Das Emoji selbst füllt den Bildschirm. " +
+                                    "Ein Emoji, ein Satz, fertig.",
+                            6,
+                            List.of(
+                                    "20 häufig genutzte Emojis auflisten",
+                                    "Emoji riesig auf einfarbigem Hintergrund, Frage als Overlay darüber",
+                                    "2 Sekunden Pause zum Mitraten, dann Bedeutung einblenden - insgesamt 8-10 Sekunden"
+                            )
+                    )
             )
     );
 
