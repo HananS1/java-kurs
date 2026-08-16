@@ -451,22 +451,26 @@ public class TikTokNischenAnalyse {
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
 
         System.out.println("=================================================");
-        System.out.println("   TikTok Faceless-Nischenanalyse (kostenlos)");
+        System.out.println("   TikTok Faceless-Analyse (kostenlos)");
         System.out.println("=================================================");
-        System.out.println("Beschreibe einen TikTok-Kanal - du bekommst eine Nischenanalyse,");
-        System.out.println("Verbesserungs-Hebel, eine einfachere Alternativ-Nische und eine");
-        System.out.println("Schritt-für-Schritt-Anleitung zum kostenlosen Nachbauen.");
-        System.out.println();
 
-        boolean weiter = true;
-        while (weiter) {
-            analysiereKanal(scanner);
-            System.out.print("\nNoch einen Kanal analysieren? (ja/nein): ");
-            weiter = scanner.nextLine().trim().equalsIgnoreCase("ja");
-            System.out.println();
+        boolean laeuft = true;
+        while (laeuft) {
+            System.out.println("\nWas möchtest du analysieren?");
+            System.out.println("  1) Fremden Kanal analysieren (Nische, Twist, Nachbau-Anleitung)");
+            System.out.println("  2) Eigenes Video analysieren (warum viral oder warum wenig Aufrufe)");
+            System.out.println("  3) Beenden");
+            System.out.print("Auswahl: ");
+
+            switch (scanner.nextLine().trim()) {
+                case "1" -> analysiereKanal(scanner);
+                case "2" -> VideoPerformanceAnalyse.starte(scanner);
+                case "3" -> laeuft = false;
+                default -> System.out.println("Bitte 1, 2 oder 3 eingeben.");
+            }
         }
 
-        System.out.println("Viel Erfolg beim Nachbauen deiner eigenen Version!");
+        System.out.println("\nViel Erfolg mit deinem Kanal!");
         scanner.close();
     }
 
@@ -621,7 +625,7 @@ public class TikTokNischenAnalyse {
         }
     }
 
-    private static void speichereBericht(String kanalname, String bericht) {
+    static void speichereBericht(String kanalname, String bericht) {
         try {
             Path ordner = Path.of("berichte");
             Files.createDirectories(ordner);
