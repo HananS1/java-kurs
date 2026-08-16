@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+### Wort Test (vom Programm erzeugt) ###
+gefragte-woerter.txt
+wort-test.txt
