@@ -1,0 +1,320 @@
+{
+  "id": "tuffi",
+  "title": "Tuffi",
+  "handle": "@unglaublichwahr",
+  "bpm": 137.4582,
+  "tail": 1.2,
+  "beeScene": "tDrink",
+  "emblem": "elephant",
+  "sources": [
+    "https://www.zdfheute.de/panorama/tuffi-elefant-wuppertaler-schwebebahn-100.html",
+    "https://www.ingenieur.de/?p=10962",
+    "https://www.wandernundmehr.at/faq/wer-sprang-1950-aus-der-wuppertaler-schwebebahn",
+    "https://www.wandernundmehr.at/faq/was-wurde-aus-tuffi"
+  ],
+  "scenes": [
+    {
+      "art": "tHook",
+      "beats": 9,
+      "music": "intro",
+      "l1": "EIN ELEFANT FUHR *SCHWEBEBAHN…*",
+      "l2": "…UND SPRANG IN DEN FLUSS.",
+      "l2At": 3.5,
+      "sfx": [
+        {
+          "at": 3.5,
+          "type": "smash"
+        },
+        {
+          "at": 3.5,
+          "type": "trumpet"
+        },
+        {
+          "at": 4.8,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "art": "tTitle",
+      "beats": 6,
+      "music": "drive",
+      "big": "TUFFI",
+      "bigSize": 220,
+      "l2": "WUPPERTAL · 21. JULI 1950",
+      "l2At": 1.5,
+      "l2Size": 56,
+      "sfx": [
+        {
+          "at": 2,
+          "type": "trumpet"
+        }
+      ],
+      "tags": [
+        {
+          "at": 3.5,
+          "text": "WARTE AUF DAS FOTO",
+          "x": 540,
+          "y": 1700,
+          "color": "yellow",
+          "ink": "#111",
+          "rot": -0.03,
+          "size": 48
+        }
+      ]
+    },
+    {
+      "art": "tCity",
+      "beats": 7,
+      "music": "drive",
+      "label": "WUPPERTAL · 1950",
+      "l1": "EIN *ZIRKUS* KAM IN DIE STADT…",
+      "l2": "…ZIRKUS ALTHOFF.",
+      "tags": [
+        {
+          "at": 3.5,
+          "text": "MANEGE FREI!",
+          "x": 790,
+          "y": 1000,
+          "rot": 0.06
+        }
+      ]
+    },
+    {
+      "art": "tPoster",
+      "beats": 7,
+      "music": "drive",
+      "label": "DIE WERBE-IDEE",
+      "l1": "DIE IDEE FÜR DIE *WERBUNG:*",
+      "l2": "…EIN ELEFANT IN DER SCHWEBEBAHN!",
+      "sfx": [
+        {
+          "at": 3,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "art": "tBoard",
+      "beats": 7,
+      "music": "drive",
+      "label": "21. JULI 1950",
+      "l1": "TUFFI STIEG EIN…",
+      "l2": "…FOTOGRAFEN WAREN DABEI.",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "flash",
+          "dur": 7
+        }
+      ],
+      "tags": [
+        {
+          "at": 3.5,
+          "text": "PRESSE",
+          "x": 760,
+          "y": 1080,
+          "rot": 0.05
+        }
+      ]
+    },
+    {
+      "art": "tRide",
+      "beats": 7,
+      "music": "drive",
+      "l1": "DIE BAHN FUHR LOS…",
+      "l2": "…UND TUFFI GERIET IN PANIK.",
+      "tags": [
+        {
+          "at": 3,
+          "text": "PANIK!",
+          "x": 270,
+          "y": 900,
+          "rot": -0.08
+        }
+      ],
+      "sfx": [
+        {
+          "at": 2.5,
+          "type": "trumpet"
+        }
+      ]
+    },
+    {
+      "art": "tCrash",
+      "beats": 7,
+      "music": "drive",
+      "l1": "SIE STÜRMTE GEGEN DIE *WAND…*",
+      "l2": "…UND BRACH HINDURCH.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 2,
+          "type": "smash"
+        },
+        {
+          "at": 2,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "art": "tFall",
+      "beats": 7,
+      "music": "drive",
+      "counter": {
+        "to": 10,
+        "unit": "METER FREIER FALL",
+        "dur": 2.5
+      },
+      "l2": "RUND 10 METER IN DIE TIEFE.",
+      "l2At": 3,
+      "sfx": [
+        {
+          "at": 0,
+          "type": "riser",
+          "dur": 2.5
+        },
+        {
+          "at": 2.5,
+          "type": "splash"
+        },
+        {
+          "at": 2.5,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "art": "tSplash",
+      "beats": 7,
+      "music": "drive",
+      "l1": "SIE LANDETE IN DER *WUPPER…*",
+      "l2": "…UND DIE WAR DORT FLACH.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "art": "tWatch",
+      "beats": 7,
+      "music": "tension",
+      "l1": "ALLE HIELTEN DEN ATEM AN…",
+      "l2": "…WAR SIE TOT?",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 3,
+          "type": "riser",
+          "dur": 4
+        }
+      ]
+    },
+    {
+      "art": "tReveal",
+      "beats": 5,
+      "music": "reveal",
+      "big": "NEIN!",
+      "bigSize": 330,
+      "textY": 520,
+      "sfx": [
+        {
+          "at": 0.5,
+          "type": "trumpet"
+        }
+      ]
+    },
+    {
+      "art": "tScratch",
+      "beats": 7,
+      "music": "reveal",
+      "l1": "NUR EINE *SCHRAMME…*",
+      "l2": "…AM HINTERN.",
+      "tags": [
+        {
+          "at": 3,
+          "text": "AUA!",
+          "x": 260,
+          "y": 1050,
+          "rot": -0.1
+        }
+      ]
+    },
+    {
+      "art": "tDrink",
+      "beats": 7,
+      "music": "reveal",
+      "l1": "SIE STAND EINFACH AUF…",
+      "l2": "…UND TRANK AUS DEM FLUSS."
+    },
+    {
+      "art": "tPhoto",
+      "beats": 7,
+      "music": "tension",
+      "label": "DAS FOTO",
+      "l1": "VON DEM SPRUNG GIBT ES…",
+      "l2": "…KEIN EINZIGES FOTO.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "flash",
+          "dur": 1.5
+        },
+        {
+          "at": 2,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "art": "tMontage",
+      "beats": 7,
+      "music": "reveal",
+      "l1": "DIE BERÜHMTEN BILDER?",
+      "l2": "…ALLES FOTOMONTAGEN.",
+      "sfx": [
+        {
+          "at": 3,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "art": "tParis",
+      "beats": 7,
+      "music": "reveal",
+      "label": "PARIS · 1989",
+      "l1": "TUFFI BLIEB BEIM ZIRKUS…",
+      "l2": "…BIS SIE 1989 IN PARIS STARB."
+    },
+    {
+      "art": "tLegacy",
+      "beats": 7,
+      "music": "reveal",
+      "label": "WUPPERTAL · HEUTE",
+      "l1": "BIS HEUTE LEBT SIE WEITER…",
+      "l2": "…ALS WUPPERTALS BERÜHMTESTER FAHRGAST."
+    },
+    {
+      "art": "tRecap",
+      "beats": 7,
+      "music": "reveal",
+      "l1": "EIN ELEFANT. 10 METER.",
+      "l2": "EINE SCHRAMME AM HINTERN."
+    },
+    {
+      "art": "end",
+      "beats": 12,
+      "music": "outro",
+      "name": "TUFFI",
+      "sub": "ZIRKUS ALTHOFF · 21.07.1950",
+      "tag": "WUPPERTALER SCHWEBEBAHN",
+      "quote": "„NUR EINE SCHRAMME.“"
+    }
+  ]
+}

@@ -212,6 +212,41 @@ def thud():
     return np.sin(2 * np.pi * 60 * tt) * np.exp(-tt * 10) + lowpass(rnd.standard_normal(n), 300) * np.exp(-tt * 12)
 
 
+def splash():
+    n = int(1.4 * SR); tt = np.arange(n) / SR
+    s = lowpass(rnd.standard_normal(n), 2500) * np.exp(-tt * 4) + np.sin(2 * np.pi * 70 * tt) * np.exp(-tt * 12)
+    bub = np.zeros(n)
+    for k in range(14):
+        i = int((0.15 + rnd.random() * 1.0) * SR); m = int(0.04 * SR)
+        if i + m < n:
+            f = 400 + rnd.random() * 700
+            bub[i:i + m] += np.sin(2 * np.pi * f * (1 + np.arange(m) / m) * np.arange(m) / SR) * np.exp(-np.arange(m) / SR * 60)
+    return s + bub * 0.3
+
+
+def smash():
+    n = int(0.9 * SR); tt = np.arange(n) / SR
+    s = highpass(rnd.standard_normal(n), 1500) * np.exp(-tt * 7) * 0.8
+    for k in range(10):
+        i = int(rnd.random() * 0.5 * SR); m = int(0.03 * SR)
+        s[i:i + m] += highpass(rnd.standard_normal(m), 3000) * np.exp(-np.arange(m) / SR * 80)
+    return s + boom()[:n] * 0.6
+
+
+def flash_sfx():
+    n = int(0.25 * SR); tt = np.arange(n) / SR
+    c = click()
+    return np.concatenate([c, np.zeros(n - len(c))]) + np.sin(2 * np.pi * (3000 + 4000 * tt) * tt) * np.exp(-tt * 20) * 0.3
+
+
+def trumpet(dur=0.9):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    f = 330 + 260 * np.sin(np.pi * np.minimum(1, tt / dur)) + 12 * np.sin(2 * np.pi * 7 * tt)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    s = sum(np.sin(ph * h) / h for h in range(1, 9))
+    return lowpass(s, 3500) * env(n, 0.05, 0.25) * 0.5
+
+
 # ---------- build ----------
 def build(tl):
     beat, dur = tl['beat'], tl['duration']
@@ -281,6 +316,11 @@ def build(tl):
         elif k == 'word': add(fx, t, tick(), 0.12); add(fx, t, click(), 0.25)
         elif k == 'pop': add(fx, t, stamp_sfx(), 0.45); add(fx, t, whoosh(0.15), 0.3)
         elif k == 'crash': add(fx, t, crash(), 0.6)
+        elif k == 'splash': add(fx, t, splash(), 0.9)
+        elif k == 'smash': add(fx, t, smash(), 0.9)
+        elif k == 'flash':
+            for c in np.arange(0, ev.get('dur') or 1.5, 0.35): add(fx, t + c, flash_sfx(), 0.25)
+        elif k == 'trumpet': add(fx, t, trumpet(), 0.6)
     # duck music under heavy hits; silence right before a reveal hit
     for ev in tl['events']:
         if ev['type'] == 'hit':

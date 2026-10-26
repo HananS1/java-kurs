@@ -1,0 +1,33 @@
+# Regeln für den TikTok-Kanal (@unglaublichwahr, Platzhalter)
+
+## Feste Regel: Mit jedem neuen Video wird die Optik besser
+Bei JEDEM neuen Video mindestens 2–3 neue visuelle Dynamik-Upgrades in die Engine
+einbauen (z. B. neue Bewegungen, Übergänge, Partikel, Kamera, Text-Animation) und
+im Changelog unten festhalten. Nie ein Video mit exakt dem Stand des vorherigen machen.
+Effekte dürfen nicht überladen wirken: lieber Bewegung in Figuren und Szenen als
+noch mehr Blitze.
+
+## Format
+- Silhouetten-Stil, kein Voiceover, Text auf dem Beat, versteckte Biene (nicht bei
+  ernsten Themen wie NS/Holocaust).
+- Länge aktuell 61 s (Creator Rewards brauchen > 1 min).
+- Hook (2 Zeilen) → Titelkarte → Story → Enthüllung → Zusammenfassung → Endkarte.
+- Jede Zahl/Fakt mit 2 Quellen prüfen, Quellen ins Story-JSON.
+- Ton: −14 LUFS, keine Peaks über −1 dB (nach dem Rendern messen).
+
+## Changelog Optik
+- v1 Ballonflucht: Grundstil, Silhouetten, Labels, Zähler, Dokumente, Stempel, Endkarte.
+- v2 Ballonflucht: Wort-für-Wort-Text, Slam-Zeile, Kamera-Shake, Blitze, Schockwellen,
+  Pop-up-Tags, Titelkarte, Enthüllungs-Szene, 140-BPM-Musik.
+- v3 Ballonflucht: Whip-Übergänge mit Blur, Beat-Puls, Kamerafahrt, Glitch auf Slam,
+  Partikel, Open-Loop-Tag, Swell vor Slam.
+- v4 Tuffi: animierte Hauptfigur (Elefant läuft, Rüssel/Ohren bewegen sich),
+  Physik-Partikel (Wasser, Trümmer, Fontäne), Speed-Lines beim Fall, Parallax bei
+  Fahrt, Kamerablitze, Marker-Effekt für *Schlüsselwörter* in Zeile 1,
+  austauschbares Endkarten-Emblem. Neue Sounds: Platschen, Splittern, Blitz, Trompeten.
+
+## Nächste Upgrade-Ideen (für v5+)
+- Figuren mit mehr Posen (Menschen gehen/rennen statt nur stehen)
+- Tiefenunschärfe für Hintergrund-Ebenen
+- Licht, das auf Figuren reagiert (Rim-Light vom Feuer, Blaulicht)
+- Text-Übergänge, bei denen alte Zeilen rausfliegen statt hart zu wechseln
