@@ -706,6 +706,88 @@ const ART = {
     ground(1650, '#140e14');
   },
 
+  calendar(sc, t, lt, p) {
+    sky([[0, '#1a1410'], [1, '#2e2219']]);
+    const g = ctx.createRadialGradient(540, 1150, 60, 540, 1150, 750);
+    g.addColorStop(0, 'rgba(255,215,150,0.25)'); g.addColorStop(1, 'rgba(255,215,150,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 400, W, 1520);
+    const months = ['JULI', 'AUGUST', 'SEPTEMBER'];
+    const step = sc.beat * 2;
+    const m = Math.min(2, Math.floor(lt / step));
+    const flip = clamp((lt - m * step) / 0.18);
+    paper(540, 1200, 560, 640, 0.02, (w, h) => {
+      ctx.fillStyle = COL.red; ctx.fillRect(-w / 2, -h / 2, w, 130);
+      ctx.fillStyle = COL.white; ctx.font = "70px Anton"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('1979', 0, -h / 2 + 66);
+      ctx.save(); ctx.scale(1, m > 0 ? easeOut(flip) : 1);
+      ctx.fillStyle = '#2b2620'; ctx.font = "96px Anton";
+      ctx.fillText(months[m], 0, 0);
+      ctx.restore();
+      ctx.font = "34px 'Special Elite'"; ctx.fillStyle = 'rgba(43,38,32,0.7)';
+      ctx.fillText(m === 2 ? '16.' : '', 0, 120);
+    });
+    if (m === 2) {
+      ctx.save(); ctx.strokeStyle = COL.red; ctx.lineWidth = 8;
+      const k = easeOut((lt - 2 * step - 0.1) / 0.3);
+      ctx.beginPath(); ctx.ellipse(552, 1314, 90, 60, 0.1, 0, Math.PI * 2 * k); ctx.stroke(); ctx.restore();
+    }
+    // needle stitching along the bottom
+    ctx.fillStyle = COL.ink; ctx.fillRect(0, 1640, W, 280);
+    ctx.strokeStyle = COL.yellow; ctx.lineWidth = 5; ctx.setLineDash([24, 18]);
+    ctx.beginPath(); ctx.moveTo(0, 1700); ctx.lineTo(W * clamp(lt / sc.dur), 1700); ctx.stroke(); ctx.setLineDash([]);
+  },
+
+  cinema(sc, t, lt, p) {
+    sky([[0, '#050507'], [1, '#100c0c']]);
+    // screen
+    ctx.fillStyle = grad(820, 1320, [[0, '#2b2340'], [0.6, '#c0644a'], [1, '#f2c27a']]);
+    ctx.fillRect(140, 820, 800, 500);
+    balloon(lerp(420, 660, p), 1040, 110, { people: 8, color: '#140e14' });
+    ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 16; ctx.strokeRect(140, 820, 800, 500);
+    // projector beam
+    const fl = 0.16 + 0.04 * Math.sin(lt * 40);
+    const bg = ctx.createLinearGradient(540, 1900, 540, 820);
+    bg.addColorStop(0, `rgba(255,245,220,${fl * 2})`); bg.addColorStop(1, 'rgba(255,245,220,0)');
+    ctx.fillStyle = bg;
+    ctx.beginPath(); ctx.moveTo(520, 1900); ctx.lineTo(140, 820); ctx.lineTo(940, 820); ctx.lineTo(560, 1900); ctx.closePath(); ctx.fill();
+    // seats
+    ctx.fillStyle = COL.ink;
+    for (let row = 0; row < 3; row++) {
+      for (let x = -40 + row * 30; x < W + 60; x += 110) {
+        const y = 1500 + row * 120;
+        ctx.beginPath(); ctx.arc(x, y, 34, 0, 7); ctx.fill();
+        ctx.fillRect(x - 46, y + 20, 92, 120);
+      }
+    }
+    // film strip frame
+    ctx.fillStyle = '#0c0c0c'; ctx.fillRect(0, 700, 70, 760); ctx.fillRect(W - 70, 700, 70, 760);
+    ctx.fillStyle = '#3a3a3a';
+    const off = (lt * 300) % 60;
+    for (let y = 700 - 60 + off; y < 1460; y += 60) { ctx.fillRect(18, y, 34, 30); ctx.fillRect(W - 52, y, 34, 30); }
+  },
+
+  museum(sc, t, lt, p) {
+    sky([[0, '#151619'], [1, '#2a2b30']]);
+    ctx.fillStyle = '#1d1e22'; ctx.fillRect(0, 1560, W, 360);
+    // spotlights
+    [[300, 0.0], [780, 1.3]].forEach(([x, ph]) => {
+      const a = 0.18 + 0.03 * Math.sin(lt * 3 + ph);
+      const g = ctx.createLinearGradient(0, 700, 0, 1560);
+      g.addColorStop(0, `rgba(255,240,210,${a})`); g.addColorStop(1, 'rgba(255,240,210,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x - 30, 700); ctx.lineTo(540 - 320, 1560); ctx.lineTo(540 + 320, 1560); ctx.lineTo(x + 30, 700); ctx.closePath(); ctx.fill();
+    });
+    // hanging balloon with cables
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(400, 700); ctx.lineTo(450, 900); ctx.moveTo(680, 700); ctx.lineTo(630, 900); ctx.stroke();
+    balloon(540, 1060 + Math.sin(lt * 1.5) * 6, 170, { people: 0 });
+    // plaque
+    paper(540, 1640, 420, 110, 0, (w, h) => {
+      ctx.font = "30px 'Special Elite'"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('Fluchtballon · Naila 1979', 0, 0);
+    });
+    for (let k = 0; k < 4; k++) person(150 + k * 270 + Math.sin(lt + k) * 10, 1600, k % 2 ? 260 : 240, { color: '#0b0b0e' });
+  },
+
   title(sc, t, lt, p) {
     sky([[0, '#05060d'], [1, '#1b1630']]);
     burst(540, 1250, '#2a2346', lt * 0.4, 0.7);
