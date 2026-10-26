@@ -40,7 +40,19 @@
       "bigSize": 140,
       "l2": "DDR · 16. SEPTEMBER 1979",
       "l2At": 1.5,
-      "l2Size": 56
+      "l2Size": 56,
+      "tags": [
+        {
+          "at": 3.5,
+          "text": "WARTE AUF DIE LETZTE FRAGE",
+          "x": 540,
+          "y": 1480,
+          "color": "yellow",
+          "ink": "#111",
+          "rot": -0.03,
+          "size": 48
+        }
+      ]
     },
     {
       "art": "border",

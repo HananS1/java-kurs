@@ -262,9 +262,9 @@ def build(tl):
     # sfx
     for ev in tl['events']:
         t, k = ev['t'], ev['type']
-        if k == 'cut': add(fx, max(0, t - 0.12), whoosh(0.3), 0.35)
+        if k == 'cut': add(fx, max(0, t - 0.15), whoosh(0.3), 0.5)
         elif k == 'line': add(fx, max(0, t - 0.05), whoosh(0.2), 0.25)
-        elif k == 'line2': add(fx, max(0, t - 0.08), whoosh(0.22), 0.35); add(fx, t, taiko(), 0.45)
+        elif k == 'line2': add(fx, max(0, t - 0.4), riser(0.4), 0.22); add(fx, max(0, t - 0.08), whoosh(0.22), 0.35); add(fx, t, taiko(), 0.45)
         elif k == 'type':
             for c in np.arange(0, ev['dur'], 0.06): add(fx, t + c, click(), 0.35)
         elif k == 'burner': add(fx, t, burner(), 0.5)

@@ -338,6 +338,13 @@ function textBlock(text, x, y, size, color, dt, o = {}) {
     lines.forEach((l, i) => {
       const ly = y + i * lh;
       ctx.save(); ctx.translate(x, ly + lh / 2); ctx.scale(s, s);
+      if (o.slam && dt < 0.3) {
+        const ca = 14 * (1 - dt / 0.3);
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.fillStyle = 'rgba(255,40,60,0.6)'; ctx.fillText(l, ca, -lh / 2);
+        ctx.fillStyle = 'rgba(40,200,255,0.6)'; ctx.fillText(l, -ca, -lh / 2);
+        ctx.globalCompositeOperation = 'source-over';
+      }
       ctx.fillStyle = color; ctx.fillText(l, 0, -lh / 2);
       ctx.restore();
     });
@@ -851,6 +858,19 @@ function makeGrain() {
   g.putImageData(img, 0, 0);
 }
 
+function motes(t) {
+  const r = rng(555);
+  ctx.fillStyle = '#fff';
+  for (let i = 0; i < 46; i++) {
+    const x0 = r() * W, sp = 20 + r() * 50, sz = 1.5 + r() * 3.5, ph = r() * 100;
+    const y = H - ((t * sp + ph * 30) % (H + 100));
+    const x = x0 + Math.sin(t * 0.8 + ph) * 30;
+    ctx.globalAlpha = 0.12 + 0.18 * (0.5 + 0.5 * Math.sin(t * 2 + ph));
+    ctx.beginPath(); ctx.arc(x, y, sz, 0, 7); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
 function post(t) {
   const v = ctx.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, H * 0.75);
   v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.55)');
@@ -881,10 +901,20 @@ function renderFrame(t) {
   const sx = Math.sin(t * 91) * shake, sy = Math.cos(t * 77) * shake;
   ctx.translate(sx, sy);
   // punch-in on every cut, then slow push-in
-  const z = 1 + 0.07 * p + 0.12 * (1 - easeOut(lt / 0.25));
+  const dir = sc.i % 2 ? 1 : -1;
+  const WHIP = 0.1;
+  const kOut = clamp(1 - (sc.end - t) / WHIP), kIn = clamp(1 - lt / WHIP);
+  const whip = sc.i < TL.scenes.length - 1 ? kOut : 0;
+  ctx.translate(dir * lerp(-30, 30, p) + dir * whip * 140 - dir * kIn * 140 * (sc.i > 0), 0);
+  const blur = (whip + (sc.i > 0 ? kIn : 0)) * 16;
+  if (blur > 0.5) ctx.filter = `blur(${blur.toFixed(1)}px)`;
+  const pulse = (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
+  const z = 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
   (ART[sc.art] || (() => {}))(sc, t, lt, p);
+  motes(t);
+  ctx.filter = 'none';
   ctx.restore();
   post(t);
   for (const d of rings) ring(W / 2, 900, 80 + d * 2200, '#fff', 14 * (1 - d / 0.6), 0.7 * (1 - d / 0.6));
