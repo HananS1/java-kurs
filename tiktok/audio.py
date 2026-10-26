@@ -1,0 +1,252 @@
+"""Builds music + sound effects from the timeline that engine.js exports.
+
+Everything is synthesised, so beats and hits land exactly on the frames
+where text and visuals change. Usage: python3 audio.py timeline.json out.wav
+"""
+import json
+import sys
+import wave
+
+import numpy as np
+
+SR = 44100
+rnd = np.random.default_rng(7)
+
+NOTE = {'C': 0, 'C#': 1, 'D': 2, 'D#': 3, 'E': 4, 'F': 5, 'F#': 6, 'G': 7, 'G#': 8, 'A': 9, 'A#': 10, 'B': 11}
+
+
+def hz(name, octave):
+    return 440.0 * 2 ** ((NOTE[name] + 12 * (octave + 1) - 69) / 12)
+
+
+CHORDS = {
+    'Am': ['A', 'C', 'E'], 'F': ['F', 'A', 'C'], 'Dm': ['D', 'F', 'A'], 'E': ['E', 'G#', 'B'],
+    'C': ['C', 'E', 'G'], 'G': ['G', 'B', 'D'],
+}
+DARK = ['Am', 'F', 'Dm', 'E']
+BRIGHT = ['C', 'G', 'Am', 'F']
+
+
+def env(n, a, r):
+    e = np.ones(n)
+    a, r = int(a * SR), int(r * SR)
+    if a: e[:a] = np.linspace(0, 1, a)
+    if r: e[-r:] *= np.linspace(1, 0, r)
+    return e
+
+
+def lowpass(x, cutoff):
+    X = np.fft.rfft(x)
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    X *= 1 / (1 + (f / cutoff) ** 4)
+    return np.fft.irfft(X, len(x))
+
+
+def highpass(x, cutoff):
+    X = np.fft.rfft(x)
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    X *= 1 - 1 / (1 + (f / cutoff) ** 4)
+    return np.fft.irfft(X, len(x))
+
+
+def add(buf, t, sig, gain=1.0):
+    i = int(t * SR)
+    if i >= len(buf): return
+    j = min(len(buf), i + len(sig))
+    buf[i:j] += sig[:j - i] * gain
+
+
+# ---------- instruments ----------
+def pad(chord, dur, bright=False):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    out = np.zeros(n)
+    for k, note in enumerate(CHORDS[chord]):
+        for det in (-0.12, 0.12):
+            f = hz(note, 3 if k == 0 else 4) * 2 ** (det / 12)
+            for h in range(1, 6):
+                out += np.sin(2 * np.pi * f * h * tt) / (h * 1.6)
+    root = hz(CHORDS[chord][0], 2)
+    out += 1.4 * np.sin(2 * np.pi * root * tt)
+    out *= env(n, 0.25, 0.25) * (0.9 + 0.1 * np.sin(2 * np.pi * 0.5 * tt))
+    return lowpass(out, 2200 if bright else 1300) * 0.02
+
+
+def pluck(f, dur=0.45):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    s = sum(np.sin(2 * np.pi * f * h * tt) * np.exp(-tt * (6 + 3 * h)) / h for h in range(1, 6))
+    return s * env(n, 0.003, 0.05)
+
+
+def kick():
+    n = int(0.35 * SR); tt = np.arange(n) / SR
+    f = 45 + 90 * np.exp(-tt * 30)
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 9)
+
+
+def hat():
+    n = int(0.05 * SR)
+    return highpass(rnd.standard_normal(n), 7000) * np.exp(-np.arange(n) / SR * 80)
+
+
+def heartbeat():
+    n = int(0.25 * SR); tt = np.arange(n) / SR
+    return np.sin(2 * np.pi * 55 * tt) * np.exp(-tt * 18)
+
+
+# ---------- sfx ----------
+def whoosh(dur=0.35, up=True):
+    n = int(dur * SR)
+    x = rnd.standard_normal(n)
+    out = np.zeros(n); parts = 12
+    for p in range(parts):
+        a, b = p * n // parts, (p + 1) * n // parts
+        k = p / parts if up else 1 - p / parts
+        seg = lowpass(x, 600 + 5000 * k)[a:b]
+        out[a:b] = seg
+    e = np.sin(np.linspace(0, np.pi, n)) ** 2
+    return out * e * 0.5
+
+
+def boom():
+    n = int(1.6 * SR); tt = np.arange(n) / SR
+    s = np.sin(2 * np.pi * (40 + 50 * np.exp(-tt * 8)) * tt) * np.exp(-tt * 2.5)
+    s += lowpass(rnd.standard_normal(n), 400) * np.exp(-tt * 5) * 0.8
+    return s
+
+
+def hit():
+    s = boom() * 1.1
+    n = len(s); tt = np.arange(n) / SR
+    s += highpass(rnd.standard_normal(n), 3000) * np.exp(-tt * 12) * 0.4
+    return s
+
+
+def stamp_sfx():
+    n = int(0.3 * SR); tt = np.arange(n) / SR
+    return np.sin(2 * np.pi * 110 * tt) * np.exp(-tt * 25) + lowpass(rnd.standard_normal(n), 2500) * np.exp(-tt * 40) * 0.8
+
+
+def click():
+    n = int(0.02 * SR)
+    return highpass(rnd.standard_normal(n), 2500) * np.exp(-np.arange(n) / SR * 250)
+
+
+def tick():
+    n = int(0.03 * SR); tt = np.arange(n) / SR
+    return np.sin(2 * np.pi * 1800 * tt) * np.exp(-tt * 150)
+
+
+def burner(dur=0.9):
+    n = int(dur * SR)
+    s = lowpass(rnd.standard_normal(n), 900) + lowpass(rnd.standard_normal(n), 3500) * 0.3
+    return s * env(n, 0.06, 0.4) * 0.9
+
+
+def wind(dur):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    s = lowpass(rnd.standard_normal(n), 500)
+    return s * env(n, 0.5, 0.8) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.7 * tt))
+
+
+def riser(dur):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    f = 200 * 2 ** (tt / dur * 2.5)
+    s = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.5 + highpass(rnd.standard_normal(n), 2000) * 0.25
+    return s * (tt / dur) ** 2
+
+
+def sew():
+    out = np.zeros(int(2.0 * SR))
+    for k in range(36):
+        add(out, k * 0.055, click(), 0.8)
+    return out
+
+
+def fizzle():
+    n = int(1.2 * SR); tt = np.arange(n) / SR
+    return lowpass(rnd.standard_normal(n), 1500) * np.exp(-tt * 3) * (np.sin(2 * np.pi * 9 * tt) > -0.3)
+
+
+def thud():
+    n = int(0.6 * SR); tt = np.arange(n) / SR
+    return np.sin(2 * np.pi * 60 * tt) * np.exp(-tt * 10) + lowpass(rnd.standard_normal(n), 300) * np.exp(-tt * 12)
+
+
+# ---------- build ----------
+def build(tl):
+    beat, dur = tl['beat'], tl['duration']
+    n = int(dur * SR) + SR
+    music = np.zeros(n); fx = np.zeros(n)
+    # music per scene, chords change every 4 beats on a global grid
+    for sc in tl['scenes']:
+        mode = sc['music']
+        bar = 4 * beat
+        t = sc['start']
+        while t < sc['end'] - 1e-6:
+            idx = int(round(t / bar))
+            seg = min(bar, sc['end'] - t)
+            bright = mode in ('reveal', 'outro')
+            chord = (BRIGHT if bright else DARK)[idx % 4]
+            g = {'intro': 0.8, 'groove': 1.0, 'tension': 0.75, 'reveal': 1.15, 'outro': 0.9}[mode]
+            add(music, t, pad(chord, seg + 0.3, bright), g)
+            notes = CHORDS[chord]
+            for b in range(int(round(seg / beat))):
+                bt = t + b * beat
+                if mode in ('groove', 'reveal'):
+                    add(music, bt, kick(), 0.5)
+                    add(music, bt + beat / 2, hat(), 0.12)
+                    for e in range(2):
+                        nn = notes[(b * 2 + e) % 3]
+                        add(music, bt + e * beat / 2, pluck(hz(nn, 5 if bright else 4)), 0.09)
+                elif mode == 'intro':
+                    if b % 2 == 0: add(music, bt, heartbeat(), 0.45); add(music, bt + 0.22, heartbeat(), 0.3)
+                    add(music, bt, pluck(hz(notes[b % 3], 4), 0.8), 0.05)
+                elif mode == 'tension':
+                    add(music, bt, heartbeat(), 0.5); add(music, bt + 0.22, heartbeat(), 0.32)
+                    add(music, bt + beat / 2, tick(), 0.15)
+                elif mode == 'outro':
+                    if b % 2 == 0: add(music, bt, pluck(hz(notes[0], 5), 1.2), 0.08)
+            t += seg
+    # sfx
+    for ev in tl['events']:
+        t, k = ev['t'], ev['type']
+        if k == 'cut': add(fx, max(0, t - 0.12), whoosh(0.3), 0.35)
+        elif k == 'line': add(fx, max(0, t - 0.05), whoosh(0.2), 0.25)
+        elif k == 'line2': add(fx, max(0, t - 0.05), whoosh(0.22), 0.3); add(fx, t, kick(), 0.25)
+        elif k == 'type':
+            for c in np.arange(0, ev['dur'], 0.06): add(fx, t + c, click(), 0.35)
+        elif k == 'burner': add(fx, t, burner(), 0.5)
+        elif k == 'boom': add(fx, t, boom(), 0.9)
+        elif k == 'hit': add(fx, t, hit(), 1.0)
+        elif k == 'stamp': add(fx, t, stamp_sfx(), 0.9)
+        elif k == 'ticks':
+            for c in np.linspace(0, ev['dur'], ev.get('n', 10), endpoint=False): add(fx, t + c, tick(), 0.4)
+        elif k == 'wind': add(fx, t, wind(ev['dur']), 0.35)
+        elif k == 'riser': add(fx, t, riser(ev['dur']), 0.35)
+        elif k == 'sew': add(fx, t, sew(), 0.5)
+        elif k == 'fizzle': add(fx, t, fizzle(), 0.5)
+        elif k == 'thud': add(fx, t, thud(), 0.8)
+    # duck music under heavy hits; silence right before a reveal hit
+    for ev in tl['events']:
+        if ev['type'] == 'hit':
+            a = int((ev['t'] - 0.45) * SR); b = int(ev['t'] * SR)
+            music[a:b] *= np.linspace(1, 0.05, b - a)
+            fx[a:b] *= np.linspace(1, 0.1, b - a)
+    mix = music + fx
+    fade = int(0.8 * SR); end = int(dur * SR)
+    mix[end - fade:end] *= np.linspace(1, 0, fade); mix[end:] = 0
+    mix = np.tanh(mix * 1.4)
+    mix /= max(1e-9, np.abs(mix).max()) / 0.89
+    return mix[:end]
+
+
+def write(path, x):
+    st = np.stack([x, x], 1)
+    data = (st * 32767).astype('<i2').tobytes()
+    with wave.open(path, 'wb') as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(data)
+
+
+if __name__ == '__main__':
+    tl = json.load(open(sys.argv[1]))
+    write(sys.argv[2], build(tl))

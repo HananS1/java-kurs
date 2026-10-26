@@ -1,0 +1,68 @@
+{
+  "id": "ballonflucht",
+  "title": "Die Ballonflucht",
+  "handle": "@unglaublichwahr",
+  "bpm": 120,
+  "tail": 1.2,
+  "beeScene": "field",
+  "sources": [
+    "https://en.wikipedia.org/wiki/East_Germany_balloon_escape",
+    "https://www.bundesarchiv.de/themen-entdecken/online-entdecken/themenbeitraege/spektakulaere-fluchtversuche/",
+    "https://www.museum.bayern/en/collection/histories/peter-strelzyk-und-guenter-wetzel.html",
+    "https://www.abendzeitung-muenchen.de/bayern/ballon-flucht-nach-bayern-trauer-um-peter-strelzyk-art-388294"
+  ],
+  "scenes": [
+    { "art": "hook", "beats": 8, "music": "intro", "label": "FLUCHT #1",
+      "l1": "ZWEI FAMILIEN…", "l2": "…FLOHEN MIT EINEM SELBSTGENÄHTEN BALLON.", "l2At": 3,
+      "sfx": [{ "at": 3, "type": "burner" }] },
+
+    { "art": "border", "beats": 6, "music": "groove", "label": "INNERDEUTSCHE GRENZE · 1979",
+      "l1": "DIE GRENZE WAR DICHT…", "l2": "…ZÄUNE, MINEN, SCHÜSSE.", "l2Color": "red" },
+
+    { "art": "house", "beats": 6, "music": "groove", "label": "THÜRINGEN · DDR",
+      "l1": "ZWEI FAMILIEN HATTEN EINE IDEE…", "l2": "…EIN HEISSLUFTBALLON." },
+
+    { "art": "sewing", "beats": 6, "music": "groove", "label": "KAUFHAUS LEIPZIG",
+      "l1": "DEN STOFF KAUFTEN SIE IN LEIPZIG…", "l2": "…UND NÄHTEN ALLES SELBST.",
+      "sfx": [{ "at": 0.5, "type": "sew" }] },
+
+    { "art": "stasi", "beats": 6, "music": "groove", "label": "JULI 1979",
+      "l1": "DER ERSTE VERSUCH SCHEITERTE…", "l2": "…UND DIE STASI FAND DEN BALLON.", "l2Color": "red",
+      "sfx": [{ "at": 3.5, "type": "stamp" }] },
+
+    { "art": "size", "beats": 6, "music": "groove", "counter": { "to": 28, "unit": "METER HOCH", "dur": 2 },
+      "l2": "EIN NOCH GRÖSSERER BALLON.", "l2At": 2.5,
+      "sfx": [{ "at": 0, "type": "ticks", "dur": 2, "n": 14 }, { "at": 2, "type": "boom" }] },
+
+    { "art": "launch", "beats": 6, "music": "groove", "label": "16. SEPTEMBER 1979 · NACHTS",
+      "l1": "ACHT MENSCHEN STIEGEN AUF…", "l2": "…VIER DAVON KINDER.",
+      "sfx": [{ "at": 0, "type": "burner" }, { "at": 3, "type": "burner" }] },
+
+    { "art": "altitude", "beats": 6, "music": "groove", "label": "ÜBER DER GRENZE",
+      "l1": "BIS ZU 2.600 METER HOCH…", "l2": "…UND KEINER WUSSTE, WO SIE WAREN.",
+      "sfx": [{ "at": 0, "type": "wind", "dur": 3 }] },
+
+    { "art": "gasout", "beats": 6, "music": "tension",
+      "l1": "NACH 28 MINUTEN…", "l2": "…WAR DAS GAS ALLE.", "l2Color": "red",
+      "sfx": [{ "at": 2, "type": "fizzle" }] },
+
+    { "art": "field", "beats": 6, "music": "tension", "label": "IRGENDWO IM DUNKELN",
+      "l1": "SIE LANDETEN AUF EINER WIESE…", "l2": "…IM OSTEN ODER IM WESTEN?", "l2Color": "red",
+      "sfx": [{ "at": 0, "type": "thud" }] },
+
+    { "art": "police", "beats": 6, "music": "tension",
+      "l1": "SIE FRAGTEN ZWEI POLIZISTEN:", "l2": "„SIND WIR IM WESTEN?“",
+      "sfx": [{ "at": 2, "type": "riser", "dur": 3.5 }] },
+
+    { "art": "map", "beats": 6, "music": "reveal", "label": "NAILA · BAYERN",
+      "big": "„JA.“", "l2": "…SIE WAREN IN BAYERN.", "l2At": 2.5,
+      "sfx": [{ "at": 0, "type": "hit" }, { "at": 3, "type": "stamp" }] },
+
+    { "art": "recap", "beats": 6, "music": "reveal",
+      "l1": "ACHT MENSCHEN. EIN BALLON.", "l2": "28 MINUTEN BIS ZUR FREIHEIT." },
+
+    { "art": "end", "beats": 8, "music": "outro",
+      "name": "DIE BALLONFLUCHT", "sub": "STRELZYK & WETZEL · 16.09.1979",
+      "tag": "OBERLEMNITZ → NAILA", "quote": "„SIND WIR IM WESTEN?“" }
+  ]
+}
