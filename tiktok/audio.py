@@ -93,6 +93,46 @@ def heartbeat():
     return np.sin(2 * np.pi * 55 * tt) * np.exp(-tt * 18)
 
 
+def saw(f, n, harmonics=8):
+    tt = np.arange(n) / SR
+    return sum(np.sin(2 * np.pi * f * h * tt) / h for h in range(1, harmonics + 1))
+
+
+def bass(f, dur):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    return lowpass(saw(f, n, 6), 500) * np.exp(-tt * 5) * env(n, 0.004, 0.03)
+
+
+def stab(f, dur=0.12):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    s = saw(f, n, 7) + saw(f * 1.004, n, 7)
+    return lowpass(s, 2800) * np.exp(-tt * 18) * env(n, 0.003, 0.02)
+
+
+def clap():
+    n = int(0.25 * SR); tt = np.arange(n) / SR
+    x = rnd.standard_normal(n)
+    e = np.exp(-tt * 22) + 0.6 * np.exp(-np.maximum(0, tt - 0.012) * 40) * (tt > 0.012)
+    return highpass(lowpass(x, 6000), 900) * e + np.sin(2 * np.pi * 190 * tt) * np.exp(-tt * 30) * 0.5
+
+
+def taiko():
+    n = int(0.8 * SR); tt = np.arange(n) / SR
+    f = 70 + 60 * np.exp(-tt * 25)
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 6) + lowpass(rnd.standard_normal(n), 800) * np.exp(-tt * 30) * 0.5
+
+
+def crash():
+    n = int(2.2 * SR); tt = np.arange(n) / SR
+    return highpass(rnd.standard_normal(n), 4000) * np.exp(-tt * 2.2) * 0.6
+
+
+def braam(root):
+    n = int(2.4 * SR); tt = np.arange(n) / SR
+    s = sum(saw(root * m, n, 10) for m in (1, 1.5, 2, 1.003))
+    return lowpass(s, 1200) * env(n, 0.02, 1.5) * np.exp(-tt * 0.9) * 0.4
+
+
 # ---------- sfx ----------
 def whoosh(dur=0.35, up=True):
     n = int(dur * SR)
@@ -187,37 +227,49 @@ def build(tl):
             seg = min(bar, sc['end'] - t)
             bright = mode in ('reveal', 'outro')
             chord = (BRIGHT if bright else DARK)[idx % 4]
-            g = {'intro': 0.8, 'groove': 1.0, 'tension': 0.75, 'reveal': 1.15, 'outro': 0.9}[mode]
-            add(music, t, pad(chord, seg + 0.3, bright), g)
             notes = CHORDS[chord]
+            root = hz(notes[0], 1)
+            g = {'intro': 0.7, 'drive': 0.8, 'tension': 0.9, 'reveal': 1.0, 'outro': 0.9}[mode]
+            add(music, t, pad(chord, seg + 0.3, bright), g)
             for b in range(int(round(seg / beat))):
                 bt = t + b * beat
-                if mode in ('groove', 'reveal'):
-                    add(music, bt, kick(), 0.5)
+                if mode in ('drive', 'reveal'):
+                    add(music, bt, kick(), 0.75)
+                    if b % 2 == 1: add(music, bt, clap(), 0.35)
+                    for e in range(2): add(music, bt + e * beat / 2, bass(root * 2, beat / 2), 0.5)
+                    for e in range(4):
+                        nn = notes[(b * 4 + e) % 3]
+                        add(music, bt + e * beat / 4, stab(hz(nn, 4 if not bright else 5)), 0.11 if e % 2 == 0 else 0.07)
                     add(music, bt + beat / 2, hat(), 0.12)
-                    for e in range(2):
-                        nn = notes[(b * 2 + e) % 3]
-                        add(music, bt + e * beat / 2, pluck(hz(nn, 5 if bright else 4)), 0.09)
                 elif mode == 'intro':
-                    if b % 2 == 0: add(music, bt, heartbeat(), 0.45); add(music, bt + 0.22, heartbeat(), 0.3)
-                    add(music, bt, pluck(hz(notes[b % 3], 4), 0.8), 0.05)
+                    add(music, bt, taiko(), 0.6 if b % 2 == 0 else 0.35)
+                    for e in range(4): add(music, bt + e * beat / 4, stab(hz(notes[0], 3)), 0.05 + 0.01 * b)
                 elif mode == 'tension':
-                    add(music, bt, heartbeat(), 0.5); add(music, bt + 0.22, heartbeat(), 0.32)
-                    add(music, bt + beat / 2, tick(), 0.15)
+                    add(music, bt, kick(), 0.6)
+                    for e in range(4): add(music, bt + e * beat / 4, hat(), 0.08 + 0.04 * (e == 2))
+                    add(music, bt, bass(root, beat * 0.9), 0.5)
+                    add(music, bt, stab(hz(notes[0], 4), 0.2), 0.08)
                 elif mode == 'outro':
-                    if b % 2 == 0: add(music, bt, pluck(hz(notes[0], 5), 1.2), 0.08)
+                    if b % 2 == 0: add(music, bt, pluck(hz(notes[0], 5), 1.2), 0.1)
+                    if b % 4 == 0: add(music, bt, bass(root, beat * 2), 0.4)
             t += seg
+        # mark a new section with a crash
+        if mode in ('drive', 'reveal') and sc['start'] > 0:
+            prev = [x for x in tl['scenes'] if abs(x['end'] - sc['start']) < 1e-6]
+            if prev and prev[0]['music'] != mode:
+                add(fx, sc['start'], crash(), 0.6)
+                add(fx, sc['start'], braam(hz(CHORDS[(BRIGHT if mode == 'reveal' else DARK)[0]][0], 1)), 0.7)
     # sfx
     for ev in tl['events']:
         t, k = ev['t'], ev['type']
         if k == 'cut': add(fx, max(0, t - 0.12), whoosh(0.3), 0.35)
         elif k == 'line': add(fx, max(0, t - 0.05), whoosh(0.2), 0.25)
-        elif k == 'line2': add(fx, max(0, t - 0.05), whoosh(0.22), 0.3); add(fx, t, kick(), 0.25)
+        elif k == 'line2': add(fx, max(0, t - 0.08), whoosh(0.22), 0.35); add(fx, t, taiko(), 0.45)
         elif k == 'type':
             for c in np.arange(0, ev['dur'], 0.06): add(fx, t + c, click(), 0.35)
         elif k == 'burner': add(fx, t, burner(), 0.5)
-        elif k == 'boom': add(fx, t, boom(), 0.9)
-        elif k == 'hit': add(fx, t, hit(), 1.0)
+        elif k == 'boom': add(fx, t, boom(), 0.9); add(fx, t, braam(hz('A', 1)), 0.5)
+        elif k == 'hit': add(fx, t, hit(), 1.0); add(fx, t, crash(), 0.6); add(fx, t, braam(hz('C', 1)), 0.8)
         elif k == 'stamp': add(fx, t, stamp_sfx(), 0.9)
         elif k == 'ticks':
             for c in np.linspace(0, ev['dur'], ev.get('n', 10), endpoint=False): add(fx, t + c, tick(), 0.4)
@@ -226,6 +278,9 @@ def build(tl):
         elif k == 'sew': add(fx, t, sew(), 0.5)
         elif k == 'fizzle': add(fx, t, fizzle(), 0.5)
         elif k == 'thud': add(fx, t, thud(), 0.8)
+        elif k == 'word': add(fx, t, tick(), 0.12); add(fx, t, click(), 0.25)
+        elif k == 'pop': add(fx, t, stamp_sfx(), 0.45); add(fx, t, whoosh(0.15), 0.3)
+        elif k == 'crash': add(fx, t, crash(), 0.6)
     # duck music under heavy hits; silence right before a reveal hit
     for ev in tl['events']:
         if ev['type'] == 'hit':
@@ -235,7 +290,7 @@ def build(tl):
     mix = music + fx
     fade = int(0.8 * SR); end = int(dur * SR)
     mix[end - fade:end] *= np.linspace(1, 0, fade); mix[end:] = 0
-    mix = np.tanh(mix * 1.4)
+    mix = np.tanh(mix * 1.1)
     mix /= max(1e-9, np.abs(mix).max()) / 0.89
     return mix[:end]
 

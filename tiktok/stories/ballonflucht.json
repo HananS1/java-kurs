@@ -2,7 +2,7 @@
   "id": "ballonflucht",
   "title": "Die Ballonflucht",
   "handle": "@unglaublichwahr",
-  "bpm": 120,
+  "bpm": 140,
   "tail": 1.2,
   "beeScene": "field",
   "sources": [
@@ -12,56 +12,69 @@
     "https://www.abendzeitung-muenchen.de/bayern/ballon-flucht-nach-bayern-trauer-um-peter-strelzyk-art-388294"
   ],
   "scenes": [
-    { "art": "hook", "beats": 8, "music": "intro", "label": "FLUCHT #1",
-      "l1": "ZWEI FAMILIEN…", "l2": "…FLOHEN MIT EINEM SELBSTGENÄHTEN BALLON.", "l2At": 3,
-      "sfx": [{ "at": 3, "type": "burner" }] },
+    { "art": "hook", "beats": 8, "music": "intro",
+      "l1": "ZWEI FAMILIEN FLOHEN AUS DER DDR…", "l2": "…MIT EINEM SELBSTGENÄHTEN BALLON.", "l2At": 3.5,
+      "sfx": [{ "at": 3.5, "type": "boom" }, { "at": 5, "type": "burner" }] },
 
-    { "art": "border", "beats": 6, "music": "groove", "label": "INNERDEUTSCHE GRENZE · 1979",
-      "l1": "DIE GRENZE WAR DICHT…", "l2": "…ZÄUNE, MINEN, SCHÜSSE.", "l2Color": "red" },
+    { "art": "title", "beats": 6, "music": "drive",
+      "big": "DIE BALLONFLUCHT", "bigSize": 140, "l2": "DDR · 16. SEPTEMBER 1979", "l2At": 1.5, "l2Size": 56 },
 
-    { "art": "house", "beats": 6, "music": "groove", "label": "THÜRINGEN · DDR",
-      "l1": "ZWEI FAMILIEN HATTEN EINE IDEE…", "l2": "…EIN HEISSLUFTBALLON." },
+    { "art": "border", "beats": 6, "music": "drive", "label": "INNERDEUTSCHE GRENZE",
+      "l1": "DIE GRENZE WAR DICHT…", "l2": "…ZÄUNE, MINEN, SCHÜSSE.", "l2Color": "red",
+      "tags": [{ "at": 3.5, "text": "MINENFELD", "x": 300, "y": 980, "rot": -0.06 },
+               { "at": 4.5, "text": "SCHIESSBEFEHL", "x": 700, "y": 1080, "rot": 0.05 }] },
 
-    { "art": "sewing", "beats": 6, "music": "groove", "label": "KAUFHAUS LEIPZIG",
-      "l1": "DEN STOFF KAUFTEN SIE IN LEIPZIG…", "l2": "…UND NÄHTEN ALLES SELBST.",
-      "sfx": [{ "at": 0.5, "type": "sew" }] },
+    { "art": "house", "beats": 6, "music": "drive", "label": "THÜRINGEN · DDR",
+      "l1": "SIE HATTEN EINE IDEE…", "l2": "…EIN HEISSLUFTBALLON.",
+      "tags": [{ "at": 0.5, "text": "STRELZYK", "x": 300, "y": 1020, "color": "yellow", "ink": "#111", "rot": -0.05 },
+               { "at": 1, "text": "WETZEL", "x": 780, "y": 1020, "color": "yellow", "ink": "#111", "rot": 0.05 }] },
 
-    { "art": "stasi", "beats": 6, "music": "groove", "label": "JULI 1979",
-      "l1": "DER ERSTE VERSUCH SCHEITERTE…", "l2": "…UND DIE STASI FAND DEN BALLON.", "l2Color": "red",
+    { "art": "sewing", "beats": 6, "music": "drive", "label": "KAUFHAUS LEIPZIG",
+      "l1": "STOFF AUS DEM KAUFHAUS…", "l2": "…ALLES SELBST GENÄHT.",
+      "sfx": [{ "at": 0.3, "type": "sew" }],
+      "tags": [{ "at": 3, "text": "HANDARBEIT", "x": 760, "y": 900, "rot": 0.06 }] },
+
+    { "art": "stasi", "beats": 6, "music": "drive", "label": "JULI 1979",
+      "l1": "DER ERSTE VERSUCH SCHEITERTE…", "l2": "…DIE STASI FAND DEN BALLON.", "l2Color": "red",
       "sfx": [{ "at": 3.5, "type": "stamp" }] },
 
-    { "art": "size", "beats": 6, "music": "groove", "counter": { "to": 28, "unit": "METER HOCH", "dur": 2 },
-      "l2": "EIN NOCH GRÖSSERER BALLON.", "l2At": 2.5,
+    { "art": "size", "beats": 6, "music": "drive", "counter": { "to": 28, "unit": "METER HOCH", "dur": 2 },
+      "l2": "SIE BAUTEN EINEN NOCH GRÖSSEREN.", "l2At": 2.5,
       "sfx": [{ "at": 0, "type": "ticks", "dur": 2, "n": 14 }, { "at": 2, "type": "boom" }] },
 
-    { "art": "launch", "beats": 6, "music": "groove", "label": "16. SEPTEMBER 1979 · NACHTS",
+    { "art": "launch", "beats": 6, "music": "drive", "label": "16. SEPTEMBER 1979 · NACHTS",
       "l1": "ACHT MENSCHEN STIEGEN AUF…", "l2": "…VIER DAVON KINDER.",
-      "sfx": [{ "at": 0, "type": "burner" }, { "at": 3, "type": "burner" }] },
+      "sfx": [{ "at": 0, "type": "burner" }, { "at": 3, "type": "burner" }],
+      "tags": [{ "at": 3.5, "text": "8 PERSONEN", "x": 260, "y": 1000, "rot": -0.05 }] },
 
-    { "art": "altitude", "beats": 6, "music": "groove", "label": "ÜBER DER GRENZE",
-      "l1": "BIS ZU 2.600 METER HOCH…", "l2": "…UND KEINER WUSSTE, WO SIE WAREN.",
-      "sfx": [{ "at": 0, "type": "wind", "dur": 3 }] },
+    { "art": "altitude", "beats": 6, "music": "drive", "label": "ÜBER DER GRENZE",
+      "l1": "BIS ZU 2.600 METER HOCH…", "l2": "…OHNE ZU WISSEN, WO SIE WAREN.",
+      "sfx": [{ "at": 0, "type": "wind", "dur": 4 }] },
 
     { "art": "gasout", "beats": 6, "music": "tension",
       "l1": "NACH 28 MINUTEN…", "l2": "…WAR DAS GAS ALLE.", "l2Color": "red",
-      "sfx": [{ "at": 2, "type": "fizzle" }] },
+      "sfx": [{ "at": 2, "type": "fizzle" }],
+      "tags": [{ "at": 3, "text": "GAS: 0 %", "x": 790, "y": 980, "rot": 0.06 }] },
 
     { "art": "field", "beats": 6, "music": "tension", "label": "IRGENDWO IM DUNKELN",
       "l1": "SIE LANDETEN AUF EINER WIESE…", "l2": "…IM OSTEN ODER IM WESTEN?", "l2Color": "red",
       "sfx": [{ "at": 0, "type": "thud" }] },
 
     { "art": "police", "beats": 6, "music": "tension",
-      "l1": "SIE FRAGTEN ZWEI POLIZISTEN:", "l2": "„SIND WIR IM WESTEN?“",
-      "sfx": [{ "at": 2, "type": "riser", "dur": 3.5 }] },
+      "l1": "DANN KAMEN ZWEI POLIZISTEN…", "l2": "„SIND WIR IM WESTEN?“",
+      "sfx": [{ "at": 2, "type": "riser", "dur": 4 }] },
+
+    { "art": "reveal", "beats": 5, "music": "reveal",
+      "big": "JA.", "bigSize": 360, "textY": 520 },
 
     { "art": "map", "beats": 6, "music": "reveal", "label": "NAILA · BAYERN",
-      "big": "„JA.“", "l2": "…SIE WAREN IN BAYERN.", "l2At": 2.5,
-      "sfx": [{ "at": 0, "type": "hit" }, { "at": 3, "type": "stamp" }] },
+      "l1": "SIE WAREN IN BAYERN…", "l2": "…IN FREIHEIT.",
+      "sfx": [{ "at": 3, "type": "stamp" }] },
 
     { "art": "recap", "beats": 6, "music": "reveal",
       "l1": "ACHT MENSCHEN. EIN BALLON.", "l2": "28 MINUTEN BIS ZUR FREIHEIT." },
 
-    { "art": "end", "beats": 8, "music": "outro",
+    { "art": "end", "beats": 10, "music": "outro",
       "name": "DIE BALLONFLUCHT", "sub": "STRELZYK & WETZEL · 16.09.1979",
       "tag": "OBERLEMNITZ → NAILA", "quote": "„SIND WIR IM WESTEN?“" }
   ]

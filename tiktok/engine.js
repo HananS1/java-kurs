@@ -14,6 +14,7 @@ const COL = {
 };
 
 let TL = null;
+const WORD_GAP = 0.085; // seconds between words of the first line
 
 // ---------- helpers ----------
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
@@ -51,14 +52,18 @@ function buildTimeline(story) {
     sc.l2t = start + (s.l2At ?? 2) * beat;
     scenes.push(sc);
     events.push({ t: start, type: 'cut', i });
-    if (s.label) events.push({ t: start, type: 'type', dur: Math.min(0.9, s.label.length * 0.03) });
-    if (s.l1) events.push({ t: sc.l1t, type: 'line' });
-    if (s.big) events.push({ t: sc.l1t, type: 'line' });
+    if (s.label) events.push({ t: start, type: 'type', dur: Math.min(0.6, s.label.length * 0.02) });
+    if (s.l1) s.l1.split(' ').forEach((w, k) => events.push({ t: sc.l1t + k * WORD_GAP, type: 'word' }));
+    if (s.big) events.push({ t: sc.l1t, type: 'hit' });
     if (s.l2) events.push({ t: sc.l2t, type: 'line2' });
+    (s.tags || []).forEach(g => events.push({ t: start + g.at * beat, type: 'pop' }));
     (s.sfx || []).forEach(f => events.push(Object.assign({}, f, { t: start + f.at * beat, dur: f.dur ? f.dur * beat : undefined })));
     t += dur;
   });
-  TL = { story, bpm, beat, scenes, duration: t + (story.tail || 1) };
+  // impacts drive camera shake, white flashes and shockwave rings
+  const IMPACT = { hit: [26, 0.85, 1], boom: [18, 0.5, 1], stamp: [12, 0, 0], thud: [14, 0, 0], line2: [5, 0, 0], crash: [10, 0.6, 1] };
+  const hits = events.filter(e => IMPACT[e.type]).map(e => ({ t: e.t, amp: IMPACT[e.type][0], flash: IMPACT[e.type][1], ring: IMPACT[e.type][2] }));
+  TL = { story, bpm, beat, scenes, hits, duration: t + (story.tail || 1) };
   return {
     bpm, beat, duration: TL.duration, events,
     scenes: scenes.map(s => ({ start: s.start, end: s.end, music: s.music || 'groove', art: s.art })),
@@ -324,10 +329,10 @@ function textBlock(text, x, y, size, color, dt, o = {}) {
   const lines = wrap(text, font, o.maxW || 900);
   const lh = size * 1.12;
   if (dt >= 0) {
-    const k = clamp(dt / 0.16);
-    const s = lerp(0.82, 1, easeBack(k));
+    // slam: drops in big and lands hard; default: quick springy pop
+    const s = o.slam ? lerp(1.6, 1, easeOut(dt / 0.12)) : lerp(0.82, 1, easeBack(dt / 0.16));
     ctx.save();
-    ctx.globalAlpha = clamp(dt / 0.08);
+    ctx.globalAlpha = clamp(dt / (o.slam ? 0.05 : 0.08));
     ctx.font = font; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     ctx.shadowColor = 'rgba(0,0,0,0.75)'; ctx.shadowBlur = 18; ctx.shadowOffsetY = 4;
     lines.forEach((l, i) => {
@@ -339,6 +344,48 @@ function textBlock(text, x, y, size, color, dt, o = {}) {
     ctx.restore();
   }
   return y + lines.length * lh;
+}
+
+// Reveals text word by word; each word pops on its own. Layout stays fixed.
+function wordBlock(text, x, y, size, color, dt) {
+  const font = `${size}px Anton`;
+  const lines = wrap(text, font, 900);
+  const lh = size * 1.12;
+  ctx.save();
+  ctx.font = font; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  ctx.shadowColor = 'rgba(0,0,0,0.75)'; ctx.shadowBlur = 18; ctx.shadowOffsetY = 4;
+  const space = ctx.measureText(' ').width;
+  let idx = 0;
+  lines.forEach((l, i) => {
+    let wx = x - ctx.measureText(l).width / 2;
+    for (const w of l.split(' ')) {
+      const ww = ctx.measureText(w).width;
+      const d = dt - idx * WORD_GAP;
+      if (d >= 0) {
+        const s = lerp(1.35, 1, easeOut(d / 0.1));
+        ctx.save(); ctx.globalAlpha = clamp(d / 0.04);
+        ctx.translate(wx + ww / 2, y + i * lh + lh / 2); ctx.scale(s, s);
+        ctx.fillStyle = color; ctx.fillText(w, -ww / 2, -lh / 2);
+        ctx.restore();
+      }
+      wx += ww + space; idx++;
+    }
+  });
+  ctx.restore();
+  return y + lines.length * lh;
+}
+
+// Small coloured label box that pops in (like "AGE: 14" in the originals).
+function tag(g, dt) {
+  if (dt < 0) return;
+  const s = lerp(0, 1, easeBack(dt / 0.18));
+  ctx.save(); ctx.translate(g.x, g.y); ctx.rotate(g.rot || 0); ctx.scale(s, s);
+  ctx.font = `${g.size || 44}px Anton`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const tw = ctx.measureText(g.text).width;
+  ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fillRect(-tw / 2 - 18 + 6, -34 + 8, tw + 36, 68);
+  ctx.fillStyle = COL[g.color || 'red'] || g.color; ctx.fillRect(-tw / 2 - 18, -34, tw + 36, 68);
+  ctx.fillStyle = g.ink || COL.white; ctx.fillText(g.text, 0, 2);
+  ctx.restore();
 }
 
 function label(text, dt) {
@@ -357,7 +404,7 @@ function sceneText(sc, t) {
   label(sc.label, t - sc.start);
   let y = sc.textY || 400;
   if (sc.big) {
-    y = textBlock(sc.big, W / 2, y - 20, 210, COL.white, t - sc.l1t) + 10;
+    y = textBlock(sc.big, W / 2, y - 20, sc.bigSize || 210, COL.white, t - sc.l1t, { slam: true }) + 10;
   }
   if (sc.counter) {
     const c = sc.counter, k = clamp((t - sc.start) / (c.dur * sc.beat));
@@ -373,8 +420,9 @@ function sceneText(sc, t) {
     ctx.fillText(c.unit, W / 2, y + 250);
     y += 300;
   }
-  if (sc.l1) y = textBlock(sc.l1, W / 2, y, sc.l1Size || 76, COL.white, t - sc.l1t) + 14;
-  if (sc.l2) textBlock(sc.l2, W / 2, y, sc.l2Size || 76, COL[sc.l2Color || 'yellow'], t - sc.l2t);
+  if (sc.l1) y = wordBlock(sc.l1, W / 2, y, sc.l1Size || 78, COL.white, t - sc.l1t) + 14;
+  if (sc.l2) textBlock(sc.l2, W / 2, y, sc.l2Size || 78, COL[sc.l2Color || 'yellow'], t - sc.l2t, { slam: true });
+  (sc.tags || []).forEach(g => tag(g, t - (sc.start + g.at * sc.beat)));
 }
 
 // ---------- scene art ----------
@@ -388,10 +436,10 @@ const ART = {
     nightSky(t, 3);
     moon(820, 760, 46);
     hills(1420, 90, '#1a1d33', 11, 0.8);
-    const a = Math.sin(lt * 0.9) * 0.35 - 2.2;
+    const a = Math.sin(lt * 2.2) * 0.45 - 2.2;
     searchlight(860, 1080, a, 1400, 130, 0.22);
-    searchlight(860, 1080, a - 0.7 + Math.sin(lt * 0.6) * 0.2, 1400, 110, 0.16);
-    const by = lerp(1230, 980, easeInOut(p));
+    searchlight(860, 1080, a - 0.7 + Math.sin(lt * 1.7) * 0.3, 1400, 110, 0.16);
+    const by = lerp(1300, 900, easeOut(p));
     const fl = lt > 1.5 ? 0.7 + 0.3 * Math.sin(lt * 23) : 0.15;
     balloon(380, by, 150, { flame: fl, people: 6 });
     watchtower(860, 1500, 1);
@@ -402,7 +450,7 @@ const ART = {
   border(sc, t, lt, p) {
     nightSky(t, 5);
     hills(1400, 80, '#1a1d33', 21);
-    const a1 = -2.4 + Math.sin(lt * 1.1) * 0.5, a2 = -0.8 + Math.sin(lt * 0.9 + 1) * 0.5;
+    const a1 = -2.4 + Math.sin(lt * 2.6) * 0.55, a2 = -0.8 + Math.sin(lt * 2.2 + 1) * 0.55;
     searchlight(250, 1080, a2, 1300, 120, 0.2);
     searchlight(830, 1080, a1, 1300, 120, 0.2);
     watchtower(250, 1500, 1); watchtower(830, 1500, 1);
@@ -523,7 +571,7 @@ const ART = {
     nightSky(t, 9);
     hills(1380, 70, '#181b30', 51);
     trees(1520, 61, 14, '#0c0e1a', 160, 320);
-    const lift = easeInOut((lt - sc.beat * 2) / (sc.beat * 4));
+    const lift = easeInOut((lt - sc.beat * 1) / (sc.beat * 4));
     const by = lerp(1150, 990, lift);
     const fl = 0.75 + 0.25 * Math.sin(lt * 25);
     balloon(540, by, 190, { flame: fl, people: 8 });
@@ -658,6 +706,26 @@ const ART = {
     ground(1650, '#140e14');
   },
 
+  title(sc, t, lt, p) {
+    sky([[0, '#05060d'], [1, '#1b1630']]);
+    burst(540, 1250, '#2a2346', lt * 0.4, 0.7);
+    // black-red-gold glow from below
+    const g = ctx.createLinearGradient(0, 1500, 0, H);
+    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.5, 'rgba(221,0,0,0.25)'); g.addColorStop(1, 'rgba(255,206,0,0.3)');
+    ctx.fillStyle = g; ctx.fillRect(0, 1500, W, 420);
+    ring(540, 1250, 470, COL.red, 6, 0.7);
+    balloon(540, lerp(1250, 1150, easeOut(p)), 260, { flame: 0.8 + 0.2 * Math.sin(lt * 25), people: 8 });
+  },
+
+  reveal(sc, t, lt, p) {
+    sky([[0, '#0a0f0a'], [1, '#18301c']]);
+    burst(540, 1100, '#2f6b3a', lt * 0.6, 0.55);
+    ring(540, 1100, 380 + lt * 60, COL.yellow, 8, 0.6);
+    hills(1650, 70, '#0b140d', 141);
+    for (let k = 0; k < 8; k++) person(260 + k * 80, 1660, k % 4 > 1 ? 120 : 175, { color: '#050806', arm: k % 2 ? -0.9 - 0.3 * Math.sin(lt * 8 + k) : undefined });
+    ground(1655, '#050806');
+  },
+
   end(sc, t, lt, p) {
     sky([[0, '#06070c'], [1, '#121420']]);
     ring(540, 820, 430, COL.red, 4, 0.35 + 0.15 * Math.sin(lt * 2));
@@ -718,16 +786,31 @@ function renderFrame(t) {
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, W, H);
-  // slow push-in on the art
-  const z = 1 + 0.04 * p;
+  // camera shake from recent impacts
+  let shake = 0, flash = 0;
+  const rings = [];
+  for (const h of TL.hits) {
+    const d = t - h.t;
+    if (d < 0 || d > 1.2) continue;
+    shake += h.amp * Math.exp(-d * 9);
+    flash = Math.max(flash, h.flash * Math.exp(-d * 16));
+    if (h.ring && d < 0.6) rings.push(d);
+  }
+  const sx = Math.sin(t * 91) * shake, sy = Math.cos(t * 77) * shake;
+  ctx.translate(sx, sy);
+  // punch-in on every cut, then slow push-in
+  const z = 1 + 0.07 * p + 0.12 * (1 - easeOut(lt / 0.25));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
   (ART[sc.art] || (() => {}))(sc, t, lt, p);
   ctx.restore();
   post(t);
+  for (const d of rings) ring(W / 2, 900, 80 + d * 2200, '#fff', 14 * (1 - d / 0.6), 0.7 * (1 - d / 0.6));
   ctx.save();
+  ctx.translate(sx * 0.5, sy * 0.5);
   sceneText(sc, t);
   ctx.restore();
+  if (flash > 0.01) { ctx.fillStyle = `rgba(255,250,240,${flash})`; ctx.fillRect(0, 0, W, H); }
   // fade out at the very end
   const fo = clamp((t - (TL.duration - 0.6)) / 0.6);
   if (fo > 0) { ctx.fillStyle = `rgba(0,0,0,${fo})`; ctx.fillRect(0, 0, W, H); }
