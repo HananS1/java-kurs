@@ -38,6 +38,10 @@ noch mehr Blitze.
 - Nach dem Rendern Klangbalance gegen die Referenz messen (Bänder 20–80, 80–250,
   250–1k, 1–4k, 4–11k Hz), Ziel: ±2 dB.
 
+- Alternative: eigener Track per `"musicFile"` + `"musicStart"` (Datei liegt in
+  `music/`, nicht im Repo). BPM per Kick-Band messen, Start so legen, dass der Drop
+  auf der Titelkarte landet. Vorher klären, ob der Track lizenzfrei ist.
+
 ## Nächste Upgrade-Ideen (für v6+)
 - Figuren mit mehr Posen (Menschen gehen/rennen statt nur stehen)
 - Tiefenunschärfe für Hintergrund-Ebenen

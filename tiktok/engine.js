@@ -68,6 +68,7 @@ function buildTimeline(story) {
   return {
     bpm, beat, duration: TL.duration, events, externalMusic: !!story.externalMusic,
     musicStyle: story.musicStyle || null, roots: story.roots || null, offset: story.offset || 0,
+    musicFile: story.musicFile ? new URL(story.musicFile, location.href).pathname : null, musicStart: story.musicStart || 0,
     scenes: scenes.map(s => ({ start: s.start, end: s.end, music: s.music || 'groove', art: s.art })),
   };
 }

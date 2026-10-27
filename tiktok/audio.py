@@ -341,16 +341,30 @@ def tilt_eq(x, points):
     return np.fft.irfft(X * 10 ** (g / 20), len(x))
 
 
+def load_track(path, start, n, dur):
+    """Decode an external music file (mono, SR) from `start` seconds, faded out at the end."""
+    import subprocess
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-ss', str(start), '-t', str(dur), '-i', path,
+                          '-ac', '1', '-ar', str(SR), '-f', 's16le', '-'], capture_output=True, check=True).stdout
+    m = np.frombuffer(raw, '<i2').astype(float) / 32768
+    out = np.zeros(n); out[:min(n, len(m))] = m[:n]
+    fade = int(1.5 * SR); end = int(dur * SR)
+    out[end - fade:end] *= np.linspace(1, 0, fade); out[end:] = 0
+    return out * 1.6
+
+
 # ---------- build ----------
 def build(tl):
     beat, dur = tl['beat'], tl['duration']
     n = int(dur * SR) + SR
     music = np.zeros(n); fx = np.zeros(n)
+    if tl.get('musicFile'):
+        music = load_track(tl['musicFile'], tl.get('musicStart', 0), n, tl['duration'])
     if tl.get('musicStyle') == 'darkEpic':
         music = dark_epic(tl, n)
     # music per scene, chords change every 4 beats on a global grid
     # (skipped when the track is added later in the TikTok app)
-    for sc in ([] if tl.get('externalMusic') or tl.get('musicStyle') else tl['scenes']):
+    for sc in ([] if tl.get('externalMusic') or tl.get('musicStyle') or tl.get('musicFile') else tl['scenes']):
         mode = sc['music']
         bar = 4 * beat
         t = sc['start']
