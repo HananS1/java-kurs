@@ -34,6 +34,11 @@ noch mehr Blitze.
   Blur-Out statt Pop, Unschärfe-Überblendungen mit Abdunklung, ruhigere Kamera,
   entsättigtes Grading, Explosionen aus Kreisen + Rauch + rotem Ring. Schnitte exakt
   auf den Schnittpunkten des Referenzvideos (Taktanfänge, 4/8 Beats).
+- v7 Juliane (Beat-Choreografie): jede Textzeile hat eine absolute Zeit auf einem
+  Schlag (`"lines"`), Hits/Blitze aus der Referenz (`"hits"`), Explosionen pro Szene
+  (`"blastAt"`), Verletzungs-Hotspots auf Hits (`"spots"`), Kamera reagiert auf den
+  Musik-Onset (`"react"`). Szenen nach Musik-Intensität verteilt (ruhig ↔ Höhepunkt).
+  Prüfung: Ereignisse im fertigen Video messen und mit Referenz vergleichen.
 
 ## Musik
 - Standard für neue Videos: `"musicStyle": "darkEpic"` (eigene Musik im Stil des

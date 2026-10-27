@@ -434,8 +434,10 @@ def build(tl):
         elif k == 'trumpet': add(fx, t, trumpet(), 0.6)
         elif k == 'thunder': add(fx, t, thunder(), 0.9)
         elif k == 'rain': add(fx, t, rain_sfx(ev['dur']), 0.5)
+    if tl.get('noSfx'):
+        fx[:] = 0
     # duck music under heavy hits; silence right before a reveal hit
-    for ev in tl['events']:
+    for ev in ([] if tl.get('musicFile') else tl['events']):
         if ev['type'] == 'hit':
             a = int((ev['t'] - 0.45) * SR); b = int(ev['t'] * SR)
             music[a:b] *= np.linspace(1, 0.05, b - a)

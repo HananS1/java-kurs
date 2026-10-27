@@ -67,10 +67,11 @@ function buildTimeline(story) {
   const IMPACT = { hit: [26, 0.85, 1], boom: [18, 0.5, 1], stamp: [12, 0, 0], thud: [14, 0, 0], line2: [5, 0, 0], crash: [10, 0.6, 1] };
   if (story.textStyle === 'cinematic') { IMPACT.line2 = [0, 0, 0]; IMPACT.hit = [14, 0.5, 1]; IMPACT.boom = [10, 0.3, 1]; }
   const hits = events.filter(e => IMPACT[e.type]).map(e => ({ t: e.t, amp: IMPACT[e.type][0], flash: IMPACT[e.type][1], ring: IMPACT[e.type][2] }));
+  (story.hits || []).forEach(h => hits.push({ t: h.t, amp: h.kind === 'blast' ? 12 : 4, flash: h.kind === 'flash' ? 0.35 : 0.2, ring: h.kind === 'blast' ? 1 : 0 }));
   TL = { story, bpm, beat, scenes, hits, duration: t + (story.tail || 1) };
   return {
     bpm, beat, duration: TL.duration, events, externalMusic: !!story.externalMusic,
-    musicStyle: story.musicStyle || null, roots: story.roots || null, offset: story.offset || 0,
+    musicStyle: story.musicStyle || null, roots: story.roots || null, offset: story.offset || 0, noSfx: !!story.noSfx,
     musicFile: story.musicFile ? new URL(story.musicFile, location.href).pathname : null, musicStart: story.musicStart || 0,
     scenes: scenes.map(s => ({ start: s.start, end: s.end, music: s.music || 'groove', art: s.art })),
   };
@@ -469,6 +470,17 @@ function cineText(sc, t) {
     y = cineLine(v, y - 180, 170, 'gradient', t - sc.start, exitK);
     y = cineLine(c.unit, y - 10, 40, COL.crimson, t - sc.start, exitK) + 20;
   }
+  if (sc.lines) {
+    // each line appears on its own beat (absolute time), stacked like the reference
+    for (const ln of sc.lines) {
+      const fill = ln.color === 'crimson' ? COL.crimson : ln.color === 'gradient' ? 'gradient' : COL.white;
+      const yy = cineLine(ln.text, y, ln.size || 60, fill, t - ln.at, exitK);
+      y = t >= ln.at || ln.reserve ? yy : y + (ln.size || 60) * 1.18;
+    }
+    TEXT_FADE = 1 - exitK;
+    (sc.tags || []).forEach(g => tag(g, t - (g.t !== undefined ? g.t : sc.start + g.at * sc.beat)));
+    return;
+  }
   if (sc.big) y = cineLine(sc.big, y - 40, sc.bigSize ? sc.bigSize * 0.62 : 130, 'gradient', t - sc.l1t, exitK) + 10;
   if (sc.l1) y = cineLine(sc.l1, y, sc.l1Size || 60, COL.white, t - sc.l1t, exitK);
   if (sc.l2) cineLine(sc.l2, y, sc.l2Size || 60, COL.crimson, t - sc.l2t, exitK);
@@ -491,6 +503,18 @@ function blast(x, y, dt, seed, s = 1) {
   }
   ctx.globalAlpha = 1;
   if (dt < 0.5) ring(x, y, 80 * s + dt * 900 * s, COL.crimson, 10 * (1 - dt / 0.5), 0.9 * (1 - dt / 0.5));
+}
+
+// Music envelope (from the analysed track), sampled at story.react.fps.
+function onsetAt(t) {
+  const r = TL.story.react; if (!r) return 0;
+  const i = Math.floor(t * r.fps); return r.onset[i] || 0;
+}
+
+// Blasts at reference hit times inside the scene, drawn at the scene's focus point.
+function sceneBlasts(sc, t) {
+  if (!sc.blastAt) return;
+  sc.blastAt.forEach((bt, k) => blast(sc.focus ? sc.focus[0] : 540, sc.focus ? sc.focus[1] : 1200, t - bt, 500 + sc.i * 10 + k, sc.blastScale || 1));
 }
 
 function sceneText(sc, t) {
@@ -1518,7 +1542,7 @@ function hotspot(x, y, dt) {
   const g = ctx.createRadialGradient(x, y, 2, x, y, 70 * pulse);
   g.addColorStop(0, 'rgba(255,80,60,0.9)'); g.addColorStop(1, 'rgba(255,80,60,0)');
   ctx.fillStyle = g; ctx.fillRect(x - 80, y - 80, 160, 160);
-  ctx.fillStyle = '#ff5a40'; ctx.beginPath(); ctx.arc(x, y, 10 * easeBack(dt / 0.2), 0, 7); ctx.fill();
+  ctx.fillStyle = "#ff5a40"; ctx.beginPath(); ctx.arc(x, y, Math.max(0, 10 * easeBack(dt / 0.2)), 0, 7); ctx.fill();
 }
 
 Object.assign(ART, {
@@ -1630,9 +1654,8 @@ Object.assign(ART, {
     sky([[0, '#0a0e1c'], [1, '#141c30']]);
     ring(540, 1300, 420, 'rgba(120,150,220,0.3)', 3);
     bodyOutline(540, 900, 820, '#7aa0e0');
-    hotspot(500, 1080, lt - sc.beat * 0.5);
-    hotspot(680, 1250, lt - sc.beat * 2);
-    hotspot(520, 960, lt - sc.beat * 3.5);
+    const sp = sc.spots || [[500, 1080, sc.start + sc.beat * 0.5], [680, 1250, sc.start + sc.beat * 2], [520, 960, sc.start + sc.beat * 3.5]];
+    sp.forEach(([x, y, at]) => hotspot(x, y, t - at));
   },
 
   jMother(sc, t, lt, p) {
@@ -1676,7 +1699,7 @@ Object.assign(ART, {
     // day counter
     const day = 1 + Math.floor(clamp(lt / sc.dur) * 8.99);
     ctx.font = "60px 'Black Ops One'"; ctx.textAlign = 'center'; ctx.fillStyle = COL.yellow;
-    ctx.fillText(`TAG ${day}`, 540, TL.story.textStyle === 'cinematic' ? 1235 : 900);
+    ctx.fillText(`TAG ${day}`, 540, TL.story.textStyle === 'cinematic' ? 1290 : 900);
   },
 
   jMaggot(sc, t, lt, p) {
@@ -1757,7 +1780,7 @@ Object.assign(ART, {
   const base = ART[name];
   ART[name] = function (sc, t, lt, p) {
     base(sc, t, lt, p);
-    if (TL.story.textStyle !== 'cinematic') return;
+    if (TL.story.textStyle !== 'cinematic' || sc.blastAt || TL.story.hits) return;
     if (name === 'jHook') blast(560, 620, lt - sc.beat * 3.5, 401, 1.1);
     if (name === 'jStorm') blast(600, 1150, lt - sc.beat * 2, 402, 1.0);
     if (name === 'jBreak') { blast(540, 1150, lt, 403, 1.3); blast(420, 1260, lt - sc.beat * 2, 404, 0.9); }
@@ -1834,11 +1857,12 @@ function renderFrame(t) {
   const blur = (whip + (sc.i > 0 ? kIn : 0)) * 16;
   if (blur > 0.5) ctx.filter = `blur(${blur.toFixed(1)}px)`;
   const pulse = !CINE && (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
-  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0))
+  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0)) + 0.012 * onsetAt(t)
     : 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
   (ART[sc.art] || (() => {}))(sc, t, lt, p);
+  sceneBlasts(sc, t);
   motes(t);
   ctx.filter = 'none';
   ctx.restore();
