@@ -4,10 +4,8 @@
   "handle": "@unglaublichwahr",
   "bpm": 115.75,
   "offset": 0.09,
-  "externalMusic": true,
   "beeScene": "jBoat",
   "emblem": "jungle",
-  "musicNote": "Track von @plmadafaka – in der TikTok-App als Sound hinzufügen (115,75 BPM, erster Beat 0,09 s)",
   "sources": [
     "https://en.wikipedia.org/wiki/LANSA_Flight_508",
     "https://www.aerotelegraph.com/geschichte/als-eine-17-jaehrige-deutsche-aus-3000-metern-in-den-urwald-fiel-und-ueberlebte/d2m323p",
@@ -345,5 +343,32 @@
       "quote": "„FOLGE DEM WASSER.“"
     }
   ],
-  "tail": 1.299
+  "tail": 1.299,
+  "musicStyle": "darkEpic",
+  "roots": [
+    [
+      0,
+      "F#"
+    ],
+    [
+      4.1,
+      "D#"
+    ],
+    [
+      8.3,
+      "F#"
+    ],
+    [
+      20.7,
+      "F"
+    ],
+    [
+      29.0,
+      "E"
+    ],
+    [
+      37.3,
+      "F#"
+    ]
+  ]
 }

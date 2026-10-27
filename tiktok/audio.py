@@ -103,10 +103,10 @@ def bass(f, dur):
     return lowpass(saw(f, n, 6), 500) * np.exp(-tt * 5) * env(n, 0.004, 0.03)
 
 
-def stab(f, dur=0.12):
+def stab(f, dur=0.12, cutoff=2800, harmonics=7):
     n = int(dur * SR); tt = np.arange(n) / SR
-    s = saw(f, n, 7) + saw(f * 1.004, n, 7)
-    return lowpass(s, 2800) * np.exp(-tt * 18) * env(n, 0.003, 0.02)
+    s = saw(f, n, harmonics) + saw(f * 1.004, n, harmonics)
+    return lowpass(s, cutoff) * np.exp(-tt * 18) * env(n, 0.003, 0.02)
 
 
 def clap():
@@ -259,14 +259,98 @@ def rain_sfx(dur):
     return highpass(lowpass(rnd.standard_normal(n), 6000), 800) * env(n, 0.4, 0.6) * 0.35
 
 
+# ---------- dark epic style (sub drone, staccato strings, hits on every beat) ----------
+def sub(f, dur):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    s = np.sin(2 * np.pi * f * tt) + 0.35 * np.sin(2 * np.pi * 2 * f * tt)
+    return np.tanh(s * 1.6) * env(n, 0.02, 0.08)
+
+
+def choir(notes, dur):
+    n = int(dur * SR); tt = np.arange(n) / SR
+    out = np.zeros(n)
+    for f in notes:
+        for det in (-0.08, 0.08):
+            ff = f * 2 ** (det / 12) * (1 + 0.004 * np.sin(2 * np.pi * 5 * tt))
+            ph = 2 * np.pi * np.cumsum(ff) / SR
+            out += np.sin(ph) + 0.3 * np.sin(2 * ph) + 0.12 * np.sin(3 * ph)
+    return lowpass(out, 1800) * env(n, 0.4, 0.4) * 0.03
+
+
+def perc_hit():
+    n = int(0.5 * SR); tt = np.arange(n) / SR
+    f = 60 + 90 * np.exp(-tt * 30)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 8)
+    return body + highpass(rnd.standard_normal(n), 1200) * np.exp(-tt * 35) * 0.5
+
+
+def dark_epic(tl, n):
+    beat = tl['beat']; off = tl.get('offset', 0)
+    music = np.zeros(n)
+    roots = tl.get('roots') or [[0, 'F#']]
+    def root_at(t):
+        r = roots[0][1]
+        for t0, name in roots:
+            if t >= t0: r = name
+        return r
+    for sc in tl['scenes']:
+        mode = sc['music']
+        nb = int(round((sc['end'] - sc['start']) / beat))
+        for b in range(nb):
+            bt = sc['start'] + b * beat
+            r = root_at(bt)
+            f1 = hz(r, 1)
+            bright = mode in ('reveal', 'outro')
+            third = 4 if bright else 3
+            if mode != 'outro' or b % 4 == 0:
+                add(music, bt, sub(f1, beat * (1.0 if mode != 'outro' else 4)), 0.42)
+            # staccato string ostinato: root, fifth, octave, flat second (phrygian bite)
+            pat = [0, 7, 12, 13] if not bright else [0, 7, 12, third + 12]
+            if mode in ('drive', 'reveal', 'intro'):
+                for e in range(2):
+                    semis = pat[(b * 2 + e) % 4]
+                    acc = 0.34 if e == 0 else 0.22
+                    if mode == 'intro': acc *= 0.6 + 0.4 * b / max(1, nb)
+                    add(music, bt + e * beat / 2, stab(f1 * 4 * 2 ** (semis / 12), 0.16, 6000, 14), acc)
+                    add(music, bt + e * beat / 2, stab(f1 * 8 * 2 ** (semis / 12), 0.1, 7000, 10), acc * 0.7)
+            if mode in ('drive', 'reveal'):
+                add(music, bt, perc_hit(), 0.55)
+                add(music, bt + beat / 2, hat(), 0.32)
+                add(music, bt, hat(), 0.2)
+                if b % 2 == 1: add(music, bt, clap(), 0.45)
+            elif mode == 'intro':
+                add(music, bt, taiko(), 0.5 if b % 2 == 0 else 0.3)
+            elif mode == 'tension':
+                if b % 2 == 0: add(music, bt, heartbeat(), 0.6); add(music, bt + 0.22, heartbeat(), 0.4)
+                add(music, bt + beat / 2, tick(), 0.12)
+            if b % 4 == 0 and mode != 'outro':
+                ch = [f1 * 4, f1 * 4 * 2 ** (third / 12), f1 * 6]
+                add(music, bt, choir(ch, beat * 4.2), 2.6 if mode != 'tension' else 1.8)
+        prev = [x for x in tl['scenes'] if abs(x['end'] - sc['start']) < 1e-6]
+        if prev and prev[0]['music'] != mode and mode in ('drive', 'reveal'):
+            add(music, sc['start'], braam(hz(root_at(sc['start']), 1)), 0.8)
+            add(music, sc['start'], crash(), 0.5)
+    return tilt_eq(music, [(80, 0), (250, -4), (1000, 1), (2500, 11), (7000, 7), (12000, 3)])
+
+
+def tilt_eq(x, points):
+    """Smooth EQ curve through (Hz, dB) points, applied in the frequency domain."""
+    X = np.fft.rfft(x); f = np.fft.rfftfreq(len(x), 1 / SR)
+    fs, gs = zip(*points)
+    g = np.interp(np.log10(np.maximum(f, 20)), np.log10(fs), gs)
+    return np.fft.irfft(X * 10 ** (g / 20), len(x))
+
+
 # ---------- build ----------
 def build(tl):
     beat, dur = tl['beat'], tl['duration']
     n = int(dur * SR) + SR
     music = np.zeros(n); fx = np.zeros(n)
+    if tl.get('musicStyle') == 'darkEpic':
+        music = dark_epic(tl, n)
     # music per scene, chords change every 4 beats on a global grid
     # (skipped when the track is added later in the TikTok app)
-    for sc in ([] if tl.get('externalMusic') else tl['scenes']):
+    for sc in ([] if tl.get('externalMusic') or tl.get('musicStyle') else tl['scenes']):
         mode = sc['music']
         bar = 4 * beat
         t = sc['start']

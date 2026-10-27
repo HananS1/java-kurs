@@ -26,7 +26,19 @@ noch mehr Blitze.
   Fahrt, Kamerablitze, Marker-Effekt für *Schlüsselwörter* in Zeile 1,
   austauschbares Endkarten-Emblem. Neue Sounds: Platschen, Splittern, Blitz, Trompeten.
 
-## Nächste Upgrade-Ideen (für v5+)
+- v5 Juliane: menschliche Hauptfigur (geht/watet, Haare/Arme schwingen), Blitzlicht +
+  Regen, Tiefenunschärfe (gecachte Dschungel-Ebenen), Text fliegt am Szenenende raus,
+  92-Figuren-Infografik, Körper-Hotspots, Zähler mit Tausenderpunkt.
+
+## Musik
+- Standard für neue Videos: `"musicStyle": "darkEpic"` (eigene Musik im Stil des
+  Referenz-Tracks von @plmadafaka): 115,75 BPM, Fis-Moll mit phrygischem G,
+  Sub-Bass-Drohne, Staccato-Streicher in Achteln, Schlag auf jedem Beat.
+  Basslauf über `"roots"` (Zeit in s → Grundton). Kein fremder Track im Video.
+- Nach dem Rendern Klangbalance gegen die Referenz messen (Bänder 20–80, 80–250,
+  250–1k, 1–4k, 4–11k Hz), Ziel: ±2 dB.
+
+## Nächste Upgrade-Ideen (für v6+)
 - Figuren mit mehr Posen (Menschen gehen/rennen statt nur stehen)
 - Tiefenunschärfe für Hintergrund-Ebenen
 - Licht, das auf Figuren reagiert (Rim-Light vom Feuer, Blaulicht)

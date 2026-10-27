@@ -3,7 +3,7 @@
 
 const W = 1080, H = 1920;
 const canvas = document.getElementById('c');
-const ctx = canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
 
 const COL = {
   white: '#F4EFE6',
@@ -67,6 +67,7 @@ function buildTimeline(story) {
   TL = { story, bpm, beat, scenes, hits, duration: t + (story.tail || 1) };
   return {
     bpm, beat, duration: TL.duration, events, externalMusic: !!story.externalMusic,
+    musicStyle: story.musicStyle || null, roots: story.roots || null, offset: story.offset || 0,
     scenes: scenes.map(s => ({ start: s.start, end: s.end, music: s.music || 'groove', art: s.art })),
   };
 }
@@ -1382,7 +1383,20 @@ function plane(x, y, s, o = {}, t = 0) {
 }
 
 // Jungle layer; blur > 0 gives a depth-of-field look for far layers.
+// Static layers are drawn once to an offscreen canvas and reused (blur is expensive).
+const LAYER_CACHE = {};
 function jungle(baseY, color, seed, blur = 0, scale = 1) {
+  const key = [baseY, color, seed, blur, scale].join('|');
+  if (!LAYER_CACHE[key]) {
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const main = ctx; ctx = c.getContext('2d');
+    jungleRaw(baseY, color, seed, blur, scale);
+    ctx = main; LAYER_CACHE[key] = c;
+  }
+  ctx.drawImage(LAYER_CACHE[key], 0, 0);
+}
+
+function jungleRaw(baseY, color, seed, blur, scale) {
   if (blur) ctx.filter = `blur(${blur}px)`;
   const r = rng(seed); ctx.fillStyle = color;
   ctx.fillRect(0, baseY, W, H - baseY);
