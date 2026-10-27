@@ -247,13 +247,26 @@ def trumpet(dur=0.9):
     return lowpass(s, 3500) * env(n, 0.05, 0.25) * 0.5
 
 
+def thunder():
+    n = int(2.5 * SR); tt = np.arange(n) / SR
+    crack = highpass(rnd.standard_normal(n), 2000) * np.exp(-tt * 18)
+    roll = lowpass(rnd.standard_normal(n), 180) * np.exp(-tt * 1.4) * (1 + 0.5 * np.sin(2 * np.pi * 3 * tt))
+    return crack * 0.7 + roll * 2.2
+
+
+def rain_sfx(dur):
+    n = int(dur * SR)
+    return highpass(lowpass(rnd.standard_normal(n), 6000), 800) * env(n, 0.4, 0.6) * 0.35
+
+
 # ---------- build ----------
 def build(tl):
     beat, dur = tl['beat'], tl['duration']
     n = int(dur * SR) + SR
     music = np.zeros(n); fx = np.zeros(n)
     # music per scene, chords change every 4 beats on a global grid
-    for sc in tl['scenes']:
+    # (skipped when the track is added later in the TikTok app)
+    for sc in ([] if tl.get('externalMusic') else tl['scenes']):
         mode = sc['music']
         bar = 4 * beat
         t = sc['start']
@@ -321,6 +334,8 @@ def build(tl):
         elif k == 'flash':
             for c in np.arange(0, ev.get('dur') or 1.5, 0.35): add(fx, t + c, flash_sfx(), 0.25)
         elif k == 'trumpet': add(fx, t, trumpet(), 0.6)
+        elif k == 'thunder': add(fx, t, thunder(), 0.9)
+        elif k == 'rain': add(fx, t, rain_sfx(ev['dur']), 0.5)
     # duck music under heavy hits; silence right before a reveal hit
     for ev in tl['events']:
         if ev['type'] == 'hit':
