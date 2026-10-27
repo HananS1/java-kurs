@@ -7,6 +7,13 @@ im Changelog unten festhalten. Nie ein Video mit exakt dem Stand des vorherigen 
 Effekte dürfen nicht überladen wirken: lieber Bewegung in Figuren und Szenen als
 noch mehr Blitze.
 
+## Feste Regel: JEDER Schlag ist im Bild sichtbar (immer, bei jedem Video)
+`"beatFx": true` + `"barPhase"` (Taktanfang) im Story-JSON. Auf jedem Beat: Zoom-Punch,
+Licht-Puls mit rotem Rand-Glühen, Bewegungsschub (Animationszeit läuft nach dem
+Schlag schnell, dann langsam), Text pumpt leicht; Taktanfänge zusätzlich RGB-Split +
+Ruckeln. Stärke folgt der Lautstärke des Schlags (`"react"`). Nach dem Rendern mit
+`beatcheck` prüfen: Ziel 100 % der Schläge mit sichtbarem Impuls. Max. 3 Lichtpulse/s.
+
 ## Format
 - Silhouetten-Stil, kein Voiceover, Text auf dem Beat, versteckte Biene (nicht bei
   ernsten Themen wie NS/Holocaust).

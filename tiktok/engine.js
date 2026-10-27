@@ -505,6 +505,37 @@ function blast(x, y, dt, seed, s = 1) {
   if (dt < 0.5) ring(x, y, 80 * s + dt * 900 * s, COL.crimson, 10 * (1 - dt / 0.5), 0.9 * (1 - dt / 0.5));
 }
 
+// Beat layer: every beat of the track produces a visible hit (zoom punch, light pulse,
+// motion surge); bar downbeats hit harder. Strength follows the track's onset envelope.
+function beatState(t) {
+  const st = TL.story;
+  if (!st.beatFx) return { on: false };
+  const off = st.offset || 0, b = (t - off) / TL.beat;
+  if (b < 0) return { on: false };
+  const idx = Math.floor(b), frac = b - idx, dt = frac * TL.beat;
+  const down = ((idx - (st.barPhase || 0)) % 4 + 4) % 4 === 0;
+  const amp = 0.45 + 0.55 * clamp(onsetAt(off + idx * TL.beat + 0.02) * 1.2);
+  // time remap: inside each beat the clock runs fast right after the hit, then slows
+  const tw = off + (idx + 0.45 * frac + 0.55 * (1 - Math.pow(1 - frac, 3))) * TL.beat;
+  return { on: true, idx, dt, down, amp, k: Math.exp(-dt * 11), tw };
+}
+
+function beatPulse(BT) {
+  const k = BT.k * BT.amp;
+  // exposure pop
+  ctx.fillStyle = `rgba(255,248,240,${(BT.down ? 0.16 : 0.08) * k})`; ctx.fillRect(0, 0, W, H);
+  // crimson edge glow
+  const g = ctx.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.72);
+  g.addColorStop(0, 'rgba(224,36,94,0)'); g.addColorStop(1, `rgba(224,36,94,${(BT.down ? 0.45 : 0.25) * k})`);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // RGB split on bar downbeats
+  if (BT.down && BT.dt < 0.12) {
+    const o = 10 * (1 - BT.dt / 0.12) * BT.amp;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.22;
+    ctx.drawImage(canvas, o, 0); ctx.drawImage(canvas, -o, 0); ctx.restore();
+  }
+}
+
 // Music envelope (from the analysed track), sampled at story.react.fps.
 function onsetAt(t) {
   const r = TL.story.react; if (!r) return 0;
@@ -1831,6 +1862,7 @@ function post(t) {
 function renderFrame(t) {
   const sc = t < TL.scenes[0].start ? TL.scenes[0] : (TL.scenes.find(s => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1]);
   const lt = Math.max(0, t - sc.start), p = clamp(lt / sc.dur);
+  const BT = beatState(t);
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, W, H);
@@ -1845,6 +1877,7 @@ function renderFrame(t) {
     if (h.ring && d < 0.6) rings.push(d);
   }
   const CINE = TL.story.textStyle === 'cinematic';
+  shake += BT.on ? (BT.down ? 9 : 3.5) * BT.k * BT.amp : 0;
   const sx = Math.sin(t * 91) * shake, sy = Math.cos(t * 77) * shake;
   ctx.translate(sx, sy);
   // punch-in on every cut, then slow push-in
@@ -1857,11 +1890,13 @@ function renderFrame(t) {
   const blur = (whip + (sc.i > 0 ? kIn : 0)) * 16;
   if (blur > 0.5) ctx.filter = `blur(${blur.toFixed(1)}px)`;
   const pulse = !CINE && (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
-  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0)) + 0.012 * onsetAt(t)
+  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0)) + 0.012 * onsetAt(t) + (BT.on ? (BT.down ? 0.05 : 0.03) * BT.k * BT.amp : 0)
     : 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
-  (ART[sc.art] || (() => {}))(sc, t, lt, p);
+  // motion surges on every beat: animation time jumps forward on the hit, then eases
+  const ltw = BT.on ? Math.max(0, BT.tw - sc.start) : lt;
+  (ART[sc.art] || (() => {}))(sc, sc.start + ltw, ltw, clamp(ltw / sc.dur));
   sceneBlasts(sc, t);
   motes(t);
   ctx.filter = 'none';
@@ -1876,9 +1911,11 @@ function renderFrame(t) {
   for (const d of rings) ring(W / 2, 900, 80 + d * 2200, CINE ? COL.crimson : '#fff', 14 * (1 - d / 0.6), 0.7 * (1 - d / 0.6));
   ctx.save();
   ctx.translate(sx * 0.5, sy * 0.5);
+  if (BT.on) { const ts = 1 + 0.02 * BT.k * BT.amp; ctx.translate(W / 2, 1000); ctx.scale(ts, ts); ctx.translate(-W / 2, -1000); }
   (CINE ? cineText : sceneText)(sc, t);
   ctx.restore();
   if (flash > 0.01) { ctx.fillStyle = `rgba(255,250,240,${flash})`; ctx.fillRect(0, 0, W, H); }
+  if (BT.on) beatPulse(BT);
   // fade out at the very end
   const fo = clamp((t - (TL.duration - 0.6)) / 0.6);
   if (fo > 0) { ctx.fillStyle = `rgba(0,0,0,${fo})`; ctx.fillRect(0, 0, W, H); }
