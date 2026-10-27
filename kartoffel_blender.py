@@ -11,8 +11,29 @@ import bpy, bmesh, math, os
 import numpy as np
 
 # ---------------- Einstellungen ----------------
-ORDNER = os.path.join(os.path.expanduser("~"), "Downloads")
 SOUND = "kartoffel_sound.wav"
+
+
+def _kandidaten():
+    home = os.path.expanduser("~")
+    orte = []
+    for t in bpy.data.texts:                       # Ordner, aus dem dieses Skript geöffnet wurde
+        if t.filepath:
+            orte.append(os.path.dirname(bpy.path.abspath(t.filepath)))
+    if bpy.data.filepath:
+        orte.append(os.path.dirname(bpy.data.filepath))
+    for n in ("Downloads", "Desktop", "Schreibtisch", "Documents", "Dokumente", ""):
+        orte.append(os.path.join(home, n))
+        orte.append(os.path.join(home, "OneDrive", n))
+    return [o for o in orte if os.path.isdir(o)]
+
+
+# Ordner mit der Sound-Datei suchen; dort landet auch das fertige Video
+ORDNER = next((o for o in _kandidaten() if os.path.exists(os.path.join(o, SOUND))), None)
+if ORDNER is None:
+    ORDNER = (_kandidaten() or [os.path.expanduser("~")])[0]
+    print("ACHTUNG: kartoffel_sound.wav wurde nirgends gefunden. Lege sie in denselben Ordner wie das Skript.")
+print("Ordner:", ORDNER)
 VIDEO = "kartoffel_1000_schnitte_blender.mp4"
 ENGINE = "EEVEE"          # "EEVEE" (schnell) oder "CYCLES" (fotorealistisch, langsamer)
 FPS = 30
@@ -640,11 +661,11 @@ r_.filepath = os.path.join(ORDNER, VIDEO)
 snd = os.path.join(ORDNER, SOUND)
 if os.path.exists(snd):
     se = sc.sequence_editor_create()
-    coll = getattr(se, "strips", None) or getattr(se, "sequences")
+    coll = se.strips if hasattr(se, "strips") else se.sequences   # Blender 5: strips, älter: sequences
     for s in list(coll): coll.remove(s)
     coll.new_sound("Sound", snd, 1, 1)
 else:
-    print(f"ACHTUNG: {snd} nicht gefunden – Video wird ohne Ton gerendert.")
+    print(f"ACHTUNG: Sound nicht gefunden – Video wird ohne Ton gerendert. Lege {SOUND} neben das Skript und führe es nochmal aus.")
 
 sc.frame_set(1)
 print(f"Fertig aufgebaut: {sc.frame_end} Bilder ({DURATION:.1f} s). Jetzt Rendern -> Animation rendern (Strg+F12).")
