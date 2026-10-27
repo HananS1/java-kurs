@@ -53,7 +53,7 @@ fs.mkdirSync(outDir, { recursive: true });
   const ff = spawn('ffmpeg', ['-v', 'error', '-y',
     '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
     '-i', wavPath,
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '12M', '-bufsize', '24M', '-pix_fmt', 'yuv420p', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '22', '-maxrate', '8M', '-bufsize', '16M', '-pix_fmt', 'yuv420p', '-r', String(FPS),
     '-af', 'lowpass=f=16000,loudnorm=I=-14:TP=-2:LRA=11,aresample=44100,alimiter=limit=0.5:level=false', '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', mp4], { stdio: ['pipe', 'inherit', 'inherit'] });
 
   const frames = Math.round(tl.duration * FPS);

@@ -68,7 +68,9 @@ function buildTimeline(story) {
   if (story.textStyle === 'cinematic') { IMPACT.line2 = [0, 0, 0]; IMPACT.hit = [14, 0.5, 1]; IMPACT.boom = [10, 0.3, 1]; }
   const hits = events.filter(e => IMPACT[e.type]).map(e => ({ t: e.t, amp: IMPACT[e.type][0], flash: IMPACT[e.type][1], ring: IMPACT[e.type][2] }));
   (story.hits || []).forEach(h => hits.push({ t: h.t, amp: h.kind === 'blast' ? 12 : 4, flash: h.kind === 'flash' ? 0.35 : 0.2, ring: h.kind === 'blast' ? 1 : 0 }));
-  TL = { story, bpm, beat, scenes, hits, duration: t + (story.tail || 1) };
+  const ramps = (story.hits || []).filter(h => h.kind === 'blast').map(h => h.t);
+  scenes.forEach(sc => (sc.lines || []).forEach(ln => { if (ln.color === 'gradient') ramps.push(ln.at); }));
+  TL = { story, bpm, beat, scenes, hits, ramps, duration: t + (story.tail || 1) };
   return {
     bpm, beat, duration: TL.duration, events, externalMusic: !!story.externalMusic,
     musicStyle: story.musicStyle || null, roots: story.roots || null, offset: story.offset || 0, noSfx: !!story.noSfx,
@@ -429,8 +431,9 @@ function label(text, dt) {
 
 // Cinematic text (style of the reference): serif caps, white + crimson, centred lower,
 // small label above. Lines blur in sharp-fast and blur out at the scene end.
-function cineLine(text, y, size, fill, dt, exitK) {
+function cineLine(text, y, size, fill, dt, exitK, side = 0) {
   if (dt < 0) return y;
+  const kin = TL.story.v8;
   text = text.replace(/\*/g, '');
   const font = `${size}px Cinzel`;
   const lines = wrap(text, font, 960);
@@ -441,13 +444,19 @@ function cineLine(text, y, size, fill, dt, exitK) {
   ctx.globalAlpha = clamp(dt / 0.08) * (1 - exitK);
   if (b > 0.4) ctx.filter = `blur(${b.toFixed(1)}px)`;
   ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 22; ctx.shadowOffsetY = 3;
+  let ox = 0;
+  if (kin) {
+    // fly in from alternating sides with overshoot; big/gradient words track in
+    ox = (side % 2 ? 1 : -1) * 160 * (1 - easeBack(dt / 0.22));
+    if (fill === 'gradient' && ctx.letterSpacing !== undefined) ctx.letterSpacing = `${(26 * (1 - easeOut(dt / 0.35))).toFixed(1)}px`;
+  }
   lines.forEach((l, i) => {
     if (fill === 'gradient') {
       const g = ctx.createLinearGradient(0, y + i * lh, 0, y + i * lh + size);
       g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, '#f6c6d2'); g.addColorStop(1, COL.crimson);
       ctx.fillStyle = g;
     } else ctx.fillStyle = fill;
-    ctx.fillText(l, W / 2, y + i * lh);
+    ctx.fillText(l, W / 2 + ox, y + i * lh);
   });
   ctx.restore();
   return y + lines.length * lh;
@@ -474,7 +483,7 @@ function cineText(sc, t) {
     // each line appears on its own beat (absolute time), stacked like the reference
     for (const ln of sc.lines) {
       const fill = ln.color === 'crimson' ? COL.crimson : ln.color === 'gradient' ? 'gradient' : COL.white;
-      const yy = cineLine(ln.text, y, ln.size || 60, fill, t - ln.at, exitK);
+      const yy = cineLine(ln.text, y, ln.size || 60, fill, t - ln.at, exitK, sc.lines.indexOf(ln) + sc.i);
       y = t >= ln.at || ln.reserve ? yy : y + (ln.size || 60) * 1.18;
     }
     TEXT_FADE = 1 - exitK;
@@ -492,16 +501,26 @@ function cineText(sc, t) {
 function blast(x, y, dt, seed, s = 1) {
   if (dt < 0 || dt > 2.2) return;
   const r = rng(seed);
-  for (let i = 0; i < 9; i++) {
-    const ox = (r() - 0.5) * 220 * s, oy = (r() - 0.5) * 160 * s, rad = (60 + r() * 90) * s;
-    const grow = easeOut(dt / 0.35), rise = dt * 60 * s;
-    const smoke = clamp((dt - 0.25) / 0.6);
-    ctx.globalAlpha = clamp(1 - (dt - 1.4) / 0.8);
-    ctx.fillStyle = smoke > 0 ? `rgb(${lerp(240, 40, smoke)},${lerp(140, 34, smoke)},${lerp(60, 34, smoke)})` : '#f08a3a';
-    ctx.beginPath(); ctx.arc(x + ox * grow, y + oy * grow - rise, rad * (0.4 + 0.8 * grow), 0, 7); ctx.fill();
-    if (smoke < 0.5) { ctx.fillStyle = `rgba(255,236,190,${1 - smoke * 2})`; ctx.beginPath(); ctx.arc(x + ox * grow * 0.6, y + oy * grow * 0.6 - rise, rad * 0.45 * grow, 0, 7); ctx.fill(); }
+  const smoke = clamp((dt - 0.2) / 0.7);
+  // dark smoke behind, fireballs with hot cores in front
+  for (let pass = 0; pass < 2; pass++) {
+    for (let i = 0; i < 11; i++) {
+      const ox = (r() - 0.5) * 260 * s, oy = (r() - 0.5) * 180 * s, rad = (55 + r() * 95) * s;
+      const grow = easeOut(dt / 0.35), rise = dt * (pass ? 50 : 90) * s;
+      const cx = x + ox * grow * (pass ? 1 : 1.25), cy = y + oy * grow - rise;
+      const R = rad * (0.4 + 0.8 * grow) * (pass ? 1 : 1.2);
+      ctx.globalAlpha = clamp(1 - (dt - 1.3) / 0.9) * (pass ? 1 - smoke * 0.85 : 0.7 * smoke + 0.1);
+      if (pass === 0) ctx.fillStyle = '#231c1a';
+      else {
+        const g = ctx.createRadialGradient(cx - R * 0.2, cy - R * 0.25, R * 0.05, cx, cy, R);
+        g.addColorStop(0, `rgba(255,246,214,1)`); g.addColorStop(0.35, '#ffb24a'); g.addColorStop(0.8, '#e0582a'); g.addColorStop(1, 'rgba(160,40,20,0.9)');
+        ctx.fillStyle = g;
+      }
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fill();
+    }
   }
   ctx.globalAlpha = 1;
+  particles(x, y, dt, seed + 7, { color: '#ffd27a', n: 34, v0: 500, v1: 1400, s0: 3, s1: 7, life: 0.9, a0: -Math.PI, a1: Math.PI, gravity: 900 });
   if (dt < 0.5) ring(x, y, 80 * s + dt * 900 * s, COL.crimson, 10 * (1 - dt / 0.5), 0.9 * (1 - dt / 0.5));
 }
 
@@ -517,7 +536,7 @@ function beatState(t) {
   const amp = 0.45 + 0.55 * clamp(onsetAt(off + idx * TL.beat + 0.02) * 1.2);
   // time remap: inside each beat the clock runs fast right after the hit, then slows
   const tw = off + (idx + 0.45 * frac + 0.55 * (1 - Math.pow(1 - frac, 3))) * TL.beat;
-  return { on: true, idx, dt, down, amp, k: Math.exp(-dt * 11), tw };
+  return { on: true, idx, dt, down, amp, k: Math.exp(-dt * 11), tw: speedRamp(tw) };
 }
 
 function beatPulse(BT) {
@@ -546,6 +565,42 @@ function onsetAt(t) {
 function sceneBlasts(sc, t) {
   if (!sc.blastAt) return;
   sc.blastAt.forEach((bt, k) => blast(sc.focus ? sc.focus[0] : 540, sc.focus ? sc.focus[1] : 1200, t - bt, 500 + sc.i * 10 + k, sc.blastScale || 1));
+}
+
+function v8Post(t, BT) {
+  lightLeaks(t, BT.on ? BT.k * BT.amp : 0);
+  // impact frame: 2 inverted high-contrast frames on every blast
+  for (const h of TL.hits) {
+    if (h.ring && t - h.t >= 0 && t - h.t < 2 / 30) {
+      ctx.save(); ctx.filter = 'grayscale(1) invert(1) contrast(2.2)'; ctx.drawImage(canvas, 0, 0); ctx.restore();
+      break;
+    }
+  }
+  // letterbox bars slam in on blasts and ease out
+  let lb = 0;
+  for (const h of TL.hits) { const d = t - h.t; if (h.ring && d >= 0 && d < 1.8) lb = Math.max(lb, d < 0.08 ? d / 0.08 : 1 - easeInOut((d - 0.08) / 1.7)); }
+  if (lb > 0) { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, 150 * lb); ctx.fillRect(0, H - 150 * lb, W, 150 * lb); }
+}
+
+// Speed ramp: the 0.45 s before every big hit run in slow motion, then snap back.
+function speedRamp(tw) {
+  for (const h of TL.ramps || []) {
+    const a = h - 0.45;
+    if (tw >= a && tw < h) return a + (tw - a) * 0.3;
+  }
+  return tw;
+}
+
+// Moving light leaks, brighter on the beat.
+function lightLeaks(t, k) {
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  [[0.3, 0.7, '255,150,90'], [0.8, 0.3, '224,36,94']].forEach(([fx, fy, c], i) => {
+    const x = W * (fx + 0.25 * Math.sin(t * 0.4 + i * 2)), y = H * (fy + 0.15 * Math.cos(t * 0.3 + i));
+    const g = ctx.createRadialGradient(x, y, 10, x, y, 700);
+    g.addColorStop(0, `rgba(${c},${0.12 + 0.12 * k})`); g.addColorStop(1, `rgba(${c},0)`);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  });
+  ctx.restore();
 }
 
 function sceneText(sc, t) {
@@ -1853,7 +1908,8 @@ function post(t) {
   v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.55)');
   ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
   if (!grain) makeGrain();
-  const ox = 0, oy = 0;
+  const step = TL && TL.story.v8 ? Math.floor(t / TL.beat) : 0;
+  const ox = -(step * 137) % 512, oy = -(step * 251) % 512;
   ctx.globalAlpha = 1;
   for (let x = ox; x < W; x += 512) for (let y = oy; y < H; y += 512) ctx.drawImage(grain, x, y);
 }
@@ -1890,7 +1946,16 @@ function renderFrame(t) {
   const blur = (whip + (sc.i > 0 ? kIn : 0)) * 16;
   if (blur > 0.5) ctx.filter = `blur(${blur.toFixed(1)}px)`;
   const pulse = !CINE && (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
-  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0)) + 0.012 * onsetAt(t) + (BT.on ? (BT.down ? 0.05 : 0.03) * BT.k * BT.amp : 0)
+  let ladder = 0, roll = 0;
+  if (TL.story.v8) {
+    const bar = 4 * TL.beat, nb = Math.floor(lt / bar + 1e-6), snap = easeOut(clamp((lt - nb * bar) / 0.12));
+    ladder = 0.045 * (Math.max(0, nb - 1) + (nb > 0 ? snap : 0));
+    const ang = n => (n === 0 ? 0 : (n % 2 ? 1 : -1) * 0.022);
+    roll = lerp(ang(Math.max(0, nb - 1)), ang(nb), nb > 0 ? snap : 1);
+    ctx.translate(W / 2, 1100); ctx.rotate(roll); ctx.translate(-W / 2, -1100);
+  }
+  const zt = TL.story.v8 ? 0.32 * whip - 0.1 * (sc.i > 0 ? kIn : 0) : 0;
+  const z = CINE ? 1.05 + ladder + zt + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0)) + 0.012 * onsetAt(t) + (BT.on ? (BT.down ? 0.05 : 0.03) * BT.k * BT.amp : 0)
     : 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
@@ -1916,6 +1981,7 @@ function renderFrame(t) {
   ctx.restore();
   if (flash > 0.01) { ctx.fillStyle = `rgba(255,250,240,${flash})`; ctx.fillRect(0, 0, W, H); }
   if (BT.on) beatPulse(BT);
+  if (TL.story.v8) v8Post(t, BT);
   // fade out at the very end
   const fo = clamp((t - (TL.duration - 0.6)) / 0.6);
   if (fo > 0) { ctx.fillStyle = `rgba(0,0,0,${fo})`; ctx.fillRect(0, 0, W, H); }

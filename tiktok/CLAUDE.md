@@ -46,6 +46,12 @@ Ruckeln. Stärke folgt der Lautstärke des Schlags (`"react"`). Nach dem Rendern
   (`"blastAt"`), Verletzungs-Hotspots auf Hits (`"spots"`), Kamera reagiert auf den
   Musik-Onset (`"react"`). Szenen nach Musik-Intensität verteilt (ruhig ↔ Höhepunkt).
   Prüfung: Ereignisse im fertigen Video messen und mit Referenz vergleichen.
+- v8 (Standard ab jetzt, `"v8": true`): Snap-Zoom-Treppe auf jedem Taktanfang,
+  Dutch-Tilt im Takt, kinetische Typo (Zeilen fliegen abwechselnd rein, große Wörter
+  ziehen Buchstaben zusammen), Speed-Ramp (Zeitlupe vor jedem großen Treffer),
+  Impact-Frames (2 invertierte Bilder bei Explosionen), Cinema-Balken bei Treffern,
+  Zoom-Through-Übergänge, wandernde Lichtreflexe, Filmkorn im Beat. Explosionen als
+  Feuerbälle mit Verlauf + Funken. Grenze: max. 3 Lichtpulse/s, keine Dauerblitze.
 
 ## Musik
 - Standard für neue Videos: `"musicStyle": "darkEpic"` (eigene Musik im Stil des
@@ -59,7 +65,9 @@ Ruckeln. Stärke folgt der Lautstärke des Schlags (`"react"`). Nach dem Rendern
   `music/`, nicht im Repo). BPM per Kick-Band messen, Start so legen, dass der Drop
   auf der Titelkarte landet. Vorher klären, ob der Track lizenzfrei ist.
 
-## Nächste Upgrade-Ideen (für v6+)
+## Nächste Upgrade-Ideen (für v9+)
+- Karten-Szenen mit Punkten, die auf Schlägen aufploppen (wie Referenz)
+- Detailliertere Figuren (Kleidung, Gesichtsprofil), mehr Posen
 - Figuren mit mehr Posen (Menschen gehen/rennen statt nur stehen)
 - Tiefenunschärfe für Hintergrund-Ebenen
 - Licht, das auf Figuren reagiert (Rim-Light vom Feuer, Blaulicht)
