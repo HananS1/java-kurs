@@ -11,6 +11,7 @@ const COL = {
   red: '#E2413B',
   ink: '#08080c',
   paper: '#E9DFC8',
+  crimson: '#E0245E',
 };
 
 let TL = null;
@@ -54,7 +55,8 @@ function buildTimeline(story) {
     scenes.push(sc);
     events.push({ t: start, type: 'cut', i });
     if (s.label) events.push({ t: start, type: 'type', dur: Math.min(0.6, s.label.length * 0.02) });
-    if (s.l1) s.l1.split(' ').forEach((w, k) => events.push({ t: sc.l1t + k * WORD_GAP, type: 'word' }));
+    if (s.l1 && story.textStyle === 'cinematic') events.push({ t: sc.l1t, type: 'line' });
+    else if (s.l1) s.l1.split(' ').forEach((w, k) => events.push({ t: sc.l1t + k * WORD_GAP, type: 'word' }));
     if (s.big) events.push({ t: sc.l1t, type: 'hit' });
     if (s.l2) events.push({ t: sc.l2t, type: 'line2' });
     (s.tags || []).forEach(g => events.push({ t: start + g.at * beat, type: 'pop' }));
@@ -63,6 +65,7 @@ function buildTimeline(story) {
   });
   // impacts drive camera shake, white flashes and shockwave rings
   const IMPACT = { hit: [26, 0.85, 1], boom: [18, 0.5, 1], stamp: [12, 0, 0], thud: [14, 0, 0], line2: [5, 0, 0], crash: [10, 0.6, 1] };
+  if (story.textStyle === 'cinematic') { IMPACT.line2 = [0, 0, 0]; IMPACT.hit = [14, 0.5, 1]; IMPACT.boom = [10, 0.3, 1]; }
   const hits = events.filter(e => IMPACT[e.type]).map(e => ({ t: e.t, amp: IMPACT[e.type][0], flash: IMPACT[e.type][1], ring: IMPACT[e.type][2] }));
   TL = { story, bpm, beat, scenes, hits, duration: t + (story.tail || 1) };
   return {
@@ -421,6 +424,73 @@ function label(text, dt) {
   ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 10;
   ctx.fillText(text.slice(0, n), W / 2, 300);
   ctx.restore();
+}
+
+// Cinematic text (style of the reference): serif caps, white + crimson, centred lower,
+// small label above. Lines blur in sharp-fast and blur out at the scene end.
+function cineLine(text, y, size, fill, dt, exitK) {
+  if (dt < 0) return y;
+  text = text.replace(/\*/g, '');
+  const font = `${size}px Cinzel`;
+  const lines = wrap(text, font, 960);
+  const lh = size * 1.18;
+  const b = 10 * (1 - clamp(dt / 0.12)) + 14 * exitK;
+  ctx.save();
+  ctx.font = font; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  ctx.globalAlpha = clamp(dt / 0.08) * (1 - exitK);
+  if (b > 0.4) ctx.filter = `blur(${b.toFixed(1)}px)`;
+  ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 22; ctx.shadowOffsetY = 3;
+  lines.forEach((l, i) => {
+    if (fill === 'gradient') {
+      const g = ctx.createLinearGradient(0, y + i * lh, 0, y + i * lh + size);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, '#f6c6d2'); g.addColorStop(1, COL.crimson);
+      ctx.fillStyle = g;
+    } else ctx.fillStyle = fill;
+    ctx.fillText(l, W / 2, y + i * lh);
+  });
+  ctx.restore();
+  return y + lines.length * lh;
+}
+
+function cineText(sc, t) {
+  const exitK = sc.i < TL.scenes.length - 1 ? clamp(1 - (sc.end - t) / 0.14) : 0;
+  let y = sc.textY || 1000;
+  if (sc.label && t >= sc.start) {
+    ctx.save(); ctx.font = "30px 'Oswald'"; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    if (ctx.letterSpacing !== undefined) ctx.letterSpacing = '5px';
+    ctx.globalAlpha = 0.85 * clamp((t - sc.start) / 0.1) * (1 - exitK);
+    ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 10;
+    ctx.fillStyle = COL.white; ctx.fillText(sc.label, W / 2, y - 18);
+    ctx.restore();
+  }
+  if (sc.counter) {
+    const c = sc.counter, k = clamp((t - sc.start) / (c.dur * sc.beat));
+    const v = Math.round(c.to * easeOut(k)).toLocaleString('de-DE');
+    y = cineLine(v, y - 180, 170, 'gradient', t - sc.start, exitK);
+    y = cineLine(c.unit, y - 10, 40, COL.crimson, t - sc.start, exitK) + 20;
+  }
+  if (sc.big) y = cineLine(sc.big, y - 40, sc.bigSize ? sc.bigSize * 0.62 : 130, 'gradient', t - sc.l1t, exitK) + 10;
+  if (sc.l1) y = cineLine(sc.l1, y, sc.l1Size || 60, COL.white, t - sc.l1t, exitK);
+  if (sc.l2) cineLine(sc.l2, y, sc.l2Size || 60, COL.crimson, t - sc.l2t, exitK);
+  TEXT_FADE = 1 - exitK;
+  (sc.tags || []).forEach(g => tag(g, t - (sc.start + g.at * sc.beat)));
+}
+
+// Explosion in the reference look: stacked orange circles turning into dark smoke, crimson ring.
+function blast(x, y, dt, seed, s = 1) {
+  if (dt < 0 || dt > 2.2) return;
+  const r = rng(seed);
+  for (let i = 0; i < 9; i++) {
+    const ox = (r() - 0.5) * 220 * s, oy = (r() - 0.5) * 160 * s, rad = (60 + r() * 90) * s;
+    const grow = easeOut(dt / 0.35), rise = dt * 60 * s;
+    const smoke = clamp((dt - 0.25) / 0.6);
+    ctx.globalAlpha = clamp(1 - (dt - 1.4) / 0.8);
+    ctx.fillStyle = smoke > 0 ? `rgb(${lerp(240, 40, smoke)},${lerp(140, 34, smoke)},${lerp(60, 34, smoke)})` : '#f08a3a';
+    ctx.beginPath(); ctx.arc(x + ox * grow, y + oy * grow - rise, rad * (0.4 + 0.8 * grow), 0, 7); ctx.fill();
+    if (smoke < 0.5) { ctx.fillStyle = `rgba(255,236,190,${1 - smoke * 2})`; ctx.beginPath(); ctx.arc(x + ox * grow * 0.6, y + oy * grow * 0.6 - rise, rad * 0.45 * grow, 0, 7); ctx.fill(); }
+  }
+  ctx.globalAlpha = 1;
+  if (dt < 0.5) ring(x, y, 80 * s + dt * 900 * s, COL.crimson, 10 * (1 - dt / 0.5), 0.9 * (1 - dt / 0.5));
 }
 
 function sceneText(sc, t) {
@@ -843,21 +913,25 @@ const ART = {
     ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.clip();
     EMBLEM[TL.story.emblem || 'balloon'](cx, cy, r, lt);
     ctx.restore();
-    ring(cx, cy, r, COL.yellow, 10);
-    textBlock(sc.name, W / 2, 1180, 104, COL.white, lt);
+    const cine = TL.story.textStyle === 'cinematic';
+    const accent = cine ? COL.crimson : COL.yellow;
+    ring(cx, cy, r, accent, 10);
+    if (cine) cineLine(sc.name, 1180, 76, 'gradient', lt, 0);
+    else textBlock(sc.name, W / 2, 1180, 104, COL.white, lt);
     ctx.font = "34px 'Oswald'"; ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(244,239,230,0.8)';
     ctx.fillText(sc.sub, W / 2, 1340);
-    ctx.fillStyle = COL.yellow; ctx.font = "40px 'Oswald'";
+    ctx.fillStyle = accent; ctx.font = "40px 'Oswald'";
     ctx.fillText(sc.tag, W / 2, 1400);
     const d = lt - sc.beat * 3;
     if (d > 0) {
-      textBlock(sc.quote, W / 2, 1460, 64, COL.yellow, d);
+      if (cine) cineLine(sc.quote, 1460, 52, COL.crimson, d, 0);
+      else textBlock(sc.quote, W / 2, 1460, 64, COL.yellow, d);
       ctx.globalAlpha = clamp((d - 0.4) / 0.3);
       ctx.font = "30px 'Oswald'"; ctx.fillStyle = 'rgba(244,239,230,0.9)';
       ctx.fillText('WENN DU BIS HIER GESCHAUT HAST…', W / 2, 1580);
       ctx.fillText(`FOLGEN · LIKEN · TEILEN  ${TL.story.handle}`, W / 2, 1622);
       ctx.fillText('UND SCHREIB, WELCHE GESCHICHTE ALS NÄCHSTES KOMMT', W / 2, 1664);
-      ctx.fillStyle = COL.yellow; ctx.font = "38px 'Anton'";
+      ctx.fillStyle = accent; ctx.font = cine ? "34px Cinzel" : "38px 'Anton'";
       ctx.fillText('HAST DU DIE BIENE GESEHEN?', W / 2, 1720);
       ctx.globalAlpha = 1;
     }
@@ -1602,7 +1676,7 @@ Object.assign(ART, {
     // day counter
     const day = 1 + Math.floor(clamp(lt / sc.dur) * 8.99);
     ctx.font = "60px 'Black Ops One'"; ctx.textAlign = 'center'; ctx.fillStyle = COL.yellow;
-    ctx.fillText(`TAG ${day}`, 540, 900);
+    ctx.fillText(`TAG ${day}`, 540, TL.story.textStyle === 'cinematic' ? 1235 : 900);
   },
 
   jMaggot(sc, t, lt, p) {
@@ -1678,6 +1752,18 @@ Object.assign(ART, {
   },
 });
 
+// Reference-style blasts layered onto the crash scenes in cinematic mode.
+['jHook', 'jStorm', 'jBreak'].forEach(name => {
+  const base = ART[name];
+  ART[name] = function (sc, t, lt, p) {
+    base(sc, t, lt, p);
+    if (TL.story.textStyle !== 'cinematic') return;
+    if (name === 'jHook') blast(560, 620, lt - sc.beat * 3.5, 401, 1.1);
+    if (name === 'jStorm') blast(600, 1150, lt - sc.beat * 2, 402, 1.0);
+    if (name === 'jBreak') { blast(540, 1150, lt, 403, 1.3); blast(420, 1260, lt - sc.beat * 2, 404, 0.9); }
+  };
+});
+
 EMBLEM.jungle = function (cx, cy, r, lt) {
   ctx.fillStyle = grad(cy - r, cy + r, [[0, '#1a2a4a'], [0.5, '#c06a4a'], [1, '#2a4a34']]); ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r);
   jungle(cy + 120, '#0b1a10', 161, 0, 0.7);
@@ -1735,18 +1821,21 @@ function renderFrame(t) {
     flash = Math.max(flash, h.flash * Math.exp(-d * 16));
     if (h.ring && d < 0.6) rings.push(d);
   }
+  const CINE = TL.story.textStyle === 'cinematic';
   const sx = Math.sin(t * 91) * shake, sy = Math.cos(t * 77) * shake;
   ctx.translate(sx, sy);
   // punch-in on every cut, then slow push-in
   const dir = sc.i % 2 ? 1 : -1;
-  const WHIP = 0.1;
+  const WHIP = CINE ? 0.15 : 0.1;
   const kOut = clamp(1 - (sc.end - t) / WHIP), kIn = clamp(1 - lt / WHIP);
   const whip = sc.i < TL.scenes.length - 1 ? kOut : 0;
-  ctx.translate(dir * lerp(-30, 30, p) + dir * whip * 140 - dir * kIn * 140 * (sc.i > 0), 0);
+  if (CINE) ctx.translate(dir * lerp(-12, 12, p), 0);
+  else ctx.translate(dir * lerp(-30, 30, p) + dir * whip * 140 - dir * kIn * 140 * (sc.i > 0), 0);
   const blur = (whip + (sc.i > 0 ? kIn : 0)) * 16;
   if (blur > 0.5) ctx.filter = `blur(${blur.toFixed(1)}px)`;
-  const pulse = (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
-  const z = 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
+  const pulse = !CINE && (sc.music === 'drive' || sc.music === 'reveal') ? 0.014 * Math.exp(-((t % TL.beat) / TL.beat) * 7) : 0;
+  const z = CINE ? 1.03 + 0.05 * p + 0.04 * (whip + (sc.i > 0 ? kIn : 0))
+    : 1.07 + 0.06 * p + 0.12 * (1 - easeOut(lt / 0.25)) + pulse + 0.3 * (whip + (sc.i > 0 ? kIn : 0));
   ctx.translate(W / 2, 1300); ctx.scale(z, z); ctx.translate(-W / 2, -1300);
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.setLineDash([]); ctx.lineCap = 'butt';
   (ART[sc.art] || (() => {}))(sc, t, lt, p);
@@ -1754,10 +1843,16 @@ function renderFrame(t) {
   ctx.filter = 'none';
   ctx.restore();
   post(t);
-  for (const d of rings) ring(W / 2, 900, 80 + d * 2200, '#fff', 14 * (1 - d / 0.6), 0.7 * (1 - d / 0.6));
+  if (CINE) {
+    // muted, filmic grade + dip to dark during blur transitions
+    ctx.save(); ctx.globalCompositeOperation = 'saturation'; ctx.fillStyle = 'rgba(128,128,128,0.3)'; ctx.fillRect(0, 0, W, H); ctx.restore();
+    const dip = (whip + (sc.i > 0 ? kIn : 0)) * 0.35;
+    if (dip > 0) { ctx.fillStyle = `rgba(0,0,0,${dip})`; ctx.fillRect(0, 0, W, H); }
+  }
+  for (const d of rings) ring(W / 2, 900, 80 + d * 2200, CINE ? COL.crimson : '#fff', 14 * (1 - d / 0.6), 0.7 * (1 - d / 0.6));
   ctx.save();
   ctx.translate(sx * 0.5, sy * 0.5);
-  sceneText(sc, t);
+  (CINE ? cineText : sceneText)(sc, t);
   ctx.restore();
   if (flash > 0.01) { ctx.fillStyle = `rgba(255,250,240,${flash})`; ctx.fillRect(0, 0, W, H); }
   // fade out at the very end

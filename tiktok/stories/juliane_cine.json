@@ -1,0 +1,347 @@
+{
+  "id": "juliane_cine",
+  "title": "Juliane Koepcke",
+  "handle": "@unglaublichwahr",
+  "bpm": 115.75,
+  "offset": 0.09,
+  "beeScene": "jBoat",
+  "emblem": "jungle",
+  "sources": [
+    "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+    "https://www.aerotelegraph.com/geschichte/als-eine-17-jaehrige-deutsche-aus-3000-metern-in-den-urwald-fiel-und-ueberlebte/d2m323p",
+    "https://www.amusingplanet.com/2022/01/juliane-koepcke-girl-who-fell-from.html",
+    "https://the-line-up.com/juliane-koepcke"
+  ],
+  "scenes": [
+    {
+      "art": "jHook",
+      "beats": 7,
+      "music": "intro",
+      "l1": "SIE FIEL *3.000 METER* TIEF…",
+      "l2": "…UND ÜBERLEBTE.",
+      "l2At": 3.5,
+      "sfx": [
+        {
+          "at": 0.6,
+          "type": "thunder"
+        },
+        {
+          "at": 3.5,
+          "type": "thunder"
+        },
+        {
+          "at": 3.5,
+          "type": "boom"
+        },
+        {
+          "at": 4,
+          "type": "wind",
+          "dur": 4
+        }
+      ],
+      "textY": 560
+    },
+    {
+      "art": "jTitle",
+      "beats": 4,
+      "music": "drive",
+      "big": "JULIANE",
+      "bigSize": 190,
+      "l2": "PERU · 24. DEZEMBER 1971",
+      "l2At": 1.5,
+      "l2Size": 54
+    },
+    {
+      "art": "jBoard",
+      "beats": 8,
+      "music": "drive",
+      "label": "LIMA · HEILIGABEND 1971",
+      "l1": "SIE FLOG MIT IHRER *MUTTER…*",
+      "l2": "…ZUM VATER IN DEN DSCHUNGEL.",
+      "tags": [
+        {
+          "at": 3,
+          "text": "17 JAHRE",
+          "x": 760,
+          "y": 1440,
+          "rot": 0.05
+        }
+      ],
+      "textY": 640
+    },
+    {
+      "art": "jStorm",
+      "beats": 4,
+      "music": "drive",
+      "l1": "MITTEN IM *GEWITTER…*",
+      "l2": "…SCHLUG EIN BLITZ EIN.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 1,
+          "type": "thunder"
+        },
+        {
+          "at": 2,
+          "type": "thunder"
+        },
+        {
+          "at": 2,
+          "type": "boom"
+        },
+        {
+          "at": 0,
+          "type": "rain",
+          "dur": 6
+        }
+      ],
+      "l2At": 1.5,
+      "textY": 640
+    },
+    {
+      "art": "jBreak",
+      "beats": 4,
+      "music": "drive",
+      "l1": "DAS FLUGZEUG BRACH *AUSEINANDER…*",
+      "l2": "…MITTEN IN DER LUFT.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "smash"
+        },
+        {
+          "at": 0,
+          "type": "boom"
+        },
+        {
+          "at": 1,
+          "type": "wind",
+          "dur": 5
+        }
+      ],
+      "l2At": 1.5,
+      "textY": 640
+    },
+    {
+      "art": "jFall",
+      "beats": 8,
+      "music": "drive",
+      "counter": {
+        "to": 3000,
+        "unit": "METER FREIER FALL",
+        "dur": 3
+      },
+      "l2": "…NOCH IM SITZ ANGESCHNALLT.",
+      "l2At": 3.5,
+      "sfx": [
+        {
+          "at": 0,
+          "type": "riser",
+          "dur": 3
+        },
+        {
+          "at": 0,
+          "type": "ticks",
+          "dur": 3,
+          "n": 18
+        },
+        {
+          "at": 3,
+          "type": "boom"
+        }
+      ],
+      "textY": 820
+    },
+    {
+      "art": "jWake",
+      "beats": 4,
+      "music": "drive",
+      "label": "REGENWALD · PERU",
+      "l1": "SIE STÜRZTE IN DEN *REGENWALD…*",
+      "l2": "…UND WACHTE ALLEIN AUF.",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "thud"
+        }
+      ],
+      "l2At": 1.5
+    },
+    {
+      "art": "jCount",
+      "beats": 8,
+      "music": "tension",
+      "counter": {
+        "to": 92,
+        "unit": "MENSCHEN AN BORD",
+        "dur": 2
+      },
+      "l2": "NUR EINE ÜBERLEBTE.",
+      "l2At": 3,
+      "sfx": [
+        {
+          "at": 0,
+          "type": "ticks",
+          "dur": 2,
+          "n": 14
+        },
+        {
+          "at": 3,
+          "type": "boom"
+        }
+      ],
+      "textY": 780
+    },
+    {
+      "art": "jInjury",
+      "beats": 8,
+      "music": "tension",
+      "label": "IHRE VERLETZUNGEN",
+      "l1": "SCHLÜSSELBEIN *GEBROCHEN…*",
+      "l2": "…EINE TIEFE WUNDE AM ARM.",
+      "l2Color": "red",
+      "tags": [
+        {
+          "at": 0.5,
+          "text": "SCHLÜSSELBEIN",
+          "x": 250,
+          "y": 1060,
+          "rot": -0.05
+        },
+        {
+          "at": 2,
+          "text": "ARM",
+          "x": 850,
+          "y": 1250,
+          "rot": 0.05
+        },
+        {
+          "at": 3.5,
+          "text": "GEHIRNERSCHÜTTERUNG",
+          "x": 800,
+          "y": 930,
+          "rot": -0.03
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.5,
+          "type": "stamp"
+        },
+        {
+          "at": 2,
+          "type": "stamp"
+        },
+        {
+          "at": 3.5,
+          "type": "stamp"
+        }
+      ],
+      "textY": 620
+    },
+    {
+      "art": "jMother",
+      "beats": 8,
+      "music": "tension",
+      "l1": "SIE SUCHTE IHRE *MUTTER…*",
+      "l2": "…UND FAND SIE NICHT.",
+      "l2Color": "red",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "rain",
+          "dur": 6
+        }
+      ]
+    },
+    {
+      "art": "jFather",
+      "beats": 7,
+      "music": "drive",
+      "label": "DER RAT IHRES VATERS",
+      "l1": "DANN ERINNERTE SIE SICH:",
+      "l2": "…FOLGE DEM WASSER FLUSSABWÄRTS.",
+      "textY": 640
+    },
+    {
+      "art": "jWade",
+      "beats": 9,
+      "music": "drive",
+      "l1": "SIE WATETE DURCH DEN *FLUSS…*",
+      "l2": "…TAG FÜR TAG.",
+      "sfx": [
+        {
+          "at": 0,
+          "type": "splash"
+        },
+        {
+          "at": 3,
+          "type": "splash"
+        },
+        {
+          "at": 0,
+          "type": "rain",
+          "dur": 6
+        }
+      ]
+    },
+    {
+      "art": "jMaggot",
+      "beats": 8,
+      "music": "tension",
+      "l1": "IN IHRER WUNDE *KROCHEN…*",
+      "l2": "…MADEN.",
+      "l2Color": "red",
+      "textY": 760
+    },
+    {
+      "art": "jBoat",
+      "beats": 8,
+      "music": "drive",
+      "label": "TAG 10",
+      "l1": "DANN FAND SIE EIN *BOOT…*",
+      "l2": "…UND KIPPTE BENZIN IN DIE WUNDE.",
+      "l2Color": "red",
+      "textY": 760
+    },
+    {
+      "art": "jRescue",
+      "beats": 4,
+      "music": "drive",
+      "l1": "WALDARBEITER *FANDEN* SIE…",
+      "l2": "…NACH ELF TAGEN IM DSCHUNGEL.",
+      "l2At": 1.5,
+      "textY": 760
+    },
+    {
+      "art": "jReveal",
+      "beats": 4,
+      "music": "reveal",
+      "big": "GERETTET.",
+      "bigSize": 190,
+      "textY": 540
+    },
+    {
+      "art": "jLater",
+      "beats": 6,
+      "music": "reveal",
+      "l1": "SIE WURDE SPÄTER *BIOLOGIN…*",
+      "l2": "…UND KEHRTE IN DEN REGENWALD ZURÜCK."
+    },
+    {
+      "art": "end",
+      "beats": 8,
+      "music": "outro",
+      "name": "JULIANE KOEPCKE",
+      "sub": "LANSA-FLUG 508 · 24.12.1971",
+      "tag": "EINZIGE ÜBERLEBENDE VON 92",
+      "quote": "„FOLGE DEM WASSER.“"
+    }
+  ],
+  "tail": 0.262,
+  "musicFile": "music/warschau_track.wav",
+  "musicStart": 0,
+  "textStyle": "cinematic",
+  "transition": "blur"
+}

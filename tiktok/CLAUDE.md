@@ -29,6 +29,11 @@ noch mehr Blitze.
 - v5 Juliane: menschliche Hauptfigur (geht/watet, Haare/Arme schwingen), Blitzlicht +
   Regen, Tiefenunschärfe (gecachte Dschungel-Ebenen), Text fliegt am Szenenende raus,
   92-Figuren-Infografik, Körper-Hotspots, Zähler mit Tausenderpunkt.
+- v6 Juliane (Kino-Stil wie Referenz @plmadafaka): `"textStyle": "cinematic"` –
+  Serifenschrift Cinzel, weiß + karminrot, Text mittig mit Label darüber, Blur-In /
+  Blur-Out statt Pop, Unschärfe-Überblendungen mit Abdunklung, ruhigere Kamera,
+  entsättigtes Grading, Explosionen aus Kreisen + Rauch + rotem Ring. Schnitte exakt
+  auf den Schnittpunkten des Referenzvideos (Taktanfänge, 4/8 Beats).
 
 ## Musik
 - Standard für neue Videos: `"musicStyle": "darkEpic"` (eigene Musik im Stil des

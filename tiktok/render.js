@@ -21,7 +21,7 @@ fs.mkdirSync(outDir, { recursive: true });
   await page.goto('file://' + path.join(__dirname, 'engine.html'));
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(async () => {
-    for (const f of ["76px 'Anton'", "34px 'Oswald'", "30px 'Special Elite'", "60px 'Black Ops One'"]) await document.fonts.load(f);
+    for (const f of ["76px 'Anton'", "34px 'Oswald'", "30px 'Special Elite'", "60px 'Black Ops One'", "60px 'Cinzel'"]) await document.fonts.load(f);
   });
   const tl = await page.evaluate(s => window.buildTimeline(s), story);
 
@@ -33,6 +33,7 @@ fs.mkdirSync(outDir, { recursive: true });
   if (preview) {
     const dir = path.join(outDir, 'frames');
     fs.mkdirSync(dir, { recursive: true });
+    for (const f of fs.readdirSync(dir)) fs.unlinkSync(path.join(dir, f));
     const shots = tl.scenes.map(s => s.start + (s.end - s.start) * 0.8);
     for (let i = 0; i < shots.length; i++) fs.writeFileSync(path.join(dir, `p${String(i).padStart(2, '0')}.jpg`), await grab(shots[i]));
     await browser.close();
