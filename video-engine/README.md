@@ -6,7 +6,7 @@ Programm für die TikTok-Karten-Videos (3D-Globus, Satellitenkarte, Route, Infol
 
 | Ordner | Was |
 |---|---|
-| `prompt/` | Master-Prompt V5 (PDF + HTML-Quelle), Quellen-Texte der fertigen Videos |
+| `prompt/` | Master-Prompt V6 (PDF + HTML-Quelle), Quellen-Texte der fertigen Videos |
 | `scenes/` | Fertige Szenen: `banane.html`, `redbull.html` mit Untertitel-Timings. Vorlage für neue Videos |
 | `tools/` | Rendern, Testbilder, Ton-Mix, Satellitenbilder, Wikimedia-Fotos, Erd-Textur |
 | `setup.sh` | Baut die Arbeitsumgebung auf |
@@ -28,7 +28,7 @@ Programm für die TikTok-Karten-Videos (3D-Globus, Satellitenkarte, Route, Infol
 
 - Kein Spoiler im Hook, keine vorgezeichnete Route.
 - Nur belegte Zahlen, Normalpreise statt Aktionspreise.
-- Echte Fotos mit freier Lizenz, keine KI-Bilder. Quellen in die TikTok-Beschreibung.
+- Echte Fotos mit freier Lizenz, keine KI-Bilder. Bevorzugt gemeinfrei oder CC0, kein Quellen-Text.
 - Schluss: Zusammenfassung mindestens 3 s, dann komplette Route mit START und ZIEL (`overview()` in `redbull.html`).
 - Keine fremde Musik ins Repository legen.
 
