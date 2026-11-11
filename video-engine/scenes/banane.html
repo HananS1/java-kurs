@@ -1,0 +1,441 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Inter,sans-serif}
+  canvas{position:absolute;inset:0}
+  #ui{position:absolute;inset:0;pointer-events:none}
+  #vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%),linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 75%,rgba(0,0,0,.35) 100%)}
+  .hud{position:absolute;left:50%;top:225px;transform:translateX(-50%);display:flex;
+       background:linear-gradient(180deg,rgba(22,26,34,.86),rgba(10,12,18,.9));border:2px solid rgba(255,255,255,.13);
+       border-radius:34px;padding:20px 10px;box-shadow:0 24px 70px rgba(0,0,0,.55);opacity:0;width:960px;box-sizing:border-box}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 6px;border-right:1px solid rgba(255,255,255,.09)}
+  .col:last-child{border-right:none}
+  .lab{font-size:15px;letter-spacing:1.5px;white-space:nowrap;color:rgba(255,255,255,.5);font-weight:800;margin-bottom:8px}
+  .val{font-size:34px;font-weight:900;color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .sub{font-size:20px;color:rgba(255,255,255,.6);font-weight:700;margin-top:6px;white-space:nowrap}
+  .yel{color:#FFD43B}
+  .icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#FFD43B;box-shadow:0 0 26px rgba(255,212,59,.65)}
+  .ripe{width:130px;height:20px;border-radius:10px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:6px}
+  .ripe>div{height:100%;width:100%;border-radius:10px}
+  #temp{position:absolute;left:50%;top:410px;transform:translateX(-50%);background:rgba(40,140,255,.9);color:#fff;font-weight:900;font-size:26px;
+        padding:8px 22px;border-radius:16px;opacity:0;white-space:nowrap;box-shadow:0 0 24px rgba(60,160,255,.6)}
+  #title{position:absolute;left:50px;right:50px;top:300px;text-align:center;color:#fff;font-weight:900;font-size:84px;line-height:1.06;
+         text-shadow:0 6px 30px rgba(0,0,0,.8),0 2px 4px rgba(0,0,0,.6);opacity:0;letter-spacing:-1px}
+  #title .y{color:#FFD43B}
+  #icons{position:absolute;left:0;right:0;top:640px;display:flex;justify-content:center;gap:26px;opacity:0}
+  #icons div{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:5px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+  .chip{position:absolute;left:50%;top:1035px;transform:translateX(-50%);color:#fff;font-weight:900;font-size:66px;padding:20px 44px;border-radius:28px;
+        opacity:0;white-space:nowrap;text-align:center}
+  .chip small{display:block;font-size:28px;font-weight:700;opacity:.9;margin-top:4px}
+  #cGreen,#cStill{background:#2E9E3E;box-shadow:0 0 60px rgba(91,209,91,.6),0 10px 30px rgba(0,0,0,.5)}
+  #cTemp{background:#1E7BE0;box-shadow:0 0 60px rgba(60,160,255,.6),0 10px 30px rgba(0,0,0,.5)}
+  #cGas{background:linear-gradient(90deg,#3FAE48,#E8C21E);box-shadow:0 0 60px rgba(232,194,30,.6),0 10px 30px rgba(0,0,0,.5)}
+  #cYellow{background:#FFD43B;color:#141414;box-shadow:0 0 70px rgba(255,212,59,.8),0 10px 30px rgba(0,0,0,.5)}
+  #big{position:absolute;left:0;right:0;top:760px;text-align:center;color:#FFD43B;font-weight:900;font-size:160px;letter-spacing:-4px;
+       text-shadow:0 0 40px rgba(255,212,59,.5),0 8px 30px rgba(0,0,0,.75);opacity:0;font-variant-numeric:tabular-nums}
+  #big small{display:block;font-size:46px;color:#fff;letter-spacing:5px;font-weight:900;margin-top:-8px}
+  #stats{position:absolute;left:60px;right:60px;top:560px;display:flex;flex-direction:column;gap:22px;opacity:0}
+  .st{display:flex;align-items:center;gap:28px;background:rgba(12,14,20,.84);border:2px solid rgba(255,212,59,.45);border-radius:28px;padding:22px 34px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+  .st b{font-size:64px;font-weight:900;color:#FFD43B;min-width:330px;font-variant-numeric:tabular-nums}
+  .st span{font-size:36px;font-weight:800;color:#fff}
+  #cta{position:absolute;left:50px;right:50px;top:620px;text-align:center;opacity:0}
+  #cta .q{font-size:80px;font-weight:900;color:#fff;line-height:1.05;text-shadow:0 6px 30px rgba(0,0,0,.85)}
+  #cta .q .y{color:#FFD43B}
+  #cta .c{display:inline-block;margin-top:34px;background:#FFD43B;color:#141414;font-weight:900;font-size:44px;padding:18px 36px;border-radius:24px;box-shadow:0 0 50px rgba(255,212,59,.6)}
+  #cap{position:absolute;left:60px;right:60px;top:1225px;text-align:center;font-weight:900;font-size:74px;color:#fff;line-height:1.18;
+       text-shadow:0 5px 22px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.95)}
+  #cap span{display:inline-block;padding:0 12px;border-radius:14px;margin:0 1px}
+  #cap span.hot{color:#FFD43B}
+  #cap span.on{background:#FFD43B;color:#141414;text-shadow:none}
+  .label{position:absolute;transform:translate(-50%,-100%);color:#fff;font-weight:900;font-size:38px;white-space:nowrap;text-align:center;
+         background:rgba(12,14,20,.84);border:2px solid rgba(255,212,59,.7);padding:12px 24px;border-radius:20px;opacity:0;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .label small{display:block;font-size:23px;color:rgba(255,255,255,.7);font-weight:700;margin-top:2px}
+  .label:after{content:'';position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);border:12px solid transparent;border-top-color:rgba(255,212,59,.7);border-bottom:none}
+  #ocean{position:absolute;transform:translate(-50%,-50%);color:rgba(255,255,255,.85);font-weight:900;font-size:62px;letter-spacing:22px;opacity:0;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+  #credit{position:absolute;left:30px;bottom:22px;color:rgba(255,255,255,.55);font-size:15px;font-weight:600;text-align:right;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.9)}
+  #card{position:absolute;left:0;top:0;width:460px;opacity:0;transform-origin:50% 100%}
+  #card .ph{width:460px;height:320px;border-radius:28px;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 3px rgba(255,212,59,.9),0 18px 50px rgba(0,0,0,.65),0 0 60px rgba(255,212,59,.45);background:#222}
+  #card img{width:100%;height:100%;object-fit:cover;display:block}
+  #card .pill{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);background:#FFD43B;color:#141414;font-weight:900;font-size:30px;padding:10px 22px;border-radius:16px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.45);display:flex;align-items:center;gap:10px}
+  #conn{position:absolute;inset:0;width:1080px;height:1920px;overflow:visible}
+  .geo{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;opacity:0}
+  .geo.c{color:rgba(255,255,255,.92);font-weight:900;font-size:34px;letter-spacing:7px;text-shadow:0 2px 10px rgba(0,0,0,.9),0 0 2px rgba(0,0,0,.9)}
+  .geo.o{color:rgba(170,215,255,.8);font-weight:800;font-style:italic;font-size:30px;letter-spacing:9px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .geo.t{color:#fff;font-weight:800;font-size:25px;text-shadow:0 2px 8px rgba(0,0,0,.95),0 0 2px #000;display:flex;align-items:center;gap:8px;transform:translate(-9px,-50%)}
+  .geo.t:before{content:'';width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(0,0,0,.45)}
+  #npin{position:absolute;transform:translate(-50%,-100%);opacity:0;display:flex;flex-direction:column;align-items:center}
+  #npin .b{background:#fff;color:#141414;font-weight:900;font-size:24px;padding:7px 14px;border-radius:12px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+  #npin .b small{color:#B8860B;font-size:16px;letter-spacing:2px;display:block;font-weight:900}
+  #npin .s{width:3px;height:26px;background:#fff}
+  #npin .d{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid #FFD43B;margin-top:-2px;box-shadow:0 0 18px #fff}
+  #pdelta{position:absolute;left:830px;top:404px;color:#141414;background:#FFD43B;font-weight:900;font-size:34px;padding:6px 16px;border-radius:14px;opacity:0;white-space:nowrap;box-shadow:0 0 30px rgba(255,212,59,.7)}
+  #flash{position:absolute;inset:0;background:#fff;opacity:0}
+</style>
+<script src="./node_modules/topojson-client/dist/topojson-client.min.js"></script>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="ui">
+  <div id="vig"></div>
+  <div id="ocean">ATLANTIK</div>
+  <div id="geos"></div>
+  <div id="npin"><div class="b"><small>NÄCHSTER HALT</small><span id="npt"></span></div><div class="s"></div><div class="d"></div></div>
+  <div class="label" id="lMachala">Machala<small>Bananenhauptstadt der Welt</small></div>
+  <div class="label" id="lPort">Puerto Bolívar<small>Hafen · Ecuador</small></div>
+  <div class="label" id="lPanama">Panamakanal<small>82 km Abkürzung</small></div>
+  <div class="label" id="lAntw">Antwerpen<small>Hafen · Belgien</small></div>
+  <div class="label" id="lReif">Reiferei<small>Deutschland</small></div>
+  <div class="hud" id="hud">
+    <div class="col"><div class="icon" id="vicon"></div><div class="sub" id="vname">Ernte</div></div>
+    <div class="col"><div class="lab">STRECKE</div><div class="val" id="km">0 km</div><div class="sub" id="days">Tag 1</div></div>
+    <div class="col"><div class="lab">NÄCHSTER HALT</div><div class="val yel" id="next" style="font-size:26px">Puerto Bolívar</div><div class="sub" id="nextc">Ecuador</div></div>
+    <div class="col"><div class="lab">PREIS/KG</div><div class="val" id="price">0,35 €</div><div class="sub" id="pricesub">Erzeuger</div></div>
+    <div class="col"><div class="lab">REIFE</div><div class="ripe"><div id="ripe"></div></div><div class="sub" id="ripetxt">grün</div></div>
+  </div>
+  <div id="pdelta"></div>
+  <div id="temp">❄ 13 °C KÜHLCONTAINER</div>
+  <div id="credit">Sentinel-2 cloudless – s2maps.eu by EOX IT Services GmbH<br>(Contains modified Copernicus Sentinel data 2016) · NASA Blue Marble</div>
+  <div id="title"><span class="tw " style="display:inline-block">Wie</span> <span class="tw " style="display:inline-block">kommt</span> <span class="tw " style="display:inline-block">eine</span> <span class="tw y" style="display:inline-block">Banane</span> <span class="tw " style="display:inline-block">aus</span> <span class="tw y" style="display:inline-block">Ecuador</span> <span class="tw " style="display:inline-block">in</span> <span class="tw " style="display:inline-block">deinen</span> <span class="tw " style="display:inline-block">Supermarkt?</span></div>
+  <div id="icons"></div>
+  <div class="chip" id="cGreen">REIFE: GRÜN</div>
+  <div class="chip" id="cTemp">13 °C<small>nicht wärmer!</small></div>
+  <div class="chip" id="cStill">IMMER NOCH GRÜN</div>
+  <div class="chip" id="cGas">ETHYLEN<small>natürliches Reifegas</small></div>
+  <div class="chip" id="cYellow">GELB!</div>
+  <div id="big">0<small>KILOMETER</small></div>
+  <div id="stats">
+    <div class="st"><b id="sKm">0 km</b><span>Strecke</span></div>
+    <div class="st"><b id="sDays">0 Tage</b><span>von Ernte bis Regal</span></div>
+    <div class="st"><b>13 °C</b><span>im Kühlcontainer</span></div>
+    <div class="st"><b>0,35→1,11 €</b><span>pro Kilo</span></div>
+  </div>
+  <div id="cta"><div class="q"><span id="l1" style="display:inline-block"><span class="y">35 Cent</span> für den Bauern.</span><br><span id="l2" style="display:inline-block"><span class="y">Über 1 €</span> im Laden.</span></div><div class="c">Fair oder nicht? ↓ Kommentare</div></div>
+  <svg id="conn"><line id="cline" x1="0" y1="0" x2="0" y2="0" stroke="#FFD43B" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12" opacity="0"/><circle id="cdot" r="12" fill="#FFD43B" opacity="0"/><circle id="cburst" r="10" fill="none" stroke="#FFD43B" stroke-width="6" opacity="0"/></svg>
+  <div id="card"><div class="ph"><img id="cimg"></div><div class="pill"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#141414" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span id="ctxt"></span></div></div>
+  <div id="cap"></div>
+  <div id="flash"></div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+import {Line2} from 'three/addons/lines/Line2.js';
+import {LineMaterial} from 'three/addons/lines/LineMaterial.js';
+import {LineGeometry} from 'three/addons/lines/LineGeometry.js';
+
+const W=1080,H=1920,R_KM=6371;
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,logarithmicDepthBuffer:true});
+renderer.setPixelRatio(1.5);renderer.setSize(W,H);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;
+document.body.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,W/H,0.00005,100);
+const L=new THREE.TextureLoader();const load=u=>new Promise(r=>L.load(u,r));
+const maxAniso=renderer.capabilities.getMaxAnisotropy();
+const [earthT,bumpT,skyT,meta]=await Promise.all([load('tex/earth.jpg'),load('tex/bump.jpg'),load('tex/night-sky.png'),fetch('patches/meta.json').then(r=>r.json())]);
+earthT.colorSpace=THREE.SRGBColorSpace;earthT.anisotropy=maxAniso;skyT.colorSpace=THREE.SRGBColorSpace;
+
+scene.add(new THREE.Mesh(new THREE.SphereGeometry(40,64,32),new THREE.MeshBasicMaterial({map:skyT,side:THREE.BackSide,color:0x7788aa})));
+const earthMat=new THREE.MeshStandardMaterial({map:earthT,bumpMap:bumpT,bumpScale:6,roughness:.85,metalness:0});
+scene.add(new THREE.Mesh(new THREE.SphereGeometry(1,512,256),earthMat));
+const glowVS=`#include <common>
+#include <logdepthbuf_pars_vertex>
+varying vec3 vN;varying vec3 vP;void main(){vN=normalize(normalMatrix*normal);vec4 p=modelViewMatrix*vec4(position,1.);vP=p.xyz;gl_Position=projectionMatrix*p;
+#include <logdepthbuf_vertex>
+}`;
+const mkGlow=(r,side,frag)=>new THREE.Mesh(new THREE.SphereGeometry(r,128,64),new THREE.ShaderMaterial({side,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,vertexShader:glowVS,
+  fragmentShader:`#include <logdepthbuf_pars_fragment>
+varying vec3 vN;varying vec3 vP;void main(){
+#include <logdepthbuf_fragment>
+${frag}}`}));
+scene.add(mkGlow(1.025,THREE.BackSide,`float i=pow(max(0.72-dot(vN,normalize(-vP)),0.),3.0);gl_FragColor=vec4(0.35,0.6,1.0,1.0)*i*2.2;`));
+const rim=mkGlow(1.0012,THREE.FrontSide,`float f=1.0-max(dot(vN,normalize(-vP)),0.);gl_FragColor=vec4(0.45,0.7,1.0,1.0)*pow(f,5.0)*0.8;`);scene.add(rim);
+scene.add(new THREE.AmbientLight(0xffffff,0.6));
+const sun=new THREE.DirectionalLight(0xfff4e0,2.3);scene.add(sun);
+
+const D2R=Math.PI/180;
+const v3=(lat,lon,r=1)=>{const p=(90-lat)*D2R,t=(lon+180)*D2R;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t));};
+const toLL=v=>{const n=v.clone().normalize();const lat=90-Math.acos(n.y)/D2R;let lon=Math.atan2(n.z,-n.x)/D2R-180;if(lon<-180)lon+=360;return [lat,lon];};
+
+// ---- high-res Sentinel patches ----
+function feather(){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');const img=x.createImageData(256,256);
+  for(let j=0;j<256;j++)for(let i=0;i<256;i++){const e=Math.min(i,j,255-i,255-j)/255;const a=Math.min(1,e/0.14);const s=a*a*(3-2*a);const k=(j*256+i)*4;img.data[k]=img.data[k+1]=img.data[k+2]=255*s;img.data[k+3]=255;}
+  x.putImageData(img,0,0);return new THREE.CanvasTexture(c);}
+const fth=feather();
+const order=['ecu7','eu7','pan9','ecu10','antw10','de10','pan12','ecu13','antw13','de13','ecu14','antw14'];
+let ro=1;
+for(const name of order){const m=meta[name];const tex=await load('patches/'+name+'.jpg');tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=maxAniso;tex.generateMipmaps=true;
+  const N=2**m.z,seg=160,pos=[],uv=[],idx=[];const r=1+0.0000015*ro;
+  for(let j=0;j<=seg;j++)for(let i=0;i<=seg;i++){const x=m.x0+m.n*i/seg,y=m.y0+m.n*j/seg;const lon=x/N*360-180;const lat=Math.atan(Math.sinh(Math.PI*(1-2*y/N)))/D2R;
+    const p=v3(lat,lon,r);pos.push(p.x,p.y,p.z);uv.push(i/seg,1-j/seg);}
+  for(let j=0;j<seg;j++)for(let i=0;i<seg;i++){const a=j*(seg+1)+i,b=a+1,c=a+seg+1,d=c+1;idx.push(a,c,b,b,c,d);}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);g.computeVertexNormals();
+  const mat=new THREE.MeshStandardMaterial({map:tex,alphaMap:fth,transparent:true,depthWrite:false,roughness:.9,metalness:0});
+  const mesh=new THREE.Mesh(g,mat);mesh.renderOrder=ro++;scene.add(mesh);}
+
+// ---- routes ----
+function densify(wps,r,step=0.0015){const pts=[],cum=[0],wpIdx=[0];
+  for(let i=0;i<wps.length-1;i++){const a=v3(...wps[i]).normalize(),b=v3(...wps[i+1]).normalize();const ang=a.angleTo(b);const n=Math.max(2,Math.ceil(ang/step));
+    for(let k=(i?1:0);k<=n;k++){const s=k/n;const q=a.clone().multiplyScalar(Math.sin((1-s)*ang)/Math.sin(ang)).add(b.clone().multiplyScalar(Math.sin(s*ang)/Math.sin(ang))).multiplyScalar(r);
+      if(pts.length&&pts.at(-1).distanceTo(q)<1e-7)continue;if(pts.length)cum.push(cum.at(-1)+pts.at(-1).angleTo(q)*R_KM);pts.push(q);}
+    wpIdx.push(pts.length-1);}
+  return {pts,cum,wpKm:wpIdx.map(i=>cum[i]),total:cum.at(-1)};}
+const PLANT=[-3.326,-79.8606],MACH=[-3.2589,-79.9673],PORT=[-3.255,-80.0009],ANTW=[51.304,4.2833],REIF=[51.40,6.75];
+const T1=densify([PLANT,[-3.31,-79.88],[-3.285,-79.925],MACH,[-3.258,-79.985],PORT],1.000006,0.00005);
+const SEAW=[PORT,[-3.22,-80.10],[-2.95,-80.35],[-2.5,-81.2],[1.5,-80.3],[7.0,-79.6],[8.88,-79.52],[9.0,-79.59],[9.10,-79.72],[9.18,-79.84],[9.27,-79.92],[9.36,-79.91],[12.5,-77.5],[17.0,-75.5],[20.0,-73.8],[22.5,-72.0],[30,-60],[40,-35],[46,-15],[48.8,-6.0],[50.0,-1.5],[51.0,1.6],[51.42,3.4],[51.38,3.95],[51.33,4.20],ANTW];
+const SEA=densify(SEAW,1.00001,0.0008);
+const T2=densify([ANTW,[51.25,4.45],[51.30,5.0],[51.42,5.45],[51.37,6.17],REIF],1.000008,0.0003);
+const BALBOA=SEA.wpKm[6],COLON=SEA.wpKm[11];
+
+const lineMats=[];
+function mkLine(route,width,opacity,color=0xFFD43B){const g=new LineGeometry();const a=[];route.pts.forEach(p=>a.push(p.x,p.y,p.z));g.setPositions(a);
+  const m=new LineMaterial({color,linewidth:width,transparent:true,opacity,depthWrite:false,toneMapped:false,worldUnits:false});m.resolution.set(W,H);lineMats.push(m);
+  if(opacity<1)m.blending=THREE.AdditiveBlending;
+  const l=new Line2(g,m);l.computeLineDistances();l.renderOrder=100;scene.add(l);return l;}
+function mkRoute(route){const core=mkLine(route,7,1),glow=mkLine(route,22,.35),glow2=mkLine(route,30,.12);const segs=route.pts.length-1;
+  return {route,set(km){const i=kmIndex(route,km);const c=Math.max(0,Math.min(segs,Math.ceil(i)));[core,glow,glow2].forEach(l=>{l.geometry.instanceCount=c;l.visible=c>0;});}};}
+function kmIndex(r,km){if(km<=0)return 0;if(km>=r.total)return r.pts.length-1;let lo=0,hi=r.cum.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(r.cum[m]<km)lo=m;else hi=m;}return lo+(km-r.cum[lo])/(r.cum[hi]-r.cum[lo]);}
+function kmPoint(r,km){const f=kmIndex(r,km);const i=Math.floor(f),s=f-i;if(i>=r.pts.length-1)return r.pts.at(-1).clone();return r.pts[i].clone().lerp(r.pts[i+1],s);}
+const rT1=mkRoute(T1),rSEA=mkRoute(SEA),rT2=mkRoute(T2);
+{ const topo=await fetch('node_modules/world-atlas/countries-50m.json').then(r=>r.json());
+  const mesh=topojson.mesh(topo,topo.objects.countries,(a,b)=>a!==b);const pos=[];
+  for(const line of mesh.coordinates){for(let i=0;i<line.length-1;i++){const a=v3(line[i][1],line[i][0],1.00003),b=v3(line[i+1][1],line[i+1][0],1.00003);if(a.distanceTo(b)<1e-6)continue;pos.push(a.x,a.y,a.z,b.x,b.y,b.z);}}
+  const {LineSegments2}=await import('three/addons/lines/LineSegments2.js');const {LineSegmentsGeometry}=await import('three/addons/lines/LineSegmentsGeometry.js');
+  const g=new LineSegmentsGeometry();g.setPositions(pos);const m=new LineMaterial({color:0xffffff,linewidth:2.2,transparent:true,opacity:.55,depthWrite:false,worldUnits:false});m.resolution.set(W,H);
+  const bl=new LineSegments2(g,m);bl.renderOrder=90;scene.add(bl); }
+const GEO=[['ECUADOR',-1.3,-78.6,'c'],['PERU',-4.6,-79.0,'c'],['KOLUMBIEN',4.5,-73.5,'c'],['PANAMA',8.3,-80.6,'c'],['KUBA',21.8,-79.2,'c'],['BRASILIEN',-6,-56,'c'],['VENEZUELA',7.5,-66,'c'],
+ ['BELGIEN',50.55,4.75,'c'],['NIEDERLANDE',52.25,5.7,'c'],['DEUTSCHLAND',51.0,9.6,'c'],['FRANKREICH',47.0,2.5,'c'],['GROSSBRITANNIEN',53.0,-1.6,'c'],['SPANIEN',40.2,-3.7,'c'],['USA',37,-95,'c'],
+ ['PAZIFIK',-4,-86,'o'],['KARIBIK',15,-74,'o'],
+ ['Guayaquil',-2.19,-79.89,'t'],['Santa Rosa',-3.45,-79.96,'t'],['Pasaje',-3.33,-79.81,'t'],['Panama-Stadt',8.98,-79.52,'t'],['Colón',9.36,-79.90,'t'],
+ ['Brüssel',50.85,4.35,'t'],['Rotterdam',51.92,4.48,'t'],['Gent',51.05,3.72,'t'],['Eindhoven',51.44,5.47,'t'],['Venlo',51.37,6.17,'t'],['Düsseldorf',51.23,6.78,'t'],
+ ['Essen',51.46,7.01,'t'],['Köln',50.94,6.96,'t'],['Krefeld',51.33,6.56,'t'],['Amsterdam',52.37,4.90,'t']];
+const geoEls=GEO.map(g=>{const e=document.createElement('div');e.className='geo '+g[3];e.textContent=g[0];document.getElementById('geos').appendChild(e);return e;});
+
+
+// ---- icons ----
+const ICON={
+ leaf:'M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7 1-2.3c.5.2 1 .3 1.3.3C19 20 22 3 22 3c-1 2-8 2.3-13 3.3S2 11.5 2 13.5s1.8 3.8 1.8 3.8C7 8 17 8 17 8z',
+ truck:'M1 5h13v10H1zM14 8h4.5L22 11.5V15h-8zM6 19.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4zM18 19.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z',
+ ship:'M3 14h18l-2.5 5.5H5.5zM5 9h14v4H5zM8 5h5v3H8zM2 21.5c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1v-1c-2 0-2 1-4 1s-2-1-4-1-2 1-4 1-2-1-4-1-2 1-4 1z',
+ port:'M4 20h16v-2H4zM6 17h4V9H6zM11 17h7v-5h-7zM7 8h2V3H7zM2 22h20v-1H2z',
+ factory:'M2 21V10l6 3V10l6 3V6h3v-3h3v18zM5 18h3v-2H5zm6 0h3v-2h-3zm6 0h3v-2h-3z',
+ cart:'M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2h3.3l1 2H21l-3.5 8H8.1l-.9 1.6h12.3V16H4.6l2.3-4.4L3.2 4H1z',
+ banana:'M20 3c-.6 0-1.2.4-1.4 1-1.3 4.6-5.5 8.5-11.6 9.5-.9.2-2 .9-2 2.1 0 1.4 1.4 2.4 3.3 2.4C15 18 21 11.4 21 5.5V4c0-.6-.4-1-1-1zM4 16.5l-2 1.2c-.3.2-.2.7.2.7h2.3z'};
+const svg=(k,c='#141414',s=36)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24"><path fill="${c}" d="${ICON[k]}"/></svg>`;
+document.getElementById('icons').innerHTML=[['banana','#FFD43B'],['truck','#FF5A5F'],['ship','#3D8BFF'],['cart','#2ECC71']].map(([k,c])=>`<div style="background:${c}">${svg(k,k==='banana'?'#141414':'#fff',52)}</div>`).join('');
+function spriteIcon(k){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');
+  const g=x.createRadialGradient(128,128,40,128,128,128);g.addColorStop(0,'rgba(255,212,59,.55)');g.addColorStop(1,'rgba(255,212,59,0)');x.fillStyle=g;x.fillRect(0,0,256,256);
+  x.beginPath();x.arc(128,128,70,0,7);x.fillStyle='#fff';x.fill();x.beginPath();x.arc(128,128,62,0,7);x.fillStyle='#FFD43B';x.fill();
+  x.save();x.translate(128-42,128-42);x.scale(3.5,3.5);x.fillStyle='#141414';x.fill(new Path2D(ICON[k]));x.restore();
+  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
+const spriteTex={};['leaf','truck','ship','port','factory','cart'].forEach(k=>spriteTex[k]=spriteIcon(k));
+const marker=new THREE.Sprite(new THREE.SpriteMaterial({map:spriteTex.leaf,depthTest:false,transparent:true,toneMapped:false,sizeAttenuation:false}));
+marker.scale.set(.085,.085,1);marker.renderOrder=200;scene.add(marker);
+const rings=[0,1].map(()=>{const m=new THREE.Mesh(new THREE.RingGeometry(.86,1,96),new THREE.MeshBasicMaterial({color:0xFFD43B,transparent:true,side:THREE.DoubleSide,toneMapped:false,depthWrite:false}));m.renderOrder=150;scene.add(m);return m;});
+const gas=new THREE.Mesh(new THREE.SphereGeometry(1,48,24,0,Math.PI*2,0,Math.PI/2),new THREE.MeshBasicMaterial({color:0x7CE07C,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending,toneMapped:false}));
+gas.renderOrder=120;scene.add(gas);
+
+// ---- camera ----
+function camAt(ll,alt,tilt,head){const P=v3(ll[0],ll[1],1);const n=P.clone().normalize();
+  let north=new THREE.Vector3(0,1,0).sub(n.clone().multiplyScalar(n.y));if(north.lengthSq()<1e-8)north.set(1,0,0);north.normalize();const east=new THREE.Vector3().crossVectors(north,n).normalize();
+  const h=head*D2R,tl=tilt*D2R;const fwd=north.clone().multiplyScalar(Math.cos(h)).add(east.clone().multiplyScalar(Math.sin(h)));
+  camera.position.copy(P).add(n.clone().multiplyScalar(alt*Math.cos(tl))).sub(fwd.clone().multiplyScalar(alt*Math.sin(tl)));
+  camera.up.copy(n.clone().multiplyScalar(Math.sin(tl)).add(fwd.clone().multiplyScalar(Math.cos(tl)))).normalize();camera.lookAt(P);camera.updateMatrixWorld();
+  sun.position.copy(n.clone().multiplyScalar(3).add(east.clone().multiplyScalar(-2)).add(north.clone().multiplyScalar(2.2)));}
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const easeIO=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const prog=(t,a,b)=>cl((t-a)/(b-a));
+function slerpLL(a,b,t){const A=v3(...a).normalize(),B=v3(...b).normalize();const ang=A.angleTo(B);if(ang<1e-7)return a;
+  return toLL(A.multiplyScalar(Math.sin((1-t)*ang)/Math.sin(ang)).add(B.multiplyScalar(Math.sin(t*ang)/Math.sin(ang))));}
+// altitude interpolated in log space for smooth zooms
+const lalt=(a,b,s)=>Math.exp(lerp(Math.log(a),Math.log(b),s));
+
+// vehicle position (km along each route) as function of time
+function state(t){
+  let seg,km,icon;
+  if(t<8.4){seg='T1';km=0;icon='leaf';}
+  else if(t<11.9){seg='T1';km=T1.total*ease(prog(t,8.5,11.8));icon='truck';}
+  else if(t<16.3){seg='SEA';km=0;icon='port';}
+  else if(t<17.3){seg='SEA';km=BALBOA*easeIO(prog(t,16.3,17.3));icon='ship';}
+  else if(t<18.3){seg='SEA';km=lerp(BALBOA,COLON,prog(t,17.3,18.3));icon='ship';}
+  else if(t<22.3){seg='SEA';km=lerp(COLON,SEA.total,easeIO(prog(t,18.3,22.3)));icon='ship';}
+  else if(t<24.3){seg='SEA';km=SEA.total;icon='port';}
+  else if(t<26.8){seg='T2';km=T2.total*ease(prog(t,24.3,26.7));icon='truck';}
+  else if(t<32.4){seg='T2';km=T2.total;icon='factory';}
+  else {seg='T2';km=T2.total;icon='cart';}
+  const route={T1,SEA,T2}[seg];const pos=kmPoint(route,km);
+  const total=(seg==='T1'?km:seg==='SEA'?T1.total+km:T1.total+SEA.total+km);
+  return {seg,km,icon,pos,total};}
+
+// camera timeline: [t, lat, lon, alt, tilt, head]; 'F' = follow vehicle
+const CK=[
+  [0.0, 10,-55, 3.4, 0, 0],
+  [2.7, -1,-76, 1.3, 5, 0],
+  [3.7, -3.22,-79.92, 0.030, 25, 0],
+  [6.1, -3.29,-79.92, 0.016, 30, 0],
+  [8.4, -3.30,-79.90, 0.012, 32, -5],
+  ['F',8.4,11.9, 0.012,0.011, 32,34, -5,-15],
+  [11.9, -3.24,-80.0, 0.011, 34, -15],
+  [16.2, -3.25,-80.0, 0.0072, 40, 5],
+  ['F',16.3,17.0, 0.02,0.12, 30,20, -5,0],
+  [17.35, 9.15,-79.75, 0.045, 28, -20],
+  [18.2, 9.22,-79.82, 0.040, 30, -15],
+  ['F',18.6,21.3, 1.1,1.35, 4,4, 20,30],
+  [22.25, 51.28,4.32, 0.016, 32, 0],
+  [24.2, 51.29,4.35, 0.013, 34, 10],
+  ['F',24.6,26.6, 0.045,0.045, 25,25, 40,40],
+  [27.4, 51.38,6.68, 0.020, 32, 10],
+  [32.2, 51.395,6.74, 0.0115, 40, 25],
+  [33.3, 51.395,6.74, 0.55, 0, 0],
+  [34.6, 24,-36, 2.7, 0, 0],
+  [41.9, 23.4,-35.4, 2.78, 0, 0]];
+// expand: follow segments produce camera from vehicle state
+function camKey(k,t){ // returns {ll,alt,tilt,head}
+  if(k[0]==='F'){const s=prog(t,k[1],k[2]);return {ll:toLL(state(t).pos),alt:lalt(k[3],k[4],s),tilt:lerp(k[5],k[6],s),head:lerp(k[7],k[8],s)};}
+  return {ll:[k[1],k[2]],alt:k[3],tilt:k[4],head:k[5]};}
+const kStart=k=>k[0]==='F'?k[1]:k[0], kEnd=k=>k[0]==='F'?k[2]:k[0];
+function cam(t){let i=0;while(i<CK.length-1&&t>=kStart(CK[i+1]))i++;const a=CK[i];
+  if(a[0]==='F'&&t<=a[2]){const c=camKey(a,t);return camAt(c.ll,c.alt,c.tilt,c.head);}
+  if(i===CK.length-1){const c=camKey(a,kEnd(a));return camAt(c.ll,c.alt,c.tilt,c.head);}
+  const b=CK[i+1];const ta=kEnd(a),tb=kStart(b);const ca=camKey(a,ta),cb=camKey(b,tb);
+  const s=ease(prog(t,ta,tb));const ll=slerpLL(ca.ll,cb.ll,s);
+  const d=v3(...ca.ll).angleTo(v3(...cb.ll));let alt=lalt(ca.alt,cb.alt,s);
+  const hop=(tb>33)?0:Math.sin(Math.PI*s)*Math.min(1.2,d*0.9);alt+=hop*(Math.max(ca.alt,cb.alt)<0.5?1:0.2);
+  const tilt=lerp(ca.tilt,cb.tilt,s)*(1-cl(hop/0.6)*0.8);
+  camAt(ll,alt,tilt,lerp(ca.head,cb.head,s));}
+
+// ---- UI helpers ----
+const $=id=>document.getElementById(id);
+const fade=(t,a,b,c,d)=>t<a?0:t<b?(t-a)/(b-a):t<c?1:t<d?1-(t-c)/(d-c):0;
+function place(el,ll,dy=-34){const p=v3(ll[0],ll[1],1.00002).project(camera);const x=(p.x*.5+.5)*W,y=(-p.y*.5+.5)*H;el.style.left=x+'px';el.style.top=(y+dy)+'px';return p.z<1;}
+function pop(el,t,a,b,c,d,base='translateX(-50%)'){const o=fade(t,a,b,c,d);el.style.opacity=o;const k=t<b?0.55+0.45*easeBack(prog(t,a,b)):1;el.style.transform=`${base} scale(${k})`;}
+const easeBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+let WORDS=[];window.setWords=w=>{WORDS=w;};
+function captions(t){const idx=WORDS.findIndex(w=>t>=w.s-0.02&&t<w.e);if(idx<0||t<3.4||t>38.9){$('cap').innerHTML='';return;}
+  const g=WORDS[idx].g;const ws=WORDS.map((w,i)=>[w,i]).filter(([w])=>w.g===g);const st=WORDS[ws[0][1]].s;const pk=1+0.08*Math.exp(-(t-st)*14);
+  const chars=ws.reduce((a,[w])=>a+w.w.length,0);$('cap').style.fontSize=(chars>20?60:74)+'px';$('cap').style.transform=`scale(${pk})`;
+  $('cap').innerHTML=ws.map(([w,i])=>`<span class="${i===idx?'on':(w.hot?'hot':'')}">${w.w}</span>`).join(' ');}
+const vnames={leaf:'Ernte',truck:'LKW',ship:'Schiff',port:'Hafen',factory:'Reiferei',cart:'Supermarkt'};
+let lastIcon='';
+function ripeColor(r){const a=[91,209,91],b=[255,212,59];return `rgb(${a.map((v,i)=>Math.round(lerp(v,b[i],r))).join(',')})`;}
+
+window.renderAt=(t)=>{
+  const S=state(t);
+  cam(t);
+  // routes
+  rT1.set(S.seg==='T1'?S.km:T1.total);rSEA.set(S.seg==='SEA'?S.km:S.seg==='T1'?0:SEA.total);rT2.set(S.seg==='T2'?S.km:0);
+  // marker
+  marker.position.copy(S.pos);if(S.icon!==lastIcon){marker.material.map=spriteTex[S.icon];marker.material.needsUpdate=true;lastIcon=S.icon;}
+  marker.material.opacity=fade(t,3.4,3.9,99,100);
+  const dist=camera.position.distanceTo(S.pos);
+  const _mp=S.pos.clone().project(camera);const mx=(_mp.x*.5+.5)*W,my=(-_mp.y*.5+.5)*H;
+  rings.forEach((r,i)=>{const ph=((t*0.85+i*0.5)%1);r.position.copy(S.pos);r.lookAt(S.pos.clone().multiplyScalar(2));r.scale.setScalar(dist*(0.006+ph*0.05));r.material.opacity=(1-ph)*0.75*marker.material.opacity*(t>32.4?0:1);});
+  // gas dome at Reiferei
+  const gp=v3(...REIF,1);gas.position.copy(gp);gas.lookAt(gp.clone().multiplyScalar(2));gas.rotateX(Math.PI/2);
+  const go=fade(t,28.3,28.9,32.0,32.6);const ripe=ease(prog(t,30.95,32.3));
+  gas.material.opacity=go*(0.16+0.06*Math.sin(t*9));gas.material.color.set(ripeColor(ripe));gas.scale.setScalar(0.00045*(1+0.25*Math.sin(t*3))*(0.4+0.6*easeBack(prog(t,28.3,28.9))));
+  // title + icons (hook)
+  $('title').style.opacity=fade(t,0,0.08,2.95,3.25);
+  document.querySelectorAll('#title .tw').forEach((e,i)=>{const st=[0.0,0.08,0.16,0.3,0.45,0.55,0.75,0.8,0.95][i];const p=prog(t,st,st+0.22);e.style.opacity=cl(p*3);e.style.transform=`translateY(${(1-easeBack(p))*40}px) scale(${0.6+0.4*easeBack(p)})`;});$('title').style.transform=`scale(${1.06-0.06*easeBack(prog(t,0,0.35))})`;
+  $('icons').style.opacity=fade(t,0.25,0.45,2.95,3.25);$('icons').style.transform=`translateY(${(1-easeBack(prog(t,0.25,0.6)))*40}px)`;
+  // labels
+  $('lMachala').style.opacity=fade(t,3.5,3.8,6.6,6.9);place($('lMachala'),MACH,-50);
+  $('lPort').style.opacity=fade(t,10.5,10.8,16.1,16.4);place($('lPort'),PORT,-56);
+  $('lPanama').style.opacity=fade(t,17.2,17.45,18.6,18.9);place($('lPanama'),[9.15,-79.78],-30);
+  $('lAntw').style.opacity=fade(t,21.9,22.2,24.0,24.3);place($('lAntw'),ANTW,-56);
+  $('lReif').style.opacity=fade(t,26.0,26.3,32.3,32.6);place($('lReif'),REIF,-60);
+  {const ok=place($('ocean'),[30,-42],0);const oy=parseFloat($('ocean').style.top),ox=parseFloat($('ocean').style.left);$('ocean').style.opacity=fade(t,18.7,19.1,20.6,21.0)*0.9*((oy>460&&oy<1160&&ox>150&&ox<930)?1:0);}
+  // HUD
+  const ho=fade(t,7.55,7.85,38.8,39.1);$('hud').style.opacity=ho;$('hud').style.transform=`translateX(-50%) translateY(${(1-ho)*-30}px)`;
+  $('credit').style.display='none';
+  if(S.icon!==window._hi){$('vicon').innerHTML=svg(S.icon,'#141414',38);$('vname').textContent=vnames[S.icon];window._hi=S.icon;}
+  $('km').textContent=Math.round(S.total).toLocaleString('de-DE')+' km';
+  let day=1;if(t>=16.3&&t<22.3)day=2+Math.floor(14*easeIO(prog(t,16.3,22.3)));else if(t>=22.3&&t<24.3)day=16;else if(t>=24.3&&t<26.8)day=17;else if(t>=26.8&&t<32.4)day=17+Math.floor(5*prog(t,26.8,32.3));else if(t>=32.4)day=23;
+  $('days').textContent='Tag '+day;
+  const nx=t<11.9?['Puerto Bolívar','Ecuador']:t<17.3?['Panamakanal','Panama']:t<22.2?['Antwerpen','Belgien']:t<26.8?['Reiferei','Deutschland']:t<32.4?['Supermarkt','Deutschland']:['Dein Regal','Ziel erreicht'];
+  $('next').textContent=nx[0];$('nextc').textContent=nx[1];
+  const rp=$('ripe');rp.style.background=ripeColor(ripe);rp.style.width=(18+82*ripe)+'%';
+  const pulse=(t>7.6&&t<8.8)||(t>22.9&&t<24.3)?0.5+0.5*Math.sin(t*16):0;rp.style.boxShadow=`0 0 ${10+24*pulse}px ${ripeColor(ripe)}`;
+  { const st=[[16.3,0.35,0.50,'Export','+0,15 €'],[22.2,0.50,1.00,'Import','+0,50 €'],[32.4,1.00,1.11,'Discounter','+0,11 €']];
+    let pv=0.35,sub='Erzeuger',hit=-1;
+    st.forEach((x,i)=>{if(t>=x[0]){pv=lerp(x[1],x[2],ease(prog(t,x[0],x[0]+0.6)));sub=x[3];hit=i;}});
+    if(t>=26.8&&t<32.4)sub='+ Reifung';
+    $('price').textContent=pv.toFixed(2).replace('.',',')+' €';$('pricesub').textContent=sub;
+    const last=hit>=0?st[hit][0]:-9;const k=Math.exp(-Math.max(0,t-last)*4)*(t>=last?1:0);
+    $('price').style.color=k>0.05?'#FFD43B':(t>=32.4?'#FFD43B':'#fff');$('price').style.transform=`scale(${1+0.3*k})`;
+    $('price').style.textShadow=`0 0 ${24*k}px rgba(255,212,59,${k})`;
+    const d=$('pdelta');if(hit>=0&&t<last+1.6){const q=prog(t,last,last+1.6);d.textContent=st[hit][4];d.style.opacity=fade(t,last,last+0.15,last+1.1,last+1.6);d.style.transform=`translate(-50%,${-q*22}px) scale(${0.7+0.3*easeBack(prog(t,last,last+0.3))})`;}else d.style.opacity=0; }
+  $('ripetxt').textContent=ripe<0.5?'grün':ripe<0.99?'reift…':'gelb';$('ripetxt').style.color=ripeColor(ripe);
+  pop($('temp'),t,13.4,13.6,24.2,24.5);
+  // chips
+  pop($('cGreen'),t,7.6,7.85,8.7,9.0);
+  pop($('cTemp'),t,13.36,13.6,15.9,16.2);
+  pop($('cStill'),t,23.5,23.75,24.4,24.7);
+  pop($('cGas'),t,28.36,28.6,30.8,31.05);
+  pop($('cYellow'),t,32.0,32.2,32.75,33.0);
+  // big km counter during the crossing
+  const bk=fade(t,20.3,20.55,21.9,22.2);$('big').style.opacity=bk;$('big').firstChild.nodeValue=Math.round(S.total).toLocaleString('de-DE');
+  $('big').style.transform=`scale(${0.7+0.3*easeBack(prog(t,20.3,20.6))})`;
+  // stats summary
+  const so=fade(t,32.6,32.8,38.75,38.95);$('stats').style.opacity=so;
+  [...$('stats').children].forEach((c,i)=>{const p=easeBack(prog(t,32.6+i*0.2,32.9+i*0.2));c.style.transform=`translateX(${(1-p)*-120}px)`;c.style.opacity=cl(prog(t,32.6+i*0.2,32.8+i*0.2));});
+  const totalKm=T1.total+SEA.total+T2.total;
+  $('sKm').textContent='≈ '+(Math.round(totalKm*ease(prog(t,32.6,33.05))/100)*100).toLocaleString('de-DE')+' km';
+  $('sDays').textContent='≈ '+Math.round(23*ease(prog(t,32.75,33.2)))+' Tage';
+  // CTA
+  const co=fade(t,38.95,39.15,99,100);$('cta').style.opacity=co;$('cta').style.transform=`scale(${0.7+0.3*easeBack(prog(t,38.95,39.3))})`;
+  {const a=easeBack(prog(t,38.95,39.25)),b=easeBack(prog(t,39.15,39.45)),c=easeBack(prog(t,39.4,39.7));
+   $('l1').style.opacity=cl(prog(t,38.95,39.1));$('l1').style.transform=`scale(${0.6+0.4*a})`;
+   $('l2').style.opacity=cl(prog(t,39.15,39.3));$('l2').style.transform=`scale(${0.6+0.4*b})`;
+   const cc=$('cta').querySelector('.c');cc.style.opacity=cl(prog(t,39.4,39.55));cc.style.transform=`scale(${(0.6+0.4*c)*(1+0.04*Math.sin(t*7))})`;}
+  // flash on big moments
+  $('flash').style.opacity=Math.max(0.35*fade(t,7.58,7.62,7.62,7.85),0.3*fade(t,31.98,32.02,32.02,32.3));
+
+  // photo bubbles popping out of the map point
+  const CARDS=[['plantage',3.45,6.5,'Plantage, Ecuador',PLANT,PORT],['port',10.55,12.45,'Puerto Bolívar',PORT,PLANT],['reefer',12.5,16.1,'Kühlcontainer · 13 °C',PORT,PLANT],
+    ['truck',24.35,26.0,'LKW nach Deutschland',null,ANTW],['reiferei',26.05,28.3,'Reifekammer',REIF,ANTW]];
+  const cd=CARDS.find(c=>t>=c[1]-0.01&&t<c[2]+0.3);
+  const scr=ll=>{const p=v3(ll[0],ll[1],1.00002).project(camera);return [(p.x*.5+.5)*W,(-p.y*.5+.5)*H];};
+  if(cd){if(window._cimg!==cd[0]){$('cimg').src='photos/'+cd[0]+'.jpg';$('ctxt').textContent=cd[3];window._cimg=cd[0];}
+    const A=cd[4]?scr(cd[4]):(()=>{const p=S.pos.clone().project(camera);return [(p.x*.5+.5)*W,(-p.y*.5+.5)*H];})();
+    const B=scr(cd[5]);let dx=A[0]-B[0],dy=A[1]-B[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+    let ox=dx*330,oy=Math.min(dy*320,0)-270;            // away from the route, and upward
+    let cx=cl(A[0]+ox,262,800),cy=cl(A[1]+oy,690,1010);if(cd[0]==='regal'){cx=540;cy=800;}   // bubble centre, kept inside safe area
+    const p=easeBack(prog(t,cd[1],cd[1]+0.45));const o=fade(t,cd[1],cd[1]+0.12,cd[2],cd[2]+0.25);
+    const bx=lerp(A[0],cx,p),by=lerp(A[1],cy,p);
+    $('card').style.opacity=o;$('card').style.transform=`translate(${bx-230}px,${by-190}px) scale(${0.15+0.85*cl(p,0,1.2)}) rotate(${(1-cl(p))*-12}deg)`;
+    $('cimg').style.transform=`scale(${1.05+0.1*prog(t,cd[1],cd[2]+0.25)})`;
+    const ln=$('cline');ln.setAttribute('x1',A[0]);ln.setAttribute('y1',A[1]);ln.setAttribute('x2',bx);ln.setAttribute('y2',by+150);ln.setAttribute('opacity',o);ln.setAttribute('stroke-dashoffset',-t*40);
+    const dt=$('cdot');dt.setAttribute('cx',A[0]);dt.setAttribute('cy',A[1]);dt.setAttribute('opacity',o);
+    const bp=prog(t,cd[1],cd[1]+0.6);const bu=$('cburst');bu.setAttribute('cx',A[0]);bu.setAttribute('cy',A[1]);bu.setAttribute('r',10+bp*150);bu.setAttribute('opacity',(1-bp)*(bp>0?1:0));bu.setAttribute('stroke-width',8*(1-bp)+1);}
+  else{$('card').style.opacity=0;['cline','cdot','cburst'].forEach(i=>$(i).setAttribute('opacity',0));}
+  { const hl=cd?1-fade(t,cd[1],cd[1]+0.15,cd[2],cd[2]+0.25):1;['lMachala','lPort','lReif'].forEach(id=>$(id).style.opacity=parseFloat($(id).style.opacity||0)*hl); }
+  // zoom punch on key moments
+  const P=[7.6,13.36,23.5,28.36,32.0,38.95];let pk=0;P.forEach(x=>{if(t>=x)pk=Math.max(pk,Math.exp(-(t-x)*7)*(t-x<0.6?1:0));});
+  renderer.domElement.style.transform=`scale(${1+0.035*pk})`;
+  { const calt=camera.position.length()-1;const cpos=camera.position.clone();
+    GEO.forEach((g,i)=>{const P=v3(g[1],g[2],1);const e=geoEls[i];const vis=P.clone().normalize().dot(cpos.clone().sub(P).normalize());
+      const p=P.clone().project(camera);const x=(p.x*.5+.5)*W,y=(-p.y*.5+.5)*H;
+      let o=g[3]==='t'?cl((0.12-calt)/0.04)*cl((calt-0.003)/0.002):cl((calt-0.012)/0.01)*cl((2.2-calt)/0.5);
+      if((t>32.5&&t<39.2)||t<3.0)o=0;
+      if(vis<0.05||x<40||x>1040||y<440||y>1700||(y>1170&&y<1380)||p.z>1)o=0;
+      const sd=Math.hypot(x-mx,y-my);if(sd<70)o*=cl((sd-30)/40);
+      e.style.opacity=o;e.style.left=x+'px';e.style.top=y+'px';});
+    const NS=t<11.9?[PORT,'Puerto Bolívar']:t<17.3?[[9.1,-79.75],'Panamakanal']:t<22.2?[ANTW,'Antwerpen']:t<26.8?[REIF,'Reiferei']:null;
+    if(NS&&t>7.9){const P=v3(NS[0][0],NS[0][1],1);const p=P.clone().project(camera);const x=(p.x*.5+.5)*W,y=(-p.y*.5+.5)*H;
+      const vis=P.clone().normalize().dot(cpos.clone().sub(P).normalize());const d=Math.hypot(x-mx,y-my);
+      let o=(vis>0.05&&p.z<1&&x>60&&x<1020&&y>470&&y<1750)?cl((d-90)/80):0;if(cd)o*=0.0;
+      $('npin').style.opacity=o;$('npin').style.left=x+'px';$('npin').style.top=y+'px';$('npt').textContent=NS[1];}
+    else $('npin').style.opacity=0; }
+  captions(t);
+  composer.render();
+};
+const composer=new EffectComposer(renderer);composer.setPixelRatio(1.5);composer.setSize(W,H);
+composer.addPass(new RenderPass(scene,camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(W/2,H/2),0.5,0.45,0.85));
+composer.addPass(new OutputPass());
+window.dbg={composer,earthMat,scene,renderer};window.READY=true;
+</script></body></html>
