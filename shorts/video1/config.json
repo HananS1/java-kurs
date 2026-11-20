@@ -1,0 +1,47 @@
+{
+  "clip": "clip.mp4",
+  "clip_start": 0,
+  "clip_audio": 0.0,
+  "mirror": false,
+  "voice": "voice.wav",
+  "out": "video1_vorschau.mp4",
+  "captions": [
+    {"start": 0.00, "end": 2.21, "text": "Die Überwachungskamera hat dieses Mädchen erwischt…", "highlight": ["Überwachungskamera", "erwischt"]},
+    {"start": 2.27, "end": 3.76, "text": "beim Himmel-und-Hölle-Spielen.", "highlight": ["Himmel-und-Hölle-Spielen"]},
+    {"start": 3.90, "end": 5.72, "text": "Auf Feldern, die gar nicht da sind.", "highlight": ["nicht"]},
+    {"start": 5.97, "end": 7.13, "text": "Der Ladenbesitzer sieht das –", "highlight": ["Ladenbesitzer"]},
+    {"start": 7.23, "end": 8.23, "text": "und klebt ihr über Nacht", "highlight": []},
+    {"start": 8.35, "end": 9.52, "text": "echte Felder auf den Boden.", "highlight": ["echte"]},
+    {"start": 9.66, "end": 10.28, "text": "Sie kommt zurück…", "highlight": []},
+    {"start": 10.43, "end": 11.67, "text": "und springt sofort los.", "highlight": ["sofort"]},
+    {"start": 11.79, "end": 13.49, "text": "Doch dann kommt ein erwachsener Mann rein.", "highlight": ["erwachsener", "Mann"]},
+    {"start": 13.61, "end": 14.29, "text": "Schaut nach links.", "highlight": ["links"]},
+    {"start": 14.41, "end": 14.91, "text": "Nach rechts.", "highlight": ["rechts"]},
+    {"start": 15.06, "end": 15.88, "text": "Sucht die Kameras.", "highlight": ["Kameras"]},
+    {"start": 15.98, "end": 17.42, "text": "Als würde er gleich was klauen.", "highlight": ["klauen"]},
+    {"start": 17.55, "end": 18.50, "text": "Und das tut er auch.", "highlight": []},
+    {"start": 18.62, "end": 19.91, "text": "Er klaut sich einen Moment…", "highlight": ["Moment"]},
+    {"start": 19.99, "end": 20.99, "text": "um nochmal Kind zu sein.", "highlight": ["Kind"]},
+    {"start": 21.13, "end": 22.48, "text": "Und er war nicht der Letzte.", "highlight": ["Letzte"]}
+  ],
+  "sfx": [
+    {"time": 0.05, "sound": "ding", "vol": 0.5},
+    {"time": 5.90, "sound": "whoosh", "vol": 0.7},
+    {"time": 10.40, "sound": "pop", "vol": 0.7},
+    {"time": 11.75, "sound": "ding", "vol": 0.5},
+    {"time": 13.60, "sound": "whoosh", "vol": 0.5},
+    {"time": 14.40, "sound": "whoosh", "vol": 0.5},
+    {"time": 17.50, "sound": "pop", "vol": 0.7},
+    {"time": 18.60, "sound": "ding", "vol": 0.4}
+  ],
+  "overlays": [
+    {"type": "circle", "start": 0.0, "end": 2.2, "x": 330, "y": 700},
+    {"type": "arrow", "start": 11.8, "end": 13.5, "x": 260, "y": 600}
+  ],
+  "zooms": [
+    {"start": 9.66, "end": 11.67},
+    {"start": 17.55, "end": 18.50},
+    {"start": 21.13, "end": 22.48}
+  ],
+  "tail": 0.6
+}
