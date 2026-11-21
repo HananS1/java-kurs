@@ -387,10 +387,10 @@
  "music": {
   "path": "music.mp3",
   "start": 0,
-  "gain_db": -14,
+  "gain_db": -10,
   "fade_in": 0.3,
   "fade_out": 1.2,
-  "duck_threshold": 0.02,
-  "duck_ratio": 4
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5
  }
 }
