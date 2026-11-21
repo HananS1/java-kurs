@@ -120,3 +120,44 @@ def place(o, video):
         o["x_end"], o["y_end"] = int(b[0] - dx * gap), int(b[1] - dy * gap)
     o["_target"] = [int(a[0]), int(a[1]), int(r)]
     return o
+
+
+# ---------------------------------------------------------------------------
+# Mitbewegen: Objekt Bild fuer Bild verfolgen (CSRT-Tracker)
+# ---------------------------------------------------------------------------
+def follow_path(video, t0, t1, cx, cy, box, fps=30):
+    """Verfolgt das Objekt mit Mittelpunkt (cx,cy) und Kantenlaenge box ab t0 bis t1.
+    Gibt pro Ausgabebild (cx, cy, scale) zurueck – geglaettet, Ausreisser verworfen."""
+    import numpy as np
+    cap = cv2.VideoCapture(video)
+    cap.set(cv2.CAP_PROP_POS_MSEC, t0 * 1000)
+    ok, frame = cap.read()
+    n = max(1, round((t1 - t0) * fps))
+    if not ok:
+        return [(cx, cy, 1.0)] * n
+    H, W = frame.shape[:2]
+    b = int(box)
+    x0, y0 = int(max(0, min(W - b, cx - b / 2))), int(max(0, min(H - b, cy - b / 2)))
+    tr = cv2.TrackerCSRT_create()
+    tr.init(frame, (x0, y0, b, b))
+    pts = [(cx, cy, 1.0)]
+    last = (cx, cy, 1.0)
+    for _ in range(n - 1):
+        ok, frame = cap.read()
+        if not ok:
+            pts.append(last); continue
+        ok, r = tr.update(frame)
+        if ok:
+            nx, ny = r[0] + r[2] / 2, r[1] + r[3] / 2
+            sc = max(0.7, min(1.4, r[2] / b))
+            # Sprung > 15 % der Bildbreite pro Bild = Fehlgriff -> letzte Position halten
+            if abs(nx - last[0]) + abs(ny - last[1]) < W * 0.15:
+                last = (nx, ny, sc)
+        pts.append(last)
+    cap.release()
+    a = np.array(pts, dtype=float)
+    k = 5                                     # gleitender Mittelwert gegen Zittern
+    if len(a) > k:
+        pad = np.pad(a, ((k // 2, k // 2), (0, 0)), mode="edge")
+        a = np.stack([np.convolve(pad[:, i], np.ones(k) / k, mode="valid") for i in range(3)], 1)
+    return [tuple(p) for p in a]

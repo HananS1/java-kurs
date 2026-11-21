@@ -153,11 +153,6 @@
    "sound": "@transition"
   },
   {
-   "time": 1.04,
-   "sound": "@accent",
-   "gain": 0.75
-  },
-  {
    "time": 2.54,
    "sound": "@accent",
    "gain": 0.75
@@ -181,16 +176,22 @@
    "time": 14.94,
    "sound": "@accent",
    "gain": 0.75
+  },
+  {
+   "time": 1.64,
+   "sound": "@accent",
+   "gain": 0.75
   }
  ],
  "overlays": [
   {
    "style": "circle_yellow",
-   "start": 1.0,
+   "start": 1.6,
    "end": 2.46,
-   "x": 500,
-   "y": 690,
-   "size": 380
+   "x": 560,
+   "y": 790,
+   "size": 400,
+   "track_box": 220
   },
   {
    "style": "arrow_red",
@@ -199,15 +200,21 @@
    "x": 690,
    "y": 600,
    "angle": 135,
-   "size": 230
+   "size": 230,
+   "track": [
+    540,
+    640,
+    220
+   ]
   },
   {
    "style": "circle_red",
    "start": 5.62,
    "end": 6.71,
-   "x": 620,
-   "y": 520,
-   "size": 420
+   "x": 545,
+   "y": 770,
+   "size": 400,
+   "track_box": 220
   },
   {
    "style": "arrow_white",
@@ -216,7 +223,12 @@
    "x": 770,
    "y": 560,
    "angle": 135,
-   "size": 230
+   "size": 230,
+   "track": [
+    663,
+    687,
+    220
+   ]
   },
   {
    "style": "circle_glow",
@@ -230,18 +242,18 @@
    "style": "arrow_yellow",
    "start": 14.9,
    "end": 16.5,
-   "x": 570,
-   "y": 390,
+   "x": 770,
+   "y": 440,
    "angle": 180,
-   "size": 230
+   "size": 230,
+   "track": [
+    555,
+    480,
+    240
+   ]
   }
  ],
- "zooms": [
-  {
-   "start": 16.55,
-   "end": 18.0
-  }
- ],
+ "zooms": [],
  "tail": 0.6,
  "music": {
   "path": "music.mp3",

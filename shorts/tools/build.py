@@ -152,7 +152,7 @@ def main(cfg_path):
                 "fontsize=90:x=(w-tw)/2:y=500")
 
     # Punch-in-Zooms
-    zooms = cfg.get("zooms", [])
+    zooms = cfg.get("zooms", []) if cfg.get("zoom_mode") == "zoompan" else []
     if zooms:
         cond = "+".join(f"between(in,{int(z['start']*FPS)},{int(z['end']*FPS)})" for z in zooms)
         vsrc += (f",zoompan=z='if({cond},{cfg.get('zoom_factor',1.18)},1)':d=1:"
@@ -197,6 +197,25 @@ def main(cfg_path):
                     print(f"  !! WARNUNG: {o['style']} @{o['start']} ueberlappt Zoom {z}")
     for i, o in anim:
         d = f"fx_tmp/o{i}"
+        if o.get("follow", True) and clip and os.path.exists(clip) and (o["style"].startswith("circle") or "track" in o):
+            # Mitbewegen: Ziel Bild fuer Bild verfolgen, Overlay als Vollbild-Sequenz
+            tspec2 = importlib.util.spec_from_file_location("track", os.path.join(os.path.dirname(os.path.abspath(__file__)), "track.py"))
+            trk = importlib.util.module_from_spec(tspec2); tspec2.loader.exec_module(trk)
+            if o["style"].startswith("circle"):
+                cx, cy, box = o["x"], o["y"], o.get("track_box", int(o.get("size", 380) * 0.55))
+            else:
+                cx, cy, box = o["track"]          # Pfeil: [Ziel-x, Ziel-y, Ziel-Groesse]
+            path = trk.follow_path(clip, o["start"], o["end"], cx, cy, box, FPS)
+            fx.render_follow(o, path, d)
+            moved = max(abs(p[0] - path[0][0]) + abs(p[1] - path[0][1]) for p in path)
+            print(f"  folgt: {o['style']:13s} @{o['start']:5.2f}  Bewegung max {moved:.0f}px")
+            inputs += ["-itsoffset", f"{o['start']:.3f}", "-framerate", str(FPS), "-i", f"{d}/f%04d.png"]
+            lbl = f"ov{i}"
+            filt.append(f"[{last}][{idx}:v]overlay=0:0:eof_action=pass:"
+                        f"enable='between(t,{o['start']},{o['end']})'[{lbl}]")
+            last = lbl
+            idx += 1
+            continue
         w, h = fx.render(o, d)
         inputs += ["-itsoffset", f"{o['start']:.3f}", "-framerate", str(FPS), "-i", f"{d}/f%04d.png"]
         ov_len = o["end"] - o["start"]
@@ -243,7 +262,7 @@ def main(cfg_path):
     out = cfg.get("out", "final.mp4")
     run(["ffmpeg", "-y", "-loglevel", "error"] + inputs +
         ["-filter_complex", fc, "-map", "[vout]", "-map", "[aout]",
-         "-t", f"{length:.2f}", "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+         "-t", f"{length:.2f}", "-c:v", "libx264", "-preset", "slow", "-crf", "16",
          "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
     print("fertig:", os.path.abspath(out), f"({length:.1f}s)")
 

@@ -132,3 +132,24 @@ def render(o, out_dir):
             im = arrow_frame(o["style"], size, o.get("angle", 45), f, n)
         im.save(os.path.join(out_dir, f"f{f + 1:04d}.png"))
     return im.size
+
+
+def render_follow(o, path, out_dir, W=1080, H=1920):
+    """Kreis/Pfeil folgt einem Pfad (Liste von (cx,cy,scale) pro Bild) – Vollbild-PNGs, Position 0:0."""
+    os.makedirs(out_dir, exist_ok=True)
+    tx0, ty0, _ = path[0]
+    style = o["style"]
+    size = o.get("size", 380 if style.startswith("circle") else 230)
+    # Pfeil: fester Versatz Spitze -> Ziel (wie beim Start gesetzt)
+    off = (o["x"] - tx0, o["y"] - ty0)
+    for f, (cx, cy, sc) in enumerate(path):
+        canvas = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        if style.startswith("circle"):
+            s = int(size * sc)
+            sp = circle_frame(style, s, f, len(path))
+            px, py = cx, cy
+        else:
+            sp = arrow_frame(style, size, o.get("angle", 45), f, len(path))
+            px, py = cx + off[0] * sc, cy + off[1] * sc
+        canvas.alpha_composite(sp, (int(px - sp.width / 2), int(py - sp.height / 2)))
+        canvas.save(os.path.join(out_dir, f"f{f + 1:04d}.png"), compress_level=1)

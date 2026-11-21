@@ -11,7 +11,22 @@ def main(path):
     cfg = json.load(open(path))
     os.chdir(os.path.dirname(os.path.abspath(path)))
     parts = []
-    for i, s in enumerate(cfg["shots"]):
+    shots = []
+    for s in cfg["shots"]:
+        # Punch-in ab Zeitpunkt punch_at: zweiter Teil mit engerem Ausschnitt AUS DEN ORIGINALPIXELN
+        if "punch_at" in s and s["start"] < s["punch_at"] < s["end"]:
+            f = s.get("punch", 1.18)
+            a = dict(s); a["end"] = s["punch_at"]; a.pop("punch_at"); a.pop("x_end", None)
+            b = dict(s); b.pop("punch_at"); b.pop("x_end", None)
+            b["start"] = s["punch_at"]; b["src"] = s["src"] + (s["punch_at"] - s["start"])
+            w, h = s.get("w", 405), s.get("h", 720)
+            nw, nh = int(w / f) // 2 * 2, int(h / f) // 2 * 2
+            b["x"] = int(s["x"] + (w - nw) / 2); b["y"] = int(s.get("y", 0) + (h - nh) / 2); b["w"], b["h"] = nw, nh
+            if b.get("mode") == "fit": b.pop("mode")
+            shots += [a, b]
+        else:
+            shots.append(s)
+    for i, s in enumerate(shots):
         d = s["end"] - s["start"]
         w, h = s.get("w", 405), s.get("h", 720)
         x0, y = s["x"], s.get("y", 0)
@@ -35,12 +50,14 @@ def main(path):
                 f"[bg{i}][fg{i}]overlay=0:(H-h)/2-{s.get('lift', 250)},setsar=1[p{i}]")
         else:
             parts.append(
-                f"{base},crop={w}:{h}:'{xexpr}':{y},scale={W}:{H}:flags=lanczos,setsar=1[p{i}]")
+                f"{base},crop={w}:{h}:'{xexpr}':{y},scale={W}:{H}:flags=lanczos"
+                + (",unsharp=5:5:0.45:5:5:0.0" if w < 540 else "")   # starke Vergroesserung: leicht nachschaerfen
+                + f",setsar=1[p{i}]")
     n = len(parts)
     fc = ";".join(parts) + ";" + "".join(f"[p{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cfg["source"],
                     "-filter_complex", fc, "-map", "[v]", "-an",
-                    "-c:v", "libx264", "-crf", "16", "-preset", "fast", "-pix_fmt", "yuv420p",
+                    "-c:v", "libx264", "-crf", "6", "-preset", "fast", "-pix_fmt", "yuv420p",
                     cfg["out"]], check=True)
     print("Schnitt fertig:", cfg["out"])
 

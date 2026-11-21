@@ -69,3 +69,17 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - **P**rogression: liefert, was der Hook verspricht
 - **C**limax: Auflösung erst am Ende – nie zu früh verraten
 - Posten: 1× pro Tag, zur Uhrzeit, wenn die Zuschauer aktiv sind (YouTube Studio → Zielgruppe)
+
+## Mitbewegen (Tracking) – Standard für JEDEN Kreis/Pfeil
+- `tools/track.py follow_path`: CSRT-Tracker verfolgt das Ziel Bild für Bild, geglättet; Overlay wandert + skaliert mit
+- Kreis: Startpunkt = Mitte des Ziels (x, y), `track_box` = Größe des Ziels
+- Pfeil: `track: [Ziel-x, Ziel-y, Ziel-Größe]`, Spitze (x, y) behält ihren Abstand zum Ziel
+- **Startpunkt immer aus Raster-Standbild messen** (nicht schätzen) – falscher Start = Kreis folgt dem falschen Objekt
+- Overlay nie über einen Schnitt hinweg
+- **Prüfen: Anfang, Mitte UND Ende jedes Overlays** – Kreis muss UM das Ziel liegen, Pfeil darf nichts verdecken
+
+## Qualität – nie schlechter als das Original
+- Zwischenschnitt fast verlustfrei (CRF 6), Endvideo CRF 16 / preset slow
+- Zooms als Punch-in im Schnitt (`punch_at`) aus den **Originalpixeln**, kein zoompan auf das fertige Bild
+- Hochskalieren mit Lanczos, bei starker Vergrößerung leicht nachschärfen
+- Auflösung kann nicht besser werden als die Quelle → immer die beste verfügbare Version des Clips nehmen
