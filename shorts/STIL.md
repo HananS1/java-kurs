@@ -48,7 +48,10 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Klick, wenn Kreis/Pfeil erscheint
 - Boom bei der Wendung („Nichts.“, „starb“)
 - Ding/Chime bei Highlight und Schluss
-- Durchgehend Musik darunter (Referenz hat keine einzige Stille) → in der YouTube-App hinzufügen
+- Durchgehend Musik darunter (Referenz hat keine einzige Stille)
+  - Eingebaut über `music` in der Config: ca. **15 dB unter der Stimme** (gain_db −14), **Ducking** unter der Stimme
+  - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
+  - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
 ## Stimme (nach Stimmung wählen!)
 - **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen auf 0,05 s kürzen, Tempo +12 %

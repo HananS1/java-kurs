@@ -222,6 +222,20 @@ def main(cfg_path):
     if clip and os.path.exists(clip) and cfg.get("clip_audio", 0) > 0:
         amix.append(f"[0:a]volume={cfg['clip_audio']}[a_clip]")
         labels.append("[a_clip]")
+    m = cfg.get("music")
+    if m:
+        # Musik: Ausschnitt ab m.start, Grundlautstaerke m.gain_db, wird unter der Stimme geduckt
+        inputs += ["-ss", str(m.get("start", 0)), "-i", m["path"]]
+        amix[0] = "[1:a]volume=1.0,asplit=2[a_voice][a_key]"
+        fade_out = max(0, length - m.get("fade_out", 1.0))
+        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,"
+                    f"volume={m.get('gain_db', -16)}dB,afade=t=in:d={m.get('fade_in', 0.3)},"
+                    f"afade=t=out:st={fade_out:.2f}:d={m.get('fade_out', 1.0)}[a_mus]")
+        amix.append(f"[a_key]aformat=channel_layouts=stereo[a_key2]")
+        amix.append(f"[a_mus][a_key2]sidechaincompress=threshold={m.get('duck_threshold', 0.02)}:"
+                    f"ratio={m.get('duck_ratio', 4)}:attack=15:release=300:makeup=1[a_musd]")
+        labels.append("[a_musd]")
+        idx += 1
     amix.append(f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0,"
                 f"alimiter=limit=0.95[aout]")
 
