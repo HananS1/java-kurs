@@ -1,0 +1,104 @@
+{
+ "source": "src/clip.mp4",
+ "out": "clip_edit.mp4",
+ "shots": [
+  {
+   "start": 0.0,
+   "end": 2.31,
+   "src": 0.3,
+   "x": 0,
+   "x_end": 618,
+   "note": "Dutzende Polizisten. Ein Fuenfjaehriger. (Kamerafahrt von Polizisten zum Jungen)"
+  },
+  {
+   "start": 2.31,
+   "end": 3.82,
+   "src": 52.0,
+   "x": 618,
+   "note": "Und keiner sagt ein Wort."
+  },
+  {
+   "start": 3.82,
+   "end": 5.12,
+   "src": 4.0,
+   "x": 680,
+   "y": 143,
+   "w": 300,
+   "h": 533,
+   "note": "Was hat dieser Junge getan? (nah am Jungen)"
+  },
+  {
+   "start": 5.12,
+   "end": 5.73,
+   "src": 5.3,
+   "x": 710,
+   "y": 200,
+   "w": 240,
+   "h": 427,
+   "note": "Nichts. (ganz nah)"
+  },
+  {
+   "start": 5.73,
+   "end": 7.73,
+   "src": 37.6,
+   "x": 120,
+   "y": 0,
+   "w": 330,
+   "h": 587,
+   "note": "Vor zwei Wochen Papa verloren (Junge am Kranz, Logo weggeschnitten)"
+  },
+  {
+   "start": 7.73,
+   "end": 9.77,
+   "src": 13.5,
+   "x": 540,
+   "note": "Rob war 16 Jahre Polizist (Portraet)"
+  },
+  {
+   "start": 9.77,
+   "end": 10.97,
+   "src": 33.6,
+   "x": 320,
+   "note": "Und starb im Einsatz (Sarg)"
+  },
+  {
+   "start": 10.97,
+   "end": 13.25,
+   "src": 6.0,
+   "x": 618,
+   "note": "Heute erster Schultag"
+  },
+  {
+   "start": 13.25,
+   "end": 15.34,
+   "src": 8.3,
+   "x": 700,
+   "note": "Weg nicht allein gehen (Junge + Polizist)"
+  },
+  {
+   "start": 15.34,
+   "end": 17.66,
+   "src": 56.3,
+   "x": 400,
+   "note": "Ganze Polizei-Familie (Spalier vor der Schule)",
+   "mode": "fit",
+   "lift": 250,
+   "delogo": [
+    90,
+    570,
+    145,
+    105
+   ]
+  },
+  {
+   "start": 17.66,
+   "end": 19.1,
+   "src": 16.0,
+   "x": 540,
+   "note": "Fuer seinen Papa (zurueck zum Portraet)",
+   "y": 20,
+   "w": 380,
+   "h": 676
+  }
+ ]
+}
