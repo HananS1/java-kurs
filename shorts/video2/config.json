@@ -1,42 +1,290 @@
 {
-  "clip": "clip_edit.mp4",
-  "clip_start": 0,
-  "clip_audio": 0.0,
-  "voice": "voice.wav",
-  "out": "video2_polizei.mp4",
-  "captions": [
-    {"start": 0.00,  "end": 1.14,  "text": "Dutzende Polizisten.", "highlight": ["Dutzende"]},
-    {"start": 1.38,  "end": 2.21,  "text": "Ein Fünfjähriger.", "highlight": ["Fünfjähriger"]},
-    {"start": 2.31,  "end": 3.65,  "text": "Und keiner sagt ein Wort.", "highlight": ["keiner"]},
-    {"start": 3.82,  "end": 4.96,  "text": "Was hat dieser Junge getan?", "highlight": ["getan?"]},
-    {"start": 5.12,  "end": 5.65,  "text": "Nichts.", "highlight": ["Nichts"]},
-    {"start": 5.73,  "end": 7.62,  "text": "Vor zwei Wochen hat er seinen Papa verloren.", "highlight": ["Papa", "verloren"]},
-    {"start": 7.73,  "end": 9.63,  "text": "Rob war 16 Jahre lang Polizist.", "highlight": ["16", "Jahre"]},
-    {"start": 9.77,  "end": 10.81, "text": "Und starb im Einsatz.", "highlight": ["starb"]},
-    {"start": 10.97, "end": 13.11, "text": "Heute ist Dakotas erster Schultag ohne ihn.", "highlight": ["ohne", "ihn"]},
-    {"start": 13.25, "end": 15.22, "text": "Und diesen Weg sollte er nicht allein gehen.", "highlight": ["allein"]},
-    {"start": 15.34, "end": 17.51, "text": "Also kam seine ganze Polizei-Familie.", "highlight": ["ganze", "Polizei-Familie"]},
-    {"start": 17.66, "end": 18.50, "text": "Für seinen Papa.", "highlight": ["Papa"]}
-  ],
-  "sfx": [
-    {"time": 0.00,  "sound": "whoosh", "vol": 0.7},
-    {"time": 1.36,  "sound": "ding",   "vol": 0.45},
-    {"time": 2.29,  "sound": "whoosh", "vol": 0.5},
-    {"time": 3.80,  "sound": "ding",   "vol": 0.45},
-    {"time": 5.10,  "sound": "boom",   "vol": 0.9},
-    {"time": 7.71,  "sound": "whoosh", "vol": 0.5},
-    {"time": 9.75,  "sound": "boom",   "vol": 0.6},
-    {"time": 10.95, "sound": "whoosh", "vol": 0.5},
-    {"time": 15.32, "sound": "whoosh", "vol": 0.7},
-    {"time": 17.64, "sound": "ding",   "vol": 0.35}
-  ],
-  "overlays": [
-    {"type": "arrow", "start": 3.82, "end": 5.10, "x": 250, "y": 110, "size": 240}
-  ],
-  "zooms": [
-    {"start": 5.12, "end": 5.73},
-    {"start": 9.77, "end": 10.97},
-    {"start": 17.66, "end": 19.10}
-  ],
-  "tail": 0.6
+ "clip": "clip_edit.mp4",
+ "clip_start": 0,
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video2_polizei_v2.mp4",
+ "captions": [
+  {
+   "start": 0.0,
+   "end": 1.14,
+   "text": "Dutzende Polizisten.",
+   "highlight": [
+    "Dutzende"
+   ]
+  },
+  {
+   "start": 1.38,
+   "end": 2.21,
+   "text": "Ein Fünfjähriger.",
+   "highlight": [
+    "Fünfjähriger"
+   ]
+  },
+  {
+   "start": 2.31,
+   "end": 3.65,
+   "text": "Und keiner sagt ein Wort.",
+   "highlight": [
+    "keiner"
+   ]
+  },
+  {
+   "start": 3.82,
+   "end": 4.96,
+   "text": "Was hat dieser Junge getan?",
+   "highlight": [
+    "getan?"
+   ]
+  },
+  {
+   "start": 5.12,
+   "end": 5.65,
+   "text": "Nichts.",
+   "highlight": [
+    "Nichts"
+   ]
+  },
+  {
+   "start": 5.73,
+   "end": 7.62,
+   "text": "Vor zwei Wochen hat er seinen Papa verloren.",
+   "highlight": [
+    "Papa",
+    "verloren"
+   ]
+  },
+  {
+   "start": 7.73,
+   "end": 9.63,
+   "text": "Rob war 16 Jahre lang Polizist.",
+   "highlight": [
+    "16",
+    "Jahre"
+   ]
+  },
+  {
+   "start": 9.77,
+   "end": 10.81,
+   "text": "Und starb im Einsatz.",
+   "highlight": [
+    "starb"
+   ]
+  },
+  {
+   "start": 10.97,
+   "end": 13.11,
+   "text": "Heute ist Dakotas erster Schultag ohne ihn.",
+   "highlight": [
+    "ohne",
+    "ihn"
+   ]
+  },
+  {
+   "start": 13.25,
+   "end": 15.22,
+   "text": "Und diesen Weg sollte er nicht allein gehen.",
+   "highlight": [
+    "allein"
+   ]
+  },
+  {
+   "start": 15.34,
+   "end": 17.51,
+   "text": "Also kam seine ganze Polizei-Familie.",
+   "highlight": [
+    "ganze",
+    "Polizei-Familie"
+   ]
+  },
+  {
+   "start": 17.66,
+   "end": 18.5,
+   "text": "Für seinen Papa.",
+   "highlight": [
+    "Papa"
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.0,
+   "sound": "hit",
+   "vol": 0.8
+  },
+  {
+   "time": 0.02,
+   "sound": "whoosh2",
+   "vol": 0.6
+  },
+  {
+   "time": 1.26,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 1.4,
+   "sound": "click",
+   "vol": 0.9
+  },
+  {
+   "time": 1.42,
+   "sound": "ding2",
+   "vol": 0.5
+  },
+  {
+   "time": 2.19,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 3.7,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 3.84,
+   "sound": "click",
+   "vol": 0.9
+  },
+  {
+   "time": 3.84,
+   "sound": "tick",
+   "vol": 0.35
+  },
+  {
+   "time": 5.0,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 5.12,
+   "sound": "boom2",
+   "vol": 0.9
+  },
+  {
+   "time": 5.61,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 7.61,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 9.65,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 9.77,
+   "sound": "boom2",
+   "vol": 0.7
+  },
+  {
+   "time": 9.79,
+   "sound": "click",
+   "vol": 0.8
+  },
+  {
+   "time": 10.85,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 10.99,
+   "sound": "click",
+   "vol": 0.8
+  },
+  {
+   "time": 13.13,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 15.22,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 15.36,
+   "sound": "click",
+   "vol": 0.8
+  },
+  {
+   "time": 17.54,
+   "sound": "whoosh2",
+   "vol": 0.45
+  },
+  {
+   "time": 17.66,
+   "sound": "chime",
+   "vol": 0.5
+  }
+ ],
+ "overlays": [
+  {
+   "type": "circle",
+   "start": 1.38,
+   "end": 2.31,
+   "x": 359,
+   "y": 720,
+   "size": 360
+  },
+  {
+   "type": "arrow",
+   "start": 3.82,
+   "end": 5.1,
+   "x": 250,
+   "y": 110,
+   "size": 240
+  },
+  {
+   "type": "circle",
+   "start": 9.77,
+   "end": 10.97,
+   "x": 323,
+   "y": 654,
+   "size": 420
+  },
+  {
+   "type": "arrow",
+   "start": 10.97,
+   "end": 13.25,
+   "x": 288,
+   "y": 408,
+   "size": 240
+  },
+  {
+   "type": "arrow",
+   "start": 15.34,
+   "end": 17.66,
+   "x": 588,
+   "y": 488,
+   "size": 240
+  }
+ ],
+ "zooms": [
+  {
+   "start": 5.12,
+   "end": 5.73
+  },
+  {
+   "start": 7.73,
+   "end": 8.75
+  },
+  {
+   "start": 13.25,
+   "end": 14.3
+  },
+  {
+   "start": 17.66,
+   "end": 19.1
+  }
+ ],
+ "tail": 0.6,
+ "caption_mode": "word",
+ "font": "Bangers",
+ "font_size": 195
 }

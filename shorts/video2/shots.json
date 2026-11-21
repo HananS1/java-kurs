@@ -4,11 +4,18 @@
  "shots": [
   {
    "start": 0.0,
-   "end": 2.31,
+   "end": 1.38,
    "src": 0.3,
    "x": 0,
    "x_end": 618,
-   "note": "Dutzende Polizisten. Ein Fuenfjaehriger. (Kamerafahrt von Polizisten zum Jungen)"
+   "note": "Dutzende Polizisten (Kamerafahrt)"
+  },
+  {
+   "start": 1.38,
+   "end": 2.31,
+   "src": 1.68,
+   "x": 618,
+   "note": "Ein Fuenfjaehriger (Kreis)"
   },
   {
    "start": 2.31,
@@ -78,7 +85,7 @@
   {
    "start": 15.34,
    "end": 17.66,
-   "src": 56.3,
+   "src": 56.9,
    "x": 400,
    "note": "Ganze Polizei-Familie (Spalier vor der Schule)",
    "mode": "fit",

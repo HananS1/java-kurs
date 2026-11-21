@@ -17,7 +17,11 @@ def main(path):
         x0, y = s["x"], s.get("y", 0)
         x1 = s.get("x_end", x0)
         xexpr = f"{x0}+({x1}-{x0})*min(t/{d:.3f}\\,1)" if x1 != x0 else str(x0)
-        base = f"[0:v]trim=start={s['src']}:duration={d:.3f},setpts=PTS-STARTPTS,fps={FPS}"
+        # framegenau: Laenge aus gerundeten Bildnummern, damit sich nichts verschiebt
+        nfr = round(s["end"] * FPS) - round(s["start"] * FPS)
+        sf = round(s["src"] * FPS)
+        base = (f"[0:v]fps={FPS},trim=start_frame={sf}:end_frame={sf + nfr},"
+                f"setpts=PTS-STARTPTS")
         if s.get("delogo"):
             lx, ly, lw, lh = s["delogo"]
             base += f",delogo=x={lx}:y={ly}:w={lw}:h={lh}"
