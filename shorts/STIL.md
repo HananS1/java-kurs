@@ -26,11 +26,20 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   circle_red (wird gezeichnet, pulsiert), circle_yellow (handgemalt, wackelt), circle_glow (Leuchtring, ploppt),
   arrow_red (fliegt rein, federt), arrow_yellow (gebogen, wird gezeichnet), arrow_white (handgemalt, wackelt)
 - **Nie zweimal derselbe Stil hintereinander**; Kreise können mitwandern (x_end/y_end)
-- Kreis immer auf Gesicht/Kopf, nicht auf den Körper – nach dem Rendern Standbild prüfen
+- **Automatische Platzierung** (`tools/track.py`, Gesichtserkennung): Overlay bekommt `target: "face"` + grobe `hint`-Position
+  - Kreis wird so groß gerechnet, dass er das Gesicht **UMSCHLIESST** (nie draufliegt)
+  - Pfeilspitze endet **VOR** dem Gesicht und zeigt auf die Mitte; bleibt immer im Bild
+  - Gesicht füllt fast das Bild (r > 200 px) → **kein Pfeil** (würde verdecken), wird automatisch entfernt
+  - Keine Overlays während Zooms
+- Nach jedem Render: Standbild aus der Mitte **jedes** Overlays prüfen
 - Kurze Punch-Zooms auf Schlüsselsätze
 
 ## Sound
-- Eigene Sound-Bibliothek: `sfx_lib/` (13 Sounds, ElevenLabs, Namen = Inhalt), Lautstärken in `library.json`
+- Eigene Sound-Bibliothek: `sfx_lib/` (27 Sounds, ElevenLabs, Namen = Inhalt), Lautstärken in `library.json`
+- **Sounds passend zum Skript** (`themes` in library.json): Polizei → Sirene/Funk, Schule → Schulglocke,
+  Tod/Trauer → Totenglocke/Herzschlag/Piano, Gehen → Schritte, Ehre → Applaus, Schock → Boom/Bass-Drop/Raunen,
+  Foto → Blitz/Auslöser, Happy End → Shimmer/Swell/Piano
+- Jedes Video: mindestens 5 Themen-Sounds + Übergänge + Akzente
 - **Gruppen statt Einzelsounds** (`@transition`, `@accent`, `@impact` …) → Script wechselt automatisch, **nie zweimal derselbe hintereinander**
 - Whoosh startet kurz vor dem Schnitt (Vorlauf), damit er genau auf dem Schnitt peakt
 - Lautstärke immer unter der Stimme; Spannung (Tick) besonders leise

@@ -180,6 +180,21 @@ def main(cfg_path):
     fx = importlib.util.module_from_spec(spec); spec.loader.exec_module(fx)
     shutil.rmtree("fx_tmp", ignore_errors=True)
     idx = 4
+    if any("target" in o for _, o in anim):
+        tspec = importlib.util.spec_from_file_location("track", os.path.join(os.path.dirname(os.path.abspath(__file__)), "track.py"))
+        track = importlib.util.module_from_spec(tspec); tspec.loader.exec_module(track)
+        for _, o in anim:
+            if "target" in o:
+                track.place(o, clip)
+                if o.get("_skip"):
+                    continue
+                print(f"  {o['style']:13s} @{o['start']:5.2f}  Ziel {o['_target']}  -> x={o['x']} y={o['y']} size={o.get('size')}")
+        anim = [(i, o) for i, o in anim if not o.get("_skip")]
+        # Regel: waehrend eines Zooms keine Overlays (sonst passen Positionen nicht)
+        for z in cfg.get("zooms", []):
+            for _, o in anim:
+                if o["start"] < z["end"] and o["end"] > z["start"]:
+                    print(f"  !! WARNUNG: {o['style']} @{o['start']} ueberlappt Zoom {z}")
     for i, o in anim:
         d = f"fx_tmp/o{i}"
         w, h = fx.render(o, d)

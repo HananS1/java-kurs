@@ -1,26 +1,182 @@
 {
  "_info": "Eigene Sounds (ElevenLabs). vol = Lautstaerke relativ zur Stimme. Gruppen werden reihum benutzt, nie zweimal derselbe hintereinander.",
  "sounds": {
-  "whoosh_fast": {"vol": 0.30, "lead": 0.15},
-  "swoosh_air":  {"vol": 0.35, "lead": 0.10},
-  "swipe":       {"vol": 0.30, "lead": 0.12},
-  "whoosh_deep": {"vol": 0.28, "lead": 0.30},
-  "click":       {"vol": 0.45, "lead": 0.0},
-  "pop":         {"vol": 0.40, "lead": 0.0},
-  "shutter":     {"vol": 0.35, "lead": 0.0},
-  "boom":        {"vol": 0.55, "lead": 0.0},
-  "hit":         {"vol": 0.45, "lead": 0.0},
-  "ding":        {"vol": 0.25, "lead": 0.0},
-  "riser":       {"vol": 0.25, "lead": 1.0},
-  "tick":        {"vol": 0.18, "lead": 0.0},
-  "swell":       {"vol": 0.40, "lead": 0.2}
+  "whoosh_fast": {
+   "vol": 0.3,
+   "lead": 0.15
+  },
+  "swoosh_air": {
+   "vol": 0.35,
+   "lead": 0.1
+  },
+  "swipe": {
+   "vol": 0.3,
+   "lead": 0.12
+  },
+  "whoosh_deep": {
+   "vol": 0.28,
+   "lead": 0.3
+  },
+  "click": {
+   "vol": 0.45,
+   "lead": 0.0
+  },
+  "pop": {
+   "vol": 0.4,
+   "lead": 0.0
+  },
+  "shutter": {
+   "vol": 0.35,
+   "lead": 0.0
+  },
+  "boom": {
+   "vol": 0.55,
+   "lead": 0.0
+  },
+  "hit": {
+   "vol": 0.45,
+   "lead": 0.0
+  },
+  "ding": {
+   "vol": 0.25,
+   "lead": 0.0
+  },
+  "riser": {
+   "vol": 0.25,
+   "lead": 1.0
+  },
+  "tick": {
+   "vol": 0.18,
+   "lead": 0.0
+  },
+  "swell": {
+   "vol": 0.4,
+   "lead": 0.2
+  },
+  "siren": {
+   "vol": 0.22,
+   "lead": 0.0
+  },
+  "school_bell": {
+   "vol": 0.25,
+   "lead": 0.0
+  },
+  "heartbeat": {
+   "vol": 0.45,
+   "lead": 0.0
+  },
+  "funeral_bell": {
+   "vol": 0.35,
+   "lead": 0.0
+  },
+  "piano_hit": {
+   "vol": 0.4,
+   "lead": 0.0
+  },
+  "footsteps": {
+   "vol": 0.3,
+   "lead": 0.0
+  },
+  "applause": {
+   "vol": 0.28,
+   "lead": 0.0
+  },
+  "gasp": {
+   "vol": 0.3,
+   "lead": 0.0
+  },
+  "bass_drop": {
+   "vol": 0.45,
+   "lead": 0.3
+  },
+  "glitch": {
+   "vol": 0.28,
+   "lead": 0.08
+  },
+  "flash": {
+   "vol": 0.3,
+   "lead": 0.0
+  },
+  "shimmer": {
+   "vol": 0.3,
+   "lead": 0.0
+  },
+  "radio": {
+   "vol": 0.25,
+   "lead": 0.0
+  },
+  "paper_swoosh": {
+   "vol": 0.32,
+   "lead": 0.1
+  }
  },
  "groups": {
-  "transition": ["whoosh_fast", "swoosh_air", "swipe", "whoosh_fast", "swoosh_air", "whoosh_deep"],
-  "accent":     ["click", "pop", "shutter"],
-  "impact":     ["boom", "hit"],
-  "highlight":  ["ding"],
-  "tension":    ["tick", "riser"],
-  "emotion":    ["swell"]
+  "transition": [
+   "whoosh_fast",
+   "swoosh_air",
+   "glitch",
+   "swipe",
+   "paper_swoosh",
+   "whoosh_fast",
+   "swoosh_air",
+   "whoosh_deep"
+  ],
+  "accent": [
+   "click",
+   "pop",
+   "shutter",
+   "flash"
+  ],
+  "impact": [
+   "boom",
+   "hit",
+   "bass_drop"
+  ],
+  "highlight": [
+   "ding"
+  ],
+  "tension": [
+   "tick",
+   "riser"
+  ],
+  "emotion": [
+   "swell",
+   "piano_hit",
+   "shimmer"
+  ]
+ },
+ "themes": {
+  "Polizei/Einsatz": [
+   "siren",
+   "radio"
+  ],
+  "Schule": [
+   "school_bell"
+  ],
+  "Tod/Trauer": [
+   "funeral_bell",
+   "heartbeat",
+   "piano_hit"
+  ],
+  "Gehen/Laufen": [
+   "footsteps"
+  ],
+  "Applaus/Ehre": [
+   "applause"
+  ],
+  "Schock/Überraschung": [
+   "gasp",
+   "bass_drop",
+   "boom"
+  ],
+  "Foto/Kamera": [
+   "flash",
+   "shutter"
+  ],
+  "Rührung/Happy End": [
+   "shimmer",
+   "swell",
+   "piano_hit"
+  ]
  }
 }
