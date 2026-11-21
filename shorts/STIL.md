@@ -90,3 +90,14 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Nur den echten Videobereich ausschneiden (`y`/`h` im Shot), Titelbalken und schwarze Ränder weg
 - Wasserzeichen mit `delogo` entfernen
 - Satzgrenzen der Stimme mit `tools/align.py` finden (Stimme hat keine Pausen mehr)
+
+## Kommentar-Auslöser (im Skript eingebaut, NIE „kommentiere für mehr“)
+- Jedes Skript bekommt einen Auslöser, meist als letzter Satz (Video endet hart → Loop)
+- **Abwechseln**, nie zweimal dieselbe Art hintereinander:
+  1. Steile These („Ehrlich? Er hat alles richtig gemacht.“) → Widerspruch
+  2. Offene Lücke („Was sie danach sagte, hat keiner gehört.“) → Vermutungen
+  3. Wiedererkennung („Jeder hat so einen Opa.“) → Markieren/„genau so!“
+  4. Leichte Frage, selten („Wie hättest du sie genannt?“) → in 2 Sekunden beantwortbar
+  5. Mittendrin-Twist („Bis hierhin dachte jeder…“)
+- Bei traurigen Storys keine Provokation – Wiedererkennung/Gänsehaut statt These
+- Keine absichtlichen Fehler als Köder
