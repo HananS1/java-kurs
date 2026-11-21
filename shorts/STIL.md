@@ -31,7 +31,10 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Pfeilspitze endet **VOR** dem Gesicht und zeigt auf die Mitte; bleibt immer im Bild
   - Gesicht füllt fast das Bild (r > 200 px) → **kein Pfeil** (würde verdecken), wird automatisch entfernt
   - Keine Overlays während Zooms
-- Nach jedem Render: Standbild aus der Mitte **jedes** Overlays prüfen
+- **Gesichtserkennung nur als Hilfe:** klappt bei frontalen, großen Gesichtern (Polizei-Video), versagt bei kleinen
+  oder seitlichen Personen (Marathon: Kreis auf Publikum, Pfeil auf Logo). Dann Position **von Hand** aus Standbild messen.
+- Nach jedem Render: Standbild aus der Mitte **jedes** Overlays prüfen – falsch platziert = neu setzen, nie so abgeben
+- Pfeil/Kreis muss zum **gesprochenen Text** passen (wer gerade gemeint ist: „ein Mädchen greift ein“ → Pfeil auf die Helferin)
 - Kurze Punch-Zooms auf Schlüsselsätze
 
 ## Sound
