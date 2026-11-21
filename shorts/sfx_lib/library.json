@@ -116,6 +116,26 @@
   "meow": {
    "vol": 0.35,
    "lead": 0.0
+  },
+  "train_doors": {
+   "vol": 0.3,
+   "lead": 0.0
+  },
+  "train_depart": {
+   "vol": 0.35,
+   "lead": 0.0
+  },
+  "record_scratch": {
+   "vol": 0.4,
+   "lead": 0.0
+  },
+  "sad_trombone": {
+   "vol": 0.4,
+   "lead": 0.0
+  },
+  "strain": {
+   "vol": 0.35,
+   "lead": 0.0
   }
  },
  "groups": {
@@ -189,6 +209,15 @@
   "Katze": [
    "meow",
    "purr"
+  ],
+  "Zug/U-Bahn": [
+   "train_doors",
+   "train_depart"
+  ],
+  "Comedy/Fail": [
+   "record_scratch",
+   "sad_trombone",
+   "strain"
   ]
  }
 }

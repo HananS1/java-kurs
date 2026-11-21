@@ -75,6 +75,8 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Kreis: Startpunkt = Mitte des Ziels (x, y), `track_box` = Größe des Ziels
 - Pfeil: `track: [Ziel-x, Ziel-y, Ziel-Größe]`, Spitze (x, y) behält ihren Abstand zum Ziel
 - **Startpunkt immer aus Raster-Standbild messen** (nicht schätzen) – falscher Start = Kreis folgt dem falschen Objekt
+- **Keyframes statt Tracker**, wenn die Kamera schnell schwenkt oder eine Person das Bild füllt (Tracker driftet dann ab):
+  `keys: [[t, x, y, scale], ...]` an 3–4 Zeitpunkten aus Raster-Standbildern messen → weich interpoliert
 - Overlay nie über einen Schnitt hinweg
 - **Prüfen: Anfang, Mitte UND Ende jedes Overlays** – Kreis muss UM das Ziel liegen, Pfeil darf nichts verdecken
 
@@ -83,3 +85,8 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Zooms als Punch-in im Schnitt (`punch_at`) aus den **Originalpixeln**, kein zoompan auf das fertige Bild
 - Hochskalieren mit Lanczos, bei starker Vergrößerung leicht nachschärfen
 - Auflösung kann nicht besser werden als die Quelle → immer die beste verfügbare Version des Clips nehmen
+
+## Clips mit Titel/Rahmen (z. B. „Mr. Bean in real life“)
+- Nur den echten Videobereich ausschneiden (`y`/`h` im Shot), Titelbalken und schwarze Ränder weg
+- Wasserzeichen mit `delogo` entfernen
+- Satzgrenzen der Stimme mit `tools/align.py` finden (Stimme hat keine Pausen mehr)

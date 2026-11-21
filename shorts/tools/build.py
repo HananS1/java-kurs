@@ -205,7 +205,21 @@ def main(cfg_path):
                 cx, cy, box = o["x"], o["y"], o.get("track_box", int(o.get("size", 380) * 0.55))
             else:
                 cx, cy, box = o["track"]          # Pfeil: [Ziel-x, Ziel-y, Ziel-Groesse]
-            path = trk.follow_path(clip, o["start"], o["end"], cx, cy, box, FPS)
+            if "keys" in o:
+                # Keyframes [[t, x, y, scale], ...] (gemessen) -> weich interpolieren; zuverlaessiger bei schnellen Schwenks
+                import numpy as np
+                ks = sorted(o["keys"])
+                n = max(1, round((o["end"] - o["start"]) * FPS))
+                ts = o["start"] + np.arange(n) / FPS
+                kt = [k[0] for k in ks]
+                path = list(zip(np.interp(ts, kt, [k[1] for k in ks]), np.interp(ts, kt, [k[2] for k in ks]),
+                                np.interp(ts, kt, [k[3] if len(k) > 3 else 1.0 for k in ks])))
+                if not o["style"].startswith("circle"):
+                    # Pfeil: Spitze relativ zum ersten Keyframe-Ziel
+                    o.setdefault("track", [ks[0][1], ks[0][2], 150])
+                    path = [(x + (o["track"][0] - ks[0][1]) * 0, y, s) for x, y, s in path]
+            else:
+                path = trk.follow_path(clip, o["start"], o["end"], cx, cy, box, FPS)
             fx.render_follow(o, path, d)
             moved = max(abs(p[0] - path[0][0]) + abs(p[1] - path[0][1]) for p in path)
             print(f"  folgt: {o['style']:13s} @{o['start']:5.2f}  Bewegung max {moved:.0f}px")

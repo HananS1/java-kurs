@@ -1,0 +1,355 @@
+{
+ "clip": "clip_edit.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video5_mrbean.mp4",
+ "caption_mode": "word",
+ "font": "Bangers",
+ "font_size": 195,
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "captions": [
+  {
+   "start": 0.0,
+   "end": 2.22,
+   "text": "Die U-Bahn-Tür geht direkt vor seiner Nase zu.",
+   "highlight": [
+    "Nase",
+    "zu."
+   ]
+  },
+  {
+   "start": 2.22,
+   "end": 3.74,
+   "text": "Aber dieser Opa gibt nicht auf.",
+   "highlight": [
+    "Opa"
+   ]
+  },
+  {
+   "start": 3.74,
+   "end": 5.38,
+   "text": "Er klemmt seinen Stock in die Tür.",
+   "highlight": [
+    "Stock"
+   ]
+  },
+  {
+   "start": 5.38,
+   "end": 6.31,
+   "text": "Und zieht. Und zieht.",
+   "highlight": [
+    "zieht.",
+    "zieht."
+   ]
+  },
+  {
+   "start": 6.31,
+   "end": 8.32,
+   "text": "Dann kommt ein junger Mann angelaufen.",
+   "highlight": [
+    "Mann"
+   ]
+  },
+  {
+   "start": 8.32,
+   "end": 9.06,
+   "text": "Endlich Hilfe!",
+   "highlight": [
+    "Hilfe!"
+   ]
+  },
+  {
+   "start": 9.06,
+   "end": 10.78,
+   "text": "Zusammen reißen sie die Tür auf…",
+   "highlight": [
+    "auf…"
+   ]
+  },
+  {
+   "start": 10.78,
+   "end": 12.12,
+   "text": "und der junge Mann steigt ein.",
+   "highlight": [
+    "Mann",
+    "steigt"
+   ]
+  },
+  {
+   "start": 12.12,
+   "end": 13.02,
+   "text": "Die Tür geht zu.",
+   "highlight": [
+    "zu."
+   ]
+  },
+  {
+   "start": 13.02,
+   "end": 14.58,
+   "text": "Der Opa steht immer noch draußen.",
+   "highlight": [
+    "Opa",
+    "draußen."
+   ]
+  },
+  {
+   "start": 14.58,
+   "end": 16.04,
+   "text": "Und der Zug fährt ohne ihn los.",
+   "highlight": [
+    "ohne"
+   ]
+  },
+  {
+   "start": 16.04,
+   "end": 17.28,
+   "text": "Mister Bean wäre stolz.",
+   "highlight": [
+    "Bean"
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.0,
+   "sound": "train_doors"
+  },
+  {
+   "time": 2.25,
+   "sound": "strain",
+   "gain": 0.7
+  },
+  {
+   "time": 5.4,
+   "sound": "strain"
+  },
+  {
+   "time": 6.35,
+   "sound": "footsteps",
+   "gain": 0.8
+  },
+  {
+   "time": 8.32,
+   "sound": "ding"
+  },
+  {
+   "time": 9.06,
+   "sound": "strain",
+   "gain": 0.8
+  },
+  {
+   "time": 10.8,
+   "sound": "record_scratch"
+  },
+  {
+   "time": 12.12,
+   "sound": "train_doors",
+   "gain": 0.8
+  },
+  {
+   "time": 13.05,
+   "sound": "sad_trombone"
+  },
+  {
+   "time": 14.58,
+   "sound": "train_depart"
+  },
+  {
+   "time": 16.04,
+   "sound": "pop"
+  },
+  {
+   "time": 2.22,
+   "sound": "@transition"
+  },
+  {
+   "time": 3.74,
+   "sound": "@transition"
+  },
+  {
+   "time": 6.31,
+   "sound": "@transition"
+  },
+  {
+   "time": 9.06,
+   "sound": "@transition"
+  },
+  {
+   "time": 13.02,
+   "sound": "@transition"
+  },
+  {
+   "time": 16.04,
+   "sound": "@transition"
+  },
+  {
+   "time": 0.33999999999999997,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 3.84,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 6.39,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 10.879999999999999,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 13.12,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 16.14,
+   "sound": "@accent",
+   "gain": 0.7
+  }
+ ],
+ "overlays": [
+  {
+   "style": "circle_red",
+   "start": 0.3,
+   "end": 1.25,
+   "x": 520,
+   "y": 800,
+   "size": 330,
+   "track_box": 180,
+   "keys": [
+    [
+     0.3,
+     520,
+     800,
+     1.0
+    ],
+    [
+     0.9,
+     280,
+     680,
+     1.0
+    ],
+    [
+     1.25,
+     170,
+     670,
+     1.0
+    ]
+   ]
+  },
+  {
+   "style": "arrow_yellow",
+   "start": 3.8,
+   "end": 5.38,
+   "x": 770,
+   "y": 1140,
+   "angle": 0,
+   "size": 220,
+   "keys": [
+    [
+     3.8,
+     770,
+     1140
+    ],
+    [
+     4.6,
+     760,
+     1130
+    ],
+    [
+     5.3,
+     640,
+     1040
+    ],
+    [
+     5.38,
+     635,
+     1035
+    ]
+   ]
+  },
+  {
+   "style": "circle_yellow",
+   "start": 6.35,
+   "end": 7.2,
+   "x": 320,
+   "y": 400,
+   "size": 420,
+   "track_box": 260,
+   "keys": [
+    [
+     6.35,
+     300,
+     400,
+     1.0
+    ],
+    [
+     7.0,
+     1000,
+     420,
+     0.9
+    ],
+    [
+     7.2,
+     1080,
+     420,
+     0.9
+    ]
+   ]
+  },
+  {
+   "style": "arrow_red",
+   "start": 10.84,
+   "end": 12.12,
+   "x": 800,
+   "y": 800,
+   "angle": 0,
+   "size": 220,
+   "track": [
+    954,
+    828,
+    200
+   ]
+  },
+  {
+   "style": "circle_glow",
+   "start": 13.08,
+   "end": 14.58,
+   "x": 504,
+   "y": 830,
+   "size": 330,
+   "track_box": 180
+  },
+  {
+   "style": "arrow_white",
+   "start": 16.1,
+   "end": 17.8,
+   "x": 740,
+   "y": 950,
+   "angle": 0,
+   "size": 210,
+   "track": [
+    882,
+    1000,
+    200
+   ]
+  }
+ ],
+ "zooms": [],
+ "tail": 0.6,
+ "music": {
+  "path": "music.mp3",
+  "start": 0,
+  "gain_db": -10,
+  "fade_in": 0.3,
+  "fade_out": 1.2,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5
+ }
+}
