@@ -162,20 +162,42 @@ def main(cfg_path):
     # Overlays (Pfeile/Kreise)
     inputs = vin + ["-i", voice, "-i", "arrow.png", "-i", "circle.png"]
     last = "v0"
+    anim = []
     for i, o in enumerate(cfg.get("overlays", [])):
-        src = "2:v" if o["type"] == "arrow" else "3:v"
         lbl = f"ov{i}"
+        if "style" in o:
+            anim.append((i, o))
+            continue
+        src = "2:v" if o["type"] == "arrow" else "3:v"
         filt.append(f"[{src}]scale={o.get('size', 260 if o['type']=='arrow' else 420)}:-1[s{i}]")
         filt.append(f"[{last}][s{i}]overlay=x={o['x']}:y={o['y']}:"
                     f"enable='between(t,{o['start']},{o['end']})'[{lbl}]")
         last = lbl
+    # animierte Kreise/Pfeile (PNG-Sequenzen aus fx.py); x,y = Mittelpunkt bzw. Pfeilspitze,
+    # optional x_end/y_end = Bewegung waehrend der Einblendung
+    import importlib.util, shutil
+    spec = importlib.util.spec_from_file_location("fx", os.path.join(os.path.dirname(os.path.abspath(__file__)), "fx.py"))
+    fx = importlib.util.module_from_spec(spec); spec.loader.exec_module(fx)
+    shutil.rmtree("fx_tmp", ignore_errors=True)
+    idx = 4
+    for i, o in anim:
+        d = f"fx_tmp/o{i}"
+        w, h = fx.render(o, d)
+        inputs += ["-itsoffset", f"{o['start']:.3f}", "-framerate", str(FPS), "-i", f"{d}/f%04d.png"]
+        ov_len = o["end"] - o["start"]
+        x1, y1 = o.get("x_end", o["x"]), o.get("y_end", o["y"])
+        pos = lambda a, b, half: (f"{a}-{half}+({b}-{a})*min(max((t-{o['start']})/{ov_len:.3f}\\,0)\\,1)")
+        lbl = f"ov{i}"
+        filt.append(f"[{last}][{idx}:v]overlay=x='{pos(o['x'], x1, w // 2)}':y='{pos(o['y'], y1, h // 2)}':"
+                    f"eof_action=pass:enable='between(t,{o['start']},{o['end']})'[{lbl}]")
+        last = lbl
+        idx += 1
     filt.append(f"[{last}]ass=subs.ass[vout]")
 
     # Audio: Stimme + Soundeffekte (+ optional leiser Original-Ton)
     sfx = resolve_sfx(cfg)
     amix = ["[1:a]volume=1.0[a_voice]"]
     labels = ["[a_voice]"]
-    idx = 4
     for j, s in enumerate(sfx):
         inputs += ["-i", s["path"]]
         ms = max(0, int(s["time"] * 1000))

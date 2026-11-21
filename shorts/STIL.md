@@ -22,8 +22,11 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Schlüsselwörter gelb
 
 ## Grafik
-- **Roter Kreis** um das Wichtigste, sobald es genannt wird
-- **Roter Pfeil** auf Personen/Objekte
+- **Viele animierte Kreise und Pfeile** (ca. alle 1–2 s eins), Stile aus `tools/fx.py`:
+  circle_red (wird gezeichnet, pulsiert), circle_yellow (handgemalt, wackelt), circle_glow (Leuchtring, ploppt),
+  arrow_red (fliegt rein, federt), arrow_yellow (gebogen, wird gezeichnet), arrow_white (handgemalt, wackelt)
+- **Nie zweimal derselbe Stil hintereinander**; Kreise können mitwandern (x_end/y_end)
+- Kreis immer auf Gesicht/Kopf, nicht auf den Körper – nach dem Rendern Standbild prüfen
 - Kurze Punch-Zooms auf Schlüsselsätze
 
 ## Sound
@@ -39,8 +42,15 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Durchgehend Musik darunter (Referenz hat keine einzige Stille) → in der YouTube-App hinzufügen
 
 ## Stimme (nach Stimmung wählen!)
-- **Emotional / traurig:** „Rob – Warm Bass German Narrator“, Pausen bis 0,22 s lassen, Tempo +7 %
+- **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen auf 0,05 s kürzen, Tempo +12 %
+- Prompt-Tags: [fast-paced, intense, dynamic storytelling, no pauses]
+- **Emotional / traurig:** „Rob – Warm Bass German Narrator“ (Klangfarbe warm, Tempo trotzdem schnell)
 - **Fakten / Listen / lustig (Japan-Stil):** „Christian Plasa – Dynamic and Vibrant“
 - Modell eleven_v4
-- Pausen > 0,18 s rausschneiden, Tempo +8–12 %
 - ~3,8 Wörter pro Sekunde
+
+## Aufbau nach HPC (aus „How to make shorts that go viral“)
+- **H**ook (0–5 s): schnell, keine Pause, wirft Fragen auf
+- **P**rogression: liefert, was der Hook verspricht
+- **C**limax: Auflösung erst am Ende – nie zu früh verraten
+- Posten: 1× pro Tag, zur Uhrzeit, wenn die Zuschauer aktiv sind (YouTube Studio → Zielgruppe)
