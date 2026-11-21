@@ -108,6 +108,14 @@
   "paper_swoosh": {
    "vol": 0.32,
    "lead": 0.1
+  },
+  "purr": {
+   "vol": 0.4,
+   "lead": 0.0
+  },
+  "meow": {
+   "vol": 0.35,
+   "lead": 0.0
   }
  },
  "groups": {
@@ -177,6 +185,10 @@
    "shimmer",
    "swell",
    "piano_hit"
+  ],
+  "Katze": [
+   "meow",
+   "purr"
   ]
  }
 }
