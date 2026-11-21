@@ -1,0 +1,248 @@
+{
+ "clip": "clip_edit3.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice_rob.wav",
+ "out": "video2_polizei_v3.mp4",
+ "caption_mode": "word",
+ "font": "Bangers",
+ "font_size": 195,
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "captions": [
+  {
+   "start": 0.0,
+   "end": 1.47,
+   "text": "Dutzende Polizisten.",
+   "highlight": [
+    "Dutzende"
+   ]
+  },
+  {
+   "start": 1.73,
+   "end": 2.72,
+   "text": "Ein Fünfjähriger.",
+   "highlight": [
+    "Fünfjähriger"
+   ]
+  },
+  {
+   "start": 2.87,
+   "end": 4.68,
+   "text": "Und keiner sagt ein Wort.",
+   "highlight": [
+    "keiner"
+   ]
+  },
+  {
+   "start": 4.92,
+   "end": 6.14,
+   "text": "Was hat dieser Junge getan?",
+   "highlight": [
+    "getan?"
+   ]
+  },
+  {
+   "start": 6.51,
+   "end": 6.95,
+   "text": "Nichts.",
+   "highlight": [
+    "Nichts"
+   ]
+  },
+  {
+   "start": 7.29,
+   "end": 9.31,
+   "text": "Vor zwei Wochen hat er seinen Papa verloren.",
+   "highlight": [
+    "Papa",
+    "verloren"
+   ]
+  },
+  {
+   "start": 9.52,
+   "end": 11.71,
+   "text": "Rob war 16 Jahre lang Polizist.",
+   "highlight": [
+    "16"
+   ]
+  },
+  {
+   "start": 12.11,
+   "end": 13.26,
+   "text": "Und starb im Einsatz.",
+   "highlight": [
+    "starb"
+   ]
+  },
+  {
+   "start": 13.47,
+   "end": 15.83,
+   "text": "Heute ist Dakotas erster Schultag ohne ihn.",
+   "highlight": [
+    "ohne",
+    "ihn"
+   ]
+  },
+  {
+   "start": 16.03,
+   "end": 17.83,
+   "text": "Und diesen Weg sollte er nicht allein gehen.",
+   "highlight": [
+    "allein"
+   ]
+  },
+  {
+   "start": 18.04,
+   "end": 20.35,
+   "text": "Also kam seine ganze Polizei-Familie.",
+   "highlight": [
+    "Polizei-Familie"
+   ]
+  },
+  {
+   "start": 20.72,
+   "end": 21.57,
+   "text": "Für seinen Papa.",
+   "highlight": [
+    "Papa"
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.0,
+   "sound": "hit",
+   "gain": 0.8
+  },
+  {
+   "time": 1.73,
+   "sound": "@transition"
+  },
+  {
+   "time": 2.87,
+   "sound": "@transition"
+  },
+  {
+   "time": 4.92,
+   "sound": "@transition"
+  },
+  {
+   "time": 7.29,
+   "sound": "@transition"
+  },
+  {
+   "time": 9.52,
+   "sound": "@transition"
+  },
+  {
+   "time": 13.47,
+   "sound": "@transition"
+  },
+  {
+   "time": 16.03,
+   "sound": "@transition"
+  },
+  {
+   "time": 18.04,
+   "sound": "@transition"
+  },
+  {
+   "time": 1.75,
+   "sound": "@accent"
+  },
+  {
+   "time": 4.94,
+   "sound": "@accent"
+  },
+  {
+   "time": 12.13,
+   "sound": "@accent"
+  },
+  {
+   "time": 13.5,
+   "sound": "@accent"
+  },
+  {
+   "time": 18.07,
+   "sound": "@accent"
+  },
+  {
+   "time": 4.95,
+   "sound": "tick"
+  },
+  {
+   "time": 6.51,
+   "sound": "boom"
+  },
+  {
+   "time": 12.11,
+   "sound": "hit",
+   "gain": 0.7
+  },
+  {
+   "time": 18.0,
+   "sound": "swell"
+  },
+  {
+   "time": 20.72,
+   "sound": "swell",
+   "gain": 0.8
+  }
+ ],
+ "overlays": [
+  {
+   "type": "circle",
+   "start": 1.73,
+   "end": 2.87,
+   "x": 359,
+   "y": 720,
+   "size": 360
+  },
+  {
+   "type": "arrow",
+   "start": 4.92,
+   "end": 6.49,
+   "x": 250,
+   "y": 110,
+   "size": 240
+  },
+  {
+   "type": "circle",
+   "start": 12.11,
+   "end": 13.47,
+   "x": 323,
+   "y": 654,
+   "size": 420
+  },
+  {
+   "type": "arrow",
+   "start": 13.47,
+   "end": 14.7,
+   "x": 288,
+   "y": 408,
+   "size": 240
+  },
+  {
+   "type": "arrow",
+   "start": 18.04,
+   "end": 20.72,
+   "x": 588,
+   "y": 488,
+   "size": 240
+  }
+ ],
+ "zooms": [
+  {
+   "start": 6.51,
+   "end": 7.29
+  },
+  {
+   "start": 16.03,
+   "end": 17.0
+  },
+  {
+   "start": 20.72,
+   "end": 22.17
+  }
+ ],
+ "tail": 0.6
+}

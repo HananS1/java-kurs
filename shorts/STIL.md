@@ -27,13 +27,20 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Kurze Punch-Zooms auf Schlüsselsätze
 
 ## Sound
-- **Whoosh bei jedem Schnitt**
+- Eigene Sound-Bibliothek: `sfx_lib/` (13 Sounds, ElevenLabs, Namen = Inhalt), Lautstärken in `library.json`
+- **Gruppen statt Einzelsounds** (`@transition`, `@accent`, `@impact` …) → Script wechselt automatisch, **nie zweimal derselbe hintereinander**
+- Whoosh startet kurz vor dem Schnitt (Vorlauf), damit er genau auf dem Schnitt peakt
+- Lautstärke immer unter der Stimme; Spannung (Tick) besonders leise
+- Nicht jeder Schnitt braucht einen Sound – ca. jeder zweite
+- **Whoosh bei Schnitten**
 - Klick, wenn Kreis/Pfeil erscheint
 - Boom bei der Wendung („Nichts.“, „starb“)
 - Ding/Chime bei Highlight und Schluss
 - Durchgehend Musik darunter (Referenz hat keine einzige Stille) → in der YouTube-App hinzufügen
 
-## Stimme
-- ElevenLabs „Christian Plasa – Dynamic and Vibrant“, Modell eleven_v4
+## Stimme (nach Stimmung wählen!)
+- **Emotional / traurig:** „Rob – Warm Bass German Narrator“, Pausen bis 0,22 s lassen, Tempo +7 %
+- **Fakten / Listen / lustig (Japan-Stil):** „Christian Plasa – Dynamic and Vibrant“
+- Modell eleven_v4
 - Pausen > 0,18 s rausschneiden, Tempo +8–12 %
 - ~3,8 Wörter pro Sekunde
