@@ -53,7 +53,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - **Gruppen statt Einzelsounds** (`@transition`, `@accent`, `@impact` …) → Script wechselt automatisch, **nie zweimal derselbe hintereinander**
 - Whoosh startet kurz vor dem Schnitt (Vorlauf), damit er genau auf dem Schnitt peakt
 - Lautstärke immer unter der Stimme; Spannung (Tick) besonders leise
-- **Nutzer-Standard: `sfx_gain: 0.6`** (alle Sounds leiser), dafür MEHR Sounds: leiser Swoosh auf fast jedem Schnitt (gain 0.45), JEDER Kreis/Pfeil bekommt einen hörbaren, dezenten Sound (gain 1.6): Kreis → blub/scribble/pop, Pfeil → swish_soft/swipe/swoosh_air, abwechselnd; andere leise Sounds ±0,3 s davon weg
+- **Nutzer-Standard: `sfx_gain: 0.45`** (Stimme soll klar heraustechen) (alle Sounds leiser), dafür MEHR Sounds: leiser Swoosh auf fast jedem Schnitt (gain 0.45), JEDER Kreis/Pfeil bekommt einen hörbaren, dezenten Sound (gain 1.6): Gruppen `circle_in` (blub, sparkle, scribble, bloop, pop, knock) und `arrow_in` (swish_soft, zip, arrow_thunk, swipe, slide_in, swoosh_air) – rotieren, pro Video anderer Startpunkt; andere leise Sounds ±0,3 s davon weg
 - Nicht jeder Schnitt braucht einen Sound – ca. jeder zweite
 - **Whoosh bei Schnitten**
 - Klick, wenn Kreis/Pfeil erscheint

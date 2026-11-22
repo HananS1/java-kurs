@@ -633,31 +633,31 @@
   },
   {
    "time": 5.769,
-   "sound": "scribble",
+   "sound": "sparkle",
    "gain": 1.6,
    "_ov": 1
   },
   {
    "time": 7.895,
-   "sound": "swipe",
+   "sound": "zip",
    "gain": 1.6,
    "_ov": 1
   },
   {
    "time": 12.997,
-   "sound": "pop",
+   "sound": "scribble",
    "gain": 1.6,
    "_ov": 1
   },
   {
    "time": 13.91,
-   "sound": "swoosh_air",
+   "sound": "arrow_thunk",
    "gain": 1.6,
    "_ov": 1
   },
   {
    "time": 17.21,
-   "sound": "blub",
+   "sound": "bloop",
    "gain": 1.6,
    "_ov": 1
   }
@@ -2231,5 +2231,5 @@
   "duck_threshold": 0.03,
   "duck_ratio": 2.5
  },
- "sfx_gain": 0.6
+ "sfx_gain": 0.45
 }

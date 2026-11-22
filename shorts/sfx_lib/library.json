@@ -156,6 +156,30 @@
   "scribble": {
    "vol": 0.45,
    "lead": 0.02
+  },
+  "bloop": {
+   "vol": 0.45,
+   "lead": 0
+  },
+  "sparkle": {
+   "vol": 0.45,
+   "lead": 0
+  },
+  "knock": {
+   "vol": 0.45,
+   "lead": 0
+  },
+  "zip": {
+   "vol": 0.45,
+   "lead": 0.05
+  },
+  "arrow_thunk": {
+   "vol": 0.45,
+   "lead": 0.1
+  },
+  "slide_in": {
+   "vol": 0.45,
+   "lead": 0.1
   }
  },
  "groups": {
@@ -194,12 +218,18 @@
   ],
   "circle_in": [
    "blub",
+   "sparkle",
    "scribble",
-   "pop"
+   "bloop",
+   "pop",
+   "knock"
   ],
   "arrow_in": [
    "swish_soft",
+   "zip",
+   "arrow_thunk",
    "swipe",
+   "slide_in",
    "swoosh_air"
   ]
  },
