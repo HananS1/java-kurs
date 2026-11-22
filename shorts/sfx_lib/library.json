@@ -144,6 +144,18 @@
   "dun_dun": {
    "vol": 0.4,
    "lead": 0.0
+  },
+  "blub": {
+   "vol": 0.45,
+   "lead": 0.0
+  },
+  "swish_soft": {
+   "vol": 0.45,
+   "lead": 0.08
+  },
+  "scribble": {
+   "vol": 0.45,
+   "lead": 0.02
   }
  },
  "groups": {
@@ -179,6 +191,16 @@
    "swell",
    "piano_hit",
    "shimmer"
+  ],
+  "circle_in": [
+   "blub",
+   "scribble",
+   "pop"
+  ],
+  "arrow_in": [
+   "swish_soft",
+   "swipe",
+   "swoosh_air"
   ]
  },
  "themes": {

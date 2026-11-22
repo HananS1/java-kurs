@@ -542,11 +542,6 @@
    "gain": 0.8
   },
   {
-   "time": 12.011,
-   "sound": "pop",
-   "gain": 0.6
-  },
-  {
    "time": 14.247,
    "sound": "strain",
    "gain": 0.6
@@ -580,20 +575,8 @@
    "sound": "piano_hit"
   },
   {
-   "time": 1.577,
-   "sound": "whoosh_fast"
-  },
-  {
-   "time": 6.887,
-   "sound": "swoosh_air"
-  },
-  {
    "time": 10.272,
    "sound": "paper_swoosh"
-  },
-  {
-   "time": 14.019,
-   "sound": "swipe"
   },
   {
    "time": 18.911,
@@ -604,28 +587,52 @@
    "sound": "whoosh_fast"
   },
   {
-   "time": 0.108,
-   "sound": "pop",
-   "gain": 0.5,
-   "_auto": 1
-  },
-  {
-   "time": 11.909,
-   "sound": "shimmer",
-   "gain": 0.5,
-   "_auto": 1
-  },
-  {
-   "time": 17.256,
-   "sound": "pop",
-   "gain": 0.5,
-   "_auto": 1
-  },
-  {
    "time": 8.585,
    "sound": "swoosh_air",
    "gain": 0.45,
    "_auto": 1
+  },
+  {
+   "time": 0.108,
+   "sound": "blub",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 1.617,
+   "sound": "swish_soft",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 3.325,
+   "sound": "scribble",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 6.927,
+   "sound": "swipe",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 11.909,
+   "sound": "pop",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 14.059,
+   "sound": "swoosh_air",
+   "gain": 1.6,
+   "_ov": 1
+  },
+  {
+   "time": 17.256,
+   "sound": "blub",
+   "gain": 1.6,
+   "_ov": 1
   }
  ],
  "overlays": [
