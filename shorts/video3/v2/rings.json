@@ -1,0 +1,103 @@
+{
+ "model": "/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n3/../models/yolov8m-pose.pt",
+ "rings": [
+  {
+   "start": 0.1,
+   "end": 1.45,
+   "id": 2,
+   "color": "yellow",
+   "label": "SIE"
+  },
+  {
+   "start": 1.5,
+   "end": 3.15,
+   "id": 2,
+   "color": "yellow"
+  },
+  {
+   "start": 3.2,
+   "end": 6.7,
+   "id": 2,
+   "color": "yellow"
+  },
+  {
+   "start": 6.75,
+   "end": 7.4,
+   "id": 9,
+   "color": "yellow"
+  },
+  {
+   "start": 11.2,
+   "end": 11.5,
+   "id": 14,
+   "color": "red",
+   "label": "SCHÜLERIN"
+  },
+  {
+   "start": 11.55,
+   "end": 13.6,
+   "id": 26,
+   "color": "red",
+   "label": "SCHÜLERIN"
+  },
+  {
+   "start": 11.55,
+   "end": 13.6,
+   "id": 22,
+   "color": "yellow"
+  },
+  {
+   "start": 13.65,
+   "end": 16.55,
+   "id": 26,
+   "color": "red"
+  },
+  {
+   "start": 13.65,
+   "end": 16.55,
+   "id": 22,
+   "color": "yellow"
+  },
+  {
+   "start": 16.6,
+   "end": 18.2,
+   "id": 26,
+   "color": "red"
+  },
+  {
+   "start": 16.6,
+   "end": 18.2,
+   "id": 28,
+   "color": "yellow"
+  }
+ ],
+ "flash": [
+  {
+   "time": 2.61,
+   "dur": 0.45,
+   "color": "red"
+  },
+  {
+   "time": 20.04,
+   "dur": 0.5,
+   "color": "white"
+  }
+ ],
+ "shake": [
+  {
+   "time": 2.61,
+   "dur": 0.35,
+   "amp": 16
+  },
+  {
+   "time": 7.6,
+   "dur": 0.25,
+   "amp": 10
+  },
+  {
+   "time": 20.04,
+   "dur": 0.35,
+   "amp": 14
+  }
+ ]
+}
