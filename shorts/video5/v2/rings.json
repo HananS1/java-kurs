@@ -1,0 +1,81 @@
+{
+ "model": "/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/models/yolov8m-pose.pt",
+ "rings": [
+  {
+   "start": 0.15,
+   "end": 2.7,
+   "id": 1,
+   "color": "yellow",
+   "label": "OPA"
+  },
+  {
+   "start": 9.7,
+   "end": 10.84,
+   "id": 38,
+   "color": "yellow"
+  },
+  {
+   "start": 10.9,
+   "end": 11.5,
+   "id": 38,
+   "color": "yellow"
+  },
+  {
+   "start": 10.9,
+   "end": 12.6,
+   "id": 1,
+   "color": "red",
+   "label": "HELFER"
+  },
+  {
+   "start": 12.7,
+   "end": 13.9,
+   "id": 1,
+   "color": "red"
+  },
+  {
+   "start": 12.7,
+   "end": 13.9,
+   "id": 53,
+   "color": "yellow"
+  },
+  {
+   "start": 14.65,
+   "end": 16.1,
+   "id": 53,
+   "color": "yellow",
+   "label": "OPA"
+  },
+  {
+   "start": 16.2,
+   "end": 17.8,
+   "id": 53,
+   "color": "yellow"
+  },
+  {
+   "start": 17.9,
+   "end": 20.4,
+   "id": 53,
+   "color": "yellow"
+  }
+ ],
+ "flash": [
+  {
+   "time": 13.3,
+   "dur": 0.45,
+   "color": "red"
+  }
+ ],
+ "shake": [
+  {
+   "time": 0.79,
+   "dur": 0.25,
+   "amp": 10
+  },
+  {
+   "time": 13.3,
+   "dur": 0.35,
+   "amp": 16
+  }
+ ]
+}
