@@ -1,6 +1,6 @@
 # Stil-Regeln für Shorts (Vorbild: ClipErklärt)
 
-> **Vor jedem Video zuerst `LERNEN.md` lesen** (Fehler-Log, Checklisten, nächste Verbesserungen).
+> **Vor jedem Video zuerst `LERNEN.md` und `ANALYSE.md` lesen** (Fehler-Log, Checklisten, Konkurrenz-Erkenntnisse).
 
 Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,9 s).
 
@@ -12,8 +12,10 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Bei Listen: Halteformel in der Mitte („Aber das Beste kommt noch.“)
 - Harter Schluss, kein Outro → Video läuft in Schleife
 
-## Schnitt
-- **Neuer Shot alle 1–1,5 s** (Referenz: 24 Schnitte in 25 s)
+## Schnitt (Tempo nach Format – aus ANALYSE.md)
+- **Listen/Fakten (Japan-Stil):** neuer Shot alle 1–1,5 s (Referenz: 24 Schnitte in 25 s)
+- **Storys (ein Clip mit Handlung):** 5–10 Schnitte, Clip läuft, nur Langweiliges rausschneiden
+  (Brad-Nolan-Hits mit 100+ Mio haben 4–9 Schnitte) – Tempo kommt dann von Stimme, Punch-ins und Sounds
 - Jeder Satz = eigenes Bild, das genau zeigt, was gesagt wird
 - Logos/Wasserzeichen wegschneiden oder verwischen
 - Original-Ton stumm
@@ -24,7 +26,9 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Schlüsselwörter gelb
 
 ## Grafik
-- **Viele animierte Kreise und Pfeile** (ca. alle 1–2 s eins), Stile aus `tools/fx.py`:
+- **Pflicht: Kreis/Pfeil im allerersten Bild** auf das Wichtigste (alle Top-Hits machen das)
+- Listen: viele Kreise/Pfeile (ca. alle 1–2 s). Storys: 3–6 gezielt, nur wo es etwas zu zeigen gibt
+- Stile aus `tools/fx.py`:
   circle_red (wird gezeichnet, pulsiert), circle_yellow (handgemalt, wackelt), circle_glow (Leuchtring, ploppt),
   arrow_red (fliegt rein, federt), arrow_yellow (gebogen, wird gezeichnet), arrow_white (handgemalt, wackelt)
 - **Nie zweimal derselbe Stil hintereinander**; Kreise können mitwandern (x_end/y_end)
@@ -54,12 +58,15 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Boom bei der Wendung („Nichts.“, „starb“)
 - Ding/Chime bei Highlight und Schluss
 - Durchgehend Musik darunter (Referenz hat keine einzige Stille)
+  - **Musik pro Video nach Stimmung** (nicht immer dieselbe): rührend → Klavier/Streicher, lustig → Pizzicato/Upbeat, Spannung → Cinematic
+  - **Musik schwillt am Höhepunkt an** (gute Tat/Reveal) – Ducking dort lockern, +3 dB
   - Eingebaut über `music` in der Config: ca. **15 dB unter der Stimme** (gain_db −14), **Ducking** unter der Stimme
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
 ## Stimme (nach Stimmung wählen!)
 - **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen auf 0,05 s kürzen, Tempo +12 %
+- Einzige Ausnahme: **eine** Mini-Pause (~0,3 s) direkt vor dem Twist/der Pointe (Brad Nolan: „…als würde er klauen. – Und das tat er.“)
 - Prompt-Tags: [fast-paced, intense, dynamic storytelling, no pauses]
 - **Emotional / traurig:** „Rob – Warm Bass German Narrator“ (Klangfarbe warm, Tempo trotzdem schnell)
 - **Fakten / Listen / lustig (Japan-Stil):** „Christian Plasa – Dynamic and Vibrant“
@@ -95,6 +102,8 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 
 ## Kommentar-Auslöser (im Skript eingebaut, NIE „kommentiere für mehr“)
 - Jedes Skript bekommt einen Auslöser, meist als letzter Satz (Video endet hart → Loop)
+- **Like-Satz in der Story** (Top-Kanäle, abwechselnd mit Kommentar-Auslöser): „Alle klatschten – und gaben dem Video ein Like.“ /
+  „Sie hat sich ein Like verdient.“ / „…und niemand gab ihm ein Like.“ (Trotzreaktion)
 - **Abwechseln**, nie zweimal dieselbe Art hintereinander:
   1. Steile These („Ehrlich? Er hat alles richtig gemacht.“) → Widerspruch
   2. Offene Lücke („Was sie danach sagte, hat keiner gehört.“) → Vermutungen

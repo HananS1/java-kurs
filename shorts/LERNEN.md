@@ -24,8 +24,14 @@
 | 6 | Satz eingeklebt → Wortreste hörbar | Satzgrenze nur geschätzt, nicht hörbar | Stimme immer komplett neu erzeugen |
 | 6 | Pfeil läuft in nächste Szene | neue Stimme verlängert Shot | Overlays automatisch auf Shot gekürzt |
 | 6 | Shot läuft über Schnitt im Original | dito | `cut.py` warnt |
+| Analyse | Story-Videos zu hektisch geschnitten, zu viele Grafiken | Listen-Regel auf Storys übertragen | Tempo nach Format (STIL.md) |
+| Analyse | Immer dieselbe Musik | bequem | Musik nach Stimmung, Swell am Höhepunkt |
 
 ## Skript-Checkliste
+- [ ] Clip-Check zuerst: hat das Material selbst eine Mini-Geschichte mit Wendung + universelles Gefühl? Sonst anderen Clip
+- [ ] Hook nach einer der 5 Formeln (ANALYSE.md), Hook-Satz = Titel
+- [ ] Erstes Bild BEWEIST den Hook (+ Kreis/Pfeil drauf) – Versprechen ohne Bild = Flop
+- [ ] Falsche Fährte/Mini-Twist eingebaut, wenn das Material es hergibt
 - [ ] Hook in den ersten 1,5 s: Schock/Zahl/Widerspruch, wirft eine Frage auf
 - [ ] Jede beschriebene Handlung ist im Video sichtbar (Zeit notiert)
 - [ ] Keine erfundenen Fakten über echte Personen
