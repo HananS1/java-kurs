@@ -36,9 +36,9 @@ Daten: vidIQ (Top-Videos pro Kanal, Transkripte, 10 Videos Bild für Bild analys
 |---|---|---|
 | Schnitt alle 1–1,5 s, auch bei Storys | Storys: 4–9 Schnitte, Clip läuft | Schnitt-Tempo nach Format (Liste schnell, Story ruhiger) |
 | Kreis/Pfeil alle 1–2 s | 1 Kreis im 1. Bild, dann 2–4 gezielt | Hook-Kreis Pflicht, danach nur wo es was zu zeigen gibt |
-| Immer dieselbe Musik (Golden Brown) | Musik passend zur Stimmung, Anstieg am Höhepunkt | Musik pro Video wählen, Swell auf Climax |
+| Immer dieselbe Musik (Golden Brown) | Musik passend zur Stimmung | Nutzer will Golden Brown, bis er andere Musik schickt |
 | Null Pausen | eine Mini-Pause (~0,3 s) direkt vor dem Twist | genau EINE Pause vor der Pointe testen |
-| Kommentar-Frage am Ende | Like-Satz in der Story | Like-Satz in die Story einbauen (abwechselnd mit Kommentar-Auslöser) |
+| Kommentar-Frage am Ende | Like-Satz in der Story | vom Nutzer abgelehnt → nicht verwenden |
 
 ## 5 Hook-Formeln (geprüft an echten Hits)
 1. **Absicht + schlimmere Wendung:** „Er wollte ihr seine Liebe gestehen – doch ihre Antwort war schlimmer als ein Nein.“

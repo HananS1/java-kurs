@@ -58,8 +58,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Boom bei der Wendung („Nichts.“, „starb“)
 - Ding/Chime bei Highlight und Schluss
 - Durchgehend Musik darunter (Referenz hat keine einzige Stille)
-  - **Musik pro Video nach Stimmung** (nicht immer dieselbe): rührend → Klavier/Streicher, lustig → Pizzicato/Upbeat, Spannung → Cinematic
-  - **Musik schwillt am Höhepunkt an** (gute Tat/Reveal) – Ducking dort lockern, +3 dB
+  - **Standard-Musik: Golden Brown** (`video2/music.mp3` im Arbeitsordner), bis der Nutzer andere Musik schickt – keine eigene KI-Musik
   - Eingebaut über `music` in der Config: ca. **15 dB unter der Stimme** (gain_db −14), **Ducking** unter der Stimme
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
@@ -102,8 +101,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 
 ## Kommentar-Auslöser (im Skript eingebaut, NIE „kommentiere für mehr“)
 - Jedes Skript bekommt einen Auslöser, meist als letzter Satz (Video endet hart → Loop)
-- **Like-Satz in der Story** (Top-Kanäle, abwechselnd mit Kommentar-Auslöser): „Alle klatschten – und gaben dem Video ein Like.“ /
-  „Sie hat sich ein Like verdient.“ / „…und niemand gab ihm ein Like.“ (Trotzreaktion)
+- **KEIN Like-Satz** („gab diesem Video ein Like“) – vom Nutzer abgelehnt
 - **Abwechseln**, nie zweimal dieselbe Art hintereinander:
   1. Steile These („Ehrlich? Er hat alles richtig gemacht.“) → Widerspruch
   2. Offene Lücke („Was sie danach sagte, hat keiner gehört.“) → Vermutungen

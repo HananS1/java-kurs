@@ -28,6 +28,8 @@
 | Analyse | Immer dieselbe Musik | bequem | Musik nach Stimmung, Swell am Höhepunkt |
 | 7 (Selbst-Review) | Pfeil zeigte auf Kopf der Fotografin statt auf den Strauß | Position nur an einem Zeitpunkt gemessen | Pfeil-Keys an Anfang/Mitte/Ende messen, Pfeil von der freien Seite |
 | 7 (Selbst-Review) | Braut im ersten Bild halb am Rand | Quelle zu früh gestartet | erstes Bild: Hauptperson ganz im Bild, sonst Quelle später starten |
+| 7 | Like-Satz am Ende („gab diesem Video ein Like“) | aus Analyse übernommen | Nutzer will das NICHT → kein Like-Satz, nie |
+| 7 | Eigene KI-Musik | Musik nach Stimmung probiert | **Standard: Golden Brown**, bis der Nutzer andere Musik schickt |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste
@@ -53,7 +55,7 @@
 
 ## Ausprobiert
 - Video 7: eigene Musik pro Video (ElevenLabs Music, ~900 Credits, Swell um 15 s = Höhepunkt), genau EINE Mini-Pause vor dem Twist
-  (`PAUSE_AFTER="an:0.3"` in tighten.py), Like-Satz in der Story, Story-Schnitt (9 Shots statt 20), Zeitlupe 0,5–0,6 bei Gefühl
+  (`PAUSE_AFTER="an:0.3"` in tighten.py), ~~Like-Satz~~ (abgelehnt), ~~eigene Musik~~ (abgelehnt), Story-Schnitt (9 Shots statt 20), Zeitlupe 0,5–0,6 bei Gefühl
 
 ## Nächste Stufe – Verbesserungen, die ich nach und nach einbaue
 - [ ] **Hook-Bild zuerst:** das krasseste Bild 0,5 s als erstes Bild (Neugier), dann Story von vorne
