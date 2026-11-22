@@ -1,5 +1,7 @@
 # Stil-Regeln für Shorts (Vorbild: ClipErklärt)
 
+> **Vor jedem Video zuerst `LERNEN.md` lesen** (Fehler-Log, Checklisten, nächste Verbesserungen).
+
 Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,9 s).
 
 ## Aufbau
