@@ -101,3 +101,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   5. Mittendrin-Twist („Bis hierhin dachte jeder…“)
 - Bei traurigen Storys keine Provokation – Wiedererkennung/Gänsehaut statt These
 - Keine absichtlichen Fehler als Köder
+
+## Eingebrannter Text im Clip
+- Text verwischen (`blur: [x, y, w, h]` im Shot, Quell-Pixel) und eigene Untertitel genau darauf setzen (`caption_y`)
+- Zeitlupe (`speed: 0.5–0.6`) für Pointen/Reveals, wenn die Stimme länger ist als die Szene – Quelle am besten 60 fps

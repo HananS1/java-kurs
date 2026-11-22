@@ -37,9 +37,19 @@ def main(path):
         sf = round(s["src"] * FPS)
         base = (f"[0:v]fps={FPS},trim=start_frame={sf}:end_frame={sf + nfr},"
                 f"setpts=PTS-STARTPTS")
+        sp = s.get("speed", 1.0)
+        if sp != 1.0:
+            # Zeitlupe/Zeitraffer: aus der Quelle (am besten 60 fps) d*speed Sekunden nehmen und strecken
+            base = (f"[0:v]trim=start={s['src']}:duration={nfr / FPS * sp:.4f},setpts=(PTS-STARTPTS)/{sp},"
+                    f"fps={FPS},trim=end_frame={nfr},setpts=PTS-STARTPTS")
         if s.get("delogo"):
             lx, ly, lw, lh = s["delogo"]
             base += f",delogo=x={lx}:y={ly}:w={lw}:h={lh}"
+        if s.get("blur"):
+            # eingebrannten Text stark verwischen (Bereich in Quell-Pixeln)
+            bx, by, bw, bh = s["blur"]
+            base += (f",split[m{i}][r{i}];[r{i}]crop={bw}:{bh}:{bx}:{by},boxblur=28:4[b{i}];"
+                     f"[m{i}][b{i}]overlay={bx}:{by}")
         if s.get("mode") == "fit":
             # ganzes Bild zeigen, Hintergrund unscharf
             parts.append(

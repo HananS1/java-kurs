@@ -1,0 +1,302 @@
+{
+ "clip": "clip_edit.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video6_gta.mp4",
+ "caption_mode": "word",
+ "font": "Bangers",
+ "font_size": 195,
+ "caption_y": 1352,
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "captions": [
+  {
+   "start": 0.0,
+   "end": 2.44,
+   "text": "Die ganze Welt hat dreizehn Jahre auf GTA 6 gewartet.",
+   "highlight": [
+    "dreizehn",
+    "GTA"
+   ]
+  },
+  {
+   "start": 2.44,
+   "end": 3.12,
+   "text": "Er auch.",
+   "highlight": []
+  },
+  {
+   "start": 3.12,
+   "end": 4.26,
+   "text": "Dann kommt Mama rein.",
+   "highlight": [
+    "Mama"
+   ]
+  },
+  {
+   "start": 4.26,
+   "end": 5.0,
+   "text": "Mit einer Tüte.",
+   "highlight": [
+    "Tüte."
+   ]
+  },
+  {
+   "start": 5.0,
+   "end": 7.43,
+   "text": "Sie drückt sie ihm in die Hand und geht wieder raus.",
+   "highlight": []
+  },
+  {
+   "start": 7.43,
+   "end": 9.03,
+   "text": "Er weiß sofort, was da drin ist.",
+   "highlight": [
+    "sofort,"
+   ]
+  },
+  {
+   "start": 9.03,
+   "end": 10.72,
+   "text": "Er reißt die Tüte auf… GTA!",
+   "highlight": [
+    "GTA!"
+   ]
+  },
+  {
+   "start": 10.72,
+   "end": 11.15,
+   "text": "Aber Moment.",
+   "highlight": [
+    "Moment."
+   ]
+  },
+  {
+   "start": 11.15,
+   "end": 12.04,
+   "text": "Das ist GTA 5.",
+   "highlight": [
+    "GTA",
+    "5."
+   ]
+  },
+  {
+   "start": 12.04,
+   "end": 12.75,
+   "text": "Für die PS4.",
+   "highlight": [
+    "PS4."
+   ]
+  },
+  {
+   "start": 12.75,
+   "end": 14.99,
+   "text": "Ein Spiel, das selbst schon dreizehn Jahre alt ist.",
+   "highlight": [
+    "dreizehn",
+    "alt"
+   ]
+  },
+  {
+   "start": 14.99,
+   "end": 15.9,
+   "text": "Er sagt nichts.",
+   "highlight": [
+    "nichts."
+   ]
+  },
+  {
+   "start": 15.9,
+   "end": 16.78,
+   "text": "Er starrt nur.",
+   "highlight": [
+    "starrt"
+   ]
+  },
+  {
+   "start": 16.78,
+   "end": 17.05,
+   "text": "Und dann…",
+   "highlight": []
+  },
+  {
+   "start": 17.05,
+   "end": 18.71,
+   "text": "Mama meinte es gut. Wirklich.",
+   "highlight": [
+    "Mama",
+    "gut."
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.0,
+   "sound": "whoosh_deep"
+  },
+  {
+   "time": 2.44,
+   "sound": "pop"
+  },
+  {
+   "time": 3.15,
+   "sound": "footsteps",
+   "gain": 0.7
+  },
+  {
+   "time": 4.26,
+   "sound": "bag_rustle"
+  },
+  {
+   "time": 5.0,
+   "sound": "swoosh_air"
+  },
+  {
+   "time": 7.43,
+   "sound": "tick"
+  },
+  {
+   "time": 9.03,
+   "sound": "bag_rustle"
+  },
+  {
+   "time": 10.25,
+   "sound": "shimmer",
+   "gain": 0.8
+  },
+  {
+   "time": 10.72,
+   "sound": "record_scratch"
+  },
+  {
+   "time": 11.15,
+   "sound": "dun_dun"
+  },
+  {
+   "time": 12.04,
+   "sound": "hit",
+   "gain": 0.6
+  },
+  {
+   "time": 14.99,
+   "sound": "tick",
+   "gain": 0.8
+  },
+  {
+   "time": 16.78,
+   "sound": "riser"
+  },
+  {
+   "time": 17.05,
+   "sound": "hit"
+  },
+  {
+   "time": 17.3,
+   "sound": "sad_trombone"
+  },
+  {
+   "time": 3.12,
+   "sound": "@transition"
+  },
+  {
+   "time": 7.43,
+   "sound": "@transition"
+  },
+  {
+   "time": 12.75,
+   "sound": "@transition"
+  },
+  {
+   "time": 0.33999999999999997,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 4.34,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 11.219999999999999,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 12.1,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 15.969999999999999,
+   "sound": "@accent",
+   "gain": 0.7
+  }
+ ],
+ "overlays": [
+  {
+   "style": "circle_red",
+   "start": 0.3,
+   "end": 2.44,
+   "x": 936,
+   "y": 864,
+   "size": 340,
+   "track_box": 190
+  },
+  {
+   "style": "arrow_yellow",
+   "start": 4.3,
+   "end": 5.0,
+   "x": 648,
+   "y": 690,
+   "angle": 90,
+   "size": 210,
+   "track": [
+    648,
+    918,
+    200
+   ]
+  },
+  {
+   "style": "circle_glow",
+   "start": 11.18,
+   "end": 12.04,
+   "x": 612,
+   "y": 450,
+   "size": 320,
+   "track_box": 170
+  },
+  {
+   "style": "arrow_red",
+   "start": 12.06,
+   "end": 12.75,
+   "x": 720,
+   "y": 320,
+   "angle": 225,
+   "size": 220,
+   "track": [
+    600,
+    200,
+    150
+   ]
+  },
+  {
+   "style": "circle_yellow",
+   "start": 15.93,
+   "end": 16.78,
+   "x": 792,
+   "y": 756,
+   "size": 360,
+   "track_box": 200
+  }
+ ],
+ "zooms": [],
+ "tail": 0.6,
+ "music": {
+  "path": "music.mp3",
+  "start": 0,
+  "gain_db": -10,
+  "fade_in": 0.3,
+  "fade_out": 1.2,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5
+ }
+}

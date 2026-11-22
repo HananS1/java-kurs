@@ -136,6 +136,14 @@
   "strain": {
    "vol": 0.35,
    "lead": 0.0
+  },
+  "bag_rustle": {
+   "vol": 0.35,
+   "lead": 0.0
+  },
+  "dun_dun": {
+   "vol": 0.4,
+   "lead": 0.0
   }
  },
  "groups": {
@@ -217,7 +225,12 @@
   "Comedy/Fail": [
    "record_scratch",
    "sad_trombone",
-   "strain"
+   "strain",
+   "dun_dun"
+  ],
+  "Geschenk/Auspacken": [
+   "bag_rustle",
+   "shimmer"
   ]
  }
 }

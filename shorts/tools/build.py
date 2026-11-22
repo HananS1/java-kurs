@@ -37,7 +37,7 @@ def ass_time(t):
     h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h}:{m:02d}:{s:05.2f}"
 
-def make_ass_words(path, captions, font="Bangers", size=150):
+def make_ass_words(path, captions, font="Bangers", size=150, y=1150):
     """Ein Wort pro Einblendung, wie bei ClipErklaert: dicker Comic-Font, weiss mit schwarzem Rand."""
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -60,7 +60,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         for w, wt in zip(words, weights):
             d = span * wt / tot
             col = "{\\c&H00E5FF&}" if w.strip(".,…–!?").lower() in hl else ""
-            pop = "{\\pos(540,1150)\\fscx70\\fscy70\\t(0,70,\\fscx112\\fscy112)\\t(70,130,\\fscx100\\fscy100)}"
+            pop = "{\\pos(540,%d)\\fscx70" % y + "\\fscy70\\t(0,70,\\fscx112\\fscy112)\\t(70,130,\\fscx100\\fscy100)}"
             lines.append(f"Dialogue: 0,{ass_time(t)},{ass_time(t + d)},Cap,,0,0,0,,{pop}{col}{w.upper()}")
             t += d
     open(path, "w").write(head + "\n".join(lines) + "\n")
@@ -134,7 +134,7 @@ def main(cfg_path):
 
     make_arrow("arrow.png"); make_circle("circle.png")
     if cfg.get("caption_mode") == "word":
-        make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150))
+        make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150))
     else:
         make_ass("subs.ass", cfg["captions"])
 
