@@ -81,6 +81,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 | Frauen-/Mädchen-Perspektive | Mutter, Braut, Tochter, „Sie …“-Storys mit viel Gefühl | **Mila** `dCnu06FiOZma2KVNUoPZ` | emotional, warm, fast-paced, no pauses |
 | Fakten / Listen (Japan-Stil) | „3 Dinge …“ | **Christian Plasa** | energetic, crisp, fast-paced, no pauses |
 
+- **Pro Video genau EINE Stimme** – nie zwei Stimmen in einem Video
 - Mischt ein Video zwei Stimmungen (lustig → rührend): Stimme nach dem **Ende** wählen (das Gefühl, mit dem man rausgeht)
 - Nicht dieselbe Stimme 5× hintereinander, wenn die Kategorie es zulässt (Kanal klingt sonst monoton)
 
