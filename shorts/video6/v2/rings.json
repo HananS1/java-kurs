@@ -1,0 +1,10 @@
+{"model":"/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n6/../models/yolov8m-pose.pt",
+ "rings":[
+  {"start":0.1,"end":2.9,"id":2,"color":"yellow","label":"ER"},
+  {"start":3.9,"end":7.5,"id":10,"color":"red","label":"MAMA"},
+  {"start":7.65,"end":9.2,"id":2,"color":"yellow"},
+  {"start":12.55,"end":13.42,"keys":[[12.55,600,550,120],[12.9,783,540,120],[13.42,650,560,120]],"color":"red"},
+  {"start":13.5,"end":14.5,"keys":[[13.5,648,300,115],[14.5,648,300,115]],"color":"yellow"},
+  {"start":16.6,"end":18.4,"id":61,"color":"yellow"}],
+ "flash":[{"time":10.88,"dur":0.35,"color":"white"},{"time":12.89,"dur":0.45,"color":"red"}],
+ "shake":[{"time":10.88,"dur":0.3,"amp":14},{"time":12.89,"dur":0.35,"amp":16}]}
