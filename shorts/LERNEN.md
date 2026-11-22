@@ -33,6 +33,7 @@
 | 8 (Remakes) | **Stimme hackt** – nicht flüssig | tighten.py schneidet zwischen JEDEM Wort, kappt Wortenden | **Stimme am Stück lassen** (`smooth.py`: nur atempo 1.1, kein Schneiden). tighten.py nicht mehr benutzen |
 | 8 (Remakes) | Dünne Ringe + Namensschilder + Farbblitze = „nicht clean“ | eigenes neues Design ohne Rückfrage | Bewährte animierte Kreise (fx.py) behalten, nur Bewegung per Tracking verbessern. Kein Design-Wechsel ohne Nutzer |
 | 8 (Remakes) | Mehrere Kreise gleichzeitig | zu viel | max. EIN Kreis gleichzeitig |
+| 8 (Remakes) | Nur Kreise, 3× hintereinander auf dieselbe Frau | Pfeile weggelassen | Kreis/Pfeil strikt abwechseln, Pfeilspitze an der Kopfkante (0.95·r) |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste
