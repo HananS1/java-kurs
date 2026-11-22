@@ -4,8 +4,10 @@ Wortzeiten kommen aus ElevenLabs; Wortanfang/-ende werden zusaetzlich per Pegel 
 Aufruf: python3 tighten.py roh.mp3 words.json voice.wav sentences.json script.txt [tempo=1.12] [luecke=0.04]
 script.txt: ein Satz pro Zeile (genau wie Untertitel-Saetze) -> bestimmt die Satzaufteilung
 """
-import json, subprocess, sys
+import json, os, re, subprocess, sys
 import numpy as np
+
+def _norm(t): return re.sub(r"[^\wäöüß]", "", t.lower())
 
 def load(raw, sr=16000):
     b = subprocess.run(["ffmpeg", "-nostdin", "-loglevel", "error", "-i", raw, "-ac", "1", "-ar", str(sr),
@@ -20,7 +22,7 @@ def main(raw, words_json, out_wav, out_sent, script, tempo="1.12", gap="0.04"):
     for w in d:                                   # Regie-Tags [ ... ] ueberspringen (auch mehrteilig)
         t = w["text"]
         if t.startswith("["): intag = True
-        if not intag and w.get("type", "word") == "word":
+        if not intag and w.get("type", "word") == "word" and _norm(t):
             ws.append(dict(w))
         if t.endswith("]"): intag = False
     x, sr = load(raw)
@@ -34,6 +36,11 @@ def main(raw, words_json, out_wav, out_sent, script, tempo="1.12", gap="0.04"):
         if len(loud):
             w["start"] = (i0 + loud[0]) * hop / sr
             w["end"] = min(w["end"], (i0 + loud[-1] + 1) * hop / sr + 0.03)
+    # PAUSE_AFTER="wort:0.3" -> genau EINE bewusste Mini-Pause vor dem Twist (erstes Vorkommen)
+    pause_i, pause_s = -1, 0.0
+    if os.environ.get("PAUSE_AFTER"):
+        pw, ps = os.environ["PAUSE_AFTER"].rsplit(":", 1)
+        pause_i = next(i for i, w in enumerate(ws) if _norm(w["text"]) == _norm(pw)); pause_s = float(ps) * tempo
     segs, t_out, timed = [], 0.0, []
     for i, w in enumerate(ws):
         a = max(0.0, w["start"] - 0.015)
@@ -43,9 +50,11 @@ def main(raw, words_json, out_wav, out_sent, script, tempo="1.12", gap="0.04"):
         segs.append((a, b))
         st = t_out + (w["start"] - a)
         timed.append([w["text"], st, st + (w["end"] - w["start"])])
-        t_out += (b - a) + gap
-    parts = "".join(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,apad=pad_dur={gap}[s{i}];"
-                    for i, (a, b) in enumerate(segs))
+        g = gap + (pause_s if i == pause_i else 0.0)
+        segs[-1] = (a, b, g)
+        t_out += (b - a) + g
+    parts = "".join(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,apad=pad_dur={g:.3f}[s{i}];"
+                    for i, (a, b, g) in enumerate(segs))
     cat = "".join(f"[s{i}]" for i in range(len(segs)))
     subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", raw, "-filter_complex",
                     parts + f"{cat}concat=n={len(segs)}:v=0:a=1,atempo={tempo}[o]",

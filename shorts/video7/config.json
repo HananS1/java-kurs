@@ -1,0 +1,795 @@
+{
+ "clip": "clip_edit.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video7_schuluniform.mp4",
+ "caption_mode": "word",
+ "font": "Bangers",
+ "font_size": 195,
+ "caption_y": 1352,
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "captions": [
+  {
+   "start": 0.013,
+   "end": 2.576,
+   "text": "Alle Brautjungfern trugen weiße Kleider, nur die Braut nicht.",
+   "highlight": [
+    "weiße",
+    "Braut"
+   ],
+   "words": [
+    [
+     "Alle",
+     0.013,
+     0.022
+    ],
+    [
+     "Brautjungfern",
+     0.085,
+     0.656
+    ],
+    [
+     "trugen",
+     0.719,
+     0.969
+    ],
+    [
+     "weiße",
+     1.031,
+     1.21
+    ],
+    [
+     "Kleider",
+     1.272,
+     1.629
+    ],
+    [
+     "nur",
+     1.692,
+     1.79
+    ],
+    [
+     "die",
+     1.853,
+     1.924
+    ],
+    [
+     "Braut",
+     1.987,
+     2.183
+    ],
+    [
+     "nicht.",
+     2.246,
+     2.576
+    ]
+   ]
+  },
+  {
+   "start": 2.638,
+   "end": 4.748,
+   "text": "Sie kam in ihrer alten Schuluniform.",
+   "highlight": [
+    "Schuluniform"
+   ],
+   "words": [
+    [
+     "Sie",
+     2.638,
+     2.781
+    ],
+    [
+     "kam",
+     2.844,
+     3.022
+    ],
+    [
+     "in",
+     3.085,
+     3.121
+    ],
+    [
+     "ihrer",
+     3.183,
+     3.362
+    ],
+    [
+     "alten",
+     3.424,
+     3.638
+    ],
+    [
+     "Schuluniform.",
+     3.701,
+     4.748
+    ]
+   ]
+  },
+  {
+   "start": 4.811,
+   "end": 7.061,
+   "text": "Und hinter ihrem Rücken versteckte sie etwas.",
+   "highlight": [
+    "Rücken"
+   ],
+   "words": [
+    [
+     "Und",
+     4.811,
+     4.864
+    ],
+    [
+     "hinter",
+     4.927,
+     5.177
+    ],
+    [
+     "ihrem",
+     5.239,
+     5.418
+    ],
+    [
+     "Rücken",
+     5.48,
+     5.73
+    ],
+    [
+     "versteckte",
+     5.793,
+     6.15
+    ],
+    [
+     "sie",
+     6.212,
+     6.284
+    ],
+    [
+     "etwas.",
+     6.346,
+     7.061
+    ]
+   ]
+  },
+  {
+   "start": 7.123,
+   "end": 10.132,
+   "text": "Vorne wartete der Bräutigam. Er hatte keine Ahnung.",
+   "highlight": [
+    "Bräutigam",
+    "Ahnung"
+   ],
+   "words": [
+    [
+     "Vorne",
+     7.123,
+     7.48
+    ],
+    [
+     "wartete",
+     7.543,
+     7.793
+    ],
+    [
+     "der",
+     7.855,
+     7.927
+    ],
+    [
+     "Bräutigam.",
+     7.989,
+     8.704
+    ],
+    [
+     "Er",
+     8.766,
+     8.837
+    ],
+    [
+     "hatte",
+     8.9,
+     9.114
+    ],
+    [
+     "keine",
+     9.177,
+     9.462
+    ],
+    [
+     "Ahnung.",
+     9.525,
+     10.132
+    ]
+   ]
+  },
+  {
+   "start": 10.195,
+   "end": 13.081,
+   "text": "Denn genau so sah sie aus, als er sich damals in sie verliebt hat.",
+   "highlight": [
+    "verliebt"
+   ],
+   "words": [
+    [
+     "Denn",
+     10.195,
+     10.266
+    ],
+    [
+     "genau",
+     10.329,
+     10.65
+    ],
+    [
+     "so",
+     10.712,
+     10.855
+    ],
+    [
+     "sah",
+     10.918,
+     11.061
+    ],
+    [
+     "sie",
+     11.123,
+     11.195
+    ],
+    [
+     "aus,",
+     11.257,
+     11.519
+    ],
+    [
+     "als",
+     11.581,
+     11.635
+    ],
+    [
+     "er",
+     11.697,
+     11.733
+    ],
+    [
+     "sich",
+     11.796,
+     11.894
+    ],
+    [
+     "damals",
+     11.956,
+     12.242
+    ],
+    [
+     "in",
+     12.304,
+     12.34
+    ],
+    [
+     "sie",
+     12.403,
+     12.474
+    ],
+    [
+     "verliebt",
+     12.537,
+     12.822
+    ],
+    [
+     "hat.",
+     12.885,
+     13.081
+    ]
+   ]
+  },
+  {
+   "start": 13.144,
+   "end": 16.024,
+   "text": "Er sah sie an und kämpfte plötzlich mit den Tränen.",
+   "highlight": [
+    "Tränen"
+   ],
+   "words": [
+    [
+     "Er",
+     13.144,
+     13.215
+    ],
+    [
+     "sah",
+     13.278,
+     13.349
+    ],
+    [
+     "sie",
+     13.412,
+     13.563
+    ],
+    [
+     "an",
+     13.626,
+     14.054
+    ],
+    [
+     "und",
+     14.417,
+     14.56
+    ],
+    [
+     "kämpfte",
+     14.622,
+     14.944
+    ],
+    [
+     "plötzlich",
+     15.006,
+     15.363
+    ],
+    [
+     "mit",
+     15.426,
+     15.462
+    ],
+    [
+     "den",
+     15.524,
+     15.596
+    ],
+    [
+     "Tränen.",
+     15.658,
+     16.024
+    ]
+   ]
+  },
+  {
+   "start": 16.087,
+   "end": 18.551,
+   "text": "Dann holte sie den Strauß hervor und umarmte ihn.",
+   "highlight": [
+    "Strauß",
+    "umarmte"
+   ],
+   "words": [
+    [
+     "Dann",
+     16.087,
+     16.229
+    ],
+    [
+     "holte",
+     16.292,
+     16.471
+    ],
+    [
+     "sie",
+     16.533,
+     16.604
+    ],
+    [
+     "den",
+     16.667,
+     16.81
+    ],
+    [
+     "Strauß",
+     16.872,
+     17.087
+    ],
+    [
+     "hervor",
+     17.149,
+     17.542
+    ],
+    [
+     "und",
+     17.604,
+     17.676
+    ],
+    [
+     "umarmte",
+     17.738,
+     18.06
+    ],
+    [
+     "ihn.",
+     18.122,
+     18.551
+    ]
+   ]
+  },
+  {
+   "start": 18.613,
+   "end": 21.488,
+   "text": "Der ganze Saal klatschte und gab diesem Video ein Like.",
+   "highlight": [
+    "Like"
+   ],
+   "words": [
+    [
+     "Der",
+     18.613,
+     18.721
+    ],
+    [
+     "ganze",
+     18.783,
+     19.033
+    ],
+    [
+     "Saal",
+     19.096,
+     19.31
+    ],
+    [
+     "klatschte",
+     19.372,
+     20.015
+    ],
+    [
+     "und",
+     20.078,
+     20.221
+    ],
+    [
+     "gab",
+     20.283,
+     20.426
+    ],
+    [
+     "diesem",
+     20.488,
+     20.738
+    ],
+    [
+     "Video",
+     20.801,
+     21.015
+    ],
+    [
+     "ein",
+     21.078,
+     21.149
+    ],
+    [
+     "Like.",
+     21.212,
+     21.488
+    ]
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.0,
+   "sound": "whoosh_deep"
+  },
+  {
+   "time": 0.05,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 1.95,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 3.7,
+   "sound": "shimmer",
+   "gain": 0.8
+  },
+  {
+   "time": 4.81,
+   "sound": "whoosh_fast"
+  },
+  {
+   "time": 5.85,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 7.12,
+   "sound": "swoosh_air"
+  },
+  {
+   "time": 8.0,
+   "sound": "@accent",
+   "gain": 0.7
+  },
+  {
+   "time": 9.53,
+   "sound": "heartbeat",
+   "gain": 0.8
+  },
+  {
+   "time": 10.2,
+   "sound": "paper_swoosh"
+  },
+  {
+   "time": 10.7,
+   "sound": "@accent",
+   "gain": 0.6
+  },
+  {
+   "time": 13.14,
+   "sound": "swipe"
+  },
+  {
+   "time": 13.7,
+   "sound": "heartbeat",
+   "gain": 0.7
+  },
+  {
+   "time": 14.42,
+   "sound": "piano_hit"
+  },
+  {
+   "time": 15.3,
+   "sound": "swell",
+   "gain": 0.9
+  },
+  {
+   "time": 16.09,
+   "sound": "swoosh_air"
+  },
+  {
+   "time": 16.8,
+   "sound": "@accent",
+   "gain": 0.6
+  },
+  {
+   "time": 17.74,
+   "sound": "shimmer",
+   "gain": 0.7
+  },
+  {
+   "time": 19.3,
+   "sound": "applause",
+   "gain": 0.8
+  },
+  {
+   "time": 21.2,
+   "sound": "ding",
+   "gain": 0.7
+  }
+ ],
+ "overlays": [
+  {
+   "style": "arrow_red",
+   "start": 0.0,
+   "end": 1.6,
+   "x": 890,
+   "y": 280,
+   "angle": 90,
+   "size": 220,
+   "track": [
+    890,
+    400,
+    150
+   ],
+   "keys": [
+    [
+     0.0,
+     890,
+     280,
+     1
+    ],
+    [
+     0.8,
+     890,
+     250,
+     1
+    ],
+    [
+     1.5,
+     729,
+     210,
+     1
+    ],
+    [
+     1.6,
+     720,
+     210,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "circle_yellow",
+   "start": 1.95,
+   "end": 2.62,
+   "x": 700,
+   "y": 640,
+   "size": 620,
+   "keys": [
+    [
+     1.95,
+     700,
+     640,
+     1
+    ],
+    [
+     2.62,
+     640,
+     640,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "arrow_yellow",
+   "start": 5.85,
+   "end": 7.1,
+   "x": 880,
+   "y": 1040,
+   "angle": 270,
+   "size": 230,
+   "track": [
+    880,
+    940,
+    150
+   ],
+   "keys": [
+    [
+     5.85,
+     880,
+     1040,
+     1
+    ],
+    [
+     6.2,
+     840,
+     1080,
+     1
+    ],
+    [
+     7.0,
+     770,
+     1090,
+     1
+    ],
+    [
+     7.1,
+     770,
+     1090,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "circle_red",
+   "start": 7.95,
+   "end": 9.7,
+   "x": 300,
+   "y": 390,
+   "size": 330,
+   "keys": [
+    [
+     7.95,
+     297,
+     380,
+     1
+    ],
+    [
+     9.0,
+     297,
+     405,
+     1
+    ],
+    [
+     9.7,
+     297,
+     405,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "circle_glow",
+   "start": 10.7,
+   "end": 13.0,
+   "x": 680,
+   "y": 432,
+   "size": 340,
+   "keys": [
+    [
+     10.7,
+     680,
+     440,
+     1
+    ],
+    [
+     11.2,
+     567,
+     432,
+     1
+    ],
+    [
+     12.2,
+     527,
+     486,
+     1
+    ],
+    [
+     13.0,
+     445,
+     486,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "circle_yellow",
+   "start": 15.3,
+   "end": 16.08,
+   "x": 500,
+   "y": 555,
+   "size": 380,
+   "keys": [
+    [
+     15.3,
+     500,
+     555,
+     1
+    ],
+    [
+     15.7,
+     540,
+     565,
+     1
+    ],
+    [
+     16.08,
+     621,
+     545,
+     1
+    ]
+   ]
+  },
+  {
+   "style": "arrow_white",
+   "start": 16.8,
+   "end": 17.7,
+   "x": 320,
+   "y": 860,
+   "angle": 270,
+   "size": 210,
+   "track": [
+    320,
+    760,
+    150
+   ],
+   "keys": [
+    [
+     16.8,
+     330,
+     880,
+     1
+    ],
+    [
+     17.0,
+     243,
+     830,
+     1
+    ],
+    [
+     17.7,
+     420,
+     850,
+     1
+    ]
+   ]
+  }
+ ],
+ "zooms": [],
+ "tail": 0.26,
+ "music": {
+  "path": "music.mp3",
+  "start": 0,
+  "gain_db": -9,
+  "fade_in": 0.3,
+  "fade_out": 1.0,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5
+ }
+}
