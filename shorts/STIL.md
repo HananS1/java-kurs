@@ -63,14 +63,26 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
-## Stimme (nach Stimmung wählen!)
-- **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen auf 0,05 s kürzen, Tempo +12 %
-- Einzige Ausnahme: **eine** Mini-Pause (~0,3 s) direkt vor dem Twist/der Pointe (Brad Nolan: „…als würde er klauen. – Und das tat er.“)
-- Prompt-Tags: [fast-paced, intense, dynamic storytelling, no pauses]
-- **Emotional / traurig:** „Rob – Warm Bass German Narrator“ (Klangfarbe warm, Tempo trotzdem schnell)
-- **Fakten / Listen / lustig (Japan-Stil):** „Christian Plasa – Dynamic and Vibrant“
-- Modell eleven_v4
-- ~3,8 Wörter pro Sekunde
+## Stimme (nach Kategorie wählen – feste Zuordnung)
+- **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen raus (tighten.py), Tempo 1.12
+- Einzige Ausnahme: **eine** Mini-Pause (~0,3 s) direkt vor dem Twist (`PAUSE_AFTER`)
+- Modell eleven_v4, Tags vorne im Text (Spalte „Tags“), ~3,8 Wörter pro Sekunde
+- Hörproben aller Stimmen: `stimmen_hoerproben.mp4` – Nutzer-Feedback zu Stimmen hier eintragen
+
+| Kategorie | Beispiele | Stimme (voice_id) | Tags |
+|---|---|---|---|
+| Rührend / Liebe / Wholesome | Hochzeit, Wiedersehen, gute Tat, Tier gerettet | **Rob** `5euSC8RarC3AHrZ242sr` (Alternative: Ekrem `RY3dTe57R8HXp7kzijeB`) | warm, emotional, fast-paced storytelling, no pauses |
+| Traurig / Abschied / Tod | Hund stirbt, letzter Wunsch | **Ekrem** `RY3dTe57R8HXp7kzijeB` (tief, kinoreif) | emotional, soft but fast-paced, no pauses |
+| Lustig / Fail / Prank | Mr. Bean, Katze, Missgeschick | **Christian Plasa** `nsFsExJHz4xV1sOX6Kdn` | funny, energetic, fast-paced, no pauses |
+| Spannung / Schock / Mystery | „geriet in Panik“, Fund, Rätsel | **Axel** `ZPI4bKVkeIVdAkOA73qX` | suspenseful, intense, fast-paced, no pauses |
+| Düster / Krimi / Gefahr | Polizei-Einsatz, Verbrechen, Unfall | **Anton** `Ay1WwRHxUsu3hEeAp8JZ` | suspenseful, dark, fast-paced, no pauses |
+| Krass / Held / Rekord / Sport | Rettung, Mutprobe, „alle scheiterten“ | **Jan** `keqaIOtp0ePlmN5jgQfy` | hyped, energetic, fast-paced, no pauses |
+| Gaming / Jugend / Hype | GTA, Schule, Teenager | **Timon** `0i5UT3fATBWphA0jBZug` | excited, energetic, fast-paced, no pauses |
+| Frauen-/Mädchen-Perspektive | Mutter, Braut, Tochter, „Sie …“-Storys mit viel Gefühl | **Mila** `dCnu06FiOZma2KVNUoPZ` | emotional, warm, fast-paced, no pauses |
+| Fakten / Listen (Japan-Stil) | „3 Dinge …“ | **Christian Plasa** | energetic, crisp, fast-paced, no pauses |
+
+- Mischt ein Video zwei Stimmungen (lustig → rührend): Stimme nach dem **Ende** wählen (das Gefühl, mit dem man rausgeht)
+- Nicht dieselbe Stimme 5× hintereinander, wenn die Kategorie es zulässt (Kanal klingt sonst monoton)
 
 ## Aufbau nach HPC (aus „How to make shorts that go viral“)
 - **H**ook (0–5 s): schnell, keine Pause, wirft Fragen auf
