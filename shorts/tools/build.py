@@ -52,11 +52,20 @@ Style: Cap,{font},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     lines = []
+    allw = [w for c in captions for w in c.get("words", [])]
     for c in captions:
+        hl = [w.lower() for w in c.get("highlight", [])]
+        if c.get("words"):
+            # exakte Wortzeiten (ElevenLabs): jedes Wort bleibt bis zum naechsten stehen
+            for w, s, e in c["words"]:
+                nxt = next((x[1] for x in allw if x[1] > s + 0.001), e + 0.3)
+                col = "{\\c&H00E5FF&}" if w.strip(".,…–!?").lower() in hl else ""
+                pop = "{\\pos(540,%d)\\fscx70\\fscy70\\t(0,70,\\fscx112\\fscy112)\\t(70,130,\\fscx100\\fscy100)}" % y
+                lines.append(f"Dialogue: 0,{ass_time(s)},{ass_time(min(nxt, e + 0.6))},Cap,,0,0,0,,{pop}{col}{w.upper()}")
+            continue
         words = c["text"].split()
         weights = [len(w) + 2 for w in words]
         tot = sum(weights); t = c["start"]; span = c["end"] - c["start"]
-        hl = [w.lower() for w in c.get("highlight", [])]
         for w, wt in zip(words, weights):
             d = span * wt / tot
             col = "{\\c&H00E5FF&}" if w.strip(".,…–!?").lower() in hl else ""
@@ -161,6 +170,16 @@ def main(cfg_path):
 
     # Overlays (Pfeile/Kreise)
     inputs = vin + ["-i", voice, "-i", "arrow.png", "-i", "circle.png"]
+    # Regel: Overlay endet spaetestens am Schnitt seines Shots (nie ueber einen Schnitt hinweg)
+    if os.path.exists("shots.json"):
+        shot_list = json.load(open("shots.json"))["shots"]
+        for o in cfg.get("overlays", []):
+            sh = next((s for s in shot_list if s["start"] <= o["start"] + 0.001 < s["end"]), None)
+            if sh and o["end"] > sh["end"]:
+                print(f"  Overlay {o.get('style')} @{o['start']}: Ende {o['end']} -> Schnitt {sh['end']}")
+                o["end"] = sh["end"]
+                if "keys" in o:
+                    o["keys"] = [k for k in o["keys"] if k[0] <= sh["end"]] or o["keys"][:1]
     last = "v0"
     anim = []
     for i, o in enumerate(cfg.get("overlays", [])):

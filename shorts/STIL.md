@@ -112,3 +112,11 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Bei schnellen Bewegungen in der Hand (Spielhülle, Handy …) Keyframes statt Tracker
 - Korrekturen: `tools/splice.py` ersetzt einen einzelnen Satz in der Stimme und zieht alle Zeiten nach
 - Das Wort, das etwas benennt („GTA!“), muss genau auf dem Bild liegen, wo man es sieht
+
+## Stimme & Timing (neuer Standard ab Video 6)
+- Stimme immer KOMPLETT neu erzeugen statt Sätze einzukleben (Kleben kann Wortreste hinterlassen)
+- Wortzeiten: ElevenLabs-Transkription (0 Credits) auf den Sprach-Node → `words.json`
+- `tools/tighten.py`: Pausen nur ZWISCHEN Wörtern kürzen (Wortenden per Pegel gekürzt), Tempo 1.15 → exakte Wortzeiten
+- Untertitel mit exakten Wortzeiten (`words` in den Captions)
+- `tools/retime.py`: bei neuer Stimme alle Shots/Overlays/Sounds auf die neuen Satzgrenzen umrechnen
+- `cut.py` warnt, wenn ein Shot über einen Schnitt im Original oder dessen Ende läuft; `build.py` kürzt Overlays automatisch auf ihren Shot

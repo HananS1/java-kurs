@@ -63,6 +63,20 @@ def main(path):
                 f"{base},crop={w}:{h}:'{xexpr}':{y},scale={W}:{H}:flags=lanczos"
                 + (",unsharp=5:5:0.45:5:5:0.0" if w < 540 else "")   # starke Vergroesserung: leicht nachschaerfen
                 + f",setsar=1[p{i}]")
+    # Warnung: Shot laeuft ueber einen Schnitt im ORIGINAL oder ueber dessen Ende hinaus
+    det = subprocess.run(["ffmpeg", "-nostdin", "-i", cfg["source"], "-vf", "select='gt(scene,0.3)',showinfo",
+                          "-f", "null", "-"], capture_output=True, text=True).stderr
+    import re
+    src_cuts = [float(m) for m in re.findall(r"pts_time:([0-9.]+)", det)]
+    src_len = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    cfg["source"]], capture_output=True, text=True).stdout)
+    for s in shots:
+        a = s["src"]; b = a + (s["end"] - s["start"]) * s.get("speed", 1.0)
+        for c in src_cuts:
+            if a + 0.03 < c < b - 0.03 and not s.get("allow_cut"):
+                print(f"  !! WARNUNG Shot {s['start']}-{s['end']}: Quelle {a:.2f}-{b:.2f} laeuft ueber Original-Schnitt bei {c:.2f}")
+        if b > src_len:
+            print(f"  !! WARNUNG Shot {s['start']}-{s['end']}: Quelle endet bei {src_len:.2f}, Shot braucht bis {b:.2f}")
     n = len(parts)
     fc = ";".join(parts) + ";" + "".join(f"[p{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cfg["source"],
