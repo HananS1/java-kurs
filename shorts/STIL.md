@@ -105,3 +105,10 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 ## Eingebrannter Text im Clip
 - Text verwischen (`blur: [x, y, w, h]` im Shot, Quell-Pixel) und eigene Untertitel genau darauf setzen (`caption_y`)
 - Zeitlupe (`speed: 0.5–0.6`) für Pointen/Reveals, wenn die Stimme länger ist als die Szene – Quelle am besten 60 fps
+
+## Skript-Fakten = was man SIEHT
+- Jede beschriebene Handlung vor dem Vertonen im Original Bild für Bild prüfen (0,2-s-Schritte)
+  (Fehler bei Video 6: „drückt ihm in die Hand“ – sie stellt sie hin; „reißt die Tüte auf“ – er holt es raus)
+- Bei schnellen Bewegungen in der Hand (Spielhülle, Handy …) Keyframes statt Tracker
+- Korrekturen: `tools/splice.py` ersetzt einen einzelnen Satz in der Stimme und zieht alle Zeiten nach
+- Das Wort, das etwas benennt („GTA!“), muss genau auf dem Bild liegen, wo man es sieht

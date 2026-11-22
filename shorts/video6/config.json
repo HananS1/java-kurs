@@ -58,23 +58,24 @@
   },
   {
    "start": 8.951,
-   "end": 10.641,
-   "text": "Er reißt die Tüte auf… GTA!",
+   "end": 10.751,
+   "text": "Er holt es raus… GTA!",
    "highlight": [
+    "raus…",
     "GTA!"
    ]
   },
   {
-   "start": 10.641,
-   "end": 11.071,
+   "start": 10.751,
+   "end": 11.181,
    "text": "Aber Moment.",
    "highlight": [
     "Moment."
    ]
   },
   {
-   "start": 11.071,
-   "end": 11.961,
+   "start": 11.181,
+   "end": 12.071,
    "text": "Das ist GTA 5.",
    "highlight": [
     "GTA",
@@ -82,16 +83,16 @@
    ]
   },
   {
-   "start": 11.961,
-   "end": 12.671,
+   "start": 12.071,
+   "end": 12.781,
    "text": "Für die PS4.",
    "highlight": [
     "PS4."
    ]
   },
   {
-   "start": 12.671,
-   "end": 14.911,
+   "start": 12.781,
+   "end": 15.021,
    "text": "Ein Spiel, das selbst schon dreizehn Jahre alt ist.",
    "highlight": [
     "dreizehn",
@@ -99,30 +100,30 @@
    ]
   },
   {
-   "start": 14.911,
-   "end": 15.821,
+   "start": 15.021,
+   "end": 15.931,
    "text": "Er sagt nichts.",
    "highlight": [
     "nichts."
    ]
   },
   {
-   "start": 15.821,
-   "end": 16.701,
+   "start": 15.931,
+   "end": 16.811,
    "text": "Er starrt nur.",
    "highlight": [
     "starrt"
    ]
   },
   {
-   "start": 16.701,
-   "end": 16.971,
+   "start": 16.811,
+   "end": 17.081,
    "text": "Und dann…",
    "highlight": []
   },
   {
-   "start": 16.971,
-   "end": 18.631,
+   "start": 17.081,
+   "end": 18.741,
    "text": "Mama meinte es gut. Wirklich.",
    "highlight": [
     "Mama",
@@ -161,38 +162,38 @@
    "sound": "bag_rustle"
   },
   {
-   "time": 10.171,
+   "time": 10.281,
    "sound": "shimmer",
    "gain": 0.8
   },
   {
-   "time": 10.641,
+   "time": 10.751,
    "sound": "record_scratch"
   },
   {
-   "time": 11.071,
+   "time": 11.181,
    "sound": "dun_dun"
   },
   {
-   "time": 11.961,
+   "time": 12.071,
    "sound": "hit",
    "gain": 0.6
   },
   {
-   "time": 14.911,
+   "time": 15.021,
    "sound": "tick",
    "gain": 0.8
   },
   {
-   "time": 16.701,
+   "time": 16.811,
    "sound": "riser"
   },
   {
-   "time": 16.971,
+   "time": 17.081,
    "sound": "hit"
   },
   {
-   "time": 17.221,
+   "time": 17.331,
    "sound": "sad_trombone"
   },
   {
@@ -204,7 +205,7 @@
    "sound": "@transition"
   },
   {
-   "time": 12.671,
+   "time": 12.781,
    "sound": "@transition"
   },
   {
@@ -218,17 +219,17 @@
    "gain": 0.7
   },
   {
-   "time": 11.141,
+   "time": 11.251,
    "sound": "@accent",
    "gain": 0.7
   },
   {
-   "time": 12.021,
+   "time": 12.131,
    "sound": "@accent",
    "gain": 0.7
   },
   {
-   "time": 15.891,
+   "time": 16.001,
    "sound": "@accent",
    "gain": 0.7
   }
@@ -259,17 +260,43 @@
   },
   {
    "style": "circle_glow",
-   "start": 11.101,
-   "end": 11.961,
-   "x": 612,
+   "start": 11.211,
+   "end": 12.071,
+   "x": 342,
    "y": 450,
-   "size": 320,
-   "track_box": 170
+   "size": 300,
+   "track_box": 170,
+   "keys": [
+    [
+     11.211,
+     342,
+     450,
+     1.0
+    ],
+    [
+     11.46,
+     612,
+     450,
+     1.0
+    ],
+    [
+     11.71,
+     648,
+     504,
+     1.0
+    ],
+    [
+     12.071,
+     648,
+     525,
+     1.0
+    ]
+   ]
   },
   {
    "style": "arrow_red",
-   "start": 11.981,
-   "end": 12.671,
+   "start": 12.091,
+   "end": 12.781,
    "x": 720,
    "y": 320,
    "angle": 225,
@@ -282,8 +309,8 @@
   },
   {
    "style": "circle_yellow",
-   "start": 15.851,
-   "end": 16.701,
+   "start": 15.961,
+   "end": 16.811,
    "x": 792,
    "y": 756,
    "size": 360,
