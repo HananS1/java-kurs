@@ -572,6 +572,36 @@
   {
    "time": 18.965,
    "sound": "whoosh_fast"
+  },
+  {
+   "time": 0.158,
+   "sound": "pop",
+   "gain": 0.5,
+   "_auto": 1
+  },
+  {
+   "time": 11.321,
+   "sound": "click",
+   "gain": 0.5,
+   "_auto": 1
+  },
+  {
+   "time": 15.682,
+   "sound": "shimmer",
+   "gain": 0.5,
+   "_auto": 1
+  },
+  {
+   "time": 4.891,
+   "sound": "paper_swoosh",
+   "gain": 0.45,
+   "_auto": 1
+  },
+  {
+   "time": 8.421,
+   "sound": "swoosh_air",
+   "gain": 0.45,
+   "_auto": 1
   }
  ],
  "overlays": [
@@ -1725,5 +1755,6 @@
   "fade_out": 1.2,
   "duck_threshold": 0.03,
   "duck_ratio": 2.5
- }
+ },
+ "sfx_gain": 0.6
 }

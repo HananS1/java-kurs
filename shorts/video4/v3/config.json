@@ -499,6 +499,24 @@
   {
    "time": 17.494,
    "sound": "whoosh_deep"
+  },
+  {
+   "time": 0.101,
+   "sound": "pop",
+   "gain": 0.5,
+   "_auto": 1
+  },
+  {
+   "time": 4.371,
+   "sound": "click",
+   "gain": 0.5,
+   "_auto": 1
+  },
+  {
+   "time": 11.707,
+   "sound": "shimmer",
+   "gain": 0.5,
+   "_auto": 1
   }
  ],
  "overlays": [
@@ -1659,5 +1677,6 @@
   "fade_out": 1.2,
   "duck_threshold": 0.03,
   "duck_ratio": 2.5
- }
+ },
+ "sfx_gain": 0.6
 }

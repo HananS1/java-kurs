@@ -130,7 +130,7 @@ def resolve_sfx(cfg):
         last = name
         t = s["time"] - (meta["lead"] if s.get("on_cut", name in sum([lib["groups"]["transition"]], [])) else 0)
         out.append({"path": os.path.join(lib_dir, name + ".wav"), "time": t,
-                    "vol": round(meta["vol"] * s.get("gain", 1.0), 3), "name": name})
+                    "vol": round(meta["vol"] * s.get("gain", 1.0) * cfg.get("sfx_gain", 1.0), 3), "name": name})
     print("Sounds:", ", ".join(f"{o['name']}@{o['time']:.2f}" for o in out))
     return out
 
