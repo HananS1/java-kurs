@@ -30,6 +30,9 @@
 | 7 (Selbst-Review) | Braut im ersten Bild halb am Rand | Quelle zu früh gestartet | erstes Bild: Hauptperson ganz im Bild, sonst Quelle später starten |
 | 7 | Like-Satz am Ende („gab diesem Video ein Like“) | aus Analyse übernommen | Nutzer will das NICHT → kein Like-Satz, nie |
 | 7 | Eigene KI-Musik | Musik nach Stimmung probiert | **Standard: Golden Brown**, bis der Nutzer andere Musik schickt |
+| 8 (Remakes) | **Stimme hackt** – nicht flüssig | tighten.py schneidet zwischen JEDEM Wort, kappt Wortenden | **Stimme am Stück lassen** (`smooth.py`: nur atempo 1.1, kein Schneiden). tighten.py nicht mehr benutzen |
+| 8 (Remakes) | Dünne Ringe + Namensschilder + Farbblitze = „nicht clean“ | eigenes neues Design ohne Rückfrage | Bewährte animierte Kreise (fx.py) behalten, nur Bewegung per Tracking verbessern. Kein Design-Wechsel ohne Nutzer |
+| 8 (Remakes) | Mehrere Kreise gleichzeitig | zu viel | max. EIN Kreis gleichzeitig |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste

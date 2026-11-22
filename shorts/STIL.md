@@ -64,7 +64,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
 ## Stimme (nach Kategorie wählen – feste Zuordnung)
-- **IMMER dynamisch, KEINE Pausen** – auch bei traurigen Storys. Pausen raus (tighten.py), Tempo 1.12
+- **Flüssig vor allem:** Stimme am Stück (`tools/smooth.py`, atempo 1.1). NIE zwischen Wörtern schneiden (hackt). Dynamik kommt über Tags „fast-paced, no pauses“
 - Einzige Ausnahme: **eine** Mini-Pause (~0,3 s) direkt vor dem Twist (`PAUSE_AFTER`)
 - Modell eleven_v4, Tags vorne im Text (Spalte „Tags“), ~3,8 Wörter pro Sekunde
 - Hörproben aller Stimmen: `stimmen_hoerproben.mp4` – Nutzer-Feedback zu Stimmen hier eintragen
