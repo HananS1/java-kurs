@@ -39,8 +39,10 @@ def main(raw, words_json, out_wav, out_sent, script, tempo="1.12", gap="0.04"):
     # PAUSE_AFTER="wort:0.3" -> genau EINE bewusste Mini-Pause vor dem Twist (erstes Vorkommen)
     pause_i, pause_s = -1, 0.0
     if os.environ.get("PAUSE_AFTER"):
-        pw, ps = os.environ["PAUSE_AFTER"].rsplit(":", 1)
-        pause_i = next(i for i, w in enumerate(ws) if _norm(w["text"]) == _norm(pw)); pause_s = float(ps) * tempo
+        pw, ps = os.environ["PAUSE_AFTER"].rsplit(":", 1)       # "wort:0.3" oder "wort#2:0.3" (2. Vorkommen)
+        pw, nth = (pw.split("#") + ["1"])[:2]
+        hits = [i for i, w in enumerate(ws) if _norm(w["text"]) == _norm(pw)]
+        pause_i = hits[int(nth) - 1]; pause_s = float(ps) * tempo
     segs, t_out, timed = [], 0.0, []
     for i, w in enumerate(ws):
         a = max(0.0, w["start"] - 0.015)
