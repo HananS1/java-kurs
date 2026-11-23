@@ -1030,9 +1030,9 @@
  },
  "music": {
   "path": "chess.mp3",
-  "start": 0.3,
+  "start": 2.38,
   "gain_db": -19,
-  "fade_in": 0.2,
+  "fade_in": 0.03,
   "fade_out": 1.0,
   "duck_threshold": 0.03,
   "duck_ratio": 2.5,
