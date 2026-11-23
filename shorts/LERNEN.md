@@ -39,6 +39,7 @@
 | 11 | Originalton lauter als Stimme, Musik unhörbar, Untertitel anders als Konkurrenz, Unschärfe-Ränder | Kompressor zu schwach, Musik −17, eigene Schrift, Fit-Modus | Lautstärke-Kurve, Pegel messen, Montserrat wie Konkurrent, Vollbild |
 | 11 v2 | „Lehrer dreht sich um“ – tut er nicht | Handlung nicht Bild für Bild geprüft | Skript nur Sichtbares |
 | 11 v2 | Zu viele Kreise, Untertitel 3 Wörter, SFX zu brav | Konkurrent nicht genau umgesetzt | max 2 Wörter, 1–2 Pfeile, krasse SFX je Aktion |
+| 12 | Man sah nicht, wie es dazu kam; Hook schwach | Setup weggelassen, direkt Tanz | Setup→Switch: erst Erwartung (ernster Security), dann Wendung |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste

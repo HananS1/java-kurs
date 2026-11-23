@@ -1,4 +1,6 @@
 {"model":"/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n12/../models/yolov8m-pose.pt","rings":[],
- "flash":[{"time":7.5,"dur":0.4,"color":"white","strength":0.55,"zoom":0.10},{"time":13.5,"dur":0.35,"color":"pink","strength":0.45},
-          {"time":21.5,"dur":0.35,"color":"white","strength":0.45},{"time":25.5,"dur":0.35,"color":"pink","strength":0.45},
-          {"time":29.5,"dur":0.5,"color":"white","strength":0.6,"zoom":0.12}]}
+ "flash":[{"time":3.6,"dur":0.3,"color":"white","strength":0.35,"zoom":0.06},
+          {"time":7.2,"dur":0.5,"color":"white","strength":0.7,"zoom":0.14},{"time":13.2,"dur":0.35,"color":"pink","strength":0.45},
+          {"time":20.3,"dur":0.35,"color":"white","strength":0.45},{"time":23.8,"dur":0.35,"color":"pink","strength":0.45},
+          {"time":30.0,"dur":0.5,"color":"white","strength":0.6,"zoom":0.12}],
+ "shake":[{"time":7.2,"dur":0.35,"amp":12}]}

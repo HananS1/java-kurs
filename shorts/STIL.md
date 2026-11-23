@@ -85,6 +85,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - **Skript nur, was man SIEHT** (Fehler V11: „dreht sich um“ – Lehrer drehte sich nicht → „Bis es dem Lehrer reicht“)
 - **Musik:** Hat der Clip passende Musik/Originalton → BEHALTEN, keine Extra-Musik (unter Stimme geduckt). Sonst Nutzer-Musik (Golden Brown …)
 - **Bild:** Vollbild-Ausschnitt (folgt der Hauptperson, x_end), Unschärfe-Rand nur wenn sonst Wichtiges fehlt
+- **Setup → Switch:** Erst zeigen, wie es dazu kam / was man erwartet (ernster Security, Punch-in aufs Gesicht, Spannungs-Sound), dann „Doch dann…“ + Plattenkratzer + Flash + Bass → die positive Wendung. Hook = die Erwartung, nicht die Auflösung
 - Kommentar-Auslöser in einem Stimmblock
 - Clip-Check vorher: echter Originalton? sonst alter Stil
 
