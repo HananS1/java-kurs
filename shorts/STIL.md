@@ -60,6 +60,8 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Boom bei der Wendung („Nichts.“, „starb“)
 - Ding/Chime bei Highlight und Schluss
 - Durchgehend Musik darunter (Referenz hat keine einzige Stille)
+  - **Musik-Lautstärke messen statt raten:** RMS des Musikausschnitts mit Golden Brown vergleichen (GB −16 dB RMS bei gain −10) und gain_db so setzen, dass der Pegel gleich ist (Headlights-Drop ist ~8 dB lauter → gain −18,5)
+  - **Drop/Höhepunkt der Musik auf den Story-Höhepunkt legen** (music.start = Drop-Zeit − Höhepunkt im Video)
   - **Standard-Musik: Golden Brown** (`video2/music.mp3` im Arbeitsordner), bis der Nutzer andere Musik schickt – keine eigene KI-Musik
   - Eingebaut über `music` in der Config: ca. **15 dB unter der Stimme** (gain_db −14), **Ducking** unter der Stimme
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
