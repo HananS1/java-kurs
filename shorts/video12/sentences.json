@@ -1,0 +1,224 @@
+[
+ {
+  "text": "Er ist eigentlich nur als Security hier.",
+  "start": 0.036,
+  "end": 2.218,
+  "words": [
+   [
+    "Er",
+    0.036,
+    0.182
+   ],
+   [
+    "ist",
+    0.291,
+    0.4
+   ],
+   [
+    "eigentlich",
+    0.473,
+    0.836
+   ],
+   [
+    "nur",
+    0.873,
+    0.982
+   ],
+   [
+    "als",
+    1.055,
+    1.127
+   ],
+   [
+    "Security",
+    1.418,
+    1.709
+   ],
+   [
+    "hier.",
+    1.782,
+    2.218
+   ]
+  ]
+ },
+ {
+  "text": "Doch als die Cheerleader loslegen",
+  "start": 4.636,
+  "end": 6.236,
+  "words": [
+   [
+    "Doch",
+    4.636,
+    4.782
+   ],
+   [
+    "als",
+    4.855,
+    5.0
+   ],
+   [
+    "die",
+    5.109,
+    5.218
+   ],
+   [
+    "Cheerleader",
+    5.291,
+    5.727
+   ],
+   [
+    "loslegen",
+    5.873,
+    6.236
+   ]
+  ]
+ },
+ {
+  "text": "kann er einfach nicht anders.",
+  "start": 6.648,
+  "end": 8.164,
+  "words": [
+   [
+    "kann",
+    6.648,
+    6.818
+   ],
+   [
+    "er",
+    6.891,
+    6.964
+   ],
+   [
+    "einfach",
+    7.012,
+    7.255
+   ],
+   [
+    "nicht",
+    7.303,
+    7.4
+   ],
+   [
+    "anders.",
+    7.473,
+    8.164
+   ]
+  ]
+ },
+ {
+  "text": "Und er kennt jede einzelne Bewegung.",
+  "start": 10.836,
+  "end": 13.261,
+  "words": [
+   [
+    "Und",
+    10.836,
+    10.982
+   ],
+   [
+    "er",
+    11.055,
+    11.127
+   ],
+   [
+    "kennt",
+    11.2,
+    11.491
+   ],
+   [
+    "jede",
+    11.564,
+    11.927
+   ],
+   [
+    "einzelne",
+    12.0,
+    12.364
+   ],
+   [
+    "Bewegung.",
+    12.4,
+    13.261
+   ]
+  ]
+ },
+ {
+  "text": "Das ganze Stadion schaut nur noch auf ihn.",
+  "start": 26.036,
+  "end": 28.425,
+  "words": [
+   [
+    "Das",
+    26.036,
+    26.134
+   ],
+   [
+    "ganze",
+    26.243,
+    26.425
+   ],
+   [
+    "Stadion",
+    26.57,
+    27.006
+   ],
+   [
+    "schaut",
+    27.043,
+    27.297
+   ],
+   [
+    "nur",
+    27.37,
+    27.443
+   ],
+   [
+    "noch",
+    27.515,
+    27.661
+   ],
+   [
+    "auf",
+    27.734,
+    27.806
+   ],
+   [
+    "ihn.",
+    27.879,
+    28.425
+   ]
+  ]
+ },
+ {
+  "text": "Ehrlich? Bester Security-Mann aller Zeiten.",
+  "start": 29.736,
+  "end": 32.5,
+  "words": [
+   [
+    "Ehrlich?",
+    29.736,
+    30.427
+   ],
+   [
+    "Bester",
+    30.464,
+    30.755
+   ],
+   [
+    "Security-Mann",
+    30.827,
+    31.627
+   ],
+   [
+    "aller",
+    31.7,
+    31.918
+   ],
+   [
+    "Zeiten.",
+    31.991,
+    32.5
+   ]
+  ]
+ }
+]

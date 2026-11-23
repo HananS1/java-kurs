@@ -83,7 +83,9 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - **Untertitel max. 2 Wörter** (`max_words: 2`)
 - **Krasse, passende SFX auf jede Aktion** (sfx_gain 0.7): Schnarchen bei Schlaf, Buzzer bei „keine Frage“, Tiptoe beim Laufen, Violin-Sting bei Spannung, Crowd-„Ooh“, Record-Scratch + Vine-Boom + Bonk bei der Pointe, Zoom-Hit auf Übergängen, Text-Pop bei Aktions-Texten
 - **Skript nur, was man SIEHT** (Fehler V11: „dreht sich um“ – Lehrer drehte sich nicht → „Bis es dem Lehrer reicht“)
-- Musik nur vom Nutzer (Golden Brown / Headlights), leise (gain −17), Kommentar-Auslöser in einem Stimmblock
+- **Musik:** Hat der Clip passende Musik/Originalton → BEHALTEN, keine Extra-Musik (unter Stimme geduckt). Sonst Nutzer-Musik (Golden Brown …)
+- **Bild:** Vollbild-Ausschnitt (folgt der Hauptperson, x_end), Unschärfe-Rand nur wenn sonst Wichtiges fehlt
+- Kommentar-Auslöser in einem Stimmblock
 - Clip-Check vorher: echter Originalton? sonst alter Stil
 
 ## Comedy-Videos 1:1 Stil @shortsrender (Nutzer-Wunsch: genau so, nicht mischen)
