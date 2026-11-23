@@ -13,7 +13,7 @@ import math, os, random
 from PIL import Image, ImageDraw, ImageFilter
 
 FPS = 30
-COLORS = {"red": (255, 40, 40, 255), "yellow": (255, 214, 0, 255), "white": (255, 255, 255, 255)}
+COLORS = {"red": (255, 40, 40, 255), "yellow": (255, 214, 0, 255), "white": (255, 255, 255, 255), "cyan": (0, 210, 255, 255), "green": (60, 230, 90, 255)}
 BLACK = (0, 0, 0, 255)
 
 def ease_out(p):
@@ -88,7 +88,33 @@ def _arrow_shape(L, W, curved, p):
     tip = [(0, 0), (-head, -head * 0.6), (-head * 0.75, 0), (-head, head * 0.6)] if p >= 0.95 else None
     return shaft, tip
 
+def block_arrow_frame(style, size, angle, f, n):
+    """Neuer Stil: dicker, gefuellter Block-Pfeil (cyan/gruen) mit weissem + schwarzem Rand, ploppt rein und wippt."""
+    S = int(size * 2.4)
+    im = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    c = S / 2
+    t = f / FPS
+    pop = 0.55 + 0.45 * ease_out(f / 6) + (0.12 * math.sin(math.pi * min(f / 9, 1)) if f < 9 else 0)
+    L = size * pop
+    W = size * 0.17 * pop
+    head = size * 0.42 * pop
+    back = abs(math.sin(2 * math.pi * 2.0 * t)) * size * 0.08 * (f >= 9)
+    pts = [(0, 0), (-head, -head * 0.75), (-head, -W / 2), (-L, -W / 2), (-L, W / 2), (-head, W / 2), (-head, head * 0.75)]
+    pts = [(c + x - back, c + y) for x, y in pts]
+    col = COLORS["cyan" if style == "arrow_block" else "green"]
+    ring = pts + [pts[0]]
+    ow = max(6, int(size * 0.075)); iw = max(3, int(size * 0.035))
+    d.line(ring, fill=BLACK, width=ow * 2, joint="curve")
+    for q in pts: d.ellipse([q[0] - ow, q[1] - ow, q[0] + ow, q[1] + ow], fill=BLACK)
+    d.line(ring, fill=COLORS["white"], width=iw * 2, joint="curve")
+    for q in pts: d.ellipse([q[0] - iw, q[1] - iw, q[0] + iw, q[1] + iw], fill=COLORS["white"])
+    d.polygon(pts, fill=col)
+    return im.rotate(-angle, resample=Image.BICUBIC, center=(c, c))
+
 def arrow_frame(style, size, angle, f, n):
+    if style in ("arrow_block", "arrow_green"):
+        return block_arrow_frame(style, size, angle, f, n)
     S = int(size * 2.4)
     im = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)

@@ -34,6 +34,8 @@
 | 8 (Remakes) | Dünne Ringe + Namensschilder + Farbblitze = „nicht clean“ | eigenes neues Design ohne Rückfrage | Bewährte animierte Kreise (fx.py) behalten, nur Bewegung per Tracking verbessern. Kein Design-Wechsel ohne Nutzer |
 | 8 (Remakes) | Mehrere Kreise gleichzeitig | zu viel | max. EIN Kreis gleichzeitig |
 | 8 (Remakes) | Nur Kreise, 3× hintereinander auf dieselbe Frau | Pfeile weggelassen | Kreis/Pfeil strikt abwechseln, Pfeilspitze an der Kopfkante (0.95·r) |
+| 8 Zwillinge | Gelber gebogener Pfeil sieht schlecht aus | Stil | neue Block-Pfeile (arrow_block/arrow_green), gelben nicht mehr nutzen |
+| 8 Zwillinge | Nur 1 Baby markiert, Papa ohne Pfeil | nicht alle genannten Personen markiert | JEDE im Satz genannte Person bekommt Kreis/Pfeil genau beim Wort (bei „Zwillinge“ beide) |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste

@@ -28,7 +28,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 ## Grafik
 - **Pflicht: Kreis/Pfeil im allerersten Bild** auf das Wichtigste (alle Top-Hits machen das)
 - Listen: viele Kreise/Pfeile (ca. alle 1–2 s). Storys: 3–6 gezielt, nur wo es etwas zu zeigen gibt
-- **Immer Kreise UND Pfeile abwechselnd** (K, P, K, P …): 3 verschiedene Kreise (rot/gelb/Glow) + 3 verschiedene Pfeile (gelb gebogen/weiß/rot) pro Video. Nie zweimal dasselbe hintereinander, nie 3× dieselbe Art auf dieselbe Person
+- **Immer Kreise UND Pfeile abwechselnd** (K, P, K, P …): 3 verschiedene Kreise (rot/gelb/Glow) + verschiedene Pfeile: **arrow_block (cyan Sticker), arrow_green (grün Sticker), arrow_red, arrow_white** – arrow_yellow (gebogen) NICHT mehr benutzen (Nutzer mag ihn nicht) pro Video. Nie zweimal dasselbe hintereinander, nie 3× dieselbe Art auf dieselbe Person
 - Stile aus `tools/fx.py`:
   circle_red (wird gezeichnet, pulsiert), circle_yellow (handgemalt, wackelt), circle_glow (Leuchtring, ploppt),
   arrow_red (fliegt rein, federt), arrow_yellow (gebogen, wird gezeichnet), arrow_white (handgemalt, wackelt)
