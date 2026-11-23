@@ -58,3 +58,20 @@ Bonus: **„… von der Kamera erwischt“** (Überwachungskamera = echt = Vertr
 - FaktenVerse-Katzen-Köder („wenn du nicht likest, ist mein Kätzchen traurig“): Spam, Zuschauer fühlen sich verarscht.
 - KI-Videos (Tierisch Nah): du willst keine KI-Videos.
 - Absichtlich falsche Fakten als Kommentar-Köder (ClipErklärt mischt China als „Japan“): schadet Vertrauen.
+
+## Shorts Render (@shortsrender) – Comedy-Storytelling (Nov 2026)
+570 K Abos, +428 K in 30 Tagen, 462 Mio Views. Top: „The Teacher Made the Same Mistake“ 71 Mio (45 s).
+
+**Formel**
+- **Regel der Drei:** Problem → Spötter macht es nach und scheitert → Autoritätsperson scheitert am schlimmsten
+- **Hook:** „This girl …“ + roter Pfeil im 1. Bild, Problem in 2 s
+- **Erzähler + Originalton im Wechsel:** Erzähler nur am Anfang jedes Akts, dann Originalton / Aktion
+- **Untertitel:** 1–3 Wörter, Schlüsselwörter in **wechselnden Farben** (gelb, cyan, pink, grün)
+- **\*Aktions-Texte\*** in Sternchen, gelb: „\*trying to say it's stuck\*“, „\*leaving the class\*“
+- **Meme-Sticker** (schwitzendes Gesicht, lachende Katze, Emojis) mit Pop-Sound
+- **Roter Flash + Vine-Boom** bei Wut/Schock, Shake bei Ziehen
+- **SFX laut** (bei Pointen fast so laut wie Stimme), Comedy-Pizzicato-Musik leise
+- **CTA:** „Turn my like into a laughing emoji“ (animierter Daumen) – Nutzer will KEINEN Like-Satz → nicht übernehmen
+
+**Übernommen in unser Werkzeug:** `multicolor` (wechselnde Farben), `actions` (\*Aktions-Text\*), Emoji-Sticker (`style: "emoji"`),
+Comedy-Sounds (vine_boom, laugh, boing, slide_whistle, rubber_pull), `tools/detext.py` (eingebrannte Untertitel wegrechnen statt Balken-Blur)

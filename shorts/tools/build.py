@@ -37,7 +37,9 @@ def ass_time(t):
     h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h}:{m:02d}:{s:05.2f}"
 
-def make_ass_words(path, captions, font="Bangers", size=150, y=1150):
+HL_COLORS = ["{\\c&H00E5FF&}", "{\\c&HFFF000&}", "{\\c&HFF55FF&}", "{\\c&H55FF55&}"]   # gelb, cyan, pink, gruen (BGR)
+
+def make_ass_words(path, captions, font="Bangers", size=150, y=1150, multicolor=False, actions=None):
     """Ein Wort pro Einblendung, wie bei ClipErklaert: dicker Comic-Font, weiss mit schwarzem Rand."""
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -53,13 +55,21 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     lines = []
     allw = [w for c in captions for w in c.get("words", [])]
+    hl_i = 0
+    for a in (actions or []):
+        # *Aktions-Text* (Shorts-Render-Stil): gelb, kleiner, oben, ploppt rein
+        ay = a.get("y", 330)
+        pop = "{\\pos(540,%d)\\fs%d\\c&H00E5FF&\\fscx60\\fscy60\\t(0,90,\\fscx110\\fscy110)\\t(90,150,\\fscx100\\fscy100)}" % (ay, int(size * 0.75))
+        lines.append(f"Dialogue: 1,{ass_time(a['start'])},{ass_time(a['end'])},Cap,,0,0,0,,{pop}*{a['text'].upper()}*")
     for c in captions:
         hl = [w.lower() for w in c.get("highlight", [])]
         if c.get("words"):
             # exakte Wortzeiten (ElevenLabs): jedes Wort bleibt bis zum naechsten stehen
             for w, s, e in c["words"]:
                 nxt = next((x[1] for x in allw if x[1] > s + 0.001), e + 0.3)
-                col = "{\\c&H00E5FF&}" if w.strip(".,…–!?").lower() in hl else ""
+                col = ""
+                if w.strip(".,…–!?").lower() in hl:
+                    col = HL_COLORS[hl_i % len(HL_COLORS)] if multicolor else HL_COLORS[0]; hl_i += 1
                 pop = "{\\pos(540,%d)\\fscx70\\fscy70\\t(0,70,\\fscx112\\fscy112)\\t(70,130,\\fscx100\\fscy100)}" % y
                 lines.append(f"Dialogue: 0,{ass_time(s)},{ass_time(min(nxt, e + 0.6))},Cap,,0,0,0,,{pop}{col}{w.upper()}")
             continue
@@ -143,7 +153,8 @@ def main(cfg_path):
 
     make_arrow("arrow.png"); make_circle("circle.png")
     if cfg.get("caption_mode") == "word":
-        make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150))
+        make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150),
+                       cfg.get("multicolor", False), cfg.get("actions"))
     else:
         make_ass("subs.ass", cfg["captions"])
 

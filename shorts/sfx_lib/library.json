@@ -180,6 +180,26 @@
   "slide_in": {
    "vol": 0.45,
    "lead": 0.1
+  },
+  "vine_boom": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "laugh": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "boing": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "slide_whistle": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "rubber_pull": {
+   "vol": 0.5,
+   "lead": 0
   }
  },
  "groups": {
@@ -231,6 +251,15 @@
    "swipe",
    "slide_in",
    "swoosh_air"
+  ],
+  "comedy": [
+   "vine_boom",
+   "laugh",
+   "boing",
+   "slide_whistle",
+   "rubber_pull",
+   "record_scratch",
+   "sad_trombone"
   ]
  },
  "themes": {

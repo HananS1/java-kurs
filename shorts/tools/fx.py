@@ -146,13 +146,34 @@ def arrow_frame(style, size, angle, f, n):
         d.polygon([tr(q) for q in tip], fill=color)
     return im.rotate(-angle, resample=Image.BICUBIC, center=(c, c))
 
+_EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+
+def emoji_frame(char, size, f, n):
+    """Emoji-Sticker (Meme-Stil): ploppt mit Ueberschwingen rein, wackelt leicht."""
+    from PIL import ImageFont
+    font = ImageFont.truetype(_EMOJI_FONT, 109)
+    base = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+    ImageDraw.Draw(base).text((80, 80), char, font=font, embedded_color=True, anchor="mm")
+    bb = base.getbbox() or (0, 0, 160, 160); base = base.crop(bb)
+    p = f / 8.0
+    sc = (0.3 + 0.9 * ease_out(p) - 0.2 * max(0, p - 1) * (p < 1.6)) if p < 1.6 else 1.0
+    s = max(4, int(size * sc))
+    im = base.resize((s, int(s * base.height / base.width)), Image.LANCZOS)
+    ang = math.sin(2 * math.pi * 3 * f / FPS) * 8
+    S = int(size * 1.6)
+    out = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    out.alpha_composite(im.rotate(ang, resample=Image.BICUBIC, expand=True) if False else im, ((S - im.width) // 2, (S - im.height) // 2))
+    return out.rotate(ang, resample=Image.BICUBIC)
+
 def render(o, out_dir):
     """o: dict mit style, start, end, size, angle. Schreibt out_dir/f0001.png ... und gibt (w,h) zurueck."""
     os.makedirs(out_dir, exist_ok=True)
     n = max(1, round((o["end"] - o["start"]) * FPS))
     size = o.get("size", 380 if o["style"].startswith("circle") else 230)
     for f in range(n):
-        if o["style"].startswith("circle"):
+        if o["style"] == "emoji":
+            im = emoji_frame(o["char"], size, f, n)
+        elif o["style"].startswith("circle"):
             im = circle_frame(o["style"], size, f, n)
         else:
             im = arrow_frame(o["style"], size, o.get("angle", 45), f, n)

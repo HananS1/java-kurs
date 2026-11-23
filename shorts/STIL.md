@@ -67,6 +67,11 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
+## Comedy-Videos (Stil @shortsrender)
+- `multicolor: true`, `actions` mit \*Aktions-Text\*, 3–6 Emoji-Sticker (style emoji, nie auf Gesichter), Comedy-Sounds bei Pointen (vine_boom, laugh, boing, slide_whistle, rubber_pull)
+- Regel der Drei im Skript; Pointe = Autoritätsperson scheitert
+- Eingebrannte Untertitel mit `tools/detext.py` entfernen
+
 ## Stimme (nach Kategorie wählen – feste Zuordnung)
 - **Flüssig vor allem:** Stimme am Stück (`tools/smooth.py`, atempo 1.1). NIE zwischen Wörtern schneiden (hackt). Dynamik kommt über Tags „fast-paced, no pauses“
 - Einzige Ausnahme: **eine** Mini-Pause (~0,3 s) direkt vor dem Twist (`PAUSE_AFTER`)
