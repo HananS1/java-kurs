@@ -194,6 +194,18 @@ def resolve_sfx(cfg):
     print("Sounds:", ", ".join(f"{o['name']}@{o['time']:.2f}" for o in out))
     return out
 
+def curve(m):
+    """gain_curve [[t, dB], ...] -> ',volume=...' Ausdruck (z.B. Musik nur im Setup + Ende, im Tanzteil weg)."""
+    gc = m.get("gain_curve")
+    if not gc:
+        return ""
+    e = f"{10 ** (gc[-1][1] / 20):.4f}"
+    for (t0, d0), (t1, d1) in reversed(list(zip(gc[:-1], gc[1:]))):
+        a0, a1 = 10 ** (d0 / 20), 10 ** (d1 / 20)
+        e = f"if(lt(t,{t1}),{a0:.4f}+({a1:.4f}-{a0:.4f})*clip((t-{t0})/{max(t1 - t0, 0.01)},0,1),{e})"
+    return f",volume='{e}':eval=frame"
+
+
 def main(cfg_path):
     cfg = json.load(open(cfg_path))
     base = os.path.dirname(os.path.abspath(cfg_path))
@@ -371,7 +383,7 @@ def main(cfg_path):
         fade_out = max(0, length - m.get("fade_out", 1.0))
         amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,"
                     f"volume={m.get('gain_db', -16)}dB,afade=t=in:d={m.get('fade_in', 0.3)},"
-                    f"afade=t=out:st={fade_out:.2f}:d={m.get('fade_out', 1.0)}[a_mus]")
+                    f"afade=t=out:st={fade_out:.2f}:d={m.get('fade_out', 1.0)}{curve(m)}[a_mus]")
         amix.append(f"[a_key]aformat=channel_layouts=stereo[a_key2]")
         amix.append(f"[a_mus][a_key2]sidechaincompress=threshold={m.get('duck_threshold', 0.02)}:"
                     f"ratio={m.get('duck_ratio', 4)}:attack=15:release=300:makeup=1[a_musd]")
