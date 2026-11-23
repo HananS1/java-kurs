@@ -74,7 +74,7 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Untertitel 1:1 wie @shortsrender (gemessen): `chunk`, Font **MontserratXB** (fonts/), Größe 78, y 1210, weiß + dünner Rand + Schatten, 1 Wort pink/gelb/cyan/grün; Aktions-Texte ganz cyan mit gelben Sternchen + Leucht-Rand
 - Pop/Klick-Sound nur bei Aktions-Texten/Stickern, gesprochene Untertitel ohne Sound
 - Stimme passend zum Konkurrenz-Stil: Laura (weiblich, amüsiert), atempo 1.12
-- **Lautstärke (gemessen):** Stimme ≈ −20 dB RMS; Originalton unter Stimme −15 dB (Kurve `under_db`), Originalmusik insgesamt eher leise (`gain_db −8`), SFX eher dezent (sfx_gain 0.65) – alles clean; Musik `gain −9` (hörbar, ~10 dB unter Stimme)
+- **Lautstärke (gemessen):** Stimme ≈ −20 dB RMS; Originalton unter Stimme −15 dB (Kurve `under_db`), Originalmusik: am Anfang/Setup etwas lauter (−5), im Action-Teil leiser (−11) via `gain_curve`; Zeitlupen-Shots behalten Originalton in Normaltempo (`audio_speed: 1`) – Songanfang = Hook-Sound statt Ding, SFX eher dezent (sfx_gain 0.65) – alles clean; Musik `gain −9` (hörbar, ~10 dB unter Stimme)
 - Vollbild 9:16 (kein Unschärfe-Rand); weiße TikTok-Textboxen mit `tools/debox.py` wegrechnen
 - Übergänge (rings.py flash): Zoom-Punch + Licht-Glow – weiß bei Schnitten, pink bei Akt-Wechsel (strength 0.45), rot bei Wut
 - Flashes via `rings.py` (nur flash/shake): weiß bei Szenen-/Akt-Wechsel, rot bei Wut/Pointe + Vine-Boom

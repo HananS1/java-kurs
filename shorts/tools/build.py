@@ -352,7 +352,14 @@ def main(cfg_path):
         for a0, b0 in blocks:
             expr = (f"min({expr},1-(1-{lo:.4f})*clip(min((t-{a0 - r:.3f})/{r},({b0 + r:.3f}-t)/{r}),0,1))")
         inputs += ["-i", oa["path"]]
-        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,volume={oa.get('gain_db', 0)}dB,"
+        g = f"volume={oa.get('gain_db', 0)}dB"
+        if oa.get("gain_curve"):   # [[t, dB], ...] Grundlautstaerke ueber die Zeit (z.B. Anfang lauter, Tanzteil leiser)
+            gc = oa["gain_curve"]; e = f"{10 ** (gc[-1][1] / 20):.4f}"
+            for (t0, d0), (t1, d1) in reversed(list(zip(gc[:-1], gc[1:]))):
+                a0, a1 = 10 ** (d0 / 20), 10 ** (d1 / 20)
+                e = f"if(lt(t,{t1}),{a0:.4f}+({a1:.4f}-{a0:.4f})*clip((t-{t0})/{max(t1 - t0, 0.01)},0,1),{e})"
+            g = f"volume='{e}':eval=frame"
+        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,{g},"
                     f"volume='{expr}':eval=frame[a_od]")
         labels.append("[a_od]")
         idx += 1

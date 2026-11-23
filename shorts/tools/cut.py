@@ -89,7 +89,7 @@ def main(path):
         # Originalton passend zu den Shots (gleiche Reihenfolge/Laenge, Zeitlupe -> atempo)
         ap = []
         for i, s in enumerate(shots):
-            d = (round(s["end"] * FPS) - round(s["start"] * FPS)) / FPS; sp = s.get("speed", 1.0)
+            d = (round(s["end"] * FPS) - round(s["start"] * FPS)) / FPS; sp = s.get("audio_speed", s.get("speed", 1.0))
             a = f"[0:a]atrim=start={s['src']}:duration={d * sp:.4f},asetpts=PTS-STARTPTS"
             if sp != 1.0:
                 a += f",atempo={max(0.5, sp)}"

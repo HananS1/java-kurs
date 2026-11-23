@@ -431,16 +431,6 @@
  ],
  "sfx": [
   {
-   "time": 0,
-   "sound": "whoosh_deep",
-   "gain": 0.6
-  },
-  {
-   "time": 0.1,
-   "sound": "ding_soft",
-   "gain": 0.9
-  },
-  {
    "time": 2.6,
    "sound": "tick",
    "gain": 0.6
@@ -1052,7 +1042,24 @@
  "tail": 0.06300000000000239,
  "orig_audio": {
   "path": "orig.wav",
-  "gain_db": -8,
-  "under_db": -15
+  "under_db": -14,
+  "gain_curve": [
+   [
+    0,
+    -5
+   ],
+   [
+    11.4,
+    -5
+   ],
+   [
+    11.8,
+    -11
+   ],
+   [
+    33.5,
+    -11
+   ]
+  ]
  }
 }
