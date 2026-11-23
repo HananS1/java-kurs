@@ -240,6 +240,10 @@
   "ding_soft": {
    "vol": 0.4,
    "lead": 0
+  },
+  "iphone_ping": {
+   "vol": 0.45,
+   "lead": 0
   }
  },
  "groups": {

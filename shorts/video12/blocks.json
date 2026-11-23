@@ -1,6 +1,45 @@
-[{"first":"Die","at":0.0,"lines":["Die Cheerleader tanzen direkt neben ihm.","Und dieser Security schaut, als würde er sie gleich alle vom Feld werfen."]},
- {"first":"Dann","at":6.6,"lines":["Dann kommt dieser Typ und fordert ihn heraus."]},
- {"first":"Doch","at":10.4,"lines":["Doch dann"]},
- {"first":"Er","at":15.0,"lines":["Er kennt jede einzelne Bewegung."]},
- {"first":"Das","at":27.9,"lines":["Das ganze Stadion schaut nur noch auf ihn."]},
- {"first":"Ehrlich","at":30.55,"lines":["Ehrlich? Bester Security-Mann aller Zeiten."]}]
+[
+ {
+  "first": "Die",
+  "at": 0.0,
+  "lines": [
+   "Die Cheerleader tanzen direkt neben ihm.",
+   "Und dieser Security schaut, als würde er sie gleich alle vom Feld werfen."
+  ]
+ },
+ {
+  "first": "Dann",
+  "at": 6.2,
+  "lines": [
+   "Dann kommt dieser Typ und fordert ihn heraus."
+  ]
+ },
+ {
+  "first": "Doch",
+  "at": 8.65,
+  "lines": [
+   "Doch dann"
+  ]
+ },
+ {
+  "first": "Er",
+  "at": 12.5,
+  "lines": [
+   "Er kennt jede einzelne Bewegung."
+  ]
+ },
+ {
+  "first": "Das",
+  "at": 25.9,
+  "lines": [
+   "Das ganze Stadion schaut nur noch auf ihn."
+  ]
+ },
+ {
+  "first": "Ehrlich",
+  "at": 28.55,
+  "lines": [
+   "Ehrlich? Bester Security-Mann aller Zeiten."
+  ]
+ }
+]

@@ -1,6 +1,1 @@
-{"model":"/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n12/../models/yolov8m-pose.pt","rings":[],
- "flash":[{"time":3.6,"dur":0.3,"color":"white","strength":0.35,"zoom":0.06},
-          {"time":11.6,"dur":0.5,"color":"white","strength":0.7,"zoom":0.14},{"time":17.2,"dur":0.35,"color":"pink","strength":0.45},
-          {"time":20.8,"dur":0.35,"color":"white","strength":0.45},{"time":24.3,"dur":0.35,"color":"pink","strength":0.45},
-          {"time":30.3,"dur":0.5,"color":"white","strength":0.6,"zoom":0.12}],
- "shake":[{"time":11.6,"dur":0.35,"amp":12}]}
+{"model": "/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n12/../models/yolov8m-pose.pt", "rings": [], "flash": [{"time": 3.6, "dur": 0.3, "color": "white", "strength": 0.35, "zoom": 0.06}, {"time": 9.6, "dur": 0.5, "color": "white", "strength": 0.7, "zoom": 0.14}, {"time": 12.2, "dur": 0.3, "color": "pink", "strength": 0.45}, {"time": 15.2, "dur": 0.3, "color": "white", "strength": 0.4}, {"time": 18.8, "dur": 0.3, "color": "cyan", "strength": 0.45}, {"time": 22.3, "dur": 0.3, "color": "pink", "strength": 0.4}, {"time": 25.8, "dur": 0.3, "color": "white", "strength": 0.4}, {"time": 28.3, "dur": 0.5, "color": "white", "strength": 0.6, "zoom": 0.12}], "shake": [{"time": 9.6, "dur": 0.35, "amp": 12}]}

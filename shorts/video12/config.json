@@ -16,8 +16,8 @@
    "y": 700
   },
   {
-   "start": 11.8,
-   "end": 14.2,
+   "start": 9.65,
+   "end": 12.1,
    "text": "Security-Modus: aus",
    "y": 700
   }
@@ -26,26 +26,9 @@
  "sfx_gain": 0.65,
  "captions": [
   {
+   "text": "Die Cheerleader tanzen direkt neben ihm.",
    "start": 0.035,
    "end": 2.516,
-   "text": "Die Cheerleader tanzen direkt neben ihm.",
-   "highlight": [
-    "Typ",
-    "ihn",
-    "werfen",
-    "Security",
-    "jede",
-    "Security-Mann",
-    "Stadion",
-    "neben",
-    "Zeiten",
-    "Cheerleader",
-    "dann",
-    "Feld",
-    "Bewegung",
-    "Ehrlich",
-    "heraus"
-   ],
    "words": [
     [
      "Die",
@@ -77,12 +60,7 @@
      2.052,
      2.516
     ]
-   ]
-  },
-  {
-   "start": 2.563,
-   "end": 6.33,
-   "text": "Und dieser Security schaut, als würde er sie gleich alle vom Feld werfen.",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -99,7 +77,12 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Und dieser Security schaut, als würde er sie gleich alle vom Feld werfen.",
+   "start": 2.563,
+   "end": 6.33,
    "words": [
     [
      "Und",
@@ -166,12 +149,7 @@
      5.635,
      6.33
     ]
-   ]
-  },
-  {
-   "start": 6.635,
-   "end": 8.815,
-   "text": "Dann kommt dieser Typ und fordert ihn heraus.",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -188,54 +166,54 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Dann kommt dieser Typ und fordert ihn heraus.",
+   "start": 6.235,
+   "end": 8.415,
    "words": [
     [
      "Dann",
-     6.635,
-     6.774
+     6.235,
+     6.374
     ],
     [
      "kommt",
-     6.843,
-     6.983
+     6.443,
+     6.583
     ],
     [
      "dieser",
-     7.029,
-     7.261
+     6.629,
+     6.861
     ],
     [
      "Typ",
-     7.365,
-     7.47
+     6.965,
+     7.07
     ],
     [
      "und",
-     7.539,
-     7.678
+     7.139,
+     7.278
     ],
     [
      "fordert",
-     7.748,
-     7.957
+     7.348,
+     7.557
     ],
     [
      "ihn",
-     8.026,
-     8.096
+     7.626,
+     7.696
     ],
     [
      "heraus.",
-     8.2,
-     8.815
+     7.8,
+     8.415
     ]
-   ]
-  },
-  {
-   "start": 10.435,
-   "end": 10.876,
-   "text": "Doch dann",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -252,24 +230,24 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Doch dann",
+   "start": 8.685,
+   "end": 9.126,
    "words": [
     [
      "Doch",
-     10.435,
-     10.597
+     8.685,
+     8.847
     ],
     [
      "dann",
-     10.667,
-     10.876
+     8.917,
+     9.126
     ]
-   ]
-  },
-  {
-   "start": 15.035,
-   "end": 17.133,
-   "text": "Er kennt jede einzelne Bewegung.",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -286,39 +264,39 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Er kennt jede einzelne Bewegung.",
+   "start": 12.535,
+   "end": 14.633,
    "words": [
     [
      "Er",
-     15.035,
-     15.081
+     12.535,
+     12.581
     ],
     [
      "kennt",
-     15.15,
-     15.429
+     12.65,
+     12.929
     ],
     [
      "jede",
-     15.498,
-     15.916
+     12.998,
+     13.416
     ],
     [
      "einzelne",
-     15.985,
-     16.333
+     13.485,
+     13.833
     ],
     [
      "Bewegung.",
-     16.403,
-     17.133
+     13.903,
+     14.633
     ]
-   ]
-  },
-  {
-   "start": 27.935,
-   "end": 30.404,
-   "text": "Das ganze Stadion schaut nur noch auf ihn.",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -335,54 +313,54 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Das ganze Stadion schaut nur noch auf ihn.",
+   "start": 25.935,
+   "end": 28.404,
    "words": [
     [
      "Das",
-     27.935,
-     28.213
+     25.935,
+     26.213
     ],
     [
      "ganze",
-     28.317,
-     28.561
+     26.317,
+     26.561
     ],
     [
      "Stadion",
-     28.63,
-     28.978
+     26.63,
+     26.978
     ],
     [
      "schaut",
-     29.048,
-     29.326
+     27.048,
+     27.326
     ],
     [
      "nur",
-     29.396,
-     29.535
+     27.396,
+     27.535
     ],
     [
      "noch",
-     29.604,
-     29.674
+     27.604,
+     27.674
     ],
     [
      "auf",
-     29.743,
-     29.813
+     27.743,
+     27.813
     ],
     [
      "ihn.",
-     29.883,
-     30.404
+     27.883,
+     28.404
     ]
-   ]
-  },
-  {
-   "start": 30.585,
-   "end": 33.437,
-   "text": "Ehrlich? Bester Security-Mann aller Zeiten.",
+   ],
    "highlight": [
     "Typ",
     "ihn",
@@ -399,41 +377,63 @@
     "Bewegung",
     "Ehrlich",
     "heraus"
-   ],
+   ]
+  },
+  {
+   "text": "Ehrlich? Bester Security-Mann aller Zeiten.",
+   "start": 28.585,
+   "end": 31.437,
    "words": [
     [
      "Ehrlich?",
-     30.585,
-     31.315
+     28.585,
+     29.315
     ],
     [
      "Bester",
-     31.35,
-     31.698
+     29.35,
+     29.698
     ],
     [
      "Security-Mann",
-     31.941,
-     32.533
+     29.941,
+     30.533
     ],
     [
      "aller",
-     32.602,
-     32.811
+     30.602,
+     30.811
     ],
     [
      "Zeiten.",
-     32.88,
-     33.437
+     30.88,
+     31.437
     ]
+   ],
+   "highlight": [
+    "Typ",
+    "ihn",
+    "werfen",
+    "Security",
+    "jede",
+    "Security-Mann",
+    "Stadion",
+    "neben",
+    "Zeiten",
+    "Cheerleader",
+    "dann",
+    "Feld",
+    "Bewegung",
+    "Ehrlich",
+    "heraus"
    ]
   }
  ],
  "sfx": [
   {
-   "time": 2.6,
-   "sound": "tick",
-   "gain": 0.6
+   "time": 0.1,
+   "sound": "iphone_ping",
+   "gain": 1.3
   },
   {
    "time": 3.6,
@@ -442,8 +442,8 @@
   },
   {
    "time": 3.7,
-   "sound": "pop",
-   "gain": 0.9
+   "sound": "blub",
+   "gain": 1.1
   },
   {
    "time": 6.1,
@@ -451,89 +451,84 @@
    "gain": 0.7
   },
   {
-   "time": 6.65,
-   "sound": "ding_soft",
-   "gain": 0.9
+   "time": 6.45,
+   "sound": "bloop",
+   "gain": 1.3
   },
   {
-   "time": 9.6,
-   "sound": "swipe",
-   "gain": 0.7
-  },
-  {
-   "time": 11.45,
+   "time": 9.45,
    "sound": "record_scratch",
    "gain": 1.0
   },
   {
-   "time": 11.6,
+   "time": 9.6,
    "sound": "zoom_hit",
    "gain": 1.1
   },
   {
-   "time": 11.65,
-   "sound": "crowd_ooh",
-   "gain": 0.7
-  },
-  {
-   "time": 11.7,
-   "sound": "pop",
-   "gain": 1.0
-  },
-  {
-   "time": 11.8,
+   "time": 9.65,
    "sound": "text_pop",
    "gain": 1.1
   },
   {
-   "time": 14.2,
+   "time": 9.75,
+   "sound": "sparkle",
+   "gain": 1.0
+  },
+  {
+   "time": 9.7,
+   "sound": "crowd_ooh",
+   "gain": 0.7
+  },
+  {
+   "time": 12.2,
    "sound": "swipe",
    "gain": 0.7
   },
   {
-   "time": 17.2,
-   "sound": "zoom_hit",
-   "gain": 0.9
-  },
-  {
-   "time": 20.8,
+   "time": 15.2,
    "sound": "whoosh_fast",
    "gain": 0.7
   },
   {
-   "time": 20.9,
-   "sound": "bloop",
+   "time": 18.8,
+   "sound": "swish_soft",
+   "gain": 0.8
+  },
+  {
+   "time": 18.9,
+   "sound": "ding_bright",
    "gain": 1.0
   },
   {
-   "time": 24.3,
-   "sound": "zoom_hit",
-   "gain": 0.9
+   "time": 22.3,
+   "sound": "zip",
+   "gain": 0.7
   },
   {
-   "time": 27.8,
+   "time": 25.8,
    "sound": "swoosh_air",
    "gain": 0.7
   },
   {
-   "time": 30.3,
+   "time": 28.3,
    "sound": "zoom_hit",
    "gain": 1.0
   },
   {
-   "time": 30.4,
+   "time": 28.4,
+   "sound": "knock",
+   "gain": 1.0
+  },
+  {
+   "time": 28.45,
    "sound": "applause",
    "gain": 0.8
   },
   {
-   "time": 30.45,
-   "sound": "pop",
-   "gain": 1.0
-  },
-  {
-   "time": 33.4,
+   "time": 31.2,
    "sound": "ding_soft",
-   "gain": 0.9
+   "gain": 0.8
   }
  ],
  "overlays": [
@@ -783,221 +778,149 @@
   },
   {
    "style": "arrow_block",
-   "start": 6.65,
-   "end": 8.9,
-   "x": 571,
-   "y": 385,
+   "start": 6.45,
+   "end": 7.9,
+   "x": 442,
+   "y": 408,
    "angle": 90,
-   "size": 200,
+   "size": 190,
    "keys": [
     [
-     6.65,
-     571,
-     385,
+     6.467,
+     442,
+     408,
      1.0
     ],
     [
-     6.717,
-     554,
+     6.533,
+     465,
+     398,
+     1.0
+    ],
+    [
+     6.6,
+     490,
      384,
      1.0
     ],
     [
-     6.783,
+     6.667,
+     514,
+     368,
+     1.0
+    ],
+    [
+     6.733,
      528,
-     390,
+     354,
      1.0
     ],
     [
-     6.85,
-     504,
-     399,
-     1.0
-    ],
-    [
-     6.917,
-     490,
-     400,
-     1.0
-    ],
-    [
-     6.983,
-     497,
-     389,
-     1.0
-    ],
-    [
-     7.05,
-     511,
-     376,
-     1.0
-    ],
-    [
-     7.117,
-     519,
-     367,
-     1.0
-    ],
-    [
-     7.183,
+     6.8,
      532,
-     362,
-     1.0
-    ],
-    [
-     7.25,
-     551,
-     351,
-     1.0
-    ],
-    [
-     7.317,
-     575,
      340,
      1.0
     ],
     [
-     7.383,
-     612,
-     338,
+     6.867,
+     527,
+     332,
      1.0
     ],
     [
-     7.45,
-     662,
-     344,
+     6.933,
+     520,
+     325,
      1.0
     ],
     [
-     7.517,
-     713,
-     351,
+     7.0,
+     507,
+     318,
      1.0
     ],
     [
-     7.583,
-     759,
-     353,
+     7.067,
+     490,
+     314,
      1.0
     ],
     [
-     7.65,
-     784,
-     357,
+     7.133,
+     469,
+     314,
      1.0
     ],
     [
-     7.717,
-     801,
-     367,
+     7.2,
+     444,
+     314,
      1.0
     ],
     [
-     7.783,
-     791,
-     375,
+     7.267,
+     423,
+     315,
      1.0
     ],
     [
-     7.85,
-     757,
-     384,
+     7.333,
+     410,
+     313,
      1.0
     ],
     [
-     7.917,
-     705,
-     395,
+     7.4,
+     399,
+     308,
      1.0
     ],
     [
-     7.983,
-     654,
-     407,
+     7.467,
+     402,
+     300,
      1.0
     ],
     [
-     8.05,
-     603,
-     417,
+     7.533,
+     411,
+     289,
      1.0
     ],
     [
-     8.117,
-     558,
-     425,
+     7.6,
+     420,
+     276,
      1.0
     ],
     [
-     8.183,
-     516,
-     433,
+     7.667,
+     435,
+     270,
      1.0
     ],
     [
-     8.25,
-     479,
-     407,
+     7.733,
+     457,
+     266,
      1.0
     ],
     [
-     8.317,
-     460,
-     387,
+     7.8,
+     475,
+     260,
      1.0
     ],
     [
-     8.383,
-     441,
-     373,
-     1.0
-    ],
-    [
-     8.45,
-     408,
-     361,
-     1.0
-    ],
-    [
-     8.517,
-     378,
-     349,
-     1.0
-    ],
-    [
-     8.583,
-     354,
-     342,
-     1.0
-    ],
-    [
-     8.65,
-     343,
-     334,
-     1.0
-    ],
-    [
-     8.717,
-     334,
-     334,
-     1.0
-    ],
-    [
-     8.783,
-     329,
-     333,
-     1.0
-    ],
-    [
-     8.85,
-     331,
-     333,
+     7.867,
+     490,
+     259,
      1.0
     ]
    ],
    "track": [
-    571,
-    385,
+    442,
+    408,
     150
    ]
   },
@@ -1013,8 +936,8 @@
   {
    "style": "emoji",
    "char": "🕺",
-   "start": 11.7,
-   "end": 14.2,
+   "start": 9.75,
+   "end": 12.1,
    "x": 880,
    "y": 420,
    "size": 200
@@ -1022,8 +945,8 @@
   {
    "style": "emoji",
    "char": "🔥",
-   "start": 20.9,
-   "end": 24.2,
+   "start": 18.9,
+   "end": 22.2,
    "x": 180,
    "y": 420,
    "size": 200
@@ -1031,15 +954,15 @@
   {
    "style": "emoji",
    "char": "👏",
-   "start": 30.4,
-   "end": 33.5,
+   "start": 28.4,
+   "end": 31.4,
    "x": 880,
    "y": 420,
    "size": 200
   }
  ],
  "zooms": [],
- "tail": 0.06300000000000239,
+ "tail": 0.05,
  "orig_audio": {
   "path": "orig.wav",
   "under_db": -14,
@@ -1049,15 +972,15 @@
     -5
    ],
    [
-    11.4,
+    9.4,
     -5
    ],
    [
-    11.8,
+    9.8,
     -11
    ],
    [
-    33.5,
+    31.5,
     -11
    ]
   ]
