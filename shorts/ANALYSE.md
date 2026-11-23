@@ -75,3 +75,16 @@ Bonus: **„… von der Kamera erwischt“** (Überwachungskamera = echt = Vertr
 
 **Übernommen in unser Werkzeug:** `multicolor` (wechselnde Farben), `actions` (\*Aktions-Text\*), Emoji-Sticker (`style: "emoji"`),
 Comedy-Sounds (vine_boom, laugh, boing, slide_whistle, rubber_pull), `tools/detext.py` (eingebrannte Untertitel wegrechnen statt Balken-Blur)
+
+### Nachanalyse (richtig, Ton + Übergänge, Bild für Bild gemessen)
+- **Erzähler spricht nur ~18 von 45 s**, in 4 Blöcken à 3–5 s (~3 Wörter/s). Dazwischen 3–10 s **Pause, in der die Szene allein wirkt**
+- **Originalton läuft immer**: in Pausen voll (Würgen, Lachen, Lehrer schimpft), unter dem Erzähler fast stumm (Ducking)
+- **Wenn jemand im Video spricht → KI schweigt**, stattdessen \*Aktions-Text\* + SFX
+- **34 Schnitte in 45 s** (alle ~1,3 s) – trotz Erzählpausen läuft das Bild schnell
+- **Licht-/Farb-Flashes**: weiß (4,4 s Pointe), **pink/magenta bei Akt-Wechsel** (19,2 s „Moments later“, 38 s Lach-Pointe), **rot bei Wut** (30,3 s), helle Blitze bei Schnitten (25,8 / 35,7 s)
+- **Kleine Meme-Bilder** (schwitzendes Gesicht, Bär mit „?“, lachende Katze) unten im Bild, je mit Meme-Sound
+- **Text-Sounds**: gesprochene Untertitel OHNE Sound, \*Aktions-Texte\* und Sticker MIT Pop/Klick/Whoosh
+- **Musik** konstant leise, Comedy, läuft auch in Pausen weiter
+- **1 roter Pfeil** im Hook, sonst KEINE Kreise/Pfeile
+
+**Mein Fehler bei v2:** Originalton weggelassen („geht nicht“) – falsch: in den Pausen des Erzählers ist im Clip NUR Originalton + Musik → nutzbar.
