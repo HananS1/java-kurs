@@ -1,0 +1,236 @@
+[
+ {
+  "text": "Santiago pennt mitten im Unterricht.",
+  "start": 0.036,
+  "end": 2.364,
+  "words": [
+   [
+    "Santiago",
+    0.036,
+    0.691
+   ],
+   [
+    "pennt",
+    0.764,
+    1.127
+   ],
+   [
+    "mitten",
+    1.2,
+    1.491
+   ],
+   [
+    "im",
+    1.564,
+    1.636
+   ],
+   [
+    "Unterricht.",
+    1.709,
+    2.364
+   ]
+  ]
+ },
+ {
+  "text": "Und Santiago?",
+  "start": 5.636,
+  "end": 6.582,
+  "words": [
+   [
+    "Und",
+    5.636,
+    5.782
+   ],
+   [
+    "Santiago?",
+    5.855,
+    6.582
+   ]
+  ]
+ },
+ {
+  "text": "Stellt keine einzige Frage.",
+  "start": 6.8,
+  "end": 8.436,
+  "words": [
+   [
+    "Stellt",
+    6.8,
+    7.091
+   ],
+   [
+    "keine",
+    7.164,
+    7.455
+   ],
+   [
+    "einzige",
+    7.527,
+    7.818
+   ],
+   [
+    "Frage.",
+    7.891,
+    8.436
+   ]
+  ]
+ },
+ {
+  "text": "Er schnappt sich den Schwamm und wischt die Tafel",
+  "start": 12.036,
+  "end": 13.927,
+  "words": [
+   [
+    "Er",
+    12.036,
+    12.109
+   ],
+   [
+    "schnappt",
+    12.182,
+    12.4
+   ],
+   [
+    "sich",
+    12.473,
+    12.545
+   ],
+   [
+    "den",
+    12.618,
+    12.764
+   ],
+   [
+    "Schwamm",
+    12.8,
+    13.055
+   ],
+   [
+    "und",
+    13.127,
+    13.273
+   ],
+   [
+    "wischt",
+    13.345,
+    13.491
+   ],
+   [
+    "die",
+    13.527,
+    13.564
+   ],
+   [
+    "Tafel",
+    13.636,
+    13.927
+   ]
+  ]
+ },
+ {
+  "text": "während der Lehrer noch draufschreibt.",
+  "start": 14.364,
+  "end": 16.473,
+  "words": [
+   [
+    "während",
+    14.364,
+    14.655
+   ],
+   [
+    "der",
+    14.727,
+    14.8
+   ],
+   [
+    "Lehrer",
+    14.873,
+    15.091
+   ],
+   [
+    "noch",
+    15.164,
+    15.309
+   ],
+   [
+    "draufschreibt.",
+    15.382,
+    16.473
+   ]
+  ]
+ },
+ {
+  "text": "Jeder hat so einen Sitznachbarn.",
+  "start": 24.636,
+  "end": 26.309,
+  "words": [
+   [
+    "Jeder",
+    24.636,
+    24.782
+   ],
+   [
+    "hat",
+    24.855,
+    25.0
+   ],
+   [
+    "so",
+    25.036,
+    25.073
+   ],
+   [
+    "einen",
+    25.109,
+    25.291
+   ],
+   [
+    "Sitznachbarn.",
+    25.364,
+    26.309
+   ]
+  ]
+ },
+ {
+  "text": "Und dann dreht sich der Lehrer um.",
+  "start": 26.418,
+  "end": 28.273,
+  "words": [
+   [
+    "Und",
+    26.418,
+    26.527
+   ],
+   [
+    "dann",
+    26.648,
+    26.891
+   ],
+   [
+    "dreht",
+    26.964,
+    27.109
+   ],
+   [
+    "sich",
+    27.157,
+    27.255
+   ],
+   [
+    "der",
+    27.327,
+    27.4
+   ],
+   [
+    "Lehrer",
+    27.436,
+    27.691
+   ],
+   [
+    "um.",
+    27.764,
+    28.273
+   ]
+  ]
+ }
+]

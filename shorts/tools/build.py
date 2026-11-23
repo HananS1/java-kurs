@@ -337,11 +337,23 @@ def main(cfg_path):
     if clip and os.path.exists(clip) and cfg.get("clip_audio", 0) > 0:
         amix.append(f"[0:a]volume={cfg['clip_audio']}[a_clip]")
         labels.append("[a_clip]")
+    oa = cfg.get("orig_audio")
+    if oa:
+        # Originalton (Hybrid-Stil): voll in den Sprechpausen, unter der Stimme stark geduckt
+        inputs += ["-i", oa["path"]]
+        amix[0] = "[1:a]volume=1.0,asplit=3[a_voice][a_key][a_key3]"
+        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,volume={oa.get('gain_db', 0)}dB[a_o]")
+        amix.append(f"[a_key3]aformat=channel_layouts=stereo[a_key4]")
+        amix.append(f"[a_o][a_key4]sidechaincompress=threshold={oa.get('duck_threshold', 0.015)}:"
+                    f"ratio={oa.get('duck_ratio', 12)}:attack=10:release=250:makeup=1[a_od]")
+        labels.append("[a_od]")
+        idx += 1
     m = cfg.get("music")
     if m:
+        if not oa:
+            amix[0] = "[1:a]volume=1.0,asplit=2[a_voice][a_key]"
         # Musik: Ausschnitt ab m.start, Grundlautstaerke m.gain_db, wird unter der Stimme geduckt
         inputs += ["-ss", str(m.get("start", 0)), "-i", m["path"]]
-        amix[0] = "[1:a]volume=1.0,asplit=2[a_voice][a_key]"
         fade_out = max(0, length - m.get("fade_out", 1.0))
         amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,"
                     f"volume={m.get('gain_db', -16)}dB,afade=t=in:d={m.get('fade_in', 0.3)},"

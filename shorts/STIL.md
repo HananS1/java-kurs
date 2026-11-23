@@ -67,6 +67,16 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
+## HYBRID-STIL (Standard ab Video 11, wenn der Clip echten Originalton hat)
+- Video UND Story gleich wichtig: Stimme nur in 3–4 kurzen Blöcken (`tools/place_voice.py`, atempo 1.1), dazwischen spielt das Video
+- **Originalton immer an** (`audio_out` in shots.json + `orig_audio` in config): voll in Pausen, unter der Stimme geduckt
+- Spricht jemand im Video → KI schweigt, Übersetzung als \*Aktions-Text\* (Box im Original verwischen, Text genau drauf)
+- Untertitel `chunk` (Inter Black, 1 farbiges Wort), Aktions-Texte bunt; Pop/Klick-Sound nur bei Aktions-Texten/Stickern
+- Flashes via `rings.py` (nur flash/shake): weiß bei Szenen-/Akt-Wechsel, rot bei Wut/Pointe + Vine-Boom
+- 2–4 Kreise/Pfeile (abwechselnd, getrackt) + 2–3 Emoji-Sticker
+- Musik nur vom Nutzer (Golden Brown / Headlights), leise (gain −17), Kommentar-Auslöser in einem Stimmblock
+- Clip-Check vorher: echter Originalton? sonst alter Stil
+
 ## Comedy-Videos 1:1 Stil @shortsrender (Nutzer-Wunsch: genau so, nicht mischen)
 - Weibliche Stimme Laura `LB5G0Z4EP98YaEgL654m`, amüsiert, normales Tempo (atempo 1.0), Erzählung in 4 Blöcken mit Lücken für die Action
 - `caption_mode: "chunk"`, Font Inter Black 92, y 1260: 1–3 Wörter, EIN Wort farbig (pink/gelb/cyan/grün rotierend)

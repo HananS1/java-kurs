@@ -85,6 +85,20 @@ def main(path):
                     "-filter_complex", fc, "-map", "[v]", "-an",
                     "-c:v", "libx264", "-crf", "6", "-preset", "fast", "-pix_fmt", "yuv420p",
                     cfg["out"]], check=True)
+    if cfg.get("audio_out"):
+        # Originalton passend zu den Shots (gleiche Reihenfolge/Laenge, Zeitlupe -> atempo)
+        ap = []
+        for i, s in enumerate(shots):
+            d = (round(s["end"] * FPS) - round(s["start"] * FPS)) / FPS; sp = s.get("speed", 1.0)
+            a = f"[0:a]atrim=start={s['src']}:duration={d * sp:.4f},asetpts=PTS-STARTPTS"
+            if sp != 1.0:
+                a += f",atempo={max(0.5, sp)}"
+            a += f",apad,atrim=duration={d:.4f},afade=t=in:d=0.02,afade=t=out:st={max(0, d - 0.03):.3f}:d=0.03[a{i}]"
+            ap.append(a)
+        fca = ";".join(ap) + ";" + "".join(f"[a{i}]" for i in range(len(shots))) + f"concat=n={len(shots)}:v=0:a=1[ao]"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", cfg["source"], "-filter_complex", fca,
+                        "-map", "[ao]", "-ac", "2", "-ar", "44100", cfg["audio_out"]], check=True)
+        print("Originalton:", cfg["audio_out"])
     print("Schnitt fertig:", cfg["out"])
 
 if __name__ == "__main__":
