@@ -78,3 +78,4 @@
 - [ ] **Nach dem Upload:** Kanal-Zahlen mit vidIQ prüfen → was lief, was nicht → hier eintragen
 | 12 Security v5 | Satz „Dann kommt dieser Typ…“ + Pfeil kamen erst, als er längst da war; Umschwung/„Security-Modus: aus“ kam erst nach Tanzbeginn | Timing | Erzähl-Block + Pfeil **auf das Bild-Ereignis legen** (Person tritt ins Bild = Satzstart ±0,2 s); Switch-Flash + Text genau auf das erste Tanz-Frame; vorher Frame-Sheet prüfen |
 | 12 Security v5 | Gleicher Sound auf mehreren Pfeilen | Sound | Jeder Pfeil/Kreis/Sticker eigener kurzer Sound (iphone_ping, bloop, blub, sparkle, ding_bright, knock), Übergänge eigener Swoosh |
+| 12 Security v6 | „fordert ihn heraus“ war falsch – im Bild bittet der Typ ihn zu gehen | Inhalt | Handlung im Clip genau ansehen (Gesten, wer schiebt wen), nicht raten; Satz nur schreiben, was eindeutig zu sehen ist |
