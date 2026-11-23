@@ -16,28 +16,29 @@
  },
  {
   "first": "Doch",
-  "at": 8.58,
+  "at": 0,
+  "skip": true,
   "lines": [
    "Doch statt zu gehen..."
   ]
  },
  {
   "first": "Er",
-  "at": 12.5,
+  "at": 13.6,
   "lines": [
    "Er kennt jede einzelne Bewegung."
   ]
  },
  {
   "first": "Das",
-  "at": 25.9,
+  "at": 27.0,
   "lines": [
    "Das ganze Stadion schaut nur noch auf ihn."
   ]
  },
  {
   "first": "Ehrlich",
-  "at": 28.55,
+  "at": 29.65,
   "lines": [
    "Ehrlich? Bester Security-Mann aller Zeiten."
   ]

@@ -44,6 +44,8 @@ def main(raw, words_json, out_wav, out_sent, blocks_json, total, tempo="1.1"):
     pos = 0; filt = []; out = []
     for k, b in enumerate(blocks):
         n = sum(len([x for x in l.split() if any(c.isalnum() for c in x)]) for l in b["lines"])
+        if b.get("skip"):            # Satz aus dem Rohtext auslassen (z.B. separat neu eingesprochen)
+            pos += n; continue
         seg = ws[pos:pos + n]; assert seg[0]["text"].strip(".,?!…") .startswith(b["first"]), (seg[0]["text"], b["first"])
         s0 = max(0, seg[0]["start"] - 0.04); s1 = seg[-1]["end"] + 0.12
         if pos + n < len(ws):
@@ -59,7 +61,7 @@ def main(raw, words_json, out_wav, out_sent, blocks_json, total, tempo="1.1"):
             out.append({"text": l, "start": tw[0][1], "end": tw[-1][2], "words": tw})
         pos += n
         print(f"Block {k}: {b['at']:.2f} - {out[-1]['end']:.2f}")
-    fc = ";".join(filt) + ";" + "".join(f"[s{k}]" for k in range(len(blocks))) + f"amix=inputs={len(blocks)}:normalize=0[o]"
+    fc = ";".join(filt) + ";" + "".join(f"[s{k}]" for k, b in enumerate(blocks) if not b.get("skip")) + f"amix=inputs={sum(1 for b in blocks if not b.get('skip'))}:normalize=0[o]"
     subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", raw, "-filter_complex", fc, "-map", "[o]",
                     "-ac", "1", "-ar", "44100", "-t", str(total), out_wav], check=True)
     json.dump(out, open(out_sent, "w"), indent=1, ensure_ascii=False)

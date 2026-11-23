@@ -180,3 +180,11 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Untertitel mit exakten Wortzeiten (`words` in den Captions)
 - `tools/retime.py`: bei neuer Stimme alle Shots/Overlays/Sounds auf die neuen Satzgrenzen umrechnen
 - `cut.py` warnt, wenn ein Shot über einen Schnitt im Original oder dessen Ende läuft; `build.py` kürzt Overlays automatisch auf ihren Shot
+
+## SELBST-CHECK VOR JEDER ABGABE (Pflicht, ohne dass der Nutzer fragt)
+1. Story-Check: Original Bild für Bild (0,1 s) um JEDEN Wendepunkt ansehen. Wird der Moment selbst gezeigt (nicht nur vorher/nachher)?
+2. Text-Check: Beschreibt jeder Satz genau, was man in dem Moment sieht (wer tut was)? Keine Deutung, die nicht eindeutig sichtbar ist.
+3. Timing-Check: Satz startet, wenn das Ereignis ins Bild kommt (±0,2 s); Switch/Flash/Text auf dem ersten Frame der Aktion.
+4. Bild-Check: Hauptperson nie angeschnitten, kein Text/Emoji auf Gesicht oder überlappend.
+5. Ton-Check: Stimme klar vorne, keine Wortreste am Satzende, Musik nicht gleichzeitig mit Song im Clip.
+6. Zuschauer-Frage: Würde ich es selbst bis zum Ende schauen und verstehen, ohne den Clip zu kennen?
