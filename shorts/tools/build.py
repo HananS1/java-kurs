@@ -84,29 +84,32 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             t += d
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
-def make_ass_chunks(path, captions, font="Inter Black", size=92, y=1250, actions=None):
-    """Shorts-Render-Stil: 1-3 Woerter pro Einblendung (bis Satzzeichen), EIN Schluesselwort farbig (rotierend pink/gelb/cyan/gruen),
-    weiss mit schwarzem Rand + Glow. *Aktions-Texte* gross, Woerter abwechselnd cyan/gelb/rot."""
+def make_ass_chunks(path, captions, font="MontserratXB", size=78, y=1210, actions=None):
+    """1:1 Stil @shortsrender (gemessen): Montserrat ExtraBold, Versalhoehe ~55 px, weiss, duenner schwarzer Rand + weicher Schatten,
+    1-3 Woerter, EIN Wort farbig (pink/gelb/cyan/gruen). Aktions-Texte: ganz cyan mit gelben Sternchen, Leucht-Rand, 2 Zeilen."""
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
 PlayResY: {H}
+WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,{font},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,1,0,1,6,3,5,60,60,0,1
+Style: Cap,{font},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,1,0,1,3.5,3,5,120,120,0,1
+Style: Act,{font},{int(size * 1.25)},&H00FFE618,&H00FFE618,&H00000000,&H78000000,0,0,0,0,100,100,1,0,1,4,2,5,110,110,0,1
+Style: Glow,{font},{int(size * 1.25)},&H00FFE618,&H00FFE618,&H00FFE618,&H00000000,0,0,0,0,100,100,1,0,1,9,0,5,110,110,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-    cols = ["&HFF40FF&", "&H00F0FF&", "&HFFF000&", "&H40FF40&"]          # pink, gelb, cyan, gruen (BGR)
+    cols = ["&HD62BFF&", "&H00E6FF&", "&HFFE618&", "&H39FF14&"]          # pink, gelb, cyan, gruen (BGR)
     lines = []; ci = 0
     words = [w for c in captions for w in c.get("words", [])]
     hl = {h.lower() for c in captions for h in c.get("highlight", [])}
     chunks, cur = [], []
     for w in words:
         cur.append(w)
-        if len(cur) >= 3 or w[0][-1] in ".,!?…:" or (len(cur) == 2 and len(w[0]) > 9):
+        if len(cur) >= 3 or w[0][-1] in ".,!?…:" or sum(len(x[0]) for x in cur) > 16:
             chunks.append(cur); cur = []
     if cur: chunks.append(cur)
     for k, ch in enumerate(chunks):
@@ -120,17 +123,15 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 txt.append("{\\c" + cols[ci % 4] + "}" + t + "{\\c&HFFFFFF&}"); used = True; ci += 1
             else:
                 txt.append(t)
-        pop = "{\\pos(540,%d)\\blur1\\fscx85\\fscy85\\t(0,80,\\fscx104\\fscy104)\\t(80,140,\\fscx100\\fscy100)}" % y
+        pop = "{\\pos(540,%d)\\blur0.6\\fscx90\\fscy90\\t(0,70,\\fscx103\\fscy103)\\t(70,120,\\fscx100\\fscy100)}" % y
         lines.append(f"Dialogue: 0,{ass_time(s0)},{ass_time(end)},Cap,,0,0,0,,{pop}{' '.join(txt)}")
-    acol = ["&HFFF000&", "&H00F0FF&", "&H3030FF&"]                         # cyan, gelb, rot
     for a in (actions or []):
-        ws = a["text"].upper().split(); out = []; line = 0
-        for i, w in enumerate(ws):
-            out.append("{\\c" + acol[i % 3] + "}" + w)
-        body = " ".join(out)
-        body = "{\\c&HFFF000&}*" + body + "{\\c&HFFF000&}*"
-        pop = "{\\pos(540,%d)\\fs%d\\blur1.5\\bord7\\fscx70\\fscy70\\t(0,90,\\fscx108\\fscy108)\\t(90,150,\\fscx100\\fscy100)\\q0}" % (a.get("y", y), int(size * 1.2))
-        lines.append(f"Dialogue: 1,{ass_time(a['start'])},{ass_time(a['end'])},Cap,,0,0,0,,{pop}{body}")
+        body = a["text"].upper()
+        ay = a.get("y", y)
+        anim = "\\fscx88\\fscy88\\t(0,80,\\fscx104\\fscy104)\\t(80,140,\\fscx100\\fscy100)"
+        star = "{\\c&H00E6FF&}*{\\c&HFFE618&}"
+        lines.append(f"Dialogue: 1,{ass_time(a['start'])},{ass_time(a['end'])},Glow,,0,0,0,,{{\\pos(540,{ay})\\blur9\\alpha&H70&{anim}}}*{body}*")
+        lines.append(f"Dialogue: 2,{ass_time(a['start'])},{ass_time(a['end'])},Act,,0,0,0,,{{\\pos(540,{ay})\\blur0.6{anim}}}{star}{body}{star}")
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
 def make_ass(path, captions, words_per_chunk=3):
@@ -202,8 +203,8 @@ def main(cfg_path):
 
     make_arrow("arrow.png"); make_circle("circle.png")
     if cfg.get("caption_mode") == "chunk":
-        make_ass_chunks("subs.ass", cfg["captions"], cfg.get("font", "Inter Black"), cfg.get("font_size", 92),
-                        cfg.get("caption_y", 1250), cfg.get("actions"))
+        make_ass_chunks("subs.ass", cfg["captions"], cfg.get("font", "MontserratXB"), cfg.get("font_size", 78),
+                        cfg.get("caption_y", 1210), cfg.get("actions"))
     elif cfg.get("caption_mode") == "word":
         make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150),
                        cfg.get("multicolor", False), cfg.get("actions"))
@@ -340,18 +341,24 @@ def main(cfg_path):
     oa = cfg.get("orig_audio")
     if oa:
         # Originalton (Hybrid-Stil): voll in den Sprechpausen, unter der Stimme stark geduckt
+        # Lautstaerke-Kurve: unter jedem Stimm-Block auf under_db, mit weichen Rampen
+        blocks = []
+        for c in cfg["captions"]:
+            a0, b0 = c["start"] - 0.15, c["end"] + 0.2
+            if blocks and a0 <= blocks[-1][1] + 0.4: blocks[-1][1] = b0
+            else: blocks.append([a0, b0])
+        lo = 10 ** (oa.get("under_db", -20) / 20); r = 0.15
+        expr = "1"
+        for a0, b0 in blocks:
+            expr = (f"min({expr},1-(1-{lo:.4f})*clip(min((t-{a0 - r:.3f})/{r},({b0 + r:.3f}-t)/{r}),0,1))")
         inputs += ["-i", oa["path"]]
-        amix[0] = "[1:a]volume=1.0,asplit=3[a_voice][a_key][a_key3]"
-        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,volume={oa.get('gain_db', 0)}dB[a_o]")
-        amix.append(f"[a_key3]aformat=channel_layouts=stereo[a_key4]")
-        amix.append(f"[a_o][a_key4]sidechaincompress=threshold={oa.get('duck_threshold', 0.015)}:"
-                    f"ratio={oa.get('duck_ratio', 12)}:attack=10:release=250:makeup=1[a_od]")
+        amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,volume={oa.get('gain_db', 0)}dB,"
+                    f"volume='{expr}':eval=frame[a_od]")
         labels.append("[a_od]")
         idx += 1
     m = cfg.get("music")
     if m:
-        if not oa:
-            amix[0] = "[1:a]volume=1.0,asplit=2[a_voice][a_key]"
+        amix[0] = "[1:a]volume=1.0,asplit=2[a_voice][a_key]"
         # Musik: Ausschnitt ab m.start, Grundlautstaerke m.gain_db, wird unter der Stimme geduckt
         inputs += ["-ss", str(m.get("start", 0)), "-i", m["path"]]
         fade_out = max(0, length - m.get("fade_out", 1.0))

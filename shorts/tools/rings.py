@@ -17,7 +17,7 @@ import numpy as np
 import cv2
 
 COL = {"yellow": (40, 230, 255), "red": (40, 40, 245), "white": (255, 255, 255), "green": (80, 230, 80),
-       "blue": (255, 160, 40)}
+       "blue": (255, 160, 40), "pink": (214, 43, 255), "cyan": (255, 230, 24)}
 FONT = None
 
 
@@ -175,12 +175,21 @@ def main(video, spec_path, out):
         if not ok:
             break
         t = f / fps
-        for fl in flashes:   # Farbblitz: kraeftige Toenung, klingt aus
+        for fl in flashes:   # Uebergang wie @shortsrender: Zoom-Punch 1.10->1.0 + Farb-Glow (Screen-Blend), klingt aus
             dt = t - fl["time"]
-            if 0 <= dt < fl.get("dur", 0.45):
-                k = 0.55 * (1 - dt / fl.get("dur", 0.45))
-                tint = np.zeros_like(fr); tint[:] = COL[fl.get("color", "red")]
-                fr = cv2.addWeighted(fr, 1 - k, tint, k, 0)
+            dur = fl.get("dur", 0.45)
+            if 0 <= dt < dur:
+                p_ = dt / dur
+                z = 1 + fl.get("zoom", 0.10) * (1 - p_) ** 2
+                if z > 1.001:
+                    M = cv2.getRotationMatrix2D((W / 2, H / 2), 0, z)
+                    fr = cv2.warpAffine(fr, M, (W, H), borderMode=cv2.BORDER_REFLECT)
+                k = fl.get("strength", 0.6) * (1 - p_)
+                col = np.array(COL[fl.get("color", "red")], np.float32)
+                f32 = fr.astype(np.float32) / 255; c32 = col / 255
+                screen = 1 - (1 - f32) * (1 - c32 * k)                      # Licht-Glow statt Farbbrei
+                glow = cv2.GaussianBlur(screen, (0, 0), 25) * 0.35 * k
+                fr = np.clip((screen + glow) * 255, 0, 255).astype(np.uint8)
         for r, f0, a in paths:
             i = f - f0
             if not (0 <= i < len(a)):

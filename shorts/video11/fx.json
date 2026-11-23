@@ -1,0 +1,45 @@
+{
+ "model": "/tmp/claude-0/-home-user-java-kurs/3117234c-bcd4-54bd-b6c0-215b48d8dcb6/scratchpad/n11/../models/yolov8m-pose.pt",
+ "rings": [],
+ "flash": [
+  {
+   "time": 2.3,
+   "dur": 0.35,
+   "color": "white",
+   "strength": 0.5,
+   "zoom": 0.08
+  },
+  {
+   "time": 11.5,
+   "dur": 0.35,
+   "color": "pink",
+   "strength": 0.45
+  },
+  {
+   "time": 18.5,
+   "dur": 0.35,
+   "color": "white",
+   "strength": 0.5
+  },
+  {
+   "time": 24.5,
+   "dur": 0.35,
+   "color": "pink",
+   "strength": 0.45
+  },
+  {
+   "time": 29.8,
+   "dur": 0.55,
+   "color": "red",
+   "strength": 0.8,
+   "zoom": 0.12
+  }
+ ],
+ "shake": [
+  {
+   "time": 29.8,
+   "dur": 0.35,
+   "amp": 14
+  }
+ ]
+}

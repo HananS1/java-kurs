@@ -71,7 +71,12 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Video UND Story gleich wichtig: Stimme nur in 3–4 kurzen Blöcken (`tools/place_voice.py`, atempo 1.1), dazwischen spielt das Video
 - **Originalton immer an** (`audio_out` in shots.json + `orig_audio` in config): voll in Pausen, unter der Stimme geduckt
 - Spricht jemand im Video → KI schweigt, Übersetzung als \*Aktions-Text\* (Box im Original verwischen, Text genau drauf)
-- Untertitel `chunk` (Inter Black, 1 farbiges Wort), Aktions-Texte bunt; Pop/Klick-Sound nur bei Aktions-Texten/Stickern
+- Untertitel 1:1 wie @shortsrender (gemessen): `chunk`, Font **MontserratXB** (fonts/), Größe 78, y 1210, weiß + dünner Rand + Schatten, 1 Wort pink/gelb/cyan/grün; Aktions-Texte ganz cyan mit gelben Sternchen + Leucht-Rand
+- Pop/Klick-Sound nur bei Aktions-Texten/Stickern, gesprochene Untertitel ohne Sound
+- Stimme passend zum Konkurrenz-Stil: Laura (weiblich, amüsiert), atempo 1.12
+- **Lautstärke (gemessen):** Stimme ≈ −20 dB RMS; Originalton unter Stimme −18 dB (Kurve `under_db`, nicht Kompressor), in Pausen `gain_db −4`; Musik `gain −9` (hörbar, ~10 dB unter Stimme)
+- Vollbild 9:16 (kein Unschärfe-Rand); weiße TikTok-Textboxen mit `tools/debox.py` wegrechnen
+- Übergänge (rings.py flash): Zoom-Punch + Licht-Glow – weiß bei Schnitten, pink bei Akt-Wechsel (strength 0.45), rot bei Wut
 - Flashes via `rings.py` (nur flash/shake): weiß bei Szenen-/Akt-Wechsel, rot bei Wut/Pointe + Vine-Boom
 - 2–4 Kreise/Pfeile (abwechselnd, getrackt) + 2–3 Emoji-Sticker
 - Musik nur vom Nutzer (Golden Brown / Headlights), leise (gain −17), Kommentar-Auslöser in einem Stimmblock

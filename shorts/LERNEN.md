@@ -36,6 +36,7 @@
 | 8 (Remakes) | Nur Kreise, 3× hintereinander auf dieselbe Frau | Pfeile weggelassen | Kreis/Pfeil strikt abwechseln, Pfeilspitze an der Kopfkante (0.95·r) |
 | 8 Zwillinge | Gelber gebogener Pfeil sieht schlecht aus | Stil | neue Block-Pfeile (arrow_block/arrow_green), gelben nicht mehr nutzen |
 | 8 Zwillinge | Nur 1 Baby markiert, Papa ohne Pfeil | nicht alle genannten Personen markiert | JEDE im Satz genannte Person bekommt Kreis/Pfeil genau beim Wort (bei „Zwillinge“ beide) |
+| 11 | Originalton lauter als Stimme, Musik unhörbar, Untertitel anders als Konkurrenz, Unschärfe-Ränder | Kompressor zu schwach, Musik −17, eigene Schrift, Fit-Modus | Lautstärke-Kurve, Pegel messen, Montserrat wie Konkurrent, Vollbild |
 | 7 (Selbst-Review) | `@transition` wählte „glitch“ bei rührender Story | Gruppe kennt keine Stimmung | bei emotionalen Storys Übergänge einzeln wählen (whoosh/swoosh), kein glitch |
 
 ## Skript-Checkliste
