@@ -51,7 +51,9 @@ def main(path):
             base += (f",split[m{i}][r{i}];[r{i}]crop={bw}:{bh}:{bx}:{by},boxblur=28:4[b{i}];"
                      f"[m{i}][b{i}]overlay={bx}:{by}")
         if s.get("mode") == "fit":
-            # ganzes Bild zeigen, Hintergrund unscharf
+            # ganzes Bild zeigen, Hintergrund unscharf (vorher auf den echten Videobereich zuschneiden)
+            if "w" in s and "h" in s:
+                base += f",crop={w}:{h}:{x0}:{y}"
             parts.append(
                 f"{base},split[a{i}][b{i}];"
                 f"[a{i}]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=25:2,"

@@ -1,0 +1,327 @@
+[
+ {
+  "text": "Zwillinge. Beide haben Hunger.",
+  "start": 0.029,
+  "end": 1.785,
+  "words": [
+   [
+    "Zwillinge.",
+    0.029,
+    0.604
+   ],
+   [
+    "Beide",
+    0.794,
+    1.099
+   ],
+   [
+    "haben",
+    1.175,
+    1.328
+   ],
+   [
+    "Hunger.",
+    1.404,
+    1.785
+   ]
+  ]
+ },
+ {
+  "text": "Und Mama und Papa haben jeweils nur eine Hand frei.",
+  "start": 1.937,
+  "end": 4.794,
+  "words": [
+   [
+    "Und",
+    1.937,
+    2.09
+   ],
+   [
+    "Mama",
+    2.166,
+    2.318
+   ],
+   [
+    "und",
+    2.394,
+    2.47
+   ],
+   [
+    "Papa",
+    2.547,
+    2.775
+   ],
+   [
+    "haben",
+    2.928,
+    3.08
+   ],
+   [
+    "jeweils",
+    3.156,
+    3.461
+   ],
+   [
+    "nur",
+    3.537,
+    3.69
+   ],
+   [
+    "eine",
+    3.766,
+    3.994
+   ],
+   [
+    "Hand",
+    4.109,
+    4.223
+   ],
+   [
+    "frei.",
+    4.49,
+    4.794
+   ]
+  ]
+ },
+ {
+  "text": "Also machen sie es wie bei einem Boxenstopp.",
+  "start": 4.832,
+  "end": 7.042,
+  "words": [
+   [
+    "Also",
+    4.832,
+    5.061
+   ],
+   [
+    "machen",
+    5.137,
+    5.29
+   ],
+   [
+    "sie",
+    5.366,
+    5.442
+   ],
+   [
+    "es",
+    5.518,
+    5.594
+   ],
+   [
+    "wie",
+    5.67,
+    5.747
+   ],
+   [
+    "bei",
+    5.823,
+    5.899
+   ],
+   [
+    "einem",
+    5.975,
+    6.128
+   ],
+   [
+    "Boxenstopp.",
+    6.242,
+    7.042
+   ]
+  ]
+ },
+ {
+  "text": "Flaschen auf.",
+  "start": 7.08,
+  "end": 7.956,
+  "words": [
+   [
+    "Flaschen",
+    7.08,
+    7.423
+   ],
+   [
+    "auf.",
+    7.499,
+    7.956
+   ]
+  ]
+ },
+ {
+  "text": "Wasser rein.",
+  "start": 7.994,
+  "end": 8.832,
+  "words": [
+   [
+    "Wasser",
+    7.994,
+    8.261
+   ],
+   [
+    "rein.",
+    8.337,
+    8.832
+   ]
+  ]
+ },
+ {
+  "text": "Jeder Handgriff sitzt.",
+  "start": 8.87,
+  "end": 10.28,
+  "words": [
+   [
+    "Jeder",
+    8.87,
+    9.175
+   ],
+   [
+    "Handgriff",
+    9.29,
+    9.632
+   ],
+   [
+    "sitzt.",
+    9.67,
+    10.28
+   ]
+  ]
+ },
+ {
+  "text": "Dann das Milchpulver.",
+  "start": 10.318,
+  "end": 11.435,
+  "words": [
+   [
+    "Dann",
+    10.318,
+    10.394
+   ],
+   [
+    "das",
+    10.47,
+    10.547
+   ],
+   [
+    "Milchpulver.",
+    10.623,
+    11.435
+   ]
+  ]
+ },
+ {
+  "text": "Deckel drauf, schütteln",
+  "start": 11.487,
+  "end": 12.68,
+  "words": [
+   [
+    "Deckel",
+    11.487,
+    11.69
+   ],
+   [
+    "drauf,",
+    11.766,
+    12.096
+   ],
+   [
+    "schütteln",
+    12.121,
+    12.68
+   ]
+  ]
+ },
+ {
+  "text": "und das erste Baby trinkt schon.",
+  "start": 12.794,
+  "end": 14.623,
+  "words": [
+   [
+    "und",
+    12.794,
+    12.832
+   ],
+   [
+    "das",
+    12.947,
+    13.061
+   ],
+   [
+    "erste",
+    13.137,
+    13.442
+   ],
+   [
+    "Baby",
+    13.594,
+    13.747
+   ],
+   [
+    "trinkt",
+    13.785,
+    14.051
+   ],
+   [
+    "schon.",
+    14.09,
+    14.623
+   ]
+  ]
+ },
+ {
+  "text": "Ehrlich? Die zwei sind ein besseres Team als jede Boxencrew.",
+  "start": 14.661,
+  "end": 18.166,
+  "words": [
+   [
+    "Ehrlich?",
+    14.661,
+    15.397
+   ],
+   [
+    "Die",
+    15.449,
+    15.499
+   ],
+   [
+    "zwei",
+    15.537,
+    15.728
+   ],
+   [
+    "sind",
+    15.804,
+    15.88
+   ],
+   [
+    "ein",
+    15.956,
+    16.109
+   ],
+   [
+    "besseres",
+    16.147,
+    16.49
+   ],
+   [
+    "Team",
+    16.566,
+    16.718
+   ],
+   [
+    "als",
+    16.794,
+    17.023
+   ],
+   [
+    "jede",
+    17.061,
+    17.328
+   ],
+   [
+    "Boxencrew.",
+    17.442,
+    18.166
+   ]
+  ]
+ }
+]
