@@ -236,6 +236,10 @@
   "text_pop": {
    "vol": 0.5,
    "lead": 0
+  },
+  "ding_soft": {
+   "vol": 0.4,
+   "lead": 0
   }
  },
  "groups": {
@@ -304,6 +308,7 @@
    "violin_sting"
   ],
   "overlay_in": [
+   "ding_soft",
    "ding_bright",
    "ding",
    "swish_soft",
