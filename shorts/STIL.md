@@ -78,7 +78,11 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Vollbild 9:16 (kein Unschärfe-Rand); weiße TikTok-Textboxen mit `tools/debox.py` wegrechnen
 - Übergänge (rings.py flash): Zoom-Punch + Licht-Glow – weiß bei Schnitten, pink bei Akt-Wechsel (strength 0.45), rot bei Wut
 - Flashes via `rings.py` (nur flash/shake): weiß bei Szenen-/Akt-Wechsel, rot bei Wut/Pointe + Vine-Boom
-- 2–4 Kreise/Pfeile (abwechselnd, getrackt) + 2–3 Emoji-Sticker
+- **Kaum Grafik (wie Konkurrent):** 1 Pfeil im Hook + max. 1 weiterer; Kreis NUR wenn er die ganze Form umschließt ohne etwas zu verdecken, sonst Pfeil. Jeder Pfeil/Kreis mit Sound (ding_bright, zip, swish_soft …)
+- 2–3 Emoji-Sticker, nie auf Gesichtern/Pfeilen
+- **Untertitel max. 2 Wörter** (`max_words: 2`)
+- **Krasse, passende SFX auf jede Aktion** (sfx_gain 0.7): Schnarchen bei Schlaf, Buzzer bei „keine Frage“, Tiptoe beim Laufen, Violin-Sting bei Spannung, Crowd-„Ooh“, Record-Scratch + Vine-Boom + Bonk bei der Pointe, Zoom-Hit auf Übergängen, Text-Pop bei Aktions-Texten
+- **Skript nur, was man SIEHT** (Fehler V11: „dreht sich um“ – Lehrer drehte sich nicht → „Bis es dem Lehrer reicht“)
 - Musik nur vom Nutzer (Golden Brown / Headlights), leise (gain −17), Kommentar-Auslöser in einem Stimmblock
 - Clip-Check vorher: echter Originalton? sonst alter Stil
 

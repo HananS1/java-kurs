@@ -200,6 +200,42 @@
   "rubber_pull": {
    "vol": 0.5,
    "lead": 0
+  },
+  "snore": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "ding_bright": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "crowd_ooh": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "tiptoe": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "zoom_hit": {
+   "vol": 0.5,
+   "lead": 0.05
+  },
+  "bonk": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "buzzer": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "violin_sting": {
+   "vol": 0.5,
+   "lead": 0
+  },
+  "text_pop": {
+   "vol": 0.5,
+   "lead": 0
   }
  },
  "groups": {
@@ -259,7 +295,19 @@
    "slide_whistle",
    "rubber_pull",
    "record_scratch",
-   "sad_trombone"
+   "sad_trombone",
+   "snore",
+   "crowd_ooh",
+   "tiptoe",
+   "bonk",
+   "buzzer",
+   "violin_sting"
+  ],
+  "overlay_in": [
+   "ding_bright",
+   "ding",
+   "swish_soft",
+   "zip"
   ]
  },
  "themes": {

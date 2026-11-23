@@ -84,7 +84,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             t += d
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
-def make_ass_chunks(path, captions, font="MontserratXB", size=78, y=1210, actions=None):
+def make_ass_chunks(path, captions, font="MontserratXB", size=78, y=1210, actions=None, max_words=2):
     """1:1 Stil @shortsrender (gemessen): Montserrat ExtraBold, Versalhoehe ~55 px, weiss, duenner schwarzer Rand + weicher Schatten,
     1-3 Woerter, EIN Wort farbig (pink/gelb/cyan/gruen). Aktions-Texte: ganz cyan mit gelben Sternchen, Leucht-Rand, 2 Zeilen."""
     head = f"""[Script Info]
@@ -109,7 +109,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     chunks, cur = [], []
     for w in words:
         cur.append(w)
-        if len(cur) >= 3 or w[0][-1] in ".,!?…:" or sum(len(x[0]) for x in cur) > 16:
+        if len(cur) >= max_words or w[0][-1] in ".,!?…:" or sum(len(x[0]) for x in cur) > 14:
             chunks.append(cur); cur = []
     if cur: chunks.append(cur)
     for k, ch in enumerate(chunks):
@@ -204,7 +204,7 @@ def main(cfg_path):
     make_arrow("arrow.png"); make_circle("circle.png")
     if cfg.get("caption_mode") == "chunk":
         make_ass_chunks("subs.ass", cfg["captions"], cfg.get("font", "MontserratXB"), cfg.get("font_size", 78),
-                        cfg.get("caption_y", 1210), cfg.get("actions"))
+                        cfg.get("caption_y", 1210), cfg.get("actions"), cfg.get("max_words", 2))
     elif cfg.get("caption_mode") == "word":
         make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150),
                        cfg.get("multicolor", False), cfg.get("actions"))
