@@ -84,6 +84,55 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             t += d
     open(path, "w").write(head + "\n".join(lines) + "\n")
 
+def make_ass_chunks(path, captions, font="Inter Black", size=92, y=1250, actions=None):
+    """Shorts-Render-Stil: 1-3 Woerter pro Einblendung (bis Satzzeichen), EIN Schluesselwort farbig (rotierend pink/gelb/cyan/gruen),
+    weiss mit schwarzem Rand + Glow. *Aktions-Texte* gross, Woerter abwechselnd cyan/gelb/rot."""
+    head = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,{font},{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,1,0,1,6,3,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    cols = ["&HFF40FF&", "&H00F0FF&", "&HFFF000&", "&H40FF40&"]          # pink, gelb, cyan, gruen (BGR)
+    lines = []; ci = 0
+    words = [w for c in captions for w in c.get("words", [])]
+    hl = {h.lower() for c in captions for h in c.get("highlight", [])}
+    chunks, cur = [], []
+    for w in words:
+        cur.append(w)
+        if len(cur) >= 3 or w[0][-1] in ".,!?…:" or (len(cur) == 2 and len(w[0]) > 9):
+            chunks.append(cur); cur = []
+    if cur: chunks.append(cur)
+    for k, ch in enumerate(chunks):
+        s0 = ch[0][1]; e0 = ch[-1][2]
+        nxt = chunks[k + 1][0][1] if k + 1 < len(chunks) else e0 + 0.4
+        end = min(nxt, e0 + 0.35)
+        txt, used = [], False
+        for w, _, _ in ch:
+            t = w.strip(".,…–!?:").upper()
+            if not used and w.strip(".,…–!?:").lower() in hl:
+                txt.append("{\\c" + cols[ci % 4] + "}" + t + "{\\c&HFFFFFF&}"); used = True; ci += 1
+            else:
+                txt.append(t)
+        pop = "{\\pos(540,%d)\\blur1\\fscx85\\fscy85\\t(0,80,\\fscx104\\fscy104)\\t(80,140,\\fscx100\\fscy100)}" % y
+        lines.append(f"Dialogue: 0,{ass_time(s0)},{ass_time(end)},Cap,,0,0,0,,{pop}{' '.join(txt)}")
+    acol = ["&HFFF000&", "&H00F0FF&", "&H3030FF&"]                         # cyan, gelb, rot
+    for a in (actions or []):
+        ws = a["text"].upper().split(); out = []; line = 0
+        for i, w in enumerate(ws):
+            out.append("{\\c" + acol[i % 3] + "}" + w)
+        body = " ".join(out)
+        body = "{\\c&HFFF000&}*" + body + "{\\c&HFFF000&}*"
+        pop = "{\\pos(540,%d)\\fs%d\\blur1.5\\bord7\\fscx70\\fscy70\\t(0,90,\\fscx108\\fscy108)\\t(90,150,\\fscx100\\fscy100)\\q0}" % (a.get("y", y), int(size * 1.2))
+        lines.append(f"Dialogue: 1,{ass_time(a['start'])},{ass_time(a['end'])},Cap,,0,0,0,,{pop}{body}")
+    open(path, "w").write(head + "\n".join(lines) + "\n")
+
 def make_ass(path, captions, words_per_chunk=3):
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -152,7 +201,10 @@ def main(cfg_path):
     length = dur(voice) + cfg.get("tail", 0.6)
 
     make_arrow("arrow.png"); make_circle("circle.png")
-    if cfg.get("caption_mode") == "word":
+    if cfg.get("caption_mode") == "chunk":
+        make_ass_chunks("subs.ass", cfg["captions"], cfg.get("font", "Inter Black"), cfg.get("font_size", 92),
+                        cfg.get("caption_y", 1250), cfg.get("actions"))
+    elif cfg.get("caption_mode") == "word":
         make_ass_words("subs.ass", cfg["captions"], cfg.get("font", "Bangers"), cfg.get("font_size", 150), cfg.get("caption_y", 1150),
                        cfg.get("multicolor", False), cfg.get("actions"))
     else:

@@ -1,0 +1,649 @@
+{
+ "clip": "clip_edit.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video10_lolli_v2.mp4",
+ "caption_mode": "chunk",
+ "font": "Inter Black",
+ "font_size": 92,
+ "caption_y": 1260,
+ "actions": [
+  {
+   "start": 16.2,
+   "end": 17.7,
+   "text": "ihr spinnt doch"
+  },
+  {
+   "start": 23.75,
+   "end": 24.7,
+   "text": "steh auf"
+  },
+  {
+   "start": 25.6,
+   "end": 27.2,
+   "text": "versucht zu sagen dass es feststeckt"
+  },
+  {
+   "start": 28.3,
+   "end": 29.9,
+   "text": "du tust doch nur so"
+  },
+  {
+   "start": 30.3,
+   "end": 32.6,
+   "text": "zieht mit aller kraft"
+  },
+  {
+   "start": 38.0,
+   "end": 39.4,
+   "text": "lacht sich kaputt"
+  },
+  {
+   "start": 40.4,
+   "end": 41.95,
+   "text": "verlässt die klasse"
+  }
+ ],
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "sfx_gain": 0.75,
+ "captions": [
+  {
+   "start": 0.04,
+   "end": 6.84,
+   "text": "Dieses Mädchen hat im Unterricht einen Glühbirnen-Lolli probiert … aber er ist in ihrem Mund stecken geblieben.",
+   "highlight": [
+    "Glühbirnen-Lolli",
+    "erwischt",
+    "beiden",
+    "Mädchen",
+    "jetzt",
+    "selbst",
+    "steckt",
+    "Aber",
+    "dachte",
+    "Unterricht",
+    "stecken",
+    "steckte",
+    "nur",
+    "Mund",
+    "geglaubt",
+    "fest",
+    "Sitznachbar",
+    "Wort",
+    "Lehrer"
+   ],
+   "words": [
+    [
+     "Dieses",
+     0.04,
+     0.36
+    ],
+    [
+     "Mädchen",
+     0.44,
+     0.84
+    ],
+    [
+     "hat",
+     0.92,
+     1.0
+    ],
+    [
+     "im",
+     1.08,
+     1.16
+    ],
+    [
+     "Unterricht",
+     1.24,
+     1.64
+    ],
+    [
+     "einen",
+     1.72,
+     1.96
+    ],
+    [
+     "Glühbirnen-Lolli",
+     2.04,
+     3.0
+    ],
+    [
+     "probiert",
+     3.12,
+     3.48
+    ],
+    [
+     "aber",
+     4.12,
+     4.36
+    ],
+    [
+     "er",
+     4.4,
+     4.44
+    ],
+    [
+     "ist",
+     4.52,
+     4.68
+    ],
+    [
+     "in",
+     4.76,
+     4.84
+    ],
+    [
+     "ihrem",
+     4.88,
+     5.16
+    ],
+    [
+     "Mund",
+     5.24,
+     5.4
+    ],
+    [
+     "stecken",
+     5.48,
+     5.8
+    ],
+    [
+     "geblieben.",
+     5.88,
+     6.84
+    ]
+   ]
+  },
+  {
+   "start": 7.24,
+   "end": 11.44,
+   "text": "Als ihr Sitznachbar das gesehen hat, hat er ihr kein Wort geglaubt.",
+   "highlight": [
+    "Glühbirnen-Lolli",
+    "erwischt",
+    "beiden",
+    "Mädchen",
+    "jetzt",
+    "selbst",
+    "steckt",
+    "Aber",
+    "dachte",
+    "Unterricht",
+    "stecken",
+    "steckte",
+    "nur",
+    "Mund",
+    "geglaubt",
+    "fest",
+    "Sitznachbar",
+    "Wort",
+    "Lehrer"
+   ],
+   "words": [
+    [
+     "Als",
+     7.24,
+     7.32
+    ],
+    [
+     "ihr",
+     7.4,
+     7.56
+    ],
+    [
+     "Sitznachbar",
+     7.64,
+     8.12
+    ],
+    [
+     "das",
+     8.2,
+     8.28
+    ],
+    [
+     "gesehen",
+     8.36,
+     8.68
+    ],
+    [
+     "hat,",
+     8.76,
+     9.12
+    ],
+    [
+     "hat",
+     9.16,
+     9.32
+    ],
+    [
+     "er",
+     9.36,
+     9.4
+    ],
+    [
+     "ihr",
+     9.48,
+     9.72
+    ],
+    [
+     "kein",
+     9.8,
+     10.12
+    ],
+    [
+     "Wort",
+     10.2,
+     10.44
+    ],
+    [
+     "geglaubt.",
+     10.52,
+     11.44
+    ]
+   ]
+  },
+  {
+   "start": 11.48,
+   "end": 15.92,
+   "text": "Also hat er es selbst probiert … und jetzt steckt seiner auch fest.",
+   "highlight": [
+    "Glühbirnen-Lolli",
+    "erwischt",
+    "beiden",
+    "Mädchen",
+    "jetzt",
+    "selbst",
+    "steckt",
+    "Aber",
+    "dachte",
+    "Unterricht",
+    "stecken",
+    "steckte",
+    "nur",
+    "Mund",
+    "geglaubt",
+    "fest",
+    "Sitznachbar",
+    "Wort",
+    "Lehrer"
+   ],
+   "words": [
+    [
+     "Also",
+     11.48,
+     11.8
+    ],
+    [
+     "hat",
+     11.88,
+     11.96
+    ],
+    [
+     "er",
+     12.04,
+     12.12
+    ],
+    [
+     "es",
+     12.2,
+     12.28
+    ],
+    [
+     "selbst",
+     12.36,
+     12.6
+    ],
+    [
+     "probiert",
+     12.68,
+     13.4
+    ],
+    [
+     "und",
+     13.48,
+     13.64
+    ],
+    [
+     "jetzt",
+     13.72,
+     13.96
+    ],
+    [
+     "steckt",
+     14.04,
+     14.28
+    ],
+    [
+     "seiner",
+     14.32,
+     14.6
+    ],
+    [
+     "auch",
+     14.68,
+     14.92
+    ],
+    [
+     "fest.",
+     15.4,
+     15.92
+    ]
+   ]
+  },
+  {
+   "start": 19.34,
+   "end": 23.62,
+   "text": "Kurz darauf hat der Lehrer die beiden erwischt und dachte, sie tun nur so.",
+   "highlight": [
+    "Glühbirnen-Lolli",
+    "erwischt",
+    "beiden",
+    "Mädchen",
+    "jetzt",
+    "selbst",
+    "steckt",
+    "Aber",
+    "dachte",
+    "Unterricht",
+    "stecken",
+    "steckte",
+    "nur",
+    "Mund",
+    "geglaubt",
+    "fest",
+    "Sitznachbar",
+    "Wort",
+    "Lehrer"
+   ],
+   "words": [
+    [
+     "Kurz",
+     19.34,
+     19.58
+    ],
+    [
+     "darauf",
+     19.66,
+     19.98
+    ],
+    [
+     "hat",
+     20.06,
+     20.14
+    ],
+    [
+     "der",
+     20.22,
+     20.3
+    ],
+    [
+     "Lehrer",
+     20.34,
+     20.54
+    ],
+    [
+     "die",
+     20.62,
+     20.7
+    ],
+    [
+     "beiden",
+     20.74,
+     21.02
+    ],
+    [
+     "erwischt",
+     21.1,
+     21.42
+    ],
+    [
+     "und",
+     21.5,
+     21.58
+    ],
+    [
+     "dachte,",
+     21.66,
+     22.22
+    ],
+    [
+     "sie",
+     22.3,
+     22.38
+    ],
+    [
+     "tun",
+     22.42,
+     22.62
+    ],
+    [
+     "nur",
+     22.7,
+     22.86
+    ],
+    [
+     "so.",
+     22.94,
+     23.62
+    ]
+   ]
+  },
+  {
+   "start": 33.14,
+   "end": 36.98,
+   "text": "Aber als er es dann selbst probiert hat … steckte seiner auch fest.",
+   "highlight": [
+    "Glühbirnen-Lolli",
+    "erwischt",
+    "beiden",
+    "Mädchen",
+    "jetzt",
+    "selbst",
+    "steckt",
+    "Aber",
+    "dachte",
+    "Unterricht",
+    "stecken",
+    "steckte",
+    "nur",
+    "Mund",
+    "geglaubt",
+    "fest",
+    "Sitznachbar",
+    "Wort",
+    "Lehrer"
+   ],
+   "words": [
+    [
+     "Aber",
+     33.14,
+     33.38
+    ],
+    [
+     "als",
+     33.46,
+     33.54
+    ],
+    [
+     "er",
+     33.58,
+     33.62
+    ],
+    [
+     "es",
+     33.7,
+     33.78
+    ],
+    [
+     "dann",
+     33.86,
+     34.02
+    ],
+    [
+     "selbst",
+     34.1,
+     34.34
+    ],
+    [
+     "probiert",
+     34.42,
+     34.74
+    ],
+    [
+     "hat",
+     34.82,
+     35.3
+    ],
+    [
+     "steckte",
+     35.42,
+     35.78
+    ],
+    [
+     "seiner",
+     35.82,
+     36.1
+    ],
+    [
+     "auch",
+     36.18,
+     36.34
+    ],
+    [
+     "fest.",
+     36.42,
+     36.98
+    ]
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0,
+   "sound": "whoosh_deep"
+  },
+  {
+   "time": 3.6,
+   "sound": "pop",
+   "gain": 1.2
+  },
+  {
+   "time": 6.3,
+   "sound": "vine_boom",
+   "gain": 0.8
+  },
+  {
+   "time": 15.5,
+   "sound": "slide_whistle",
+   "gain": 0.9
+  },
+  {
+   "time": 16.2,
+   "sound": "boing",
+   "gain": 0.9
+  },
+  {
+   "time": 21.85,
+   "sound": "record_scratch",
+   "gain": 0.8
+  },
+  {
+   "time": 21.9,
+   "sound": "pop",
+   "gain": 1.2
+  },
+  {
+   "time": 23.75,
+   "sound": "knock",
+   "gain": 1.2
+  },
+  {
+   "time": 29.6,
+   "sound": "rubber_pull",
+   "gain": 1.0
+  },
+  {
+   "time": 30.25,
+   "sound": "vine_boom",
+   "gain": 1.1
+  },
+  {
+   "time": 31.0,
+   "sound": "rubber_pull",
+   "gain": 0.9
+  },
+  {
+   "time": 35.4,
+   "sound": "dun_dun",
+   "gain": 0.7
+  },
+  {
+   "time": 38.0,
+   "sound": "laugh",
+   "gain": 1.0
+  },
+  {
+   "time": 38.7,
+   "sound": "pop",
+   "gain": 1.2
+  },
+  {
+   "time": 40.4,
+   "sound": "footsteps",
+   "gain": 0.6
+  },
+  {
+   "time": 1.9,
+   "sound": "swoosh_air",
+   "gain": 0.6
+  },
+  {
+   "time": 9.0,
+   "sound": "swipe",
+   "gain": 0.6
+  },
+  {
+   "time": 12.8,
+   "sound": "paper_swoosh",
+   "gain": 0.6
+  },
+  {
+   "time": 19.0,
+   "sound": "whoosh_fast",
+   "gain": 0.6
+  },
+  {
+   "time": 26.0,
+   "sound": "paper_swoosh",
+   "gain": 0.6
+  },
+  {
+   "time": 33.0,
+   "sound": "whoosh_fast",
+   "gain": 0.6
+  },
+  {
+   "time": 37.5,
+   "sound": "swipe",
+   "gain": 0.6
+  },
+  {
+   "time": 39.4,
+   "sound": "paper_swoosh",
+   "gain": 0.6
+  }
+ ],
+ "overlays": [],
+ "zooms": [],
+ "tail": 0.0,
+ "music": {
+  "path": "comedy_music.mp3",
+  "start": 0,
+  "gain_db": -12.5,
+  "fade_in": 0.2,
+  "fade_out": 0.8,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.0
+ }
+}

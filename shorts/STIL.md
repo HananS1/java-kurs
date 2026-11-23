@@ -67,7 +67,14 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
   - Nur Instrumental-Stellen nehmen (kein Gesang, der mit der Stimme kollidiert)
   - Gesamtlautheit ~ −14 LUFS (YouTube-Norm)
 
-## Comedy-Videos (Stil @shortsrender)
+## Comedy-Videos 1:1 Stil @shortsrender (Nutzer-Wunsch: genau so, nicht mischen)
+- Weibliche Stimme Laura `LB5G0Z4EP98YaEgL654m`, amüsiert, normales Tempo (atempo 1.0), Erzählung in 4 Blöcken mit Lücken für die Action
+- `caption_mode: "chunk"`, Font Inter Black 92, y 1260: 1–3 Wörter, EIN Wort farbig (pink/gelb/cyan/grün rotierend)
+- \*Aktions-Texte\* in den Lücken, groß, Wörter abwechselnd cyan/gelb/rot
+- Kaum Grafik: 1 roter Pfeil im Hook, 2–3 Meme-Sticker, roter Flash + Vine-Boom bei Wut – KEINE Kreis/Pfeil-Serie
+- Comedy-Pizzicato-Musik (gain −12,5), SFX laut (sfx_gain 0.75), Länge wie Original (~40 s)
+
+## Comedy-Videos (alt, gemischt)
 - `multicolor: true`, `actions` mit \*Aktions-Text\*, 3–6 Emoji-Sticker (style emoji, nie auf Gesichter), Comedy-Sounds bei Pointen (vine_boom, laugh, boing, slide_whistle, rubber_pull)
 - Regel der Drei im Skript; Pointe = Autoritätsperson scheitert
 - Eingebrannte Untertitel mit `tools/detext.py` entfernen
