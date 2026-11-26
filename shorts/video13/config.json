@@ -10,25 +10,25 @@
  "max_words": 2,
  "actions": [
   {
-   "start": 2.55,
-   "end": 3.27,
+   "start": 1.95,
+   "end": 2.44,
    "text": "Disqualifiziert",
    "y": 330
   },
   {
-   "start": 7.4,
-   "end": 8.4,
-   "text": "Flucht",
-   "y": 330
-  },
-  {
-   "start": 8.5,
-   "end": 9.15,
+   "start": 4.7,
+   "end": 5.28,
    "text": "Disqualifiziert",
    "y": 330
   },
   {
-   "start": 15.75,
+   "start": 7.6,
+   "end": 8.45,
+   "text": "Disqualifiziert",
+   "y": 330
+  },
+  {
+   "start": 15.35,
    "end": 17.45,
    "text": "Und hier ist sie.",
    "y": 330
@@ -96,253 +96,305 @@
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
   },
   {
-   "text": "Nächste Kandidatin.",
-   "start": 3.633,
-   "end": 4.475,
+   "text": "Die Nächste schiebt sie einfach weg.",
+   "start": 3.483,
+   "end": 5.047,
    "words": [
+    [
+     "Die",
+     3.483,
+     3.647
+    ],
     [
      "Nächste",
-     3.633,
-     3.918
+     3.665,
+     4.008
     ],
     [
-     "Kandidatin.",
-     3.949,
-     4.475
+     "schiebt",
+     4.047,
+     4.277
+    ],
+    [
+     "sie",
+     4.303,
+     4.467
+    ],
+    [
+     "einfach",
+     4.485,
+     4.828
+    ],
+    [
+     "weg.",
+     4.867,
+     5.047
     ]
    ],
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
   },
   {
-   "text": "Gleicher Test.",
-   "start": 4.883,
-   "end": 5.527,
-   "words": [
-    [
-     "Gleicher",
-     4.883,
-     5.271
-    ],
-    [
-     "Test.",
-     5.314,
-     5.527
-    ]
-   ],
-   "highlight": [
-    "Schlange",
-    "Tisch.",
-    "Kandidatin.",
-    "Test.",
-    "Neunzehn",
-    "zwanzig",
-    "fehlt",
-    "ruhig",
-    "Tisch...",
-    "kontrolliert",
-    "Gefühle."
-   ]
-  },
-  {
-   "text": "In ihrem Text steht:",
+   "text": "Sie liest ganz ruhig vor:",
    "start": 9.233,
-   "end": 10.224,
+   "end": 10.412,
    "words": [
     [
-     "In",
+     "Sie",
      9.233,
-     9.391
+     9.404
     ],
     [
-     "ihrem",
-     9.408,
-     9.742
+     "liest",
+     9.423,
+     9.63
     ],
     [
-     "Text",
-     9.778,
-     9.972
+     "ganz",
+     9.653,
+     9.842
     ],
     [
-     "steht:",
-     9.994,
-     10.224
+     "ruhig",
+     9.862,
+     10.187
+    ],
+    [
+     "vor:",
+     10.223,
+     10.412
     ]
    ],
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
   },
   {
    "text": "Neunzehn von zwanzig Schlangen wurden gefunden.",
-   "start": 10.583,
-   "end": 12.601,
+   "start": 10.483,
+   "end": 12.501,
    "words": [
     [
      "Neunzehn",
-     10.583,
-     10.908
+     10.483,
+     10.808
     ],
     [
      "von",
-     10.945,
-     11.092
+     10.845,
+     10.992
     ],
     [
      "zwanzig",
-     11.108,
-     11.418
+     11.008,
+     11.318
     ],
     [
      "Schlangen",
-     11.452,
-     11.793
+     11.352,
+     11.693
     ],
     [
      "wurden",
-     11.831,
-     12.126
+     11.731,
+     12.026
     ],
     [
      "gefunden.",
-     12.158,
-     12.601
+     12.058,
+     12.501
     ]
    ],
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
   },
   {
    "text": "Eine fehlt noch.",
-   "start": 13.0,
-   "end": 13.647,
+   "start": 12.9,
+   "end": 13.547,
    "words": [
     [
      "Eine",
-     13.0,
-     13.256
+     12.9,
+     13.156
     ],
     [
      "fehlt",
-     13.284,
-     13.457
+     13.184,
+     13.357
     ],
     [
      "noch.",
-     13.475,
-     13.647
+     13.375,
+     13.547
     ]
    ],
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
   },
   {
-   "text": "Ganz ruhig greift sie unter den Tisch...",
-   "start": 13.783,
-   "end": 15.67,
+   "text": "Und die fehlende Schlange?",
+   "start": 13.633,
+   "end": 14.682,
    "words": [
     [
-     "Ganz",
+     "Und",
+     13.633,
+     13.768
+    ],
+    [
+     "die",
      13.783,
-     13.979
+     13.919
     ],
     [
-     "ruhig",
-     14.001,
-     14.338
+     "fehlende",
+     13.934,
+     14.326
     ],
     [
-     "greift",
-     14.375,
-     14.607
-    ],
-    [
-     "sie",
-     14.633,
-     14.81
-    ],
-    [
-     "unter",
-     14.83,
-     15.167
-    ],
-    [
-     "den",
-     15.204,
-     15.381
-    ],
-    [
-     "Tisch...",
-     15.401,
-     15.67
+     "Schlange?",
+     14.369,
+     14.682
     ]
    ],
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Sie baut die Schlange einfach in ihre Nachricht ein.",
+   "start": 17.633,
+   "end": 19.517,
+   "words": [
+    [
+     "Sie",
+     17.633,
+     17.76
+    ],
+    [
+     "baut",
+     17.774,
+     17.913
+    ],
+    [
+     "die",
+     17.929,
+     18.056
+    ],
+    [
+     "Schlange",
+     18.069,
+     18.348
+    ],
+    [
+     "einfach",
+     18.38,
+     18.646
+    ],
+    [
+     "in",
+     18.676,
+     18.789
+    ],
+    [
+     "ihre",
+     18.802,
+     19.028
+    ],
+    [
+     "Nachricht",
+     19.053,
+     19.346
+    ],
+    [
+     "ein.",
+     19.378,
+     19.517
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "weg.",
     "ruhig",
-    "Tisch...",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
@@ -381,13 +433,14 @@
    "highlight": [
     "Schlange",
     "Tisch.",
-    "Kandidatin.",
-    "Test.",
+    "weg.",
+    "ruhig",
     "Neunzehn",
     "zwanzig",
     "fehlt",
-    "ruhig",
-    "Tisch...",
+    "fehlende",
+    "Schlange?",
+    "Nachricht",
     "kontrolliert",
     "Gefühle."
    ]
@@ -395,7 +448,7 @@
  ],
  "sfx": [
   {
-   "time": 0.25,
+   "time": 0.3,
    "sound": "iphone_ping",
    "gain": 1.3
   },
@@ -405,18 +458,28 @@
    "gain": 0.5
   },
   {
+   "time": 1.95,
+   "sound": "buzzer",
+   "gain": 0.5
+  },
+  {
    "time": 2.44,
    "sound": "swipe",
    "gain": 0.5
   },
   {
-   "time": 2.6,
-   "sound": "buzzer",
-   "gain": 0.6
-  },
-  {
    "time": 3.28,
    "sound": "swoosh_air",
+   "gain": 0.5
+  },
+  {
+   "time": 4.7,
+   "sound": "buzzer",
+   "gain": 0.5
+  },
+  {
+   "time": 5.28,
+   "sound": "swish_soft",
    "gain": 0.5
   },
   {
@@ -430,14 +493,19 @@
    "gain": 0.6
   },
   {
-   "time": 8.45,
+   "time": 7.6,
    "sound": "buzzer",
-   "gain": 0.8
+   "gain": 0.7
+  },
+  {
+   "time": 8.45,
+   "sound": "swipe",
+   "gain": 0.5
   },
   {
    "time": 9.12,
-   "sound": "swish_soft",
-   "gain": 0.6
+   "sound": "zip",
+   "gain": 0.5
   },
   {
    "time": 13.37,
@@ -450,12 +518,12 @@
    "gain": 0.5
   },
   {
-   "time": 15.75,
+   "time": 15.35,
    "sound": "violin_sting",
    "gain": 0.8
   },
   {
-   "time": 15.78,
+   "time": 15.6,
    "sound": "sparkle",
    "gain": 1.1
   },
@@ -545,7 +613,7 @@
   },
   {
    "style": "circle_red",
-   "start": 15.75,
+   "start": 15.6,
    "end": 17.0,
    "x": 370,
    "y": 690,
@@ -588,51 +656,51 @@
   "gain_curve": [
    [
     0,
-    -5
+    -8
    ],
    [
     2.4,
-    -5
+    -8
    ],
    [
     2.7,
-    -10
+    -13
    ],
    [
     5.9,
-    -10
+    -13
    ],
    [
     6.1,
-    -4
+    -7
    ],
    [
     7.3,
-    -4
+    -7
    ],
    [
     7.6,
-    -10
+    -13
    ],
    [
-    15.5,
-    -10
+    15.2,
+    -13
    ],
    [
-    15.7,
-    -5
+    15.35,
+    -8
    ],
    [
     17.4,
-    -5
+    -8
    ],
    [
     17.7,
-    -11
+    -14
    ],
    [
     25.4,
-    -11
+    -14
    ]
   ]
  },

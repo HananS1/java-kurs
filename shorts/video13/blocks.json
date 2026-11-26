@@ -1,6 +1,101 @@
-[{"first":"Mitten","at":0.0,"lines":["Mitten im Nachrichten-Casting liegt plötzlich eine Schlange auf dem Tisch."]},
- {"first":"Nächste","at":3.6,"lines":["Nächste Kandidatin.","Gleicher Test."]},
- {"first":"Dann","at":0,"skip":true,"lines":["Dann ist sie dran."]},
- {"first":"In","at":9.2,"lines":["In ihrem Text steht:","Neunzehn von zwanzig Schlangen wurden gefunden.","Eine fehlt noch."]},
- {"first":"Ganz","at":13.75,"lines":["Ganz ruhig greift sie unter den Tisch..."]},
- {"first":"So","at":23.75,"lines":["So kontrolliert man seine Gefühle."]}]
+[
+ {
+  "first": "Mitten",
+  "at": 0.0,
+  "lines": [
+   "Mitten im Nachrichten-Casting liegt plötzlich eine Schlange auf dem Tisch."
+  ]
+ },
+ {
+  "first": "Nächste",
+  "at": 0,
+  "lines": [
+   "Nächste Kandidatin.",
+   "Gleicher Test."
+  ],
+  "skip": true
+ },
+ {
+  "first": "Dann",
+  "at": 0,
+  "lines": [
+   "Dann ist sie dran."
+  ],
+  "skip": true
+ },
+ {
+  "first": "In",
+  "at": 0,
+  "lines": [
+   "In ihrem Text steht:"
+  ],
+  "skip": true
+ },
+ {
+  "first": "Neunzehn",
+  "at": 10.45,
+  "lines": [
+   "Neunzehn von zwanzig Schlangen wurden gefunden.",
+   "Eine fehlt noch."
+  ]
+ },
+ {
+  "first": "Ganz",
+  "at": 0,
+  "lines": [
+   "Ganz ruhig greift sie unter den Tisch..."
+  ],
+  "skip": true
+ },
+ {
+  "first": "So",
+  "at": 23.75,
+  "lines": [
+   "So kontrolliert man seine Gefühle."
+  ]
+ },
+ {
+  "first": "Die",
+  "at": 3.45,
+  "lines": [
+   "Die Nächste schiebt sie einfach weg."
+  ]
+ },
+ {
+  "first": "Und",
+  "at": 0,
+  "lines": [
+   "Und die hier..."
+  ],
+  "skip": true
+ },
+ {
+  "first": "Dann",
+  "at": 0,
+  "lines": [
+   "Dann kommt sie."
+  ],
+  "skip": true
+ },
+ {
+  "first": "Sie",
+  "at": 9.2,
+  "lines": [
+   "Sie liest ganz ruhig vor:"
+  ]
+ },
+ {
+  "first": "Und",
+  "at": 13.6,
+  "lines": [
+   "Und die fehlende Schlange?"
+  ]
+ },
+ {
+  "first": "Sie",
+  "at": 17.6,
+  "lines": [
+   "Sie baut die Schlange einfach in ihre Nachricht ein."
+  ]
+ }
+]
