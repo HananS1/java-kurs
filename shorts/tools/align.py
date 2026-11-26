@@ -1,34 +1,55 @@
 #!/usr/bin/env python3
-"""Satzgrenzen einer Stimme ohne Pausen finden: Schaetzung nach Textlaenge,
-dann auf die naechste Lautstaerke-Senke (Wortgrenze) einrasten.
-Aufruf: python3 align.py voice.wav "Satz 1." "Satz 2." ...  -> gibt start/end je Satz aus (JSON)"""
-import sys, json, subprocess
+"""Wort-Zeiten OHNE Transkription (spart Credits): Saetze ueber Sprechpausen finden, Woerter darin nach
+Silben/Laenge verteilen. Ausgabe im words.json-Format fuer place_voice.py.
+Aufruf: python3 align.py raw.mp3 "Satz 1|Satz 2|..." words.json
+Die Saetze muessen in Reihenfolge den hoerbaren Abschnitten entsprechen (Pause >= gap s zwischen Saetzen).
+"""
+import json, re, subprocess, sys
 import numpy as np
 
-def dips(path, sr=16000, hop=80):
-    raw = subprocess.run(["ffmpeg", "-nostdin", "-loglevel", "error", "-i", path, "-ac", "1", "-ar", str(sr),
-                          "-f", "f32le", "-"], capture_output=True).stdout
-    x = np.frombuffer(raw, np.float32)
-    e = np.array([np.sqrt(np.mean(x[i:i + 2 * hop] ** 2)) for i in range(0, len(x) - 2 * hop, hop)])
-    db = 20 * np.log10(e + 1e-9)
-    db = np.convolve(db, np.ones(3) / 3, mode="same")
-    pk = np.percentile(db, 90)
-    t = np.arange(len(db)) * hop / sr
-    # lokale Minima, die deutlich unter dem Sprachpegel liegen
-    mins = [(t[i], db[i]) for i in range(2, len(db) - 2)
-            if db[i] < db[i - 1] and db[i] <= db[i + 1] and db[i] < pk - 14]
-    return len(x) / sr, mins, pk
 
-def align(path, sents):
-    T, mins, pk = dips(path)
-    L = np.array([len(s) + 3 for s in sents], float)
-    est = np.concatenate([[0], np.cumsum(L) / L.sum() * T])
-    bounds = [0.0]
-    for b in est[1:-1]:
-        cand = [(abs(t - b) + (d - (pk - 40)) * 0.004, t) for t, d in mins if abs(t - b) < 0.6 and t > bounds[-1] + 0.25]
-        bounds.append(min(cand)[1] if cand else b)
-    bounds.append(T)
-    return [{"start": round(bounds[i], 2), "end": round(bounds[i + 1], 2), "text": s} for i, s in enumerate(sents)]
+def segments(path, sr=16000, hop=0.02, thr=-42, gap=0.22):
+    b = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
+                       capture_output=True).stdout
+    a = np.frombuffer(b, np.int16) / 32768.0
+    n = int(hop * sr)
+    e = np.array([20 * np.log10(np.sqrt(np.mean(a[i:i + n] ** 2)) + 1e-9) for i in range(0, len(a) - n, n)])
+    on = e > thr
+    segs, s = [], None
+    for i, v in enumerate(on):
+        if v and s is None: s = i
+        if not v and s is not None:
+            segs.append([s * hop, i * hop]); s = None
+    if s is not None: segs.append([s * hop, len(on) * hop])
+    out = []
+    for x in segs:
+        if out and x[0] - out[-1][1] < gap: out[-1][1] = x[1]
+        else: out.append(x)
+    return [x for x in out if x[1] - x[0] > 0.08]
+
+
+def syl(w):
+    return max(1, len(re.findall(r"[aeiouäöüy]+", w.lower())))
+
+
+def main(raw, sents, out):
+    sents = [s.strip() for s in sents.split("|") if s.strip()]
+    segs = segments(raw)
+    # Abschnitte den Saetzen zuordnen: zu viele Abschnitte -> die kleinsten Pausen zusammenlegen
+    while len(segs) > len(sents):
+        gaps = [segs[i + 1][0] - segs[i][1] for i in range(len(segs) - 1)]
+        i = int(np.argmin(gaps)); segs[i] = [segs[i][0], segs[i + 1][1]]; del segs[i + 1]
+    if len(segs) < len(sents):
+        sys.exit(f"Nur {len(segs)} Abschnitte fuer {len(sents)} Saetze gefunden: {segs}")
+    words = []
+    for (t0, t1), s in zip(segs, sents):
+        ws = s.split(); wt = [syl(w) + 0.15 * len(w) for w in ws]; tot = sum(wt); t = t0
+        for w, x in zip(ws, wt):
+            d = (t1 - t0) * x / tot
+            words.append({"text": w, "type": "word", "start": round(t, 3), "end": round(t + d * 0.9, 3)}); t += d
+        print(f"{t0:6.2f}-{t1:6.2f}  {s}")
+    json.dump({"words": words}, open(out, "w"), ensure_ascii=False, indent=1)
+
 
 if __name__ == "__main__":
-    print(json.dumps(align(sys.argv[1], sys.argv[2:]), ensure_ascii=False, indent=1))
+    main(*sys.argv[1:4])

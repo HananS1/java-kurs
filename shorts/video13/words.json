@@ -1,0 +1,262 @@
+{
+ "words": [
+  {
+   "text": "Mitten",
+   "type": "word",
+   "start": 0.04,
+   "end": 0.409
+  },
+  {
+   "text": "im",
+   "type": "word",
+   "start": 0.45,
+   "end": 0.615
+  },
+  {
+   "text": "Nachrichten-Casting",
+   "type": "word",
+   "start": 0.633,
+   "end": 1.631
+  },
+  {
+   "text": "liegt",
+   "type": "word",
+   "start": 1.742,
+   "end": 1.965
+  },
+  {
+   "text": "plötzlich",
+   "type": "word",
+   "start": 1.989,
+   "end": 2.415
+  },
+  {
+   "text": "eine",
+   "type": "word",
+   "start": 2.463,
+   "end": 2.793
+  },
+  {
+   "text": "Schlange",
+   "type": "word",
+   "start": 2.83,
+   "end": 3.237
+  },
+  {
+   "text": "auf",
+   "type": "word",
+   "start": 3.282,
+   "end": 3.466
+  },
+  {
+   "text": "dem",
+   "type": "word",
+   "start": 3.487,
+   "end": 3.671
+  },
+  {
+   "text": "Tisch.",
+   "type": "word",
+   "start": 3.692,
+   "end": 3.933
+  },
+  {
+   "text": "Nächste",
+   "type": "word",
+   "start": 4.52,
+   "end": 4.861
+  },
+  {
+   "text": "Kandidatin.",
+   "type": "word",
+   "start": 4.899,
+   "end": 5.53
+  },
+  {
+   "text": "Gleicher",
+   "type": "word",
+   "start": 6.02,
+   "end": 6.485
+  },
+  {
+   "text": "Test.",
+   "type": "word",
+   "start": 6.537,
+   "end": 6.792
+  },
+  {
+   "text": "Dann",
+   "type": "word",
+   "start": 7.3,
+   "end": 7.507
+  },
+  {
+   "text": "ist",
+   "type": "word",
+   "start": 7.53,
+   "end": 7.718
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 7.739,
+   "end": 7.927
+  },
+  {
+   "text": "dran.",
+   "type": "word",
+   "start": 7.948,
+   "end": 8.175
+  },
+  {
+   "text": "In",
+   "type": "word",
+   "start": 8.66,
+   "end": 8.849
+  },
+  {
+   "text": "ihrem",
+   "type": "word",
+   "start": 8.87,
+   "end": 9.27
+  },
+  {
+   "text": "Text",
+   "type": "word",
+   "start": 9.314,
+   "end": 9.547
+  },
+  {
+   "text": "steht:",
+   "type": "word",
+   "start": 9.573,
+   "end": 9.849
+  },
+  {
+   "text": "Neunzehn",
+   "type": "word",
+   "start": 10.28,
+   "end": 10.67
+  },
+  {
+   "text": "von",
+   "type": "word",
+   "start": 10.714,
+   "end": 10.891
+  },
+  {
+   "text": "zwanzig",
+   "type": "word",
+   "start": 10.91,
+   "end": 11.282
+  },
+  {
+   "text": "Schlangen",
+   "type": "word",
+   "start": 11.323,
+   "end": 11.732
+  },
+  {
+   "text": "wurden",
+   "type": "word",
+   "start": 11.777,
+   "end": 12.131
+  },
+  {
+   "text": "gefunden.",
+   "type": "word",
+   "start": 12.17,
+   "end": 12.701
+  },
+  {
+   "text": "Eine",
+   "type": "word",
+   "start": 13.18,
+   "end": 13.487
+  },
+  {
+   "text": "fehlt",
+   "type": "word",
+   "start": 13.521,
+   "end": 13.728
+  },
+  {
+   "text": "noch.",
+   "type": "word",
+   "start": 13.75,
+   "end": 13.957
+  },
+  {
+   "text": "Ganz",
+   "type": "word",
+   "start": 14.62,
+   "end": 14.855
+  },
+  {
+   "text": "ruhig",
+   "type": "word",
+   "start": 14.881,
+   "end": 15.285
+  },
+  {
+   "text": "greift",
+   "type": "word",
+   "start": 15.33,
+   "end": 15.609
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 15.64,
+   "end": 15.852
+  },
+  {
+   "text": "unter",
+   "type": "word",
+   "start": 15.876,
+   "end": 16.28
+  },
+  {
+   "text": "den",
+   "type": "word",
+   "start": 16.325,
+   "end": 16.537
+  },
+  {
+   "text": "Tisch...",
+   "type": "word",
+   "start": 16.561,
+   "end": 16.884
+  },
+  {
+   "text": "So",
+   "type": "word",
+   "start": 17.38,
+   "end": 17.527
+  },
+  {
+   "text": "kontrolliert",
+   "type": "word",
+   "start": 17.543,
+   "end": 18.085
+  },
+  {
+   "text": "man",
+   "type": "word",
+   "start": 18.146,
+   "end": 18.309
+  },
+  {
+   "text": "seine",
+   "type": "word",
+   "start": 18.328,
+   "end": 18.638
+  },
+  {
+   "text": "Gefühle.",
+   "type": "word",
+   "start": 18.673,
+   "end": 19.147
+  }
+ ]
+}

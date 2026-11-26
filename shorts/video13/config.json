@@ -1,0 +1,648 @@
+{
+ "clip": "clip_fx.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video13_schlange.mp4",
+ "caption_mode": "chunk",
+ "font": "MontserratXB",
+ "font_size": 78,
+ "caption_y": 1560,
+ "max_words": 2,
+ "actions": [
+  {
+   "start": 2.55,
+   "end": 3.27,
+   "text": "Disqualifiziert",
+   "y": 330
+  },
+  {
+   "start": 7.4,
+   "end": 8.4,
+   "text": "Flucht",
+   "y": 330
+  },
+  {
+   "start": 8.5,
+   "end": 9.15,
+   "text": "Disqualifiziert",
+   "y": 330
+  },
+  {
+   "start": 15.75,
+   "end": 17.45,
+   "text": "Und hier ist sie.",
+   "y": 330
+  }
+ ],
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "sfx_gain": 0.65,
+ "captions": [
+  {
+   "text": "Mitten im Nachrichten-Casting liegt plötzlich eine Schlange auf dem Tisch.",
+   "start": 0.033,
+   "end": 3.277,
+   "words": [
+    [
+     "Mitten",
+     0.033,
+     0.341
+    ],
+    [
+     "im",
+     0.375,
+     0.513
+    ],
+    [
+     "Nachrichten-Casting",
+     0.528,
+     1.359
+    ],
+    [
+     "liegt",
+     1.452,
+     1.638
+    ],
+    [
+     "plötzlich",
+     1.658,
+     2.013
+    ],
+    [
+     "eine",
+     2.053,
+     2.328
+    ],
+    [
+     "Schlange",
+     2.358,
+     2.698
+    ],
+    [
+     "auf",
+     2.735,
+     2.888
+    ],
+    [
+     "dem",
+     2.906,
+     3.059
+    ],
+    [
+     "Tisch.",
+     3.077,
+     3.277
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Nächste Kandidatin.",
+   "start": 3.633,
+   "end": 4.475,
+   "words": [
+    [
+     "Nächste",
+     3.633,
+     3.918
+    ],
+    [
+     "Kandidatin.",
+     3.949,
+     4.475
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Gleicher Test.",
+   "start": 4.883,
+   "end": 5.527,
+   "words": [
+    [
+     "Gleicher",
+     4.883,
+     5.271
+    ],
+    [
+     "Test.",
+     5.314,
+     5.527
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "In ihrem Text steht:",
+   "start": 9.233,
+   "end": 10.224,
+   "words": [
+    [
+     "In",
+     9.233,
+     9.391
+    ],
+    [
+     "ihrem",
+     9.408,
+     9.742
+    ],
+    [
+     "Text",
+     9.778,
+     9.972
+    ],
+    [
+     "steht:",
+     9.994,
+     10.224
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Neunzehn von zwanzig Schlangen wurden gefunden.",
+   "start": 10.583,
+   "end": 12.601,
+   "words": [
+    [
+     "Neunzehn",
+     10.583,
+     10.908
+    ],
+    [
+     "von",
+     10.945,
+     11.092
+    ],
+    [
+     "zwanzig",
+     11.108,
+     11.418
+    ],
+    [
+     "Schlangen",
+     11.452,
+     11.793
+    ],
+    [
+     "wurden",
+     11.831,
+     12.126
+    ],
+    [
+     "gefunden.",
+     12.158,
+     12.601
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Eine fehlt noch.",
+   "start": 13.0,
+   "end": 13.647,
+   "words": [
+    [
+     "Eine",
+     13.0,
+     13.256
+    ],
+    [
+     "fehlt",
+     13.284,
+     13.457
+    ],
+    [
+     "noch.",
+     13.475,
+     13.647
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "Ganz ruhig greift sie unter den Tisch...",
+   "start": 13.783,
+   "end": 15.67,
+   "words": [
+    [
+     "Ganz",
+     13.783,
+     13.979
+    ],
+    [
+     "ruhig",
+     14.001,
+     14.338
+    ],
+    [
+     "greift",
+     14.375,
+     14.607
+    ],
+    [
+     "sie",
+     14.633,
+     14.81
+    ],
+    [
+     "unter",
+     14.83,
+     15.167
+    ],
+    [
+     "den",
+     15.204,
+     15.381
+    ],
+    [
+     "Tisch...",
+     15.401,
+     15.67
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  },
+  {
+   "text": "So kontrolliert man seine Gefühle.",
+   "start": 23.783,
+   "end": 25.256,
+   "words": [
+    [
+     "So",
+     23.783,
+     23.906
+    ],
+    [
+     "kontrolliert",
+     23.919,
+     24.371
+    ],
+    [
+     "man",
+     24.422,
+     24.558
+    ],
+    [
+     "seine",
+     24.573,
+     24.832
+    ],
+    [
+     "Gefühle.",
+     24.861,
+     25.256
+    ]
+   ],
+   "highlight": [
+    "Schlange",
+    "Tisch.",
+    "Kandidatin.",
+    "Test.",
+    "Neunzehn",
+    "zwanzig",
+    "fehlt",
+    "ruhig",
+    "Tisch...",
+    "kontrolliert",
+    "Gefühle."
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.25,
+   "sound": "iphone_ping",
+   "gain": 1.3
+  },
+  {
+   "time": 1.43,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 2.44,
+   "sound": "swipe",
+   "gain": 0.5
+  },
+  {
+   "time": 2.6,
+   "sound": "buzzer",
+   "gain": 0.6
+  },
+  {
+   "time": 3.28,
+   "sound": "swoosh_air",
+   "gain": 0.5
+  },
+  {
+   "time": 6.1,
+   "sound": "blub",
+   "gain": 1.0
+  },
+  {
+   "time": 7.35,
+   "sound": "slide_whistle",
+   "gain": 0.6
+  },
+  {
+   "time": 8.45,
+   "sound": "buzzer",
+   "gain": 0.8
+  },
+  {
+   "time": 9.12,
+   "sound": "swish_soft",
+   "gain": 0.6
+  },
+  {
+   "time": 13.37,
+   "sound": "tick",
+   "gain": 0.6
+  },
+  {
+   "time": 14.7,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 15.75,
+   "sound": "violin_sting",
+   "gain": 0.8
+  },
+  {
+   "time": 15.78,
+   "sound": "sparkle",
+   "gain": 1.1
+  },
+  {
+   "time": 17.48,
+   "sound": "bloop",
+   "gain": 1.0
+  },
+  {
+   "time": 18.98,
+   "sound": "swipe",
+   "gain": 0.5
+  },
+  {
+   "time": 21.46,
+   "sound": "zip",
+   "gain": 0.6
+  },
+  {
+   "time": 22.7,
+   "sound": "knock",
+   "gain": 1.0
+  },
+  {
+   "time": 23.9,
+   "sound": "zoom_hit",
+   "gain": 0.8
+  },
+  {
+   "time": 25.0,
+   "sound": "ding_soft",
+   "gain": 0.7
+  }
+ ],
+ "overlays": [
+  {
+   "style": "arrow_red",
+   "start": 0.3,
+   "end": 1.4,
+   "x": 704,
+   "y": 1036,
+   "angle": 180,
+   "size": 260,
+   "keys": [
+    [
+     0.3,
+     704,
+     1036,
+     1.0
+    ],
+    [
+     0.6,
+     560,
+     1046,
+     1.0
+    ],
+    [
+     0.8,
+     324,
+     1046,
+     1.0
+    ],
+    [
+     1.0,
+     380,
+     960,
+     1.0
+    ],
+    [
+     1.2,
+     414,
+     886,
+     1.0
+    ],
+    [
+     1.4,
+     414,
+     886,
+     1.0
+    ]
+   ],
+   "track": [
+    704,
+    1036,
+    150
+   ]
+  },
+  {
+   "style": "circle_red",
+   "start": 15.75,
+   "end": 17.0,
+   "x": 370,
+   "y": 690,
+   "size": 270,
+   "follow": false
+  },
+  {
+   "style": "emoji",
+   "char": "😱",
+   "start": 6.1,
+   "end": 7.3,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "😳",
+   "start": 17.5,
+   "end": 18.95,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "👍",
+   "start": 22.7,
+   "end": 23.85,
+   "x": 180,
+   "y": 330,
+   "size": 190
+  }
+ ],
+ "zooms": [],
+ "tail": 0.05,
+ "orig_audio": {
+  "path": "orig.wav",
+  "under_db": -14,
+  "gain_curve": [
+   [
+    0,
+    -5
+   ],
+   [
+    2.4,
+    -5
+   ],
+   [
+    2.7,
+    -10
+   ],
+   [
+    5.9,
+    -10
+   ],
+   [
+    6.1,
+    -4
+   ],
+   [
+    7.3,
+    -4
+   ],
+   [
+    7.6,
+    -10
+   ],
+   [
+    15.5,
+    -10
+   ],
+   [
+    15.7,
+    -5
+   ],
+   [
+    17.4,
+    -5
+   ],
+   [
+    17.7,
+    -11
+   ],
+   [
+    25.4,
+    -11
+   ]
+  ]
+ },
+ "music": {
+  "path": "music.mp3",
+  "start": 2.27,
+  "gain_db": -12,
+  "fade_in": 0.05,
+  "fade_out": 0.8,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5
+ }
+}
