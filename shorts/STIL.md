@@ -188,3 +188,10 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 4. Bild-Check: Hauptperson nie angeschnitten, kein Text/Emoji auf Gesicht oder überlappend.
 5. Ton-Check: Stimme klar vorne, keine Wortreste am Satzende, Musik nicht gleichzeitig mit Song im Clip.
 6. Zuschauer-Frage: Würde ich es selbst bis zum Ende schauen und verstehen, ohne den Clip zu kennen?
+
+## KONZEPT „VIRALES VIDEO UMBAUEN“ (Nutzer-Standard ab Video 13)
+- Nutzer schickt viralen Short MIT Skript → **Hook (erste ~2 s) inhaltlich gleich lassen** (wichtigster Teil), Rest des Skripts nur leicht umformulieren, gleiche Story-Abfolge.
+- Pfeile/Kreise: dort wo das Original sie hat, aber **andere** (eigener Stil, eigene Sounds).
+- Schnitt, Timing, Struktur am Original orientieren (kopieren), dann unser Stil drauf (Stimme, Captions, Flashes, Musik).
+- Video OHNE Skript → eigenes Skript schreiben, Hook muss in 2 s catchen (Wer + was + Konflikt, erstes Bild beweist den Hook).
+- Englisches Original → auf Deutsch übersetzen = beste Chance (DE-Version fehlt oft). Deutsches Original → stärker umformulieren (sonst wirkt es wie Kopie).
