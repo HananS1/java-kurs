@@ -1,0 +1,310 @@
+{
+ "words": [
+  {
+   "text": "Mitten",
+   "type": "word",
+   "start": 0.02,
+   "end": 0.429
+  },
+  {
+   "text": "im",
+   "type": "word",
+   "start": 0.474,
+   "end": 0.657
+  },
+  {
+   "text": "Wettbewerb",
+   "type": "word",
+   "start": 0.678,
+   "end": 1.312
+  },
+  {
+   "text": "wirft",
+   "type": "word",
+   "start": 1.382,
+   "end": 1.629
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 1.657,
+   "end": 1.861
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 1.884,
+   "end": 2.313
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 2.361,
+   "end": 2.566
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 2.588,
+   "end": 2.772
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 2.792,
+   "end": 2.996
+  },
+  {
+   "text": "Luft...",
+   "type": "word",
+   "start": 3.019,
+   "end": 3.308
+  },
+  {
+   "text": "doch",
+   "type": "word",
+   "start": 3.48,
+   "end": 3.788
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 3.822,
+   "end": 4.101
+  },
+  {
+   "text": "rutscht",
+   "type": "word",
+   "start": 4.132,
+   "end": 4.526
+  },
+  {
+   "text": "ab.",
+   "type": "word",
+   "start": 4.57,
+   "end": 4.849
+  },
+  {
+   "text": "Sie",
+   "type": "word",
+   "start": 5.08,
+   "end": 5.246
+  },
+  {
+   "text": "versteckt",
+   "type": "word",
+   "start": 5.264,
+   "end": 5.647
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 5.69,
+   "end": 5.855
+  },
+  {
+   "text": "Gesicht.",
+   "type": "word",
+   "start": 5.874,
+   "end": 6.239
+  },
+  {
+   "text": "Ihr",
+   "type": "word",
+   "start": 6.8,
+   "end": 6.971
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 6.99,
+   "end": 7.35
+  },
+  {
+   "text": "nimmt",
+   "type": "word",
+   "start": 7.39,
+   "end": 7.597
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 7.62,
+   "end": 7.791
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 7.81,
+   "end": 7.963
+  },
+  {
+   "text": "den",
+   "type": "word",
+   "start": 7.98,
+   "end": 8.151
+  },
+  {
+   "text": "Arm.",
+   "type": "word",
+   "start": 8.17,
+   "end": 8.359
+  },
+  {
+   "text": "Doch",
+   "type": "word",
+   "start": 8.8,
+   "end": 9.045
+  },
+  {
+   "text": "dann",
+   "type": "word",
+   "start": 9.073,
+   "end": 9.318
+  },
+  {
+   "text": "feuern",
+   "type": "word",
+   "start": 9.345,
+   "end": 9.636
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 9.669,
+   "end": 9.891
+  },
+  {
+   "text": "Zuschauer",
+   "type": "word",
+   "start": 9.916,
+   "end": 10.429
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 10.486,
+   "end": 10.708
+  },
+  {
+   "text": "an.",
+   "type": "word",
+   "start": 10.733,
+   "end": 10.955
+  },
+  {
+   "text": "Ihr",
+   "type": "word",
+   "start": 11.44,
+   "end": 11.622
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 11.642,
+   "end": 12.026
+  },
+  {
+   "text": "redet",
+   "type": "word",
+   "start": 12.068,
+   "end": 12.414
+  },
+  {
+   "text": "mit",
+   "type": "word",
+   "start": 12.452,
+   "end": 12.634
+  },
+  {
+   "text": "ihr...",
+   "type": "word",
+   "start": 12.655,
+   "end": 12.893
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 13.24,
+   "end": 13.441
+  },
+  {
+   "text": "gibt",
+   "type": "word",
+   "start": 13.463,
+   "end": 13.685
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 13.709,
+   "end": 13.91
+  },
+  {
+   "text": "einen",
+   "type": "word",
+   "start": 13.932,
+   "end": 14.313
+  },
+  {
+   "text": "Kuss",
+   "type": "word",
+   "start": 14.355,
+   "end": 14.577
+  },
+  {
+   "text": "auf",
+   "type": "word",
+   "start": 14.602,
+   "end": 14.802
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 14.825,
+   "end": 15.025
+  },
+  {
+   "text": "Stirn.",
+   "type": "word",
+   "start": 15.048,
+   "end": 15.311
+  },
+  {
+   "text": "Sie",
+   "type": "word",
+   "start": 15.88,
+   "end": 16.051
+  },
+  {
+   "text": "versucht",
+   "type": "word",
+   "start": 16.07,
+   "end": 16.448
+  },
+  {
+   "text": "es",
+   "type": "word",
+   "start": 16.49,
+   "end": 16.643
+  },
+  {
+   "text": "nochmal.",
+   "type": "word",
+   "start": 16.66,
+   "end": 17.038
+  },
+  {
+   "text": "Und",
+   "type": "word",
+   "start": 17.44,
+   "end": 17.693
+  },
+  {
+   "text": "diesmal...",
+   "type": "word",
+   "start": 17.721,
+   "end": 18.332
+  }
+ ]
+}

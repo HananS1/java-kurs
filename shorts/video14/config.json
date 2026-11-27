@@ -1,0 +1,643 @@
+{
+ "clip": "clip_fx.mp4",
+ "clip_audio": 0.0,
+ "voice": "voice.wav",
+ "out": "video14_comeback.mp4",
+ "caption_mode": "chunk",
+ "font": "MontserratXB",
+ "font_size": 78,
+ "caption_y": 1560,
+ "max_words": 2,
+ "actions": [
+  {
+   "start": 25.55,
+   "end": 27.275,
+   "text": "GESCHAFFT",
+   "y": 330
+  }
+ ],
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "sfx_gain": 0.65,
+ "captions": [
+  {
+   "text": "Mitten im Wettbewerb wirft ihr Trainer sie in die Luft...",
+   "start": 0.068,
+   "end": 3.057,
+   "words": [
+    [
+     "Mitten",
+     0.068,
+     0.44
+    ],
+    [
+     "im",
+     0.481,
+     0.647
+    ],
+    [
+     "Wettbewerb",
+     0.666,
+     1.243
+    ],
+    [
+     "wirft",
+     1.306,
+     1.531
+    ],
+    [
+     "ihr",
+     1.556,
+     1.742
+    ],
+    [
+     "Trainer",
+     1.763,
+     2.153
+    ],
+    [
+     "sie",
+     2.196,
+     2.383
+    ],
+    [
+     "in",
+     2.403,
+     2.57
+    ],
+    [
+     "die",
+     2.588,
+     2.774
+    ],
+    [
+     "Luft...",
+     2.795,
+     3.057
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "doch sie rutscht ab.",
+   "start": 3.236,
+   "end": 4.481,
+   "words": [
+    [
+     "doch",
+     3.236,
+     3.516
+    ],
+    [
+     "sie",
+     3.547,
+     3.801
+    ],
+    [
+     "rutscht",
+     3.829,
+     4.187
+    ],
+    [
+     "ab.",
+     4.227,
+     4.481
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Ihr Trainer nimmt sie in den Arm.",
+   "start": 8.436,
+   "end": 9.854,
+   "words": [
+    [
+     "Ihr",
+     8.436,
+     8.592
+    ],
+    [
+     "Trainer",
+     8.609,
+     8.936
+    ],
+    [
+     "nimmt",
+     8.973,
+     9.161
+    ],
+    [
+     "sie",
+     9.182,
+     9.337
+    ],
+    [
+     "in",
+     9.355,
+     9.494
+    ],
+    [
+     "den",
+     9.509,
+     9.665
+    ],
+    [
+     "Arm.",
+     9.682,
+     9.854
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Sie versteckt ihr Gesicht.",
+   "start": 10.936,
+   "end": 11.99,
+   "words": [
+    [
+     "Sie",
+     10.936,
+     11.087
+    ],
+    [
+     "versteckt",
+     11.104,
+     11.452
+    ],
+    [
+     "ihr",
+     11.491,
+     11.641
+    ],
+    [
+     "Gesicht.",
+     11.658,
+     11.99
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Doch dann feuern die Zuschauer sie an.",
+   "start": 12.886,
+   "end": 14.845,
+   "words": [
+    [
+     "Doch",
+     12.886,
+     13.109
+    ],
+    [
+     "dann",
+     13.135,
+     13.357
+    ],
+    [
+     "feuern",
+     13.382,
+     13.646
+    ],
+    [
+     "die",
+     13.676,
+     13.878
+    ],
+    [
+     "Zuschauer",
+     13.901,
+     14.367
+    ],
+    [
+     "sie",
+     14.419,
+     14.621
+    ],
+    [
+     "an.",
+     14.644,
+     14.845
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Ihr Trainer redet mit ihr...",
+   "start": 15.036,
+   "end": 16.357,
+   "words": [
+    [
+     "Ihr",
+     15.036,
+     15.202
+    ],
+    [
+     "Trainer",
+     15.22,
+     15.569
+    ],
+    [
+     "redet",
+     15.607,
+     15.922
+    ],
+    [
+     "mit",
+     15.956,
+     16.122
+    ],
+    [
+     "ihr...",
+     16.141,
+     16.357
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "und gibt ihr einen Kuss auf die Stirn.",
+   "start": 17.286,
+   "end": 19.169,
+   "words": [
+    [
+     "und",
+     17.286,
+     17.469
+    ],
+    [
+     "gibt",
+     17.489,
+     17.691
+    ],
+    [
+     "ihr",
+     17.713,
+     17.895
+    ],
+    [
+     "einen",
+     17.915,
+     18.262
+    ],
+    [
+     "Kuss",
+     18.3,
+     18.502
+    ],
+    [
+     "auf",
+     18.525,
+     18.706
+    ],
+    [
+     "die",
+     18.727,
+     18.909
+    ],
+    [
+     "Stirn.",
+     18.93,
+     19.169
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Sie versucht es nochmal.",
+   "start": 21.036,
+   "end": 22.089,
+   "words": [
+    [
+     "Sie",
+     21.036,
+     21.192
+    ],
+    [
+     "versucht",
+     21.209,
+     21.553
+    ],
+    [
+     "es",
+     21.591,
+     21.73
+    ],
+    [
+     "nochmal.",
+     21.745,
+     22.089
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  },
+  {
+   "text": "Und diesmal...",
+   "start": 23.486,
+   "end": 24.297,
+   "words": [
+    [
+     "Und",
+     23.486,
+     23.716
+    ],
+    [
+     "diesmal...",
+     23.742,
+     24.297
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "rutscht",
+    "Gesicht.",
+    "Arm.",
+    "Zuschauer",
+    "Kuss",
+    "Stirn.",
+    "nochmal.",
+    "diesmal..."
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.1,
+   "sound": "iphone_ping",
+   "gain": 1.3
+  },
+  {
+   "time": 2.0,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 3.6,
+   "sound": "crowd_ooh",
+   "gain": 0.9
+  },
+  {
+   "time": 4.73,
+   "sound": "swish_soft",
+   "gain": 0.4
+  },
+  {
+   "time": 8.0,
+   "sound": "swoosh_air",
+   "gain": 0.4
+  },
+  {
+   "time": 10.7,
+   "sound": "blub",
+   "gain": 0.9
+  },
+  {
+   "time": 12.8,
+   "sound": "swipe",
+   "gain": 0.5
+  },
+  {
+   "time": 12.9,
+   "sound": "applause",
+   "gain": 0.9
+  },
+  {
+   "time": 12.95,
+   "sound": "bloop",
+   "gain": 0.9
+  },
+  {
+   "time": 14.77,
+   "sound": "swoosh_air",
+   "gain": 0.4
+  },
+  {
+   "time": 17.6,
+   "sound": "sparkle",
+   "gain": 1.0
+  },
+  {
+   "time": 20.8,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 23.3,
+   "sound": "swish_soft",
+   "gain": 0.4
+  },
+  {
+   "time": 25.45,
+   "sound": "zoom_hit",
+   "gain": 1.0
+  },
+  {
+   "time": 25.5,
+   "sound": "applause",
+   "gain": 1.6
+  },
+  {
+   "time": 25.55,
+   "sound": "ding_bright",
+   "gain": 0.9
+  },
+  {
+   "time": 25.6,
+   "sound": "text_pop",
+   "gain": 0.9
+  }
+ ],
+ "overlays": [
+  {
+   "style": "arrow_red",
+   "start": 0.1,
+   "end": 0.95,
+   "x": 660,
+   "y": 1380,
+   "angle": 180,
+   "size": 230,
+   "keys": [
+    [
+     0.1,
+     660,
+     1380,
+     1.0
+    ],
+    [
+     0.4,
+     650,
+     1330,
+     1.0
+    ],
+    [
+     0.8,
+     640,
+     1230,
+     1.0
+    ],
+    [
+     0.95,
+     640,
+     1230,
+     1.0
+    ]
+   ],
+   "track": [
+    660,
+    1380,
+    150
+   ]
+  },
+  {
+   "style": "emoji",
+   "char": "🥺",
+   "start": 10.7,
+   "end": 12.8,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "👏",
+   "start": 12.9,
+   "end": 14.77,
+   "x": 180,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "❤️",
+   "start": 17.6,
+   "end": 18.77,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "🔥",
+   "start": 25.55,
+   "end": 27.275,
+   "x": 880,
+   "y": 330,
+   "size": 200
+  }
+ ],
+ "zooms": [],
+ "tail": 2.848,
+ "music": {
+  "path": "music.mp3",
+  "start": 32.77,
+  "gain_db": -11,
+  "fade_in": 0.4,
+  "fade_out": 0.6,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5,
+  "gain_curve": [
+   [
+    0,
+    0
+   ],
+   [
+    25.25,
+    0
+   ],
+   [
+    25.5,
+    5
+   ],
+   [
+    27.275,
+    5
+   ]
+  ]
+ }
+}

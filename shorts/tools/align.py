@@ -32,14 +32,14 @@ def syl(w):
     return max(1, len(re.findall(r"[aeiouäöüy]+", w.lower())))
 
 
-def main(raw, sents, out):
+def main(raw, sents, out, gap="0.22"):
     sents = [s.strip() for s in sents.split("|") if s.strip()]
-    segs = segments(raw)
+    segs = segments(raw, gap=float(gap))
     # Abschnitte den Saetzen zuordnen: zu viele Abschnitte -> die kleinsten Pausen zusammenlegen
     while len(segs) > len(sents):
         gaps = [segs[i + 1][0] - segs[i][1] for i in range(len(segs) - 1)]
         i = int(np.argmin(gaps)); segs[i] = [segs[i][0], segs[i + 1][1]]; del segs[i + 1]
-    if len(segs) < len(sents):
+    if len(segs) < len(sents):   # tipp: kleineres gap (4. Argument) versuchen
         sys.exit(f"Nur {len(segs)} Abschnitte fuer {len(sents)} Saetze gefunden: {segs}")
     words = []
     for (t0, t1), s in zip(segs, sents):
@@ -52,4 +52,4 @@ def main(raw, sents, out):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:5])

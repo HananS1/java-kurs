@@ -384,7 +384,7 @@ def main(cfg_path):
         amix.append(f"[{idx}:a]aresample=44100,aformat=channel_layouts=stereo,"
                     f"volume={m.get('gain_db', -16)}dB,afade=t=in:d={m.get('fade_in', 0.3)},"
                     f"afade=t=out:st={fade_out:.2f}:d={m.get('fade_out', 1.0)}{curve(m)}[a_mus]")
-        amix.append(f"[a_key]aformat=channel_layouts=stereo[a_key2]")
+        amix.append(f"[a_key]aformat=channel_layouts=stereo,apad[a_key2]")   # apad: sonst endet die Musik mit der Stimme
         amix.append(f"[a_mus][a_key2]sidechaincompress=threshold={m.get('duck_threshold', 0.02)}:"
                     f"ratio={m.get('duck_ratio', 4)}:attack=15:release=300:makeup=1[a_musd]")
         labels.append("[a_musd]")
