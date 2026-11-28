@@ -200,3 +200,4 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - **Durchgehendes Skript, keine Pausen**: Stimme spricht vom ersten bis zum letzten Bild (nicht Hybrid-Blöcke). Nur am Höhepunkt darf 0,3–0,5 s Luft sein.
 - **Stimme selbst nach Emotion wählen** (Tabelle oben), nicht nachfragen: Comeback/Triumph/Held → Jan; rührend/traurig ruhig → Rob/Ekrem; lustig → Christian; Spannung → Axel; Frauen-Story → Mila; Hybrid/Comedy-Konkurrenz → Laura.
 - Immer dynamisch klingen (Nutzer-Vorbild @fabianglck) – lieber Tempo 1.15–1.25 als langsam.
+- **Musik mind. 10 dB leiser als die Stimme** (Stimme allein vs. Musik allein messen). Nur am Ende ohne Stimme darf sie hoch.

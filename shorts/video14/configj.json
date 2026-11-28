@@ -1010,27 +1010,27 @@
  "music": {
   "path": "music.mp3",
   "start": 35.56,
-  "gain_db": -11,
+  "gain_db": -25,
   "fade_in": 0.4,
   "fade_out": 0.6,
-  "duck_threshold": 0.03,
-  "duck_ratio": 2.5,
+  "duck_threshold": 0.02,
+  "duck_ratio": 4,
   "gain_curve": [
    [
     0,
     0
    ],
    [
-    22.457,
+    22.45,
     0
    ],
    [
-    22.707,
-    5
+    22.71,
+    11
    ],
    [
     25.132,
-    5
+    11
    ]
   ]
  }
