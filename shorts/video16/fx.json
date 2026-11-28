@@ -1,0 +1,1 @@
+{"model": "../models/yolov8m-pose.pt", "rings": [], "flash": [{"time": 4.22, "dur": 0.3, "color": "white", "strength": 0.35}, {"time": 16.05, "dur": 0.3, "color": "pink", "strength": 0.35}, {"time": 19.43, "dur": 0.3, "color": "white", "strength": 0.4}], "shake": []}

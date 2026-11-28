@@ -1,0 +1,16 @@
+{
+ "source": "clean.mp4",
+ "out": "clip_edit.mp4",
+ "audio_out": "orig.wav",
+ "shots": [
+  {
+   "start": 0,
+   "end": 23.55,
+   "src": 0,
+   "x": 0,
+   "y": 0,
+   "w": 1080,
+   "h": 1920
+  }
+ ]
+}

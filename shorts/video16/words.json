@@ -1,0 +1,412 @@
+{
+ "words": [
+  {
+   "text": "Dieser",
+   "type": "word",
+   "start": 0.02,
+   "end": 0.477
+  },
+  {
+   "text": "Typ",
+   "type": "word",
+   "start": 0.527,
+   "end": 0.755
+  },
+  {
+   "text": "läuft",
+   "type": "word",
+   "start": 0.781,
+   "end": 1.056
+  },
+  {
+   "text": "so",
+   "type": "word",
+   "start": 1.087,
+   "end": 1.292
+  },
+  {
+   "text": "perfekt",
+   "type": "word",
+   "start": 1.314,
+   "end": 1.794
+  },
+  {
+   "text": "rückwärts,",
+   "type": "word",
+   "start": 1.848,
+   "end": 2.399
+  },
+  {
+   "text": "dass",
+   "type": "word",
+   "start": 2.8,
+   "end": 2.984
+  },
+  {
+   "text": "es",
+   "type": "word",
+   "start": 3.004,
+   "end": 3.153
+  },
+  {
+   "text": "im",
+   "type": "word",
+   "start": 3.17,
+   "end": 3.319
+  },
+  {
+   "text": "rückwärts",
+   "type": "word",
+   "start": 3.336,
+   "end": 3.72
+  },
+  {
+   "text": "abgespielten",
+   "type": "word",
+   "start": 3.763,
+   "end": 4.428
+  },
+  {
+   "text": "Video",
+   "type": "word",
+   "start": 4.502,
+   "end": 4.818
+  },
+  {
+   "text": "aussieht,",
+   "type": "word",
+   "start": 4.853,
+   "end": 5.237
+  },
+  {
+   "text": "als",
+   "type": "word",
+   "start": 5.6,
+   "end": 5.763
+  },
+  {
+   "text": "würde",
+   "type": "word",
+   "start": 5.781,
+   "end": 6.089
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 6.123,
+   "end": 6.286
+  },
+  {
+   "text": "ganze",
+   "type": "word",
+   "start": 6.304,
+   "end": 6.612
+  },
+  {
+   "text": "Welt",
+   "type": "word",
+   "start": 6.646,
+   "end": 6.826
+  },
+  {
+   "text": "rückwärts",
+   "type": "word",
+   "start": 6.846,
+   "end": 7.221
+  },
+  {
+   "text": "laufen...",
+   "type": "word",
+   "start": 7.263,
+   "end": 7.638
+  },
+  {
+   "text": "außer",
+   "type": "word",
+   "start": 8.18,
+   "end": 8.59
+  },
+  {
+   "text": "ihm!",
+   "type": "word",
+   "start": 8.635,
+   "end": 8.874
+  },
+  {
+   "text": "Dafür",
+   "type": "word",
+   "start": 9.26,
+   "end": 9.636
+  },
+  {
+   "text": "muss",
+   "type": "word",
+   "start": 9.678,
+   "end": 9.897
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 9.921,
+   "end": 10.099
+  },
+  {
+   "text": "jede",
+   "type": "word",
+   "start": 10.118,
+   "end": 10.474
+  },
+  {
+   "text": "einzelne",
+   "type": "word",
+   "start": 10.513,
+   "end": 11.088
+  },
+  {
+   "text": "Bewegung",
+   "type": "word",
+   "start": 11.151,
+   "end": 11.726
+  },
+  {
+   "text": "bis",
+   "type": "word",
+   "start": 11.789,
+   "end": 11.988
+  },
+  {
+   "text": "ins",
+   "type": "word",
+   "start": 12.01,
+   "end": 12.208
+  },
+  {
+   "text": "Kleinste",
+   "type": "word",
+   "start": 12.23,
+   "end": 12.667
+  },
+  {
+   "text": "einstudieren.",
+   "type": "word",
+   "start": 12.716,
+   "end": 13.53
+  },
+  {
+   "text": "Achte",
+   "type": "word",
+   "start": 14.3,
+   "end": 14.552
+  },
+  {
+   "text": "mal",
+   "type": "word",
+   "start": 14.58,
+   "end": 14.713
+  },
+  {
+   "text": "auf",
+   "type": "word",
+   "start": 14.727,
+   "end": 14.86
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 14.875,
+   "end": 15.008
+  },
+  {
+   "text": "Leute",
+   "type": "word",
+   "start": 15.022,
+   "end": 15.274
+  },
+  {
+   "text": "hinter",
+   "type": "word",
+   "start": 15.302,
+   "end": 15.568
+  },
+  {
+   "text": "ihm:",
+   "type": "word",
+   "start": 15.597,
+   "end": 15.744
+  },
+  {
+   "text": "Die",
+   "type": "word",
+   "start": 16.26,
+   "end": 16.43
+  },
+  {
+   "text": "laufen",
+   "type": "word",
+   "start": 16.449,
+   "end": 16.788
+  },
+  {
+   "text": "alle",
+   "type": "word",
+   "start": 16.826,
+   "end": 17.131
+  },
+  {
+   "text": "rückwärts.",
+   "type": "word",
+   "start": 17.164,
+   "end": 17.574
+  },
+  {
+   "text": "Nur",
+   "type": "word",
+   "start": 18.06,
+   "end": 18.249
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 18.27,
+   "end": 18.439
+  },
+  {
+   "text": "bewegt",
+   "type": "word",
+   "start": 18.457,
+   "end": 18.835
+  },
+  {
+   "text": "sich",
+   "type": "word",
+   "start": 18.877,
+   "end": 19.085
+  },
+  {
+   "text": "ganz",
+   "type": "word",
+   "start": 19.108,
+   "end": 19.316
+  },
+  {
+   "text": "normal.",
+   "type": "word",
+   "start": 19.339,
+   "end": 19.736
+  },
+  {
+   "text": "Selbst",
+   "type": "word",
+   "start": 20.48,
+   "end": 20.694
+  },
+  {
+   "text": "draußen",
+   "type": "word",
+   "start": 20.717,
+   "end": 21.06
+  },
+  {
+   "text": "auf",
+   "type": "word",
+   "start": 21.098,
+   "end": 21.261
+  },
+  {
+   "text": "der",
+   "type": "word",
+   "start": 21.279,
+   "end": 21.442
+  },
+  {
+   "text": "Straße",
+   "type": "word",
+   "start": 21.46,
+   "end": 21.786
+  },
+  {
+   "text": "funktioniert",
+   "type": "word",
+   "start": 21.822,
+   "end": 22.362
+  },
+  {
+   "text": "der",
+   "type": "word",
+   "start": 22.422,
+   "end": 22.585
+  },
+  {
+   "text": "Trick.",
+   "type": "word",
+   "start": 22.603,
+   "end": 22.816
+  },
+  {
+   "text": "Und",
+   "type": "word",
+   "start": 23.32,
+   "end": 23.468
+  },
+  {
+   "text": "um",
+   "type": "word",
+   "start": 23.485,
+   "end": 23.617
+  },
+  {
+   "text": "alles",
+   "type": "word",
+   "start": 23.632,
+   "end": 23.913
+  },
+  {
+   "text": "noch",
+   "type": "word",
+   "start": 23.944,
+   "end": 24.108
+  },
+  {
+   "text": "zu",
+   "type": "word",
+   "start": 24.126,
+   "end": 24.259
+  },
+  {
+   "text": "toppen,",
+   "type": "word",
+   "start": 24.274,
+   "end": 24.585
+  },
+  {
+   "text": "sagt",
+   "type": "word",
+   "start": 24.92,
+   "end": 25.109
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 25.13,
+   "end": 25.283
+  },
+  {
+   "text": "sogar",
+   "type": "word",
+   "start": 25.3,
+   "end": 25.625
+  },
+  {
+   "text": "etwas",
+   "type": "word",
+   "start": 25.661,
+   "end": 25.986
+  },
+  {
+   "text": "rückwärts...",
+   "type": "word",
+   "start": 26.022,
+   "end": 26.47
+  }
+ ]
+}

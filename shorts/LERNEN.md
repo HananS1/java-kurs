@@ -87,3 +87,4 @@
 | 14 Comeback v2 | Nutzer will DURCHGEHENDES Skript ohne Pausen + Stimme nach Emotion selbst wählen (Rob war zu ruhig für Triumph) | Stil | Siehe STIL.md „Erzähl-Stil“: Text füllt das ganze Video, Schnitt wird an die Satzlängen angepasst (Shots kürzen/Zeitlupe), Comeback → Jan |
 | 14 Comeback v3 | Musik fast so laut wie die Stimme (nur ~4 dB Abstand) | Ton | **Regel: Musik mind. 10 dB unter der Stimme** – messen: Stimme allein vs. Musik allein (cm.json mit stummer Stimme), nicht nur Gesamtmix |
 | 15 Brücke | (Selbst-Check) Quell-Short endet mit dem ERSTEN Bild (Loop-Trick) → Ende sprang zurück | Bild | Letzte 0,3 s jeder Quelle prüfen; Ende vorher abschneiden + Standbild (tpad clone) |
+| 16 Rückwärts | detext.py hielt weißes Hemd neben schwarzem Anzug für Schrift → weiße Flecken | Bild | Neues tools/detext_center.py für mittige Wort-Untertitel (nur Block um Bildmitte, symmetrisch); Namen/Preise einer realen Person nicht ungeprüft übernehmen |
