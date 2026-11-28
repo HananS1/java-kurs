@@ -1,0 +1,622 @@
+{
+ "words": [
+  {
+   "text": "Mitten",
+   "type": "word",
+   "start": 0.0,
+   "end": 0.366
+  },
+  {
+   "text": "im",
+   "type": "word",
+   "start": 0.407,
+   "end": 0.571
+  },
+  {
+   "text": "Wettbewerb",
+   "type": "word",
+   "start": 0.589,
+   "end": 1.158
+  },
+  {
+   "text": "wirft",
+   "type": "word",
+   "start": 1.221,
+   "end": 1.442
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 1.467,
+   "end": 1.65
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 1.67,
+   "end": 2.055
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 2.098,
+   "end": 2.281
+  },
+  {
+   "text": "hoch",
+   "type": "word",
+   "start": 2.302,
+   "end": 2.504
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 2.526,
+   "end": 2.691
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 2.709,
+   "end": 2.892
+  },
+  {
+   "text": "Luft...",
+   "type": "word",
+   "start": 2.912,
+   "end": 3.171
+  },
+  {
+   "text": "doch",
+   "type": "word",
+   "start": 3.66,
+   "end": 3.916
+  },
+  {
+   "text": "plötzlich",
+   "type": "word",
+   "start": 3.945,
+   "end": 4.482
+  },
+  {
+   "text": "rutscht",
+   "type": "word",
+   "start": 4.542,
+   "end": 4.87
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 4.907,
+   "end": 5.139
+  },
+  {
+   "text": "ab",
+   "type": "word",
+   "start": 5.165,
+   "end": 5.373
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 5.397,
+   "end": 5.629
+  },
+  {
+   "text": "stürzt!",
+   "type": "word",
+   "start": 5.655,
+   "end": 5.983
+  },
+  {
+   "text": "Zum",
+   "type": "word",
+   "start": 6.5,
+   "end": 6.673
+  },
+  {
+   "text": "Glück",
+   "type": "word",
+   "start": 6.692,
+   "end": 6.901
+  },
+  {
+   "text": "fangen",
+   "type": "word",
+   "start": 6.924,
+   "end": 7.271
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 7.309,
+   "end": 7.482
+  },
+  {
+   "text": "beiden",
+   "type": "word",
+   "start": 7.501,
+   "end": 7.848
+  },
+  {
+   "text": "Männer",
+   "type": "word",
+   "start": 7.886,
+   "end": 8.232
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 8.271,
+   "end": 8.444
+  },
+  {
+   "text": "sofort",
+   "type": "word",
+   "start": 8.463,
+   "end": 8.809
+  },
+  {
+   "text": "auf.",
+   "type": "word",
+   "start": 8.848,
+   "end": 9.039
+  },
+  {
+   "text": "Ihr",
+   "type": "word",
+   "start": 9.4,
+   "end": 9.578
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 9.598,
+   "end": 9.973
+  },
+  {
+   "text": "stellt",
+   "type": "word",
+   "start": 10.015,
+   "end": 10.249
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 10.275,
+   "end": 10.453
+  },
+  {
+   "text": "ab",
+   "type": "word",
+   "start": 10.473,
+   "end": 10.633
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 10.651,
+   "end": 10.829
+  },
+  {
+   "text": "beugt",
+   "type": "word",
+   "start": 10.849,
+   "end": 11.064
+  },
+  {
+   "text": "sich",
+   "type": "word",
+   "start": 11.088,
+   "end": 11.285
+  },
+  {
+   "text": "zu",
+   "type": "word",
+   "start": 11.307,
+   "end": 11.467
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 11.485,
+   "end": 11.663
+  },
+  {
+   "text": "runter.",
+   "type": "word",
+   "start": 11.683,
+   "end": 12.058
+  },
+  {
+   "text": "Dann",
+   "type": "word",
+   "start": 12.44,
+   "end": 12.621
+  },
+  {
+   "text": "nimmt",
+   "type": "word",
+   "start": 12.641,
+   "end": 12.84
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 12.862,
+   "end": 13.009
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 13.025,
+   "end": 13.19
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 13.208,
+   "end": 13.355
+  },
+  {
+   "text": "den",
+   "type": "word",
+   "start": 13.372,
+   "end": 13.536
+  },
+  {
+   "text": "Arm,",
+   "type": "word",
+   "start": 13.554,
+   "end": 13.736
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 13.756,
+   "end": 13.92
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 13.938,
+   "end": 14.103
+  },
+  {
+   "text": "versteckt",
+   "type": "word",
+   "start": 14.121,
+   "end": 14.501
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 14.543,
+   "end": 14.707
+  },
+  {
+   "text": "Gesicht",
+   "type": "word",
+   "start": 14.725,
+   "end": 15.071
+  },
+  {
+   "text": "an",
+   "type": "word",
+   "start": 15.109,
+   "end": 15.257
+  },
+  {
+   "text": "seiner",
+   "type": "word",
+   "start": 15.273,
+   "end": 15.602
+  },
+  {
+   "text": "Schulter.",
+   "type": "word",
+   "start": 15.638,
+   "end": 16.018
+  },
+  {
+   "text": "Doch",
+   "type": "word",
+   "start": 16.38,
+   "end": 16.628
+  },
+  {
+   "text": "dann",
+   "type": "word",
+   "start": 16.655,
+   "end": 16.903
+  },
+  {
+   "text": "feuern",
+   "type": "word",
+   "start": 16.931,
+   "end": 17.225
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 17.258,
+   "end": 17.483
+  },
+  {
+   "text": "Zuschauer",
+   "type": "word",
+   "start": 17.507,
+   "end": 18.026
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 18.084,
+   "end": 18.309
+  },
+  {
+   "text": "lautstark",
+   "type": "word",
+   "start": 18.334,
+   "end": 18.853
+  },
+  {
+   "text": "an!",
+   "type": "word",
+   "start": 18.91,
+   "end": 19.135
+  },
+  {
+   "text": "Ihr",
+   "type": "word",
+   "start": 19.58,
+   "end": 19.77
+  },
+  {
+   "text": "Trainer",
+   "type": "word",
+   "start": 19.791,
+   "end": 20.191
+  },
+  {
+   "text": "kniet",
+   "type": "word",
+   "start": 20.236,
+   "end": 20.465
+  },
+  {
+   "text": "sich",
+   "type": "word",
+   "start": 20.491,
+   "end": 20.7
+  },
+  {
+   "text": "vor",
+   "type": "word",
+   "start": 20.724,
+   "end": 20.914
+  },
+  {
+   "text": "sie,",
+   "type": "word",
+   "start": 20.935,
+   "end": 21.145
+  },
+  {
+   "text": "redet",
+   "type": "word",
+   "start": 21.168,
+   "end": 21.529
+  },
+  {
+   "text": "mit",
+   "type": "word",
+   "start": 21.569,
+   "end": 21.759
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 21.78,
+   "end": 21.97
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 21.991,
+   "end": 22.181
+  },
+  {
+   "text": "gibt",
+   "type": "word",
+   "start": 22.203,
+   "end": 22.412
+  },
+  {
+   "text": "ihr",
+   "type": "word",
+   "start": 22.436,
+   "end": 22.626
+  },
+  {
+   "text": "einen",
+   "type": "word",
+   "start": 22.647,
+   "end": 23.007
+  },
+  {
+   "text": "Kuss",
+   "type": "word",
+   "start": 23.048,
+   "end": 23.257
+  },
+  {
+   "text": "auf",
+   "type": "word",
+   "start": 23.281,
+   "end": 23.471
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 23.492,
+   "end": 23.682
+  },
+  {
+   "text": "Stirn.",
+   "type": "word",
+   "start": 23.703,
+   "end": 23.952
+  },
+  {
+   "text": "Dann",
+   "type": "word",
+   "start": 24.34,
+   "end": 24.541
+  },
+  {
+   "text": "trägt",
+   "type": "word",
+   "start": 24.563,
+   "end": 24.782
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 24.807,
+   "end": 24.97
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 24.988,
+   "end": 25.169
+  },
+  {
+   "text": "zurück",
+   "type": "word",
+   "start": 25.19,
+   "end": 25.553
+  },
+  {
+   "text": "zum",
+   "type": "word",
+   "start": 25.593,
+   "end": 25.775
+  },
+  {
+   "text": "Start.",
+   "type": "word",
+   "start": 25.795,
+   "end": 26.034
+  },
+  {
+   "text": "Sie",
+   "type": "word",
+   "start": 26.44,
+   "end": 26.603
+  },
+  {
+   "text": "versucht",
+   "type": "word",
+   "start": 26.621,
+   "end": 26.979
+  },
+  {
+   "text": "es",
+   "type": "word",
+   "start": 27.019,
+   "end": 27.165
+  },
+  {
+   "text": "noch",
+   "type": "word",
+   "start": 27.181,
+   "end": 27.36
+  },
+  {
+   "text": "einmal.",
+   "type": "word",
+   "start": 27.38,
+   "end": 27.722
+  },
+  {
+   "text": "Anlauf,",
+   "type": "word",
+   "start": 28.12,
+   "end": 28.663
+  },
+  {
+   "text": "Flickflack,",
+   "type": "word",
+   "start": 28.723,
+   "end": 29.373
+  },
+  {
+   "text": "er",
+   "type": "word",
+   "start": 29.445,
+   "end": 29.676
+  },
+  {
+   "text": "wirft",
+   "type": "word",
+   "start": 29.702,
+   "end": 30.013
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 30.048,
+   "end": 30.306
+  },
+  {
+   "text": "hoch...",
+   "type": "word",
+   "start": 30.335,
+   "end": 30.699
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 31.06,
+   "end": 31.303
+  },
+  {
+   "text": "diesmal",
+   "type": "word",
+   "start": 31.33,
+   "end": 31.84
+  },
+  {
+   "text": "steht",
+   "type": "word",
+   "start": 31.897,
+   "end": 32.19
+  },
+  {
+   "text": "sie!",
+   "type": "word",
+   "start": 32.222,
+   "end": 32.49
+  },
+  {
+   "text": "Die",
+   "type": "word",
+   "start": 32.82,
+   "end": 33.066
+  },
+  {
+   "text": "Zuschauer",
+   "type": "word",
+   "start": 33.093,
+   "end": 33.662
+  },
+  {
+   "text": "jubeln!",
+   "type": "word",
+   "start": 33.725,
+   "end": 34.242
+  }
+ ]
+}

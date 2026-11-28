@@ -1,0 +1,1037 @@
+{
+ "clip": "clip_fx.mp4",
+ "clip_audio": 0.0,
+ "voice": "voicej.wav",
+ "out": "video14_comeback.mp4",
+ "caption_mode": "chunk",
+ "font": "MontserratXB",
+ "font_size": 78,
+ "caption_y": 1560,
+ "max_words": 2,
+ "actions": [
+  {
+   "start": 23.45,
+   "end": 25.132,
+   "text": "GESCHAFFT",
+   "y": 330
+  }
+ ],
+ "sfx_lib": "/home/user/java-kurs/shorts/sfx_lib",
+ "sfx_gain": 0.65,
+ "captions": [
+  {
+   "text": "Mitten im Wettbewerb wirft ihr Trainer sie hoch in die Luft...",
+   "start": 0.0,
+   "end": 2.537,
+   "words": [
+    [
+     "Mitten",
+     0.0,
+     0.293
+    ],
+    [
+     "im",
+     0.326,
+     0.457
+    ],
+    [
+     "Wettbewerb",
+     0.471,
+     0.926
+    ],
+    [
+     "wirft",
+     0.977,
+     1.154
+    ],
+    [
+     "ihr",
+     1.174,
+     1.32
+    ],
+    [
+     "Trainer",
+     1.336,
+     1.644
+    ],
+    [
+     "sie",
+     1.678,
+     1.825
+    ],
+    [
+     "hoch",
+     1.842,
+     2.003
+    ],
+    [
+     "in",
+     2.021,
+     2.153
+    ],
+    [
+     "die",
+     2.167,
+     2.314
+    ],
+    [
+     "Luft...",
+     2.33,
+     2.537
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "doch plötzlich rutscht sie ab und stürzt!",
+   "start": 2.652,
+   "end": 4.51,
+   "words": [
+    [
+     "doch",
+     2.652,
+     2.857
+    ],
+    [
+     "plötzlich",
+     2.88,
+     3.31
+    ],
+    [
+     "rutscht",
+     3.358,
+     3.62
+    ],
+    [
+     "sie",
+     3.65,
+     3.835
+    ],
+    [
+     "ab",
+     3.856,
+     4.022
+    ],
+    [
+     "und",
+     4.042,
+     4.227
+    ],
+    [
+     "stürzt!",
+     4.248,
+     4.51
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Zum Glück fangen die beiden Männer sie sofort auf.",
+   "start": 4.632,
+   "end": 6.663,
+   "words": [
+    [
+     "Zum",
+     4.632,
+     4.77
+    ],
+    [
+     "Glück",
+     4.786,
+     4.953
+    ],
+    [
+     "fangen",
+     4.971,
+     5.249
+    ],
+    [
+     "die",
+     5.279,
+     5.418
+    ],
+    [
+     "beiden",
+     5.433,
+     5.71
+    ],
+    [
+     "Männer",
+     5.741,
+     6.018
+    ],
+    [
+     "sie",
+     6.049,
+     6.187
+    ],
+    [
+     "sofort",
+     6.202,
+     6.479
+    ],
+    [
+     "auf.",
+     6.51,
+     6.663
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Ihr Trainer stellt sie ab und beugt sich zu ihr runter.",
+   "start": 6.732,
+   "end": 8.858,
+   "words": [
+    [
+     "Ihr",
+     6.732,
+     6.874
+    ],
+    [
+     "Trainer",
+     6.89,
+     7.19
+    ],
+    [
+     "stellt",
+     7.224,
+     7.411
+    ],
+    [
+     "sie",
+     7.432,
+     7.574
+    ],
+    [
+     "ab",
+     7.59,
+     7.718
+    ],
+    [
+     "und",
+     7.733,
+     7.875
+    ],
+    [
+     "beugt",
+     7.891,
+     8.063
+    ],
+    [
+     "sich",
+     8.082,
+     8.24
+    ],
+    [
+     "zu",
+     8.258,
+     8.386
+    ],
+    [
+     "ihr",
+     8.4,
+     8.542
+    ],
+    [
+     "runter.",
+     8.558,
+     8.858
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Dann nimmt er sie in den Arm, und sie versteckt ihr Gesicht an seiner Schulter.",
+   "start": 8.932,
+   "end": 11.794,
+   "words": [
+    [
+     "Dann",
+     8.932,
+     9.077
+    ],
+    [
+     "nimmt",
+     9.093,
+     9.252
+    ],
+    [
+     "er",
+     9.27,
+     9.387
+    ],
+    [
+     "sie",
+     9.4,
+     9.532
+    ],
+    [
+     "in",
+     9.546,
+     9.664
+    ],
+    [
+     "den",
+     9.678,
+     9.809
+    ],
+    [
+     "Arm,",
+     9.823,
+     9.969
+    ],
+    [
+     "und",
+     9.985,
+     10.116
+    ],
+    [
+     "sie",
+     10.13,
+     10.262
+    ],
+    [
+     "versteckt",
+     10.277,
+     10.581
+    ],
+    [
+     "ihr",
+     10.614,
+     10.746
+    ],
+    [
+     "Gesicht",
+     10.76,
+     11.037
+    ],
+    [
+     "an",
+     11.067,
+     11.186
+    ],
+    [
+     "seiner",
+     11.198,
+     11.462
+    ],
+    [
+     "Schulter.",
+     11.49,
+     11.794
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Doch dann feuern die Zuschauer sie lautstark an!",
+   "start": 11.882,
+   "end": 14.086,
+   "words": [
+    [
+     "Doch",
+     11.882,
+     12.08
+    ],
+    [
+     "dann",
+     12.102,
+     12.3
+    ],
+    [
+     "feuern",
+     12.323,
+     12.558
+    ],
+    [
+     "die",
+     12.584,
+     12.764
+    ],
+    [
+     "Zuschauer",
+     12.784,
+     13.199
+    ],
+    [
+     "sie",
+     13.245,
+     13.425
+    ],
+    [
+     "lautstark",
+     13.445,
+     13.86
+    ],
+    [
+     "an!",
+     13.906,
+     14.086
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Ihr Trainer kniet sich vor sie, redet mit ihr und gibt ihr einen Kuss auf die Stirn.",
+   "start": 14.132,
+   "end": 17.63,
+   "words": [
+    [
+     "Ihr",
+     14.132,
+     14.284
+    ],
+    [
+     "Trainer",
+     14.301,
+     14.621
+    ],
+    [
+     "kniet",
+     14.657,
+     14.84
+    ],
+    [
+     "sich",
+     14.861,
+     15.028
+    ],
+    [
+     "vor",
+     15.047,
+     15.199
+    ],
+    [
+     "sie,",
+     15.216,
+     15.384
+    ],
+    [
+     "redet",
+     15.402,
+     15.691
+    ],
+    [
+     "mit",
+     15.723,
+     15.875
+    ],
+    [
+     "ihr",
+     15.892,
+     16.044
+    ],
+    [
+     "und",
+     16.061,
+     16.213
+    ],
+    [
+     "gibt",
+     16.23,
+     16.398
+    ],
+    [
+     "ihr",
+     16.417,
+     16.569
+    ],
+    [
+     "einen",
+     16.586,
+     16.874
+    ],
+    [
+     "Kuss",
+     16.906,
+     17.074
+    ],
+    [
+     "auf",
+     17.093,
+     17.245
+    ],
+    [
+     "die",
+     17.262,
+     17.414
+    ],
+    [
+     "Stirn.",
+     17.43,
+     17.63
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Dann trägt er sie zurück zum Start.",
+   "start": 17.712,
+   "end": 19.067,
+   "words": [
+    [
+     "Dann",
+     17.712,
+     17.873
+    ],
+    [
+     "trägt",
+     17.89,
+     18.066
+    ],
+    [
+     "er",
+     18.086,
+     18.216
+    ],
+    [
+     "sie",
+     18.23,
+     18.375
+    ],
+    [
+     "zurück",
+     18.392,
+     18.682
+    ],
+    [
+     "zum",
+     18.714,
+     18.86
+    ],
+    [
+     "Start.",
+     18.876,
+     19.067
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Sie versucht es noch einmal.",
+   "start": 19.452,
+   "end": 20.478,
+   "words": [
+    [
+     "Sie",
+     19.452,
+     19.582
+    ],
+    [
+     "versucht",
+     19.597,
+     19.883
+    ],
+    [
+     "es",
+     19.915,
+     20.032
+    ],
+    [
+     "noch",
+     20.045,
+     20.188
+    ],
+    [
+     "einmal.",
+     20.204,
+     20.478
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Anlauf, Flickflack, er wirft sie hoch...",
+   "start": 20.552,
+   "end": 22.615,
+   "words": [
+    [
+     "Anlauf,",
+     20.552,
+     20.986
+    ],
+    [
+     "Flickflack,",
+     21.034,
+     21.554
+    ],
+    [
+     "er",
+     21.612,
+     21.797
+    ],
+    [
+     "wirft",
+     21.818,
+     22.066
+    ],
+    [
+     "sie",
+     22.094,
+     22.301
+    ],
+    [
+     "hoch...",
+     22.324,
+     22.615
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "und diesmal steht sie!",
+   "start": 22.692,
+   "end": 23.836,
+   "words": [
+    [
+     "und",
+     22.692,
+     22.886
+    ],
+    [
+     "diesmal",
+     22.908,
+     23.316
+    ],
+    [
+     "steht",
+     23.362,
+     23.596
+    ],
+    [
+     "sie!",
+     23.622,
+     23.836
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  },
+  {
+   "text": "Die Zuschauer jubeln!",
+   "start": 23.912,
+   "end": 25.05,
+   "words": [
+    [
+     "Die",
+     23.912,
+     24.109
+    ],
+    [
+     "Zuschauer",
+     24.13,
+     24.586
+    ],
+    [
+     "jubeln!",
+     24.636,
+     25.05
+    ]
+   ],
+   "highlight": [
+    "Wettbewerb",
+    "Luft...",
+    "stürzt!",
+    "Glück",
+    "Arm,",
+    "Gesicht",
+    "Zuschauer",
+    "lautstark",
+    "Kuss",
+    "Stirn.",
+    "Start.",
+    "einmal.",
+    "Flickflack,",
+    "diesmal",
+    "steht",
+    "jubeln!"
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "time": 0.1,
+   "sound": "iphone_ping",
+   "gain": 1.3
+  },
+  {
+   "time": 2.0,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 3.6,
+   "sound": "crowd_ooh",
+   "gain": 0.9
+  },
+  {
+   "time": 4.73,
+   "sound": "swish_soft",
+   "gain": 0.4
+  },
+  {
+   "time": 6.57,
+   "sound": "swoosh_air",
+   "gain": 0.4
+  },
+  {
+   "time": 10.0,
+   "sound": "blub",
+   "gain": 0.9
+  },
+  {
+   "time": 11.77,
+   "sound": "swipe",
+   "gain": 0.5
+  },
+  {
+   "time": 11.82,
+   "sound": "applause",
+   "gain": 0.9
+  },
+  {
+   "time": 11.87,
+   "sound": "bloop",
+   "gain": 0.9
+  },
+  {
+   "time": 13.96,
+   "sound": "swoosh_air",
+   "gain": 0.4
+  },
+  {
+   "time": 16.74,
+   "sound": "sparkle",
+   "gain": 1.0
+  },
+  {
+   "time": 17.957,
+   "sound": "whoosh_fast",
+   "gain": 0.5
+  },
+  {
+   "time": 19.457,
+   "sound": "swish_soft",
+   "gain": 0.4
+  },
+  {
+   "time": 20.507,
+   "sound": "zip",
+   "gain": 0.4
+  },
+  {
+   "time": 22.66,
+   "sound": "zoom_hit",
+   "gain": 1.0
+  },
+  {
+   "time": 22.707,
+   "sound": "applause",
+   "gain": 1.6
+  },
+  {
+   "time": 22.76,
+   "sound": "ding_bright",
+   "gain": 0.9
+  },
+  {
+   "time": 23.45,
+   "sound": "text_pop",
+   "gain": 0.9
+  }
+ ],
+ "overlays": [
+  {
+   "style": "arrow_red",
+   "start": 0.1,
+   "end": 0.95,
+   "x": 660,
+   "y": 1380,
+   "angle": 180,
+   "size": 230,
+   "keys": [
+    [
+     0.1,
+     660,
+     1380,
+     1.0
+    ],
+    [
+     0.4,
+     650,
+     1330,
+     1.0
+    ],
+    [
+     0.8,
+     640,
+     1230,
+     1.0
+    ],
+    [
+     0.95,
+     640,
+     1230,
+     1.0
+    ]
+   ],
+   "track": [
+    660,
+    1380,
+    150
+   ]
+  },
+  {
+   "style": "emoji",
+   "char": "🥺",
+   "start": 10.0,
+   "end": 11.768,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "👏",
+   "start": 11.818000000000001,
+   "end": 13.958,
+   "x": 180,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "❤️",
+   "start": 16.738,
+   "end": 17.957,
+   "x": 880,
+   "y": 330,
+   "size": 190
+  },
+  {
+   "style": "emoji",
+   "char": "🔥",
+   "start": 23.45,
+   "end": 25.132,
+   "x": 880,
+   "y": 330,
+   "size": 200
+  }
+ ],
+ "zooms": [],
+ "tail": -0.055,
+ "music": {
+  "path": "music.mp3",
+  "start": 35.56,
+  "gain_db": -11,
+  "fade_in": 0.4,
+  "fade_out": 0.6,
+  "duck_threshold": 0.03,
+  "duck_ratio": 2.5,
+  "gain_curve": [
+   [
+    0,
+    0
+   ],
+   [
+    22.457,
+    0
+   ],
+   [
+    22.707,
+    5
+   ],
+   [
+    25.132,
+    5
+   ]
+  ]
+ }
+}

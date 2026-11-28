@@ -195,3 +195,8 @@ Analysiert aus dem Referenzvideo „Das Letzte schockiert alle Deutschen“ (24,
 - Schnitt, Timing, Struktur am Original orientieren (kopieren), dann unser Stil drauf (Stimme, Captions, Flashes, Musik).
 - Video OHNE Skript → eigenes Skript schreiben, Hook muss in 2 s catchen (Wer + was + Konflikt, erstes Bild beweist den Hook).
 - Englisches Original → auf Deutsch übersetzen = beste Chance (DE-Version fehlt oft). Deutsches Original → stärker umformulieren (sonst wirkt es wie Kopie).
+
+## ERZÄHL-STIL BEIM KONZEPT „VIRALES VIDEO UMBAUEN“ (Nutzer-Standard)
+- **Durchgehendes Skript, keine Pausen**: Stimme spricht vom ersten bis zum letzten Bild (nicht Hybrid-Blöcke). Nur am Höhepunkt darf 0,3–0,5 s Luft sein.
+- **Stimme selbst nach Emotion wählen** (Tabelle oben), nicht nachfragen: Comeback/Triumph/Held → Jan; rührend/traurig ruhig → Rob/Ekrem; lustig → Christian; Spannung → Axel; Frauen-Story → Mila; Hybrid/Comedy-Konkurrenz → Laura.
+- Immer dynamisch klingen (Nutzer-Vorbild @fabianglck) – lieber Tempo 1.15–1.25 als langsam.
