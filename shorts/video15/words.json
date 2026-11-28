@@ -1,0 +1,328 @@
+{
+ "words": [
+  {
+   "text": "Diese",
+   "type": "word",
+   "start": 0.04,
+   "end": 0.414
+  },
+  {
+   "text": "Brücke",
+   "type": "word",
+   "start": 0.456,
+   "end": 0.851
+  },
+  {
+   "text": "hat",
+   "type": "word",
+   "start": 0.895,
+   "end": 1.092
+  },
+  {
+   "text": "Leonardo",
+   "type": "word",
+   "start": 1.114,
+   "end": 1.686
+  },
+  {
+   "text": "da",
+   "type": "word",
+   "start": 1.749,
+   "end": 1.926
+  },
+  {
+   "text": "Vinci",
+   "type": "word",
+   "start": 1.946,
+   "end": 2.32
+  },
+  {
+   "text": "vor",
+   "type": "word",
+   "start": 2.362,
+   "end": 2.559
+  },
+  {
+   "text": "500",
+   "type": "word",
+   "start": 2.581,
+   "end": 2.779
+  },
+  {
+   "text": "Jahren",
+   "type": "word",
+   "start": 2.801,
+   "end": 3.195
+  },
+  {
+   "text": "entworfen.",
+   "type": "word",
+   "start": 3.239,
+   "end": 3.852
+  },
+  {
+   "text": "Und",
+   "type": "word",
+   "start": 4.42,
+   "end": 4.598
+  },
+  {
+   "text": "sie",
+   "type": "word",
+   "start": 4.617,
+   "end": 4.795
+  },
+  {
+   "text": "braucht",
+   "type": "word",
+   "start": 4.815,
+   "end": 5.066
+  },
+  {
+   "text": "nur",
+   "type": "word",
+   "start": 5.094,
+   "end": 5.272
+  },
+  {
+   "text": "ein",
+   "type": "word",
+   "start": 5.292,
+   "end": 5.469
+  },
+  {
+   "text": "paar",
+   "type": "word",
+   "start": 5.489,
+   "end": 5.685
+  },
+  {
+   "text": "Holzstäbe.",
+   "type": "word",
+   "start": 5.707,
+   "end": 6.259
+  },
+  {
+   "text": "Keine",
+   "type": "word",
+   "start": 6.74,
+   "end": 7.141
+  },
+  {
+   "text": "Nägel,",
+   "type": "word",
+   "start": 7.185,
+   "end": 7.608
+  },
+  {
+   "text": "keine",
+   "type": "word",
+   "start": 7.655,
+   "end": 8.056
+  },
+  {
+   "text": "Schrauben,",
+   "type": "word",
+   "start": 8.1,
+   "end": 8.61
+  },
+  {
+   "text": "kein",
+   "type": "word",
+   "start": 8.667,
+   "end": 8.9
+  },
+  {
+   "text": "Kleber.",
+   "type": "word",
+   "start": 8.926,
+   "end": 9.371
+  },
+  {
+   "text": "Die",
+   "type": "word",
+   "start": 10.06,
+   "end": 10.222
+  },
+  {
+   "text": "Stäbe",
+   "type": "word",
+   "start": 10.24,
+   "end": 10.548
+  },
+  {
+   "text": "werden",
+   "type": "word",
+   "start": 10.582,
+   "end": 10.907
+  },
+  {
+   "text": "einfach",
+   "type": "word",
+   "start": 10.943,
+   "end": 11.284
+  },
+  {
+   "text": "ineinander",
+   "type": "word",
+   "start": 11.322,
+   "end": 11.938
+  },
+  {
+   "text": "verschränkt",
+   "type": "word",
+   "start": 12.006,
+   "end": 12.415
+  },
+  {
+   "text": "und",
+   "type": "word",
+   "start": 12.46,
+   "end": 12.622
+  },
+  {
+   "text": "halten",
+   "type": "word",
+   "start": 12.64,
+   "end": 12.965
+  },
+  {
+   "text": "sich",
+   "type": "word",
+   "start": 13.001,
+   "end": 13.18
+  },
+  {
+   "text": "gegenseitig",
+   "type": "word",
+   "start": 13.2,
+   "end": 13.832
+  },
+  {
+   "text": "fest.",
+   "type": "word",
+   "start": 13.902,
+   "end": 14.098
+  },
+  {
+   "text": "Am",
+   "type": "word",
+   "start": 14.72,
+   "end": 14.899
+  },
+  {
+   "text": "Ende",
+   "type": "word",
+   "start": 14.919,
+   "end": 15.277
+  },
+  {
+   "text": "trägt",
+   "type": "word",
+   "start": 15.317,
+   "end": 15.558
+  },
+  {
+   "text": "sich",
+   "type": "word",
+   "start": 15.585,
+   "end": 15.806
+  },
+  {
+   "text": "die",
+   "type": "word",
+   "start": 15.83,
+   "end": 16.03
+  },
+  {
+   "text": "Brücke",
+   "type": "word",
+   "start": 16.052,
+   "end": 16.452
+  },
+  {
+   "text": "komplett",
+   "type": "word",
+   "start": 16.496,
+   "end": 16.937
+  },
+  {
+   "text": "selbst.",
+   "type": "word",
+   "start": 16.986,
+   "end": 17.269
+  },
+  {
+   "text": "Und",
+   "type": "word",
+   "start": 17.74,
+   "end": 17.885
+  },
+  {
+   "text": "das",
+   "type": "word",
+   "start": 17.901,
+   "end": 18.045
+  },
+  {
+   "text": "Verrückte:",
+   "type": "word",
+   "start": 18.061,
+   "end": 18.51
+  },
+  {
+   "text": "Je",
+   "type": "word",
+   "start": 19.08,
+   "end": 19.261
+  },
+  {
+   "text": "mehr",
+   "type": "word",
+   "start": 19.282,
+   "end": 19.505
+  },
+  {
+   "text": "Gewicht",
+   "type": "word",
+   "start": 19.53,
+   "end": 19.955
+  },
+  {
+   "text": "drauf",
+   "type": "word",
+   "start": 20.002,
+   "end": 20.246
+  },
+  {
+   "text": "kommt,",
+   "type": "word",
+   "start": 20.274,
+   "end": 20.539
+  },
+  {
+   "text": "desto",
+   "type": "word",
+   "start": 20.568,
+   "end": 20.952
+  },
+  {
+   "text": "fester",
+   "type": "word",
+   "start": 20.994,
+   "end": 21.399
+  },
+  {
+   "text": "hält",
+   "type": "word",
+   "start": 21.444,
+   "end": 21.667
+  },
+  {
+   "text": "sie!",
+   "type": "word",
+   "start": 21.692,
+   "end": 21.915
+  }
+ ]
+}
